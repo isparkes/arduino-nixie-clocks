@@ -319,7 +319,8 @@
 #define I2C_SET_OPTION_BLANK_MODE     0x14
 #define I2C_SET_OPTION_SLOTS_MODE     0x15
 #define I2C_SET_OPTION_PIR_TIMEOUT    0x16
-
+#define I2C_SHOW_VALUE                0x17
+#define I2C_SHOW_VALUE_TRICKS         0x18
 
 //**********************************************************************************
 //**********************************************************************************
@@ -822,6 +823,9 @@ byte currNumberArray[6] = {0, 0, 0, 0, 0, 0};
 byte displayType[6]    = {FADE, FADE, FADE, FADE, FADE, FADE};
 byte fadeState[6]      = {0, 0, 0, 0, 0, 0};
 byte ourIP[4]          = {0, 0, 0, 0}; // set by the WiFi module
+byte valueDisplayTime  = 0;
+byte valueToShow[3]    = {0, 0, 0};
+byte valueDisplayType[3] = {0x33, 0x33, 0x33}; // All normal by default
 
 // Decimal point indicators
 boolean dpArray[6]         = {false, false, false, false, false, false};
@@ -1395,6 +1399,12 @@ void performOncePerSecondProcessing() {
     blanked = false;
   }
   setTubesAndLEDSBlankMode();
+
+  // Decrement the value display counter
+  // 0xff means "forever", so don't decrement it
+  if ((valueDisplayTime > 0) && (valueDisplayTime < 0xff)) {
+    valueDisplayTime--;
+  }
 }
 
 // ************************************************************
@@ -1792,6 +1802,7 @@ void setNextMode() {
 void processCurrentMode() {
   switch (currentMode) {
     case MODE_TIME: {
+        // Select what we display in normal time mode
         if (button1.isButtonPressedAndReleased()) {
           // Deal with blanking first
           if ((nowMillis < blankSuppressedSelectionTimoutMillis) || blanked) {
@@ -1900,6 +1911,7 @@ void processCurrentMode() {
                 transition.start(nowMillis);
               }
 
+              // initialise the slots mode
               boolean msgDisplaying;
               switch (slotsMode) {
                 case SLOTS_MODE_1M_SCR_SCR:
@@ -1908,7 +1920,8 @@ void processCurrentMode() {
                   break;
                 }
               }
-
+              
+              // Continue slots
               if (msgDisplaying) {
                 transition.updateRegularDisplaySeconds();
               } else {
@@ -1921,13 +1934,19 @@ void processCurrentMode() {
                 applyBlanking();
               }
             } else {
-              // no slots mode, just do normal time thing
-              loadNumberArrayTime();
+              // no slots mode, check if we are in valueDisplayMode
+              if (valueDisplayTime > 0) {
+                loadNumberArrayValue();
+                loadDisplayConfigValue();
+              } else {
+                // normal time
+                loadNumberArrayTime();
 
-              allFadeOrNormal();
+                allFadeOrNormal();
 
-              // Apply leading blanking
-              applyBlanking();
+                // Apply leading blanking
+                applyBlanking();
+              }
             }
           }
         }
@@ -2454,6 +2473,18 @@ void loadNumberArrayTime() {
     NumberArray[1] = hour() % 10;
     NumberArray[0] = hour() / 10;
   }
+}
+
+// ************************************************************
+// Show the value we got over I2C
+// ************************************************************
+void loadNumberArrayValue() {
+  NumberArray[5] = valueToShow[2] & 0xf;
+  NumberArray[4] = valueToShow[2] >> 4;
+  NumberArray[3] = valueToShow[1] & 0xf;
+  NumberArray[2] = valueToShow[1] >> 4;
+  NumberArray[1] = valueToShow[0] & 0xf;
+  NumberArray[0] = valueToShow[0] >> 4;
 }
 
 // ************************************************************
@@ -3003,6 +3034,18 @@ void allBlanked() {
   if (displayType[3] != BLANKED) displayType[3] = BLANKED;
   if (displayType[4] != BLANKED) displayType[4] = BLANKED;
   if (displayType[5] != BLANKED) displayType[5] = BLANKED;
+}
+
+// ************************************************************
+// Display preset
+// ************************************************************
+void loadDisplayConfigValue() {
+  displayType[0] = valueDisplayType[2] & 0xf;
+  displayType[1] = valueDisplayType[2] >> 4;
+  displayType[2] = valueDisplayType[1] & 0xf;
+  displayType[3] = valueDisplayType[1] >> 4;
+  displayType[4] = valueDisplayType[0] & 0xf;
+  displayType[5] = valueDisplayType[0] >> 4;
 }
 
 // ************************************************************
@@ -3845,6 +3888,18 @@ void receiveEvent(int bytes) {
   } else if (operation == I2C_SET_OPTION_SLOTS_MODE) {
     slotsMode = Wire.read();
     EEPROM.write(EE_SLOTS_MODE, slotsMode);
+  } else if (operation == I2C_SHOW_VALUE) {
+    // Three BCD values, plus time to show in seconds
+    // BCD A=bright, B=dimmed, C=flash, D=fade, E=normal, F=blanked
+    valueToShow[0] = Wire.read();
+    valueToShow[1] = Wire.read();
+    valueToShow[2] = Wire.read();
+    valueDisplayTime = Wire.read();
+  } else if (operation == I2C_SHOW_VALUE_TRICKS) {
+    // Three BCD values, using the normal display type encoding in each nibble
+    valueDisplayType[0] = Wire.read();
+    valueDisplayType[1] = Wire.read();
+    valueDisplayType[2] = Wire.read();
   }
 }
 
