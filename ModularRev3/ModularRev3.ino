@@ -67,7 +67,6 @@
 #define EE_PIR_TIMEOUT_LO   37     // The PIR timeout time in S, low byte
 #define EE_PIR_TIMEOUT_HI   38     // The PIR timeout time in S, high byte
 
-
 // Software version shown in config menu
 #define SOFTWARE_VERSION 348
 
@@ -1863,7 +1862,7 @@ void processCurrentMode() {
           }
 
           if (tempDisplayMode == TEMP_MODE_VERSION) {
-            loadNumberArrayConfInt(SOFTWARE_VERSION, currentMode - MODE_12_24);
+            loadNumberArrayConfInt(SOFTWARE_VERSION, MODE_VERSION - MODE_12_24);
           }
 
           if (tempDisplayMode == TEMP_IP_ADDR12) {
@@ -1888,7 +1887,7 @@ void processCurrentMode() {
             if (useRTC) {
               tempDisplayMode = TEMP_MODE_MIN;
             } else {
-              loadNumberArrayConfInt(lastImpressionsPerSec, currentMode - MODE_12_24);
+              loadNumberArrayConfInt(lastImpressionsPerSec, MODE_TEMP - MODE_12_24);
             }
           }
 
@@ -3613,21 +3612,69 @@ int getDimmingFromLDR() {
 }
 
 // ******************************************************************
-// Routine to check the PWM LEDs
+// Routine to set the LEDs
+// LEDPin 
 // brightens and dims a PWM capable LED
 // - 0 to 255 ramp up
 // - 256 to 511 plateau
 // - 512 to 767 ramp down
 // ******************************************************************
 void checkLEDPWM(byte LEDPin, int step) {
+  
   if (step > 767) {
-    analogWrite(LEDPin, getLEDAdjusted(0, 1, 1));
+    if (LEDPin == tickLed) {
+      analogWrite(LEDPin, getLEDAdjusted(0, 1, 1));
+    } else {
+      setAllLEDs(0,0,0);
+    }
   } else if (step > 512) {
-    analogWrite(LEDPin, getLEDAdjusted(255 - (step - 512), 1, 1));
+    if (LEDPin == tickLed) {
+      analogWrite(LEDPin, getLEDAdjusted(255 - (step - 512), 1, 1));
+    } else {
+      switch (LEDPin) {
+        case 0:
+          setAllLEDs(getLEDAdjusted(255 - (step - 512),1,1),0,0);
+          break;
+        case 1:
+          setAllLEDs(0,getLEDAdjusted(255 - (step - 512),1,1),0);
+          break;
+        case 2:
+          setAllLEDs(0,0,getLEDAdjusted(255 - (step - 512),1,1));
+          break;
+      }
+    }
   } else if (step > 255) {
-    analogWrite(LEDPin, getLEDAdjusted(255, 1, 1));
+    if (LEDPin == tickLed) {
+      analogWrite(LEDPin, getLEDAdjusted(255, 1, 1));
+    } else {
+      switch (LEDPin) {
+        case 0:
+          setAllLEDs(getLEDAdjusted(255,1,1),0,0);
+          break;
+        case 1:
+          setAllLEDs(0,getLEDAdjusted(255,1,1),0);
+          break;
+        case 2:
+          setAllLEDs(0,0,getLEDAdjusted(255,1,1));
+          break;
+      }
+    }
   } else if (step > 0) {
-    analogWrite(LEDPin, getLEDAdjusted(step, 1, 1));
+    if (LEDPin == tickLed) {
+      analogWrite(LEDPin, getLEDAdjusted(step, 1, 1));
+    } else {
+      switch (LEDPin) {
+        case 0:
+          setAllLEDs(getLEDAdjusted(step,1,1),0,0);
+          break;
+        case 1:
+          setAllLEDs(0,getLEDAdjusted(step,1,1),0);
+          break;
+        case 2:
+          setAllLEDs(0,0,getLEDAdjusted(step,1,1));
+          break;
+      }
+    }
   }
 }
 
@@ -3673,12 +3720,12 @@ void calibrateHVG() {
   setPWMOnTime(PWM_PULSE_MIN);
   for (int i = 0 ; i < 768 ; i++ ) {
     //loadNumberArray8s();
-    loadNumberArrayConfInt(pwmOn, currentMode - MODE_12_24);
+    loadNumberArrayConfInt(pwmOn, MODE_12_24 - MODE_12_24);
     allBright();
     outputDisplay();
 
     if (getSmoothedHVSensorReading() < rawHVADCThreshold) {
-      if ((i % 8) == 0 ) {
+      if ((i % 4) == 0 ) {
         incPWMOnTime();
       }
     }
@@ -3691,12 +3738,12 @@ void calibrateHVG() {
   setPWMOnTime(pwmOn + 50);
   for (int i = 0 ; i < 768 ; i++ ) {
     //loadNumberArray8s();
-    loadNumberArrayConfInt(pwmOn, currentMode - MODE_12_24);
+    loadNumberArrayConfInt(pwmOn, MODE_12_24 - MODE_12_24);
     allBright();
     outputDisplay();
 
     if (getSmoothedHVSensorReading() > rawHVADCThreshold) {
-      if ((i % 8) == 0 ) {
+      if ((i % 4) == 0 ) {
         decPWMOnTime();
       }
     }
