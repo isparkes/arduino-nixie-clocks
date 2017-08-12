@@ -319,7 +319,7 @@
 #define I2C_SET_OPTION_SLOTS_MODE     0x15
 #define I2C_SET_OPTION_PIR_TIMEOUT    0x16
 #define I2C_SHOW_VALUE                0x17
-#define I2C_SHOW_VALUE_TRICKS         0x18
+#define I2C_SHOW_VALUE_FORMAT         0x18
 
 //**********************************************************************************
 //**********************************************************************************
@@ -1924,13 +1924,19 @@ void processCurrentMode() {
               if (msgDisplaying) {
                 transition.updateRegularDisplaySeconds();
               } else {
-                // do normal time thing when we are not in slots
-                loadNumberArrayTime();
+                // no slots mode, check if we are in valueDisplayMode
+                if (valueDisplayTime > 0) {
+                  loadNumberArrayValue();
+                  loadDisplayConfigValue();
+                } else {
+                  // normal time
+                  loadNumberArrayTime();
 
-                allFadeOrNormal();
+                  allFadeOrNormal();
 
-                // Apply leading blanking
-                applyBlanking();
+                  // Apply leading blanking
+                  applyBlanking();
+                }
               }
             } else {
               // no slots mode, check if we are in valueDisplayMode
@@ -3725,7 +3731,7 @@ void calibrateHVG() {
     outputDisplay();
 
     if (getSmoothedHVSensorReading() < rawHVADCThreshold) {
-      if ((i % 4) == 0 ) {
+      if ((i % 8) == 0 ) {
         incPWMOnTime();
       }
     }
@@ -3743,7 +3749,7 @@ void calibrateHVG() {
     outputDisplay();
 
     if (getSmoothedHVSensorReading() > rawHVADCThreshold) {
-      if ((i % 4) == 0 ) {
+      if ((i % 8) == 0 ) {
         decPWMOnTime();
       }
     }
@@ -3937,16 +3943,16 @@ void receiveEvent(int bytes) {
     EEPROM.write(EE_SLOTS_MODE, slotsMode);
   } else if (operation == I2C_SHOW_VALUE) {
     // Three BCD values, plus time to show in seconds
-    // BCD A=bright, B=dimmed, C=flash, D=fade, E=normal, F=blanked
     valueToShow[0] = Wire.read();
     valueToShow[1] = Wire.read();
     valueToShow[2] = Wire.read();
     valueDisplayTime = Wire.read();
-  } else if (operation == I2C_SHOW_VALUE_TRICKS) {
+  } else if (operation == I2C_SHOW_VALUE_FORMAT) {
     // Three BCD values, using the normal display type encoding in each nibble
     valueDisplayType[0] = Wire.read();
     valueDisplayType[1] = Wire.read();
     valueDisplayType[2] = Wire.read();
+    loadDisplayConfigValue();
   }
 }
 
