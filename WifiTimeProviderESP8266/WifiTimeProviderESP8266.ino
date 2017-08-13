@@ -1019,10 +1019,11 @@ void clockConfigPageHandler()
   response_message += getDropDownOption("3", "Fixed RGB backlight, dims with ambient light", (configBacklightMode == 3));
   response_message += getDropDownOption("4", "Pulsing RGB backlight, dims with ambient light", (configBacklightMode == 4));
   response_message += getDropDownOption("5", "Cycling RGB backlight, dims with ambient light", (configBacklightMode == 5));
+  response_message += getDropDownOption("6", "'Colourtime' backlight", (configBacklightMode == 6));
   response_message += getDropDownFooter();
 
   boolean cycleEnabled = !((configBacklightMode == 2) || (configBacklightMode == 5));
-  boolean colourChannelEnabled = !cycleEnabled;
+  boolean colourChannelEnabled = !((configBacklightMode == 0) || (configBacklightMode == 1) || (configBacklightMode == 3) || (configBacklightMode == 4));
 
   // RGB channels
   response_message += getNumberInput("Red intensity:", "redCnl", 0, 15, configRedCnl, colourChannelEnabled);
