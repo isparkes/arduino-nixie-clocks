@@ -18,7 +18,7 @@
 #include <EEPROM.h>
 #include <time.h>
   
-#define SOFTWARE_VERSION "1.0.5"
+#define SOFTWARE_VERSION "3.0.0"
 #define DEFAULT_TIME_SERVER_URL "http://time-zone-server.scapp.io/getTime/Europe/Zurich"
 
 #define DEBUG_OFF             // DEBUG or DEBUG_OFF
@@ -880,7 +880,7 @@ void clockConfigPageHandler()
 #ifdef DEBUG
     Serial.print("Got pirTimeout param: "); Serial.println(server.arg("pirTimeout"));
 #endif
-    byte newPirTimeOut = atoi(server.arg("pirTimeout").c_str());
+    int newPirTimeOut = atoi(server.arg("pirTimeout").c_str());
     if (newPirTimeOut != configPirTimeout) {
       setClockOptionPirTimeout(newPirTimeOut);
 #ifdef DEBUG
@@ -1869,8 +1869,8 @@ boolean setClockOptionByte(byte option, byte newMode) {
    Send the options from the I2C slave. If the transmission went OK, return true, otherwise false.
 */
 boolean setClockOptionInt(byte option, int newMode) {
-  byte loByte = newMode & 0xff;
-  byte hiByte = (newMode >> 8) & 0xff; 
+  byte loByte = newMode % 256;
+  byte hiByte = newMode / 256; 
 #ifdef DEBUG
   Serial.print("I2C --> setting int option: ");
   Serial.print(option);
