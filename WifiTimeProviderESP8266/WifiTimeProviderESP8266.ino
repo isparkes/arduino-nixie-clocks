@@ -1021,13 +1021,16 @@ void clockConfigPageHandler()
   response_message += getDropDownOption("5", "Cycling RGB backlight, dims with ambient light", (configBacklightMode == 5));
   response_message += getDropDownFooter();
 
+  boolean cycleEnabled = !((configBacklightMode == 2) || (configBacklightMode == 5));
+  boolean colourChannelEnabled = !cycleEnabled;
+
   // RGB channels
-  response_message += getNumberInput("Red intensity:", "redCnl", 0, 15, configRedCnl, false);
-  response_message += getNumberInput("Green intensity:", "grnCnl", 0, 15, configGreenCnl, false);
-  response_message += getNumberInput("Blue intensity:", "bluCnl", 0, 15, configBlueCnl, false);
+  response_message += getNumberInput("Red intensity:", "redCnl", 0, 15, configRedCnl, colourChannelEnabled);
+  response_message += getNumberInput("Green intensity:", "grnCnl", 0, 15, configGreenCnl, colourChannelEnabled);
+  response_message += getNumberInput("Blue intensity:", "bluCnl", 0, 15, configBlueCnl, colourChannelEnabled);
 
   // Cycle speed
-  response_message += getNumberInput("Backlight Cycle Speed:", "cycleSpeed", 2, 64, configCycleSpeed, false);
+  response_message += getNumberInput("Backlight Cycle Speed:", "cycleSpeed", 2, 64, configCycleSpeed, cycleEnabled);
 
   // Slots Mode
   response_message += getDropDownHeader("Date Slots:", "slotsMode", true);
