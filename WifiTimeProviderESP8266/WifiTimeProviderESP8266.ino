@@ -94,6 +94,7 @@ byte configUseFade;
 byte configUseLDR;
 byte configBlankMode;
 byte configSlotsMode;
+int  configPirTimeout;
 
 ESP8266WebServer server(80);
 
@@ -546,6 +547,8 @@ void resetPageHandler() {
 */
 void clockConfigPageHandler()
 {
+  // -----------------------------------------------------------------------------
+
   if (server.hasArg("12h24hMode"))
   {
 #ifdef DEBUG
@@ -873,6 +876,21 @@ void clockConfigPageHandler()
 
   // -----------------------------------------------------------------------------
 
+  if (server.hasArg("pirTimeout")) {
+#ifdef DEBUG
+    Serial.print("Got pirTimeout param: "); Serial.println(server.arg("pirTimeout"));
+#endif
+    byte newPirTimeOut = atoi(server.arg("pirTimeout").c_str());
+    if (newPirTimeOut != configPirTimeout) {
+      setClockOptionPirTimeout(newPirTimeOut);
+#ifdef DEBUG
+      Serial.print("I2C --> Set pirTimeout: "); Serial.println(newPirTimeOut);
+#endif
+    }
+  }
+
+  // -----------------------------------------------------------------------------
+
   // Get the options, put the result into variables called "config*"
   getClockOptionsFromI2C();
 
@@ -903,7 +921,6 @@ void clockConfigPageHandler()
     response_message += getRadioButton("blankLeading", "Show", "show", true);
   }
   response_message += getRadioGroupFooter();
-  //response_message += getCheckBox("blankLeadingZero", "on", "Blank leading zero on hours", (configBlankLead == 1));
 
   // Scrollback
   response_message += getRadioGroupHeader("Scrollback effect:");
@@ -915,7 +932,10 @@ void clockConfigPageHandler()
     response_message += getRadioButton("useScrollback", "Off", "off", true);
   }
   response_message += getRadioGroupFooter();
-  //response_message += getCheckBox("useScrollback", "on", "Use scrollback effect", (configScrollback == 1));
+
+  // Scroll steps
+  boolean scrollStepsDisabled = (configScrollback == 0);
+  response_message += getNumberInput("Scroll steps:", "scrollSteps", 1, 40, configScrollSteps, scrollStepsDisabled);
 
   // fade
   response_message += getRadioGroupHeader("Fade effect:");
@@ -927,7 +947,10 @@ void clockConfigPageHandler()
     response_message += getRadioButton("useFade", "Off", "off", true);
   }
   response_message += getRadioGroupFooter();
-  //response_message += getCheckBox("useFade", "on", "Use fade effect", (configUseFade == 1));
+
+  // Fade steps
+  boolean fadeStepsDisabled = (configUseFade == 0);
+  response_message += getNumberInput("Fade steps:", "fadeSteps", 20, 200, configFadeSteps, fadeStepsDisabled);
 
   // Suppress ACP
   response_message += getRadioGroupHeader("Suppress ACP when dimmed:");
@@ -988,12 +1011,6 @@ void clockConfigPageHandler()
   // Blank hours to
   response_message += getNumberInput("Blank to:", "blankTo", 0, 23, configBlankTo, hoursDisabled);
 
-  // Fade steps
-  response_message += getNumberInput("Fade steps:", "fadeSteps", 50, 200, configFadeSteps, false);
-
-  // Scroll steps
-  response_message += getNumberInput("Scroll steps:", "scrollSteps", 1, 40, configScrollSteps, false);
-
   // Back light
   response_message += getDropDownHeader("Back light:", "backLight", true);
   response_message += getDropDownOption("0", "Fixed RGB backlight, no dimming", (configBacklightMode == 0));
@@ -1017,6 +1034,9 @@ void clockConfigPageHandler()
   response_message += getDropDownOption("0", "Don't use slots mode", (configSlotsMode == 0));
   response_message += getDropDownOption("1", "Scroll In, Scramble Out", (configSlotsMode == 1));
   response_message += getDropDownFooter();
+
+  // PIR timeout
+  response_message += getNumberInput("PIR timeout:", "pirTimeout", 60, 3600, configPirTimeout, false);
 
   // form footer
   response_message += getSubmitButton("Set");
@@ -1447,14 +1467,15 @@ boolean sendTimeToI2C(String timeString) {
    Get the options from the I2C slave. If the transmission went OK, return true, otherwise false.
 */
 boolean getClockOptionsFromI2C() {
-  int available = Wire.requestFrom(I2C_SLAVE_ADDR, 20);
+  int available = Wire.requestFrom(I2C_SLAVE_ADDR, 22);
 
 #ifdef DEBUG
   Serial.print("I2C <-- Received bytes: ");
   Serial.println(available);
 #endif
-  if (available == 20) {
+  if (available == 22) {
 
+    // IDX 0
     byte receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got protocol header: ");
@@ -1469,6 +1490,7 @@ boolean getClockOptionsFromI2C() {
       return false;
     }
     
+    // IDX 1
     receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got hour mode: ");
@@ -1476,6 +1498,7 @@ boolean getClockOptionsFromI2C() {
 #endif
     configHourMode = receivedByte;
 
+    // IDX 2
     receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got blank lead: ");
@@ -1483,6 +1506,7 @@ boolean getClockOptionsFromI2C() {
 #endif
     configBlankLead = receivedByte;
 
+    // IDX 3
     receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got scrollback: ");
@@ -1490,6 +1514,7 @@ boolean getClockOptionsFromI2C() {
 #endif
     configScrollback = receivedByte;
 
+    // IDX 4
     receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got suppress ACP: ");
@@ -1497,6 +1522,7 @@ boolean getClockOptionsFromI2C() {
 #endif
     configSuppressACP = receivedByte;
 
+    // IDX 5
     receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got useFade: ");
@@ -1504,6 +1530,7 @@ boolean getClockOptionsFromI2C() {
 #endif
     configUseFade = receivedByte;
 
+    // IDX 6
     receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got date format: ");
@@ -1511,6 +1538,7 @@ boolean getClockOptionsFromI2C() {
 #endif
     configDateFormat = receivedByte;
 
+    // IDX 7
     receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got day blanking: ");
@@ -1518,6 +1546,7 @@ boolean getClockOptionsFromI2C() {
 #endif
     configDayBlanking = receivedByte;
 
+    // IDX 8
     receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got blank hour start: ");
@@ -1525,6 +1554,7 @@ boolean getClockOptionsFromI2C() {
 #endif
     configBlankFrom = receivedByte;
 
+    // IDX 9
     receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got blank hour end: ");
@@ -1532,6 +1562,7 @@ boolean getClockOptionsFromI2C() {
 #endif
     configBlankTo = receivedByte;
 
+    // IDX 10
     receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got fade steps: ");
@@ -1539,6 +1570,7 @@ boolean getClockOptionsFromI2C() {
 #endif
     configFadeSteps = receivedByte;
 
+    // IDX 11
     receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got scroll steps: ");
@@ -1546,6 +1578,7 @@ boolean getClockOptionsFromI2C() {
 #endif
     configScrollSteps = receivedByte;
 
+    // IDX 12
     receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got backlight mode: ");
@@ -1553,6 +1586,7 @@ boolean getClockOptionsFromI2C() {
 #endif
     configBacklightMode = receivedByte;
 
+    // IDX 13
     receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got red channel: ");
@@ -1560,6 +1594,7 @@ boolean getClockOptionsFromI2C() {
 #endif
     configRedCnl = receivedByte;
 
+    // IDX 14
     receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got green channel: ");
@@ -1567,6 +1602,7 @@ boolean getClockOptionsFromI2C() {
 #endif
     configGreenCnl = receivedByte;
 
+    // IDX 15
     receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got blue channel: ");
@@ -1574,6 +1610,7 @@ boolean getClockOptionsFromI2C() {
 #endif
     configBlueCnl = receivedByte;
 
+    // IDX 16
     receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got cycle speed: ");
@@ -1581,6 +1618,7 @@ boolean getClockOptionsFromI2C() {
 #endif
     configCycleSpeed = receivedByte;
 
+    // IDX 17
     receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got useLDR: ");
@@ -1588,6 +1626,7 @@ boolean getClockOptionsFromI2C() {
 #endif
     configUseLDR = receivedByte;
 
+    // IDX 18
     receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got blankMode: ");
@@ -1595,6 +1634,7 @@ boolean getClockOptionsFromI2C() {
 #endif
     configBlankMode = receivedByte;
 
+    // IDX 19
     receivedByte = Wire.read();
 #ifdef DEBUG
     Serial.print("I2C <-- Got slotsMode: ");
@@ -1602,10 +1642,26 @@ boolean getClockOptionsFromI2C() {
 #endif
     configSlotsMode = receivedByte;
 
+    // IDX 20
+    receivedByte = Wire.read();
+    Serial.print("I2C <-- Got pirTimeOut Hi: ");
+    Serial.println(receivedByte);
+    int pirTO = receivedByte * 256;
+    // IDX 21
+    receivedByte = Wire.read();
+    Serial.print("I2C <-- Got pirTimeOut Lo: ");
+    Serial.println(receivedByte);
+    pirTO += receivedByte;
+#ifdef DEBUG
+    Serial.print("I2C <-- Got pirTimeOut: ");
+    Serial.println(pirTO);
+#endif
+    configPirTimeout = pirTO;
+    
   } else {
     // didn't get the right number of bytes
 #ifdef DEBUG
-    Serial.print("I2C <-- Got wrong number of bytes, expected 20, got: ");
+    Serial.print("I2C <-- Got wrong number of bytes, expected 22, got: ");
     Serial.println(available);
 #endif
   }
@@ -1761,6 +1817,10 @@ boolean setClockOptionSlotsMode(byte newMode) {
   return setClockOptionByte(I2C_SET_OPTION_SLOTS_MODE, newMode);
 }
 
+boolean setClockOptionPirTimeout(int newMode) {
+  return setClockOptionInt(I2C_SET_OPTION_PIR_TIMEOUT, newMode);
+}
+
 /**
    Send the options from the I2C slave. If the transmission went OK, return true, otherwise false.
 */
@@ -1805,6 +1865,31 @@ boolean setClockOptionByte(byte option, byte newMode) {
   return (error == 0);
 }
 
+/**
+   Send the options from the I2C slave. If the transmission went OK, return true, otherwise false.
+*/
+boolean setClockOptionInt(byte option, int newMode) {
+  byte loByte = newMode & 0xff;
+  byte hiByte = (newMode >> 8) & 0xff; 
+#ifdef DEBUG
+  Serial.print("I2C --> setting int option: ");
+  Serial.print(option);
+  Serial.print(" with value: ");
+  Serial.println(newMode);
+  Serial.print("hi byte: ");
+  Serial.println(hiByte);
+  Serial.print("lo byte: ");
+  Serial.println(loByte);
+#endif
+
+  Wire.beginTransmission(I2C_SLAVE_ADDR);
+  Wire.write(option);
+  Wire.write(hiByte);
+  Wire.write(loByte);
+  int error = Wire.endTransmission();
+  delay(10);
+  return (error == 0);
+}
 // ----------------------------------------------------------------------------------------------------
 // ------------------------------------------- HTML functions -----------------------------------------
 // ----------------------------------------------------------------------------------------------------
@@ -1975,7 +2060,7 @@ String getDropDownFooter() {
   return "</select></div></div>";
 }
 
-String getNumberInput(String heading, String input_name, byte minVal, byte maxVal, byte value, boolean disabled) {
+String getNumberInput(String heading, String input_name, int minVal, int maxVal, int value, boolean disabled) {
   String result = "<div class=\"form-group\"><label class=\"control-label col-xs-3\" for=\"";
   result += input_name;
   result += "\">";
@@ -1990,10 +2075,11 @@ String getNumberInput(String heading, String input_name, byte minVal, byte maxVa
   result += maxVal;
   result += "\" value=\"";
   result += value;
+  result += "\"";
   if (disabled) {
     result += " disabled";
   }
-  result += "\"></div></div>";
+  result += "></div></div>";
 
   return result;
 }
@@ -2013,10 +2099,11 @@ String getNumberInputWide(String heading, String input_name, byte minVal, byte m
   result += maxVal;
   result += "\" value=\"";
   result += value;
+  result += "\"";
   if (disabled) {
     result += " disabled";
   }
-  result += "\"></div></div>";
+  result += "></div></div>";
 
   return result;
 }
@@ -2032,10 +2119,11 @@ String getTextInput(String heading, String input_name, String value, boolean dis
   result += input_name;
   result += "\" value=\"";
   result += value;
+  result += "\"";
   if (disabled) {
     result += " disabled";
   }
-  result += "\"></div></div>";
+  result += "></div></div>";
 
   return result;
 }
@@ -2051,10 +2139,11 @@ String getTextInputWide(String heading, String input_name, String value, boolean
   result += input_name;
   result += "\" value=\"";
   result += value;
+  result += "\"";
   if (disabled) {
     result += " disabled";
   }
-  result += "\"></div></div>";
+  result += "></div></div>";
 
   return result;
 }
