@@ -185,34 +185,33 @@
 #define MODE_SLOTS_MODE                 22 // Mode "15"
 
 // PIR
-#define MODE_PIR_TIMEOUT_UP             23 // Mode "12"
-#define MODE_PIR_TIMEOUT_DOWN           24 // Mode "13"
-
+#define MODE_PIR_TIMEOUT_UP             23 // Mode "16"
+#define MODE_PIR_TIMEOUT_DOWN           24 // Mode "17"
 
 // Back light
-#define MODE_BACKLIGHT_MODE             25 // Mode "16"
-#define MODE_RED_CNL                    26 // Mode "17"
-#define MODE_GRN_CNL                    27 // Mode "18"
-#define MODE_BLU_CNL                    28 // Mode "19"
-#define MODE_CYCLE_SPEED                29 // Mode "20" - speed the colour cycle cyles at
+#define MODE_BACKLIGHT_MODE             25 // Mode "18"
+#define MODE_RED_CNL                    26 // Mode "19"
+#define MODE_GRN_CNL                    27 // Mode "20"
+#define MODE_BLU_CNL                    28 // Mode "21"
+#define MODE_CYCLE_SPEED                29 // Mode "22" - speed the colour cycle cyles at
 
 // HV generation
-#define MODE_TARGET_HV_UP               30 // Mode "21"
-#define MODE_TARGET_HV_DOWN             31 // Mode "22"
-#define MODE_PULSE_UP                   32 // Mode "23"
-#define MODE_PULSE_DOWN                 33 // Mode "24"
+#define MODE_TARGET_HV_UP               30 // Mode "23"
+#define MODE_TARGET_HV_DOWN             31 // Mode "24"
+#define MODE_PULSE_UP                   32 // Mode "25"
+#define MODE_PULSE_DOWN                 33 // Mode "26"
 
-#define MODE_MIN_DIM_UP                 34 // Mode "25"
-#define MODE_MIN_DIM_DOWN               35 // Mode "26"
+#define MODE_MIN_DIM_UP                 34 // Mode "27"
+#define MODE_MIN_DIM_DOWN               35 // Mode "28"
 
-#define MODE_ANTI_GHOST_UP              36 // Mode "27"
-#define MODE_ANTI_GHOST_DOWN            37 // Mode "28"
+#define MODE_ANTI_GHOST_UP              36 // Mode "29"
+#define MODE_ANTI_GHOST_DOWN            37 // Mode "30"
 
 // Temperature
-#define MODE_TEMP                       38 // Mode "29"
+#define MODE_TEMP                       38 // Mode "31"
 
 // Software Version
-#define MODE_VERSION                    39 // Mode "30"
+#define MODE_VERSION                    39 // Mode "32"
 
 // Tube test - all six digits, so no flashing mode indicator
 #define MODE_TUBE_TEST                  40
@@ -1413,6 +1412,11 @@ void performOncePerMinuteProcessing() {
   // get the time from the external provider - slow but accurate
   if (useRTC) {
     getRTCTime();
+  }
+
+  // AM/PM indicator
+  if (hourMode) {
+    dpArray[1] = (hour() > 12);
   }
 }
 
@@ -3849,8 +3853,8 @@ int getSmoothedHVSensorReading() {
 //**********************************************************************************
 
 /**
-   receive information from the master
-*/
+ * receive information from the master
+ */
 void receiveEvent(int bytes) {
   // the operation tells us what we are getting
   int operation = Wire.read();
@@ -3960,7 +3964,7 @@ void receiveEvent(int bytes) {
    send information to the master
 */
 void requestEvent() {
-  byte configArray[20];
+  byte configArray[22];
   int idx = 0;
   configArray[idx++] = 48;  // protocol version
   configArray[idx++] = encodeBooleanForI2C(hourMode);
@@ -3982,8 +3986,10 @@ void requestEvent() {
   configArray[idx++] = encodeBooleanForI2C(useLDR);
   configArray[idx++] = blankMode;
   configArray[idx++] = slotsMode;
+  configArray[idx++] = pirTimeout / 256;
+  configArray[idx++] = pirTimeout % 256;
 
-  Wire.write(configArray, 20);
+  Wire.write(configArray, 22);
 }
 
 byte encodeBooleanForI2C(boolean valueToProcess) {
