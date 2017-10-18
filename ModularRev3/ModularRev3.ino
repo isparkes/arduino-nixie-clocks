@@ -68,7 +68,7 @@
 #define EE_PIR_TIMEOUT_HI   38     // The PIR timeout time in S, high byte
 
 // Software version shown in config menu
-#define SOFTWARE_VERSION 348
+#define SOFTWARE_VERSION 349
 
 // how often we make reference to the external time provider
 #define READ_TIME_PROVIDER_MILLIS 60000 // Update the internal time provider from the external source once every minute
@@ -319,6 +319,9 @@
 #define I2C_SET_OPTION_PIR_TIMEOUT    0x16
 #define I2C_SHOW_VALUE                0x17
 #define I2C_SHOW_VALUE_FORMAT         0x18
+
+#define DO_NOT_APPLY_LEAD_0_BLANK     false
+#define APPLY_LEAD_0_BLANK            true
 
 //**********************************************************************************
 //**********************************************************************************
@@ -1277,7 +1280,7 @@ void loop()
     saveEEPROMValues();
 
     // Preset the display
-    allFadeOrNormal();
+    allFadeOrNormal(DO_NOT_APPLY_LEAD_0_BLANK);
 
     nextMode = currentMode;
   } else if (button1.isButtonPressedReleased1S()) {
@@ -1290,7 +1293,7 @@ void loop()
       saveEEPROMValues();
 
       // Preset the display
-      allFadeOrNormal();
+      allFadeOrNormal(DO_NOT_APPLY_LEAD_0_BLANK);
     }
 
     nextMode = currentMode;
@@ -1573,7 +1576,7 @@ void setNextMode() {
   switch (nextMode) {
     case MODE_TIME: {
         loadNumberArrayTime();
-        allFadeOrNormal();
+        allFadeOrNormal(APPLY_LEAD_0_BLANK);
         break;
       }
     case MODE_HOURS_SET: {
@@ -1895,7 +1898,7 @@ void processCurrentMode() {
             }
           }
 
-          allFadeOrNormal();
+          allFadeOrNormal(DO_NOT_APPLY_LEAD_0_BLANK);
 
         } else {
           if (acpOffset > 0) {
@@ -1910,6 +1913,7 @@ void processCurrentMode() {
                 transition.setAlternateValues();
                 loadNumberArrayTime();
                 transition.setRegularValues();
+                allFadeOrNormal(DO_NOT_APPLY_LEAD_0_BLANK);
 
                 transition.start(nowMillis);
               }
@@ -1936,10 +1940,7 @@ void processCurrentMode() {
                   // normal time
                   loadNumberArrayTime();
 
-                  allFadeOrNormal();
-
-                  // Apply leading blanking
-                  applyBlanking();
+                  allFadeOrNormal(APPLY_LEAD_0_BLANK);
                 }
               }
             } else {
@@ -1951,10 +1952,7 @@ void processCurrentMode() {
                 // normal time
                 loadNumberArrayTime();
 
-                allFadeOrNormal();
-
-                // Apply leading blanking
-                applyBlanking();
+                allFadeOrNormal(APPLY_LEAD_0_BLANK);
               }
             }
           }
@@ -2866,11 +2864,15 @@ void applyBlanking() {
 // ************************************************************
 // Display preset
 // ************************************************************
-void allFadeOrNormal() {
+void allFadeOrNormal(boolean blanking) {
   if (fade) {
     allFade();
   } else {
     allNormal();
+  }
+
+  if (blanking) {
+    applyBlanking();
   }
 }
 
@@ -4001,4 +4003,3 @@ byte encodeBooleanForI2C(boolean valueToProcess) {
     return byteToSend;
   }
 }
-
