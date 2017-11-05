@@ -68,7 +68,7 @@
 #define EE_PIR_TIMEOUT_HI   38     // The PIR timeout time in S, high byte
 
 // Software version shown in config menu
-#define SOFTWARE_VERSION 349
+#define SOFTWARE_VERSION 350
 
 // how often we make reference to the external time provider
 #define READ_TIME_PROVIDER_MILLIS 60000 // Update the internal time provider from the external source once every minute
@@ -1004,7 +1004,9 @@ void setup()
   pinMode(LED_DOUT, OUTPUT);
   pinMode(DP, OUTPUT);
   pinMode(pirPin, INPUT);
-  digitalWrite(pirPin, HIGH); // set pull up resistor - if no PIR connected, default to "triggered"
+
+  // Not setting the pullup resistor allows us to use 3V3 devices (e.g. RCWL-0516)
+  //digitalWrite(pirPin, HIGH); // set pull up resistor - if no PIR connected, default to "triggered"
 
   // The LEDS sometimes glow at startup, it annoys me, so turn them completely off
   analogWrite(tickLed, 0);
