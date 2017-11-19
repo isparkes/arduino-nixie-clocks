@@ -274,7 +274,8 @@
 #define BACKLIGHT_PULSE_DIM             4   // pulse the defined colour, dims with bulb dimming
 #define BACKLIGHT_CYCLE_DIM             5   // cycle through random colours, dims with bulb dimming
 #define BACKLIGHT_COLOUR_TIME           6   // use "ColourTime" - different colours for each digit value
-#define BACKLIGHT_MAX                   6
+#define BACKLIGHT_COLOUR_TIME_DIM       7   // use "ColourTime" - dims with bulb dimming
+#define BACKLIGHT_MAX                   7
 #define BACKLIGHT_DEFAULT               4
 
 #define CYCLE_SPEED_MIN                 4
@@ -1494,9 +1495,17 @@ void setLeds()
           break;
         case BACKLIGHT_COLOUR_TIME:
             for (int i = 0 ; i < 6 ; i++) {
-              ledR[5-i] = colourTimeR[NumberArray[i]];
-              ledG[5-i] = colourTimeG[NumberArray[i]];
-              ledB[5-i] = colourTimeB[NumberArray[i]];
+              ledR[5-i] = getLEDAdjusted(colourTimeR[NumberArray[i]],1,1);
+              ledG[5-i] = getLEDAdjusted(colourTimeG[NumberArray[i]],1,1);
+              ledB[5-i] = getLEDAdjusted(colourTimeB[NumberArray[i]],1,1);
+            }
+            outputLEDBuffer();
+          break;
+        case BACKLIGHT_COLOUR_TIME_DIM:
+            for (int i = 0 ; i < 6 ; i++) {
+              ledR[5-i] = getLEDAdjusted(colourTimeR[NumberArray[i]],1,dimFactor);
+              ledG[5-i] = getLEDAdjusted(colourTimeG[NumberArray[i]],1,dimFactor);
+              ledB[5-i] = getLEDAdjusted(colourTimeB[NumberArray[i]],1,dimFactor);
             }
             outputLEDBuffer();
           break;

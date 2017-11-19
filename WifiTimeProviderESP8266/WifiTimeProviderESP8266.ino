@@ -1020,6 +1020,7 @@ void clockConfigPageHandler()
   response_message += getDropDownOption("4", "Pulsing RGB backlight, dims with ambient light", (configBacklightMode == 4));
   response_message += getDropDownOption("5", "Cycling RGB backlight, dims with ambient light", (configBacklightMode == 5));
   response_message += getDropDownOption("6", "'Colourtime' backlight", (configBacklightMode == 6));
+  response_message += getDropDownOption("7", "'Colourtime' backlight, dims with ambient light", (configBacklightMode == 7));
   response_message += getDropDownFooter();
 
   boolean cycleEnabled = !((configBacklightMode == 2) || (configBacklightMode == 5));
