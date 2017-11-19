@@ -66,9 +66,10 @@
 #define EE_SLOTS_MODE       36     // Show date every now and again
 #define EE_PIR_TIMEOUT_LO   37     // The PIR timeout time in S, low byte
 #define EE_PIR_TIMEOUT_HI   38     // The PIR timeout time in S, high byte
+#define EE_PIR_PULLUP       39     // If we use the internal pullup on the PIR pin (false = use 3V3 PIR, PIR connected, true = no PIR connected or 5V PIR)
 
 // Software version shown in config menu
-#define SOFTWARE_VERSION 350
+#define SOFTWARE_VERSION 351
 
 // how often we make reference to the external time provider
 #define READ_TIME_PROVIDER_MILLIS 60000 // Update the internal time provider from the external source once every minute
@@ -193,30 +194,36 @@
 #define MODE_RED_CNL                    26 // Mode "19"
 #define MODE_GRN_CNL                    27 // Mode "20"
 #define MODE_BLU_CNL                    28 // Mode "21"
-#define MODE_CYCLE_SPEED                29 // Mode "22" - speed the colour cycle cyles at
+#define MODE_CYCLE_SPEED                29 // Mode "22"
 
-// HV generation
+// HV generation - Not Available over I2C
 #define MODE_TARGET_HV_UP               30 // Mode "23"
 #define MODE_TARGET_HV_DOWN             31 // Mode "24"
 #define MODE_PULSE_UP                   32 // Mode "25"
 #define MODE_PULSE_DOWN                 33 // Mode "26"
 
+// Minimum dimming value for old tubes
 #define MODE_MIN_DIM_UP                 34 // Mode "27"
 #define MODE_MIN_DIM_DOWN               35 // Mode "28"
 
+// Anti-ghosting for old tubes - Not Available over I2C
 #define MODE_ANTI_GHOST_UP              36 // Mode "29"
 #define MODE_ANTI_GHOST_DOWN            37 // Mode "30"
 
+// Use the PIR pin pullup resistor - Not Available over I2C
+#define MODE_USE_PIR_PULLUP             38 // Mode "31" 1 = use Pullup
+#define USE_PIR_PULLUP_DEFAULT          true
+
 // Temperature
-#define MODE_TEMP                       38 // Mode "31"
+#define MODE_TEMP                       39 // Mode "31"
 
 // Software Version
-#define MODE_VERSION                    39 // Mode "32"
+#define MODE_VERSION                    40 // Mode "32"
 
 // Tube test - all six digits, so no flashing mode indicator
-#define MODE_TUBE_TEST                  40
+#define MODE_TUBE_TEST                  41
 
-#define MODE_MAX                        40
+#define MODE_MAX                        41
 
 // Pseudo mode - burn the tubes and nothing else
 #define MODE_DIGIT_BURN                 99 // Digit burn mode - accesible by super long press
@@ -877,6 +884,7 @@ double sensorFactor = (double)(DIGIT_DISPLAY_OFF) / (double)(dimBright - dimDark
 int sensorSmoothCountLDR = SENSOR_SMOOTH_READINGS_DEFAULT;
 int sensorSmoothCountHV = SENSOR_SMOOTH_READINGS_DEFAULT / 8;
 boolean useLDR = true;
+boolean usePIRPullup = true;
 
 // ************************ Clock variables ************************
 // RTC, uses Analogue pins A4 (SDA) and A5 (SCL)
@@ -1005,9 +1013,6 @@ void setup()
   pinMode(DP, OUTPUT);
   pinMode(pirPin, INPUT);
 
-  // Not setting the pullup resistor allows us to use 3V3 devices (e.g. RCWL-0516)
-  //digitalWrite(pirPin, HIGH); // set pull up resistor - if no PIR connected, default to "triggered"
-
   // The LEDS sometimes glow at startup, it annoys me, so turn them completely off
   analogWrite(tickLed, 0);
   setAllLEDs(0,0,0);
@@ -1095,6 +1100,9 @@ void setup()
 
   // Read EEPROM values
   readEEPROMValues();
+
+  // Not setting the pullup resistor allows us to use 3V3 devices (e.g. RCWL-0516)
+  digitalWrite(pirPin, usePIRPullup); // set pull up resistor - if no PIR connected, default to "triggered"
 
   // set our PWM profile
   setPWMOnTime(pwmOn);
@@ -1783,6 +1791,11 @@ void setNextMode() {
         displayConfig();
         break;
       }
+    case MODE_USE_PIR_PULLUP: {
+        loadNumberArrayConfBool(usePIRPullup, nextMode - MODE_12_24);
+        displayConfig();
+        break;
+      }
     case MODE_TEMP: {
         loadNumberArrayTemp(nextMode - MODE_12_24);
         displayConfig();
@@ -2355,6 +2368,15 @@ void processCurrentMode() {
           dispCount = DIGIT_DISPLAY_COUNT + antiGhost;
         }
         loadNumberArrayConfInt(antiGhost, currentMode - MODE_12_24);
+        displayConfig();
+        break;
+      }
+    case MODE_USE_PIR_PULLUP: {
+        if (button1.isButtonPressedAndReleased()) {
+          usePIRPullup = !usePIRPullup;
+        }
+        loadNumberArrayConfBool(usePIRPullup, currentMode - MODE_12_24);
+        digitalWrite(pirPin, usePIRPullup);
         displayConfig();
         break;
       }
@@ -3372,6 +3394,7 @@ void saveEEPROMValues() {
   EEPROM.write(EE_USE_LDR, useLDR);
   EEPROM.write(EE_BLANK_MODE, blankMode);
   EEPROM.write(EE_SLOTS_MODE, slotsMode);
+  EEPROM.write(EE_PIR_PULLUP, usePIRPullup);
 }
 
 // ************************************************************
@@ -3515,6 +3538,7 @@ void readEEPROMValues() {
     slotsMode = SLOTS_MODE_DEFAULT;
   }
 
+  usePIRPullup = EEPROM.read(EE_PIR_PULLUP);
 }
 
 // ************************************************************
@@ -3550,6 +3574,7 @@ void factoryReset() {
   useLDR = USE_LDR_DEFAULT;
   blankMode = BLANK_MODE_DEFAULT;
   slotsMode = SLOTS_MODE_DEFAULT;
+  usePIRPullup = USE_PIR_PULLUP_DEFAULT;
 
   saveEEPROMValues();
 }
