@@ -3084,12 +3084,12 @@ void allBlanked() {
 // Display preset
 // ************************************************************
 void loadDisplayConfigValue() {
-  displayType[0] = valueDisplayType[2] & 0xf;
-  displayType[1] = valueDisplayType[2] >> 4;
-  displayType[2] = valueDisplayType[1] & 0xf;
-  displayType[3] = valueDisplayType[1] >> 4;
-  displayType[4] = valueDisplayType[0] & 0xf;
-  displayType[5] = valueDisplayType[0] >> 4;
+  displayType[5] = valueDisplayType[2] & 0xf;
+  displayType[4] = valueDisplayType[2] >> 4;
+  displayType[5] = valueDisplayType[1] & 0xf;
+  displayType[2] = valueDisplayType[1] >> 4;
+  displayType[1] = valueDisplayType[0] & 0xf;
+  displayType[0] = valueDisplayType[0] >> 4;
 }
 
 // ************************************************************
