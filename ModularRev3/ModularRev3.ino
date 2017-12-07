@@ -215,10 +215,10 @@
 #define USE_PIR_PULLUP_DEFAULT          true
 
 // Temperature
-#define MODE_TEMP                       39 // Mode "31"
+#define MODE_TEMP                       39 // Mode "32"
 
 // Software Version
-#define MODE_VERSION                    40 // Mode "32"
+#define MODE_VERSION                    40 // Mode "33"
 
 // Tube test - all six digits, so no flashing mode indicator
 #define MODE_TUBE_TEST                  41
@@ -1738,7 +1738,7 @@ void setNextMode() {
         break;
       }
     case MODE_RED_CNL: {
-        if ((backlightMode == BACKLIGHT_CYCLE) || (backlightMode == BACKLIGHT_CYCLE_DIM))  {
+        if ((backlightMode == BACKLIGHT_CYCLE) || (backlightMode == BACKLIGHT_CYCLE_DIM) || (backlightMode == BACKLIGHT_COLOUR_TIME) || (backlightMode == BACKLIGHT_COLOUR_TIME_DIM))  {
           // Skip if we are in cycle mode
           nextMode++;
           currentMode++;
@@ -1748,7 +1748,7 @@ void setNextMode() {
         break;
       }
     case MODE_GRN_CNL: {
-        if ((backlightMode == BACKLIGHT_CYCLE) || (backlightMode == BACKLIGHT_CYCLE_DIM))  {
+        if ((backlightMode == BACKLIGHT_CYCLE) || (backlightMode == BACKLIGHT_CYCLE_DIM) || (backlightMode == BACKLIGHT_COLOUR_TIME) || (backlightMode == BACKLIGHT_COLOUR_TIME_DIM))  {
           // Skip if we are in cycle mode
           nextMode++;
           currentMode++;
@@ -1758,7 +1758,7 @@ void setNextMode() {
         break;
       }
     case MODE_BLU_CNL: {
-        if ((backlightMode == BACKLIGHT_CYCLE) || (backlightMode == BACKLIGHT_CYCLE_DIM))  {
+        if ((backlightMode == BACKLIGHT_CYCLE) || (backlightMode == BACKLIGHT_CYCLE_DIM) || (backlightMode == BACKLIGHT_COLOUR_TIME) || (backlightMode == BACKLIGHT_COLOUR_TIME_DIM))  {
           // Skip if we are in cycle mode
           nextMode++;
           currentMode++;
@@ -1768,7 +1768,7 @@ void setNextMode() {
         break;
       }
     case MODE_CYCLE_SPEED: {
-        if ((backlightMode != BACKLIGHT_CYCLE) && (backlightMode != BACKLIGHT_CYCLE_DIM))  {
+        if ((backlightMode == BACKLIGHT_CYCLE) || (backlightMode == BACKLIGHT_CYCLE_DIM) || (backlightMode == BACKLIGHT_COLOUR_TIME) || (backlightMode == BACKLIGHT_COLOUR_TIME_DIM))  {
           // Skip if we are in cycle mode
           nextMode++;
           currentMode++;
@@ -2225,7 +2225,7 @@ void processCurrentMode() {
         break;
       }
     case MODE_RED_CNL: {
-        if (backlightMode == BACKLIGHT_CYCLE) {
+        if ((backlightMode == BACKLIGHT_CYCLE) || (backlightMode == BACKLIGHT_CYCLE_DIM) || (backlightMode == BACKLIGHT_COLOUR_TIME) || (backlightMode == BACKLIGHT_COLOUR_TIME_DIM))  {
           // Skip if we are in cycle mode
           nextMode++;
           currentMode++;
@@ -2242,7 +2242,7 @@ void processCurrentMode() {
         break;
       }
     case MODE_GRN_CNL: {
-        if (backlightMode == BACKLIGHT_CYCLE) {
+        if ((backlightMode == BACKLIGHT_CYCLE) || (backlightMode == BACKLIGHT_CYCLE_DIM) || (backlightMode == BACKLIGHT_COLOUR_TIME) || (backlightMode == BACKLIGHT_COLOUR_TIME_DIM))  {
           // Skip if we are in cycle mode
           nextMode++;
           currentMode++;
@@ -2259,7 +2259,7 @@ void processCurrentMode() {
         break;
       }
     case MODE_BLU_CNL: {
-        if (backlightMode == BACKLIGHT_CYCLE) {
+        if ((backlightMode == BACKLIGHT_CYCLE) || (backlightMode == BACKLIGHT_CYCLE_DIM) || (backlightMode == BACKLIGHT_COLOUR_TIME) || (backlightMode == BACKLIGHT_COLOUR_TIME_DIM))  {
           // Skip if we are in cycle mode
           nextMode++;
           currentMode++;
@@ -2276,6 +2276,12 @@ void processCurrentMode() {
         break;
       }
     case MODE_CYCLE_SPEED: {
+        if ((backlightMode == BACKLIGHT_CYCLE) || (backlightMode == BACKLIGHT_CYCLE_DIM) || (backlightMode == BACKLIGHT_COLOUR_TIME) || (backlightMode == BACKLIGHT_COLOUR_TIME_DIM))  {
+          // Skip if we are in cycle mode
+          nextMode++;
+          currentMode++;
+        }
+
         if (button1.isButtonPressedAndReleased()) {
           cycleSpeed = cycleSpeed + 2;
           if (cycleSpeed > CYCLE_SPEED_MAX) {
