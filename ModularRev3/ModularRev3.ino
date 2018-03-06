@@ -69,7 +69,7 @@
 #define EE_PIR_PULLUP       39     // If we use the internal pullup on the PIR pin (false = use 3V3 PIR, PIR connected, true = no PIR connected or 5V PIR)
 
 // Software version shown in config menu
-#define SOFTWARE_VERSION 351
+#define SOFTWARE_VERSION    352
 
 // how often we make reference to the external time provider
 #define READ_TIME_PROVIDER_MILLIS 60000 // Update the internal time provider from the external source once every minute
@@ -293,6 +293,9 @@
 #define TEMP_DISPLAY_MODE_DUR_MS        5000
 
 #define USE_LDR_DEFAULT                 true
+
+// Limit on the length of time we stay in test mode
+#define TEST_MODE_MAX_MS                60000
 
 #define SLOTS_MODE_MIN                0
 #define SLOTS_MODE_NONE               0   // Don't use slots effect
@@ -1139,6 +1142,9 @@ void setup()
 
     boolean inLoop = true;
 
+    // We don't want to stay in test mode forever
+    long startTestMode = lastCheckMillis;
+
     while (inLoop) {
       nowMillis = millis();
       if (nowMillis - lastCheckMillis > 1000) {
@@ -1146,10 +1152,15 @@ void setup()
         secCount++;
         secCount = secCount % 10;
       }
+
+      // turn off test mode
+      blankTubes = (nowMillis - startTestMode > TEST_MODE_MAX_MS);
+
       loadNumberArraySameValue(secCount);
       outputDisplay();
       checkHVVoltage();
-      setLeds();
+
+        setLeds();
       button1.checkButton(nowMillis);
       if (button1.isButtonPressedNow() && (secCount == 0)) {
         inLoop = false;
@@ -1880,12 +1891,10 @@ void processCurrentMode() {
           }
 
           if (tempDisplayMode == TEMP_MODE_TEMP) {
-            if (useRTC) {
-              loadNumberArrayTemp(MODE_TEMP);
-            } else {
-              // we can't show the temperature if we don't have the RTC, just skip
-              tempDisplayMode++;
-            }
+            byte timeProv = 10;
+            if (useRTC) timeProv += 1;
+            if (useWiFi) timeProv += 2;
+            loadNumberArrayTemp(timeProv);
           }
 
           if (tempDisplayMode == TEMP_MODE_LDR) {
