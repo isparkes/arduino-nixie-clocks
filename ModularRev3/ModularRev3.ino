@@ -1,4 +1,4 @@
-//**********************************************************************************
+f//**********************************************************************************
 //* Main code for an Arduino based Nixie clock. Features:                          *
 //*  - WiFi Clock interface for the WiFiModule  OR                                 *
 //*  - Real Time Clock interface for DS3231                                        *
@@ -3788,7 +3788,7 @@ void calibrateHVG() {
   setPWMOnTime(PWM_PULSE_MIN);
   for (int i = 0 ; i < 768 ; i++ ) {
     //loadNumberArray8s();
-    loadNumberArrayConfInt(pwmOn, MODE_12_24 - MODE_12_24);
+    loadNumberArrayConfInt(pwmOn, 0);
     allBright();
     outputDisplay();
 
@@ -3806,7 +3806,7 @@ void calibrateHVG() {
   setPWMOnTime(pwmOn + 50);
   for (int i = 0 ; i < 768 ; i++ ) {
     //loadNumberArray8s();
-    loadNumberArrayConfInt(pwmOn, MODE_12_24 - MODE_12_24);
+    loadNumberArrayConfInt(pwmOn, 0);
     allBright();
     outputDisplay();
 
