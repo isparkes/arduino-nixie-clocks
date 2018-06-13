@@ -69,7 +69,7 @@
 #define EE_PIR_PULLUP       39     // If we use the internal pullup on the PIR pin (false = use 3V3 PIR, PIR connected, true = no PIR connected or 5V PIR)
 
 // Software version shown in config menu
-#define SOFTWARE_VERSION    352
+  #define SOFTWARE_VERSION    353
 
 // how often we make reference to the external time provider
 #define READ_TIME_PROVIDER_MILLIS 60000 // Update the internal time provider from the external source once every minute
@@ -3626,9 +3626,17 @@ void factoryReset() {
 // ************************************************************
 void checkHVVoltage() {
   if (getSmoothedHVSensorReading() > rawHVADCThreshold) {
-    setPWMTopTime(pwmTop + 1);
+    int diff = getSmoothedHVSensorReading() - rawHVADCThreshold;
+    int inc = 1;
+    if (diff > 20) inc = 50;
+    else if (diff > 10) inc = 5;
+    setPWMTopTime(pwmTop + inc);
   } else {
-    setPWMTopTime(pwmTop - 1);
+    int diff = rawHVADCThreshold - getSmoothedHVSensorReading();
+    int inc = 1;
+    if (diff > 20) inc = 50;
+    else if (diff > 10) inc = 5;
+    setPWMTopTime(pwmTop - inc);
   }
 }
 
