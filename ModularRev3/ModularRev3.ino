@@ -112,7 +112,7 @@
 #define HVGEN_TARGET_VOLTAGE_MAX     200
 
 // The PWM parameters
-#define PWM_TOP_DEFAULT   1000
+#define PWM_TOP_DEFAULT   10000
 #define PWM_TOP_MIN       300
 #define PWM_TOP_MAX       10000
 #define PWM_PULSE_DEFAULT 200
