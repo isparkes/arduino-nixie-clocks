@@ -1165,7 +1165,7 @@ void setup()
 
         setLeds();
       button1.checkButton(nowMillis);
-      if (button1.isButtonPressedNow() && (secCount == 0)) {
+      if (button1.isButtonPressedNow() && (secCount == 8)) {
         inLoop = false;
       }
     }
