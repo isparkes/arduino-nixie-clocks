@@ -1688,7 +1688,7 @@ void processCurrentMode() {
           }
 
           if (tempDisplayMode == TEMP_MODE_VERSION) {
-            loadNumberArrayConfInt(SOFTWARE_VERSION, MODE_VERSION - MODE_12_24);
+            loadNumberArrayConfInt(SOFTWARE_VERSION, 0);
           }
 
           if (tempDisplayMode == TEMP_IP_ADDR12) {
