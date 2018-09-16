@@ -38,45 +38,45 @@
 //*                               Constants                                        *
 //**********************************************************************************
 //**********************************************************************************
-#define EE_12_24            1      // 12 or 24 hour mode
-#define EE_FADE_STEPS       2      // How quickly we fade, higher = slower
-#define EE_DATE_FORMAT      3      // Date format to display
-#define EE_DAY_BLANKING     4      // Blanking setting
-#define EE_DIM_DARK_LO      5      // Dimming dark value
-#define EE_DIM_DARK_HI      6      // Dimming dark value
-#define EE_BLANK_LEAD_ZERO  7      // If we blank leading zero on hours
-#define EE_DIGIT_COUNT_HI   8      // The number of times we go round the main loop
-#define EE_DIGIT_COUNT_LO   9      // The number of times we go round the main loop
-#define EE_SCROLLBACK       10     // if we use scollback or not
-#define EE_FADE             11     // if we use fade or not
-#define EE_PULSE_LO         12     // The pulse on width for the PWM mode
-#define EE_PULSE_HI         13     // The pulse on width for the PWM mode
-#define EE_SCROLL_STEPS     14     // The steps in a scrollback
-#define EE_BACKLIGHT_MODE   15     // The back light node
-#define EE_DIM_BRIGHT_LO    16     // Dimming bright value
-#define EE_DIM_BRIGHT_HI    17     // Dimming bright value
-#define EE_DIM_SMOOTH_SPEED 18     // Dimming adaptation speed
-#define EE_RED_INTENSITY    19     // Red channel backlight max intensity
-#define EE_GRN_INTENSITY    20     // Green channel backlight max intensity
-#define EE_BLU_INTENSITY    21     // Blue channel backlight max intensity
-#define EE_HV_VOLTAGE       22     // The HV voltage we want to use
-#define EE_SUPPRESS_ACP     23     // Do we want to suppress ACP during dimmed time
-#define EE_HOUR_BLANK_START 24     // Start of daily blanking period
-#define EE_HOUR_BLANK_END   25     // End of daily blanking period
-#define EE_CYCLE_SPEED      26     // How fast the color cycling does it's stuff
-#define EE_PWM_TOP_LO       27     // The PWM top value if we know it, 0xFF if we need to calculate
-#define EE_PWM_TOP_HI       28     // The PWM top value if we know it, 0xFF if we need to calculate
-#define EE_HVG_NEED_CALIB   29     // 1 if we need to calibrate the HVGenerator, otherwise 0
-#define EE_MIN_DIM_LO       30     // The min dim value
-#define EE_MIN_DIM_HI       31     // The min dim value
-#define EE_ANTI_GHOST       32     // The value we use for anti-ghosting
-#define EE_NEED_SETUP       33     // used for detecting auto config for startup. By default the flashed, empty EEPROM shows us we need to do a setup 
-#define EE_USE_LDR          34     // if we use the LDR or not (if we don't use the LDR, it has 100% brightness
-#define EE_BLANK_MODE       35     // blank tubes, or LEDs or both
-#define EE_SLOTS_MODE       36     // Show date every now and again
-#define EE_PIR_TIMEOUT_LO   37     // The PIR timeout time in S, low byte
-#define EE_PIR_TIMEOUT_HI   38     // The PIR timeout time in S, high byte
-#define EE_PIR_PULLUP       39     // If we use the internal pullup on the PIR pin (false = use 3V3 PIR, PIR connected, true = no PIR connected or 5V PIR)
+#define EE_12_24              1      // 12 or 24 hour mode
+#define EE_FADE_STEPS         2      // How quickly we fade, higher = slower
+#define EE_DATE_FORMAT        3      // Date format to display
+#define EE_DAY_BLANKING       4      // Blanking setting
+#define EE_DIM_DARK_LO        5      // Dimming dark value
+#define EE_DIM_DARK_HI        6      // Dimming dark value
+#define EE_BLANK_LEAD_ZERO    7      // If we blank leading zero on hours
+#define EE_DIGIT_COUNT_HI     8      // The number of times we go round the main loop
+#define EE_DIGIT_COUNT_LO     9      // The number of times we go round the main loop
+#define EE_SCROLLBACK         10     // if we use scollback or not
+#define EE_FADE               11     // if we use fade or not
+#define EE_PULSE_LO           12     // The pulse on width for the PWM mode
+#define EE_PULSE_HI           13     // The pulse on width for the PWM mode
+#define EE_SCROLL_STEPS       14     // The steps in a scrollback
+#define EE_BACKLIGHT_MODE     15     // The back light node
+#define EE_DIM_BRIGHT_LO      16     // Dimming bright value
+#define EE_DIM_BRIGHT_HI      17     // Dimming bright value
+#define EE_DIM_SMOOTH_SPEED   18     // Dimming adaptation speed
+#define EE_RED_INTENSITY      19     // Red channel backlight max intensity
+#define EE_GRN_INTENSITY      20     // Green channel backlight max intensity
+#define EE_BLU_INTENSITY      21     // Blue channel backlight max intensity
+#define EE_HV_VOLTAGE         22     // The HV voltage we want to use
+#define EE_SUPPRESS_ACP       23     // Do we want to suppress ACP during dimmed time
+#define EE_HOUR_BLANK_START   24     // Start of daily blanking period
+#define EE_HOUR_BLANK_END     25     // End of daily blanking period
+#define EE_CYCLE_SPEED        26     // How fast the color cycling does it's stuff
+#define EE_PWM_TOP_LO         27     // The PWM top value if we know it, 0xFF if we need to calculate
+#define EE_PWM_TOP_HI         28     // The PWM top value if we know it, 0xFF if we need to calculate
+#define EE_HVG_NEED_CALIB     29     // 1 if we need to calibrate the HVGenerator, otherwise 0
+#define EE_MIN_DIM_LO         30     // The min dim value
+#define EE_MIN_DIM_HI         31     // The min dim value
+#define EE_ANTI_GHOST         32     // The value we use for anti-ghosting
+#define EE_NEED_SETUP         33     // used for detecting auto config for startup. By default the flashed, empty EEPROM shows us we need to do a setup 
+#define EE_USE_LDR            34     // if we use the LDR or not (if we don't use the LDR, it has 100% brightness
+#define EE_BLANK_MODE         35     // blank tubes, or LEDs or both
+#define EE_SLOTS_MODE         36     // Show date every now and again
+#define EE_PIR_TIMEOUT_LO     37     // The PIR timeout time in S, low byte
+#define EE_PIR_TIMEOUT_HI     38     // The PIR timeout time in S, high byte
+#define EE_PIR_PULLUP         39     // If we use the internal pullup on the PIR pin (false = use 3V3 PIR, PIR connected, true = no PIR connected or 5V PIR)
 
 // Software version shown in config menu
 #define SOFTWARE_VERSION    653
@@ -119,7 +119,7 @@
 #define PWM_TOP_MIN       300
 #define PWM_TOP_MAX       10000
 #define PWM_PULSE_DEFAULT 200
-#define PWM_PULSE_MIN     50
+#define PWM_PULSE_MIN     100
 #define PWM_PULSE_MAX     500
 #define PWM_OFF_MIN       50
 
@@ -298,14 +298,14 @@
 // Limit on the length of time we stay in test mode
 #define TEST_MODE_MAX_MS                60000
 
-#define SLOTS_MODE_MIN                0
-#define SLOTS_MODE_NONE               0   // Don't use slots effect
-#define SLOTS_MODE_1M_SCR_SCR         1   // use slots effect every minute, scroll in, scramble out
-#define SLOTS_MODE_MAX                1
-#define SLOTS_MODE_DEFAULT            1
+#define SLOTS_MODE_MIN                  0
+#define SLOTS_MODE_NONE                 0   // Don't use slots effect
+#define SLOTS_MODE_1M_SCR_SCR           1   // use slots effect every minute, scroll in, scramble out
+#define SLOTS_MODE_MAX                  1
+#define SLOTS_MODE_DEFAULT              1
 
 // RTC address
-#define RTC_I2C_ADDRESS               0x68
+#define RTC_I2C_ADDRESS                 0x68
 
 #define MAX_WIFI_TIME                  5
 
@@ -357,16 +357,6 @@
 #define LDRPin      A1    // Package pin 24 // PC1 // Analog input for Light dependent resistor.
 
 //**********************************************************************************
-
-/**
- * A class that displays a message by scrolling it into and out of the display
- *
- * Thanks judge!
- */
-extern byte NumberArray[];
-extern byte displayType[];
-extern boolean scrollback;
-
 Transition transition(500, 1000, 3000);
 
 // ********************** HV generator variables *********************
@@ -475,7 +465,7 @@ unsigned long pirLastSeen = 0;
 
 boolean triggeredThisSec = false;
 
-boolean useRTC = false;  // true if we detect an RTC
+byte useRTC = false;  // true if we detect an RTC
 byte useWiFi = 0; // the number of minutes ago we recevied information from the WiFi module, 0 = don't use WiFi
 
 // **************************** LED management ***************************
@@ -1384,7 +1374,6 @@ void setNextMode() {
 void processCurrentMode() {
   switch (currentMode) {
     case MODE_TIME: {
-        // Select what we display in normal time mode
         if (button1.isButtonPressedAndReleased()) {
           // Deal with blanking first
           if ((nowMillis < blankSuppressedSelectionTimoutMillis) || blanked) {
@@ -2270,7 +2259,6 @@ void outputDisplay()
 
   for ( int i = 0 ; i < 6 ; i ++ )
   {
-    // DP test
     digitalWrite(DP, dpArray[i]);
 
     if (blankTubes) {
@@ -3029,16 +3017,6 @@ void readEEPROMValues() {
     sensorSmoothCountLDR = SENSOR_SMOOTH_READINGS_DEFAULT;
   }
 
-  dateFormat = EEPROM.read(EE_DATE_FORMAT);
-  if ((dateFormat < DATE_FORMAT_MIN) || (dateFormat > DATE_FORMAT_MAX)) {
-    dateFormat = DATE_FORMAT_DEFAULT;
-  }
-
-  dayBlanking = EEPROM.read(EE_DAY_BLANKING);
-  if ((dayBlanking < DAY_BLANKING_MIN) || (dayBlanking > DAY_BLANKING_MAX)) {
-    dayBlanking = DAY_BLANKING_DEFAULT;
-  }
-
   backlightMode = EEPROM.read(EE_BACKLIGHT_MODE);
   if ((backlightMode < BACKLIGHT_MIN) || (backlightMode > BACKLIGHT_MAX)) {
     backlightMode = BACKLIGHT_DEFAULT;
@@ -3158,6 +3136,7 @@ void factoryReset() {
   pwmTop = PWM_TOP_DEFAULT;
   minDim = MIN_DIM_DEFAULT;
   antiGhost = ANTI_GHOST_DEFAULT;
+  pirTimeout = PIR_TIMEOUT_DEFAULT;
   useLDR = USE_LDR_DEFAULT;
   blankMode = BLANK_MODE_DEFAULT;
   slotsMode = SLOTS_MODE_DEFAULT;
@@ -3181,18 +3160,20 @@ void factoryReset() {
 // ************************************************************
 void checkHVVoltage() {
   if (getSmoothedHVSensorReading() > rawHVADCThreshold) {
-    int diff = getSmoothedHVSensorReading() - rawHVADCThreshold;
-    int inc = 1;
-    if (diff > 20) inc = 50;
-    else if (diff > 10) inc = 5;
-    setPWMTopTime(pwmTop + inc);
+    setPWMTopTime(pwmTop + getInc());
   } else {
-    int diff = rawHVADCThreshold - getSmoothedHVSensorReading();
-    int inc = 1;
-    if (diff > 20) inc = 50;
-    else if (diff > 10) inc = 5;
-    setPWMTopTime(pwmTop - inc);
+    setPWMTopTime(pwmTop - getInc());
   }
+}
+
+// Get the increment value we are going to use based on the magnitude of the 
+// difference we have measured
+int getInc() {
+  int diffValue = abs(getSmoothedHVSensorReading() - rawHVADCThreshold);
+  int incValue = 1;
+  if (diffValue > 20) incValue = 50;
+  else if (diffValue > 10) incValue = 5;
+  return incValue;  
 }
 
 // ************************************************************
@@ -3614,7 +3595,7 @@ void requestEvent() {
   configArray[idx++] = pirTimeout % 256;
   configArray[idx++] = minDim / 256;
   configArray[idx++] = minDim % 256;
-  
+
   Wire.write(configArray, I2C_DATA_SIZE);
 }
 
@@ -3627,3 +3608,4 @@ byte encodeBooleanForI2C(boolean valueToProcess) {
     return byteToSend;
   }
 }
+
