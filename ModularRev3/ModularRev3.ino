@@ -79,7 +79,7 @@
 #define EE_PIR_PULLUP         39     // If we use the internal pullup on the PIR pin (false = use 3V3 PIR, PIR connected, true = no PIR connected or 5V PIR)
 
 // Software version shown in config menu
-  #define SOFTWARE_VERSION    353
+#define SOFTWARE_VERSION    355
 
 // how often we make reference to the external time provider
 #define READ_TIME_PROVIDER_MILLIS 60000 // Update the internal time provider from the external source once every minute
@@ -3481,7 +3481,7 @@ void receiveEvent(int bytes) {
   } else if (operation == I2C_SET_OPTION_12_24) {
     byte readByte1224 = Wire.read();
     hourMode = (readByte1224 == 1);
-    EEPROM.write(EE_12_24, true);
+    EEPROM.write(EE_12_24, hourMode);
   } else if (operation == I2C_SET_OPTION_BLANK_LEAD) {
     byte readByteBlank = Wire.read();
     blankLeading = (readByteBlank == 1);
