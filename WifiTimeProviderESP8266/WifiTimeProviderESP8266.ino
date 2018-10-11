@@ -40,7 +40,6 @@ const char *ap_password = "";
 
 const char *serialNumber = "0x0x0x";  // this is to be customized at burn time
 
-
 // Pin 1 on ESP-01, pin 2 on ESP-12E
 #define blueLedPin 1
 boolean blueLedState = true;
