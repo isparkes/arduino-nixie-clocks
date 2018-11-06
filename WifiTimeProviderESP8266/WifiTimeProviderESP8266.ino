@@ -78,7 +78,8 @@ byte configUseFade;
 byte configUseLDR;
 byte configBlankMode;
 byte configSlotsMode;
-int  configPirTimeout;
+unsigned int configPirTimeout;
+unsigned int configMinDim;
 
 ESP8266WebServer server(80);
 
@@ -765,6 +766,17 @@ void clockConfigPageHandler()
 
   // -----------------------------------------------------------------------------
 
+  if (server.hasArg("minDim")) {
+    debugMsg("Got minDim param: " + server.arg("minDim"));
+    int newMinDim = atoi(server.arg("minDim").c_str());
+    if (newMinDim != configMinDim) {
+      setClockOptionMinDim(newMinDim);
+      debugMsg("I2C --> Set minDim: " + newMinDim);
+    }
+  }
+
+  // -----------------------------------------------------------------------------
+
   // Get the options, put the result into variables called "config*"
   getClockOptionsFromI2C();
 
@@ -916,6 +928,9 @@ void clockConfigPageHandler()
 
   // PIR timeout
   response_message += getNumberInput("PIR timeout:", "pirTimeout", 60, 3600, configPirTimeout, false);
+
+  // Min Dim
+  response_message += getNumberInput("Min Dim:", "minDim", 100, 500, configMinDim, false);
 
   // form footer
   response_message += getSubmitButton("Set");
@@ -1312,130 +1327,117 @@ boolean sendTimeToI2C(String timeString) {
    Get the options from the I2C slave. If the transmission went OK, return true, otherwise false.
 */
 boolean getClockOptionsFromI2C() {
-  uint8_t available = Wire.requestFrom((int)preferredI2CSlaveAddress, 22);
+  uint8_t available = Wire.requestFrom((int)preferredI2CSlaveAddress, I2C_DATA_SIZE);
 
-  debugMsg("I2C <-- Received bytes (expecting 22): " + available);
-  if (available == 22) {
+  debugMsg("I2C <-- Received bytes (expecting " + String(I2C_DATA_SIZE) +"): " + available);
+  if (available == I2C_DATA_SIZE) {
 
-    // IDX 0
     byte receivedByte = Wire.read();
     debugMsg("I2C <-- Got protocol header: " + receivedByte);
 
-    if (receivedByte != 48) {
-      debugMsg("I2C Protocol ERROR! Expected header 48, but got: " + receivedByte);
+    if (receivedByte != I2C_PROTOCOL_NUMBER) {
+      debugMsg("I2C Protocol ERROR! Expected header " + String(I2C_PROTOCOL_NUMBER) + ", but got: " + receivedByte);
       return false;
     }
     
-    // IDX 1
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got hour mode: " + receivedByte);
     configHourMode = receivedByte;
 
-    // IDX 2
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got blank lead: " + receivedByte);
     configBlankLead = receivedByte;
 
-    // IDX 3
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got scrollback: " + receivedByte);
     configScrollback = receivedByte;
 
-    // IDX 4
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got suppress ACP: " + receivedByte);
     configSuppressACP = receivedByte;
 
-    // IDX 5
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got useFade: " + receivedByte);
     configUseFade = receivedByte;
 
-    // IDX 6
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got date format: " + receivedByte);
     configDateFormat = receivedByte;
 
-    // IDX 7
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got day blanking: " + receivedByte);
     configDayBlanking = receivedByte;
 
-    // IDX 8
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got blank hour start: " + receivedByte);
     configBlankFrom = receivedByte;
 
-    // IDX 9
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got blank hour end: " + receivedByte);
     configBlankTo = receivedByte;
 
-    // IDX 10
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got fade steps: " + receivedByte);
     configFadeSteps = receivedByte;
 
-    // IDX 11
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got scroll steps: " + receivedByte);
     configScrollSteps = receivedByte;
 
-    // IDX 12
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got backlight mode: " + receivedByte);
     configBacklightMode = receivedByte;
 
-    // IDX 13
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got red channel: " + receivedByte);
     configRedCnl = receivedByte;
 
-    // IDX 14
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got green channel: " + receivedByte);
     configGreenCnl = receivedByte;
 
-    // IDX 15
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got blue channel: " + receivedByte);
     configBlueCnl = receivedByte;
 
-    // IDX 16
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got cycle speed: " + receivedByte);
     configCycleSpeed = receivedByte;
 
-    // IDX 17
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got useLDR: " + receivedByte);
     configUseLDR = receivedByte;
 
-    // IDX 18
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got blankMode: " + receivedByte);
     configBlankMode = receivedByte;
 
-    // IDX 19
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got slotsMode: " + receivedByte);
     configSlotsMode = receivedByte;
 
-    // IDX 20
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got pirTimeOut Hi: " + receivedByte);
     int pirTO = receivedByte * 256;
     
-    // IDX 21
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got pirTimeOut Lo: " + receivedByte);
     pirTO += receivedByte;
     debugMsg("I2C <-- Got pirTimeOut combined: " + pirTO);
     configPirTimeout = pirTO;
     
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got minDim Hi: " + receivedByte);
+    int minDimNew = receivedByte * 256;
+    
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got minDim Lo: " + receivedByte);
+    minDimNew += receivedByte;
+    debugMsg("I2C <-- Got minDim combined: " + minDimNew);
+    configMinDim = minDimNew;
   } else {
     // didn't get the right number of bytes
-    debugMsg("I2C <-- Got wrong number of bytes, expected 22, got: ");
+    debugMsg("I2C <-- Got wrong number of bytes, expected " + String(I2C_DATA_SIZE) + ", got: " + available);
   }
   
   int error = Wire.endTransmission();
@@ -1561,6 +1563,10 @@ boolean setClockOptionSlotsMode(byte newMode) {
 
 boolean setClockOptionPirTimeout(int newMode) {
   return setClockOptionInt(I2C_SET_OPTION_PIR_TIMEOUT, newMode);
+}
+
+boolean setClockOptionMinDim(int newMode) {
+  return setClockOptionInt(I2C_SET_OPTION_MIN_DIM, newMode);
 }
 
 /**

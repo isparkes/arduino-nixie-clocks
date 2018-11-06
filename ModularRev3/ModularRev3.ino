@@ -77,6 +77,8 @@
 #define EE_PIR_TIMEOUT_LO     37     // The PIR timeout time in S, low byte
 #define EE_PIR_TIMEOUT_HI     38     // The PIR timeout time in S, high byte
 #define EE_PIR_PULLUP         39     // If we use the internal pullup on the PIR pin (false = use 3V3 PIR, PIR connected, true = no PIR connected or 5V PIR)
+#define EE_MIN_DIM_LO         40     // The minimum dimming value, low byte
+#define EE_MIN_DIM_HI         41     // The minimum dimming value, high byte
 
 // Software version shown in config menu
 #define SOFTWARE_VERSION    355
@@ -2967,6 +2969,8 @@ void saveEEPROMValues() {
   EEPROM.write(EE_ANTI_GHOST, antiGhost);
   EEPROM.write(EE_PIR_TIMEOUT_LO, pirTimeout % 256);
   EEPROM.write(EE_PIR_TIMEOUT_HI, pirTimeout / 256);
+  EEPROM.write(EE_MIN_DIM_LO, minDim % 256);
+  EEPROM.write(EE_MIN_DIM_HI, minDim / 256);
   EEPROM.write(EE_USE_LDR, useLDR);
   EEPROM.write(EE_BLANK_MODE, blankMode);
   EEPROM.write(EE_SLOTS_MODE, slotsMode);
@@ -3090,6 +3094,11 @@ void readEEPROMValues() {
   pirTimeout = EEPROM.read(EE_PIR_TIMEOUT_HI) * 256 + EEPROM.read(EE_PIR_TIMEOUT_LO);
   if ((pirTimeout < PIR_TIMEOUT_MIN) || (pirTimeout > PIR_TIMEOUT_MAX)) {
     pirTimeout = PIR_TIMEOUT_DEFAULT;
+  }
+
+  minDim = EEPROM.read(EE_MIN_DIM_HI) * 256 + EEPROM.read(EE_MIN_DIM_LO);
+  if ((minDim < MIN_DIM_MIN) || (minDim > MIN_DIM_MAX)) {
+    minDim = MIN_DIM_DEFAULT;
   }
 
   blankMode= EEPROM.read(EE_BLANK_MODE);
@@ -3538,6 +3547,12 @@ void receiveEvent(int bytes) {
     pirTimeout = pirTimeoutHi*256 + pirTimeoutLo;
     EEPROM.write(EE_PIR_TIMEOUT_HI, pirTimeoutHi);
     EEPROM.write(EE_PIR_TIMEOUT_LO, pirTimeoutLo);
+  } else if (operation == I2C_SET_OPTION_MIN_DIM) {
+    byte minDimHi = Wire.read();
+    byte minDimLo = Wire.read();
+    minDim = minDimHi*256 + minDimLo;
+    EEPROM.write(EE_MIN_DIM_HI, minDimHi);
+    EEPROM.write(EE_MIN_DIM_LO, minDimLo);
   } else if (operation == I2C_SET_OPTION_FADE) {
     fade = Wire.read();
     EEPROM.write(EE_FADE, fade);
