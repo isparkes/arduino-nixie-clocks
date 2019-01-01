@@ -1,0 +1,349 @@
+EESchema Schematic File Version 2
+LIBS:ClassicRev6External-rescue
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:ldr
+LIBS:sensors
+LIBS:ModularRev3External-cache
+LIBS:ws2812b
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "Classic Rev6 Clock External Components"
+Date ""
+Rev "Rev006"
+Comp "Ian's Nixie Clocks"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L CONN_01X05 P1
+U 1 1 58DB9494
+P 3500 1600
+F 0 "P1" H 3500 1900 50  0000 C CNN
+F 1 "CONN_01X05" V 3600 1600 50  0000 C CNN
+F 2 "" H 3500 1600 50  0000 C CNN
+F 3 "" H 3500 1600 50  0000 C CNN
+	1    3500 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L SPST SW1
+U 1 1 58DB95A5
+P 1950 3550
+F 0 "SW1" H 1950 3650 50  0000 C CNN
+F 1 "SPST" H 1950 3450 50  0000 C CNN
+F 2 "" H 1950 3550 50  0000 C CNN
+F 3 "" H 1950 3550 50  0000 C CNN
+	1    1950 3550
+	0    -1   -1   0   
+$EndComp
+$Comp
+L LDR LDR1
+U 1 1 58DB96F8
+P 1250 3550
+F 0 "LDR1" H 1250 3450 60  0000 C CNN
+F 1 "LDR" H 1100 3700 60  0000 C CNN
+F 2 "" H 1250 3550 60  0000 C CNN
+F 3 "" H 1250 3550 60  0000 C CNN
+	1    1250 3550
+	0    -1   -1   0   
+$EndComp
+$Comp
+L PIR_Motion_Sensor PIR1
+U 1 1 58DB9868
+P 2850 3100
+F 0 "PIR1" H 2850 4000 60  0000 C CNN
+F 1 "PIR_Motion_Sensor" H 2850 3900 60  0000 C CNN
+F 2 "" H 2850 3900 60  0000 C CNN
+F 3 "" H 2850 3900 60  0000 C CNN
+	1    2850 3100
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2950 1400 2950 3100
+Wire Wire Line
+	2950 3050 3350 3050
+Wire Wire Line
+	3350 3050 3350 4300
+Connection ~ 2950 3050
+Wire Wire Line
+	3300 1400 2950 1400
+Wire Wire Line
+	3300 1800 2750 1800
+Wire Wire Line
+	2750 1800 2750 3100
+Wire Wire Line
+	3300 1700 2850 1700
+Wire Wire Line
+	2850 1700 2850 3100
+Wire Wire Line
+	1250 1500 3300 1500
+Wire Wire Line
+	3350 4300 1250 4300
+Wire Wire Line
+	3300 1600 1950 1600
+Wire Wire Line
+	1950 1600 1950 3050
+Wire Wire Line
+	1950 4050 1950 4300
+Connection ~ 1950 4300
+Wire Wire Line
+	1250 4300 1250 3850
+Wire Wire Line
+	1250 1500 1250 3200
+Text Label 1250 2250 1    60   ~ 0
+LDR
+Text Label 1950 2250 1    60   ~ 0
+BTN
+Text Label 2950 2300 1    60   ~ 0
+GND
+Text Label 2750 2600 1    60   ~ 0
+5V
+Text Label 2850 2450 1    60   ~ 0
+PIR
+Text Notes 1850 1000 0    60   ~ 0
+Front Panel Components
+Text Notes 7500 950  0    60   ~ 0
+LEDs
+$Comp
+L Conn_01x04 J1
+U 1 1 5B216DCE
+P 9300 1500
+F 0 "J1" H 9300 1700 50  0000 C CNN
+F 1 "Conn_01x04" H 9300 1200 50  0000 C CNN
+F 2 "" H 9300 1500 50  0001 C CNN
+F 3 "" H 9300 1500 50  0001 C CNN
+	1    9300 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L WS2812B LED1
+U 1 1 5B216E25
+P 6950 2100
+F 0 "LED1" H 6950 1700 60  0000 C CNN
+F 1 "WS2812B" H 6950 2500 60  0000 C CNN
+F 2 "" V 6900 2100 60  0000 C CNN
+F 3 "" V 6900 2100 60  0000 C CNN
+	1    6950 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L WS2812B LED2
+U 1 1 5B216F0E
+P 6950 3250
+F 0 "LED2" H 6950 2850 60  0000 C CNN
+F 1 "WS2812B" H 6950 3650 60  0000 C CNN
+F 2 "" V 6900 3250 60  0000 C CNN
+F 3 "" V 6900 3250 60  0000 C CNN
+	1    6950 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L WS2812B LED3
+U 1 1 5B216F92
+P 6950 4450
+F 0 "LED3" H 6950 4050 60  0000 C CNN
+F 1 "WS2812B" H 6950 4850 60  0000 C CNN
+F 2 "" V 6900 4450 60  0000 C CNN
+F 3 "" V 6900 4450 60  0000 C CNN
+	1    6950 4450
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C1
+U 1 1 5B21702B
+P 6000 2100
+F 0 "C1" H 6025 2200 50  0000 L CNN
+F 1 "C" H 6025 2000 50  0000 L CNN
+F 2 "" H 6038 1950 50  0001 C CNN
+F 3 "" H 6000 2100 50  0001 C CNN
+	1    6000 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C2
+U 1 1 5B217149
+P 6000 3250
+F 0 "C2" H 6025 3350 50  0000 L CNN
+F 1 "C" H 6025 3150 50  0000 L CNN
+F 2 "" H 6038 3100 50  0001 C CNN
+F 3 "" H 6000 3250 50  0001 C CNN
+	1    6000 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C3
+U 1 1 5B2171D6
+P 6000 4450
+F 0 "C3" H 6025 4550 50  0000 L CNN
+F 1 "C" H 6025 4350 50  0000 L CNN
+F 2 "" H 6038 4300 50  0001 C CNN
+F 3 "" H 6000 4450 50  0001 C CNN
+	1    6000 4450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9100 1400 7650 1400
+Wire Wire Line
+	7650 1400 7650 1900
+Wire Wire Line
+	7650 1900 7450 1900
+Wire Wire Line
+	6450 1900 6000 1900
+Wire Wire Line
+	6000 1400 6000 1950
+Wire Wire Line
+	6000 2250 6000 3100
+Wire Wire Line
+	6000 2600 7550 2600
+Wire Wire Line
+	7550 2300 7550 5100
+Wire Wire Line
+	7550 2300 7450 2300
+Wire Wire Line
+	6450 2300 6350 2300
+Wire Wire Line
+	6350 2300 6350 2750
+Wire Wire Line
+	6350 2750 7650 2750
+Wire Wire Line
+	7650 2750 7650 3050
+Wire Wire Line
+	7650 3050 7450 3050
+Wire Wire Line
+	6000 3050 6450 3050
+Connection ~ 6000 3050
+Connection ~ 6000 2600
+Wire Wire Line
+	6000 3400 6000 4300
+Wire Wire Line
+	6000 3750 7550 3750
+Wire Wire Line
+	7550 3450 7450 3450
+Wire Wire Line
+	6450 3450 6350 3450
+Wire Wire Line
+	6350 3450 6350 3950
+Wire Wire Line
+	6350 3950 7650 3950
+Wire Wire Line
+	7650 3950 7650 4250
+Wire Wire Line
+	7650 4250 7450 4250
+Wire Wire Line
+	6000 4250 6450 4250
+Connection ~ 6000 3750
+Connection ~ 6000 4250
+Wire Wire Line
+	6000 4600 6000 5000
+Wire Wire Line
+	6000 5000 7550 5000
+Wire Wire Line
+	7550 4650 7450 4650
+Wire Wire Line
+	6450 4650 6350 4650
+Wire Wire Line
+	6350 4650 6350 5250
+Text Notes 5700 5450 0    60   ~ 0
+Up to 6 LEDs in daisy-chain
+Connection ~ 7550 4650
+Connection ~ 7550 3750
+Connection ~ 7550 2600
+Connection ~ 7550 3450
+$Comp
+L LED D2
+U 1 1 5B2177B8
+P 8650 2650
+F 0 "D2" H 8650 2750 50  0000 C CNN
+F 1 "LED" H 8650 2550 50  0000 C CNN
+F 2 "" H 8650 2650 50  0001 C CNN
+F 3 "" H 8650 2650 50  0001 C CNN
+	1    8650 2650
+	0    1    1    0   
+$EndComp
+$Comp
+L LED D1
+U 1 1 5B217859
+P 8300 2650
+F 0 "D1" H 8300 2750 50  0000 C CNN
+F 1 "LED" H 8300 2550 50  0000 C CNN
+F 2 "" H 8300 2650 50  0001 C CNN
+F 3 "" H 8300 2650 50  0001 C CNN
+	1    8300 2650
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8650 1600 8650 2500
+Wire Wire Line
+	8650 1600 9100 1600
+Wire Wire Line
+	9100 1500 8300 1500
+Wire Wire Line
+	8300 1500 8300 2500
+Wire Wire Line
+	8300 2800 8300 3200
+Wire Wire Line
+	8300 3200 8650 3200
+Wire Wire Line
+	8650 2800 8650 3600
+Connection ~ 8650 3200
+$Comp
+L GND #PWR1
+U 1 1 5B217B2A
+P 7550 5100
+F 0 "#PWR1" H 7550 4850 50  0001 C CNN
+F 1 "GND" H 7550 4950 50  0000 C CNN
+F 2 "" H 7550 5100 50  0001 C CNN
+F 3 "" H 7550 5100 50  0001 C CNN
+	1    7550 5100
+	1    0    0    -1  
+$EndComp
+Connection ~ 7550 5000
+Connection ~ 6000 1900
+Text Label 6000 1400 0    60   ~ 0
+VCC
+Text Label 8650 3600 0    60   ~ 0
+VCC
+Wire Wire Line
+	9100 1700 8950 1700
+Wire Wire Line
+	8950 1700 8950 2750
+Wire Wire Line
+	8950 2750 9600 2750
+Text Label 9600 2750 0    60   ~ 0
+DECIMAL_POINT
+Text Notes 9200 3000 0    60   ~ 0
+Note: Decimal point driver\nfor tubes which support it
+$EndSCHEMATC
