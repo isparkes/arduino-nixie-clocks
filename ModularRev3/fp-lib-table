@@ -1,0 +1,6 @@
+(fp_lib_table
+  (lib (name rcl)(type Legacy)(uri /data/Copy/Nixie/KiCAD/lbr/rcl.mod)(options "")(descr ""))
+  (lib (name LED5_RGB)(type Legacy)(uri /data/Copy/Nixie/KiCAD/LED_RGB/LED5_RGB.mod)(options "")(descr ""))
+  (lib (name burr-brown)(type Eagle)(uri /data/Copy/eagle-libs/burr-brown.lbr)(options "")(descr ""))
+  (lib (name NixieClockModule)(type KiCad)(uri /data/Copy/Nixie/KiCAD/NixieClockModule.pretty)(options "")(descr ""))
+)
