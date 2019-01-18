@@ -1,83 +1,14 @@
-EESchema Schematic File Version 2
-LIBS:conn
-LIBS:contrib
-LIBS:cypress
-LIBS:dc-dc
-LIBS:device
-LIBS:digital-audio
-LIBS:diode
-LIBS:display
-LIBS:dsp
-LIBS:elec-unifil
-LIBS:ESD_Protection
-LIBS:ftdi
-LIBS:gennum
-LIBS:graphic
-LIBS:hc11
-LIBS:intel
-LIBS:interface
-LIBS:ir
-LIBS:Lattice
-LIBS:linear
-LIBS:logo
-LIBS:maxim
-LIBS:memory
-LIBS:microchip
-LIBS:microchip_dspic33dsc
-LIBS:microchip_pic10mcu
-LIBS:microchip_pic12mcu
-LIBS:microchip_pic16mcu
-LIBS:microchip_pic18mcu
-LIBS:microchip_pic32mcu
-LIBS:microcontrollers
-LIBS:motor_drivers
-LIBS:motorola
-LIBS:msp430
-LIBS:nordicsemi
-LIBS:nxp_armmcu
-LIBS:onsemi
-LIBS:opto
-LIBS:Oscillators
-LIBS:philips
-LIBS:power
-LIBS:powerint
-LIBS:Power_Management
-LIBS:pspice
-LIBS:references
-LIBS:regul
-LIBS:relays
-LIBS:rfcom
-LIBS:sensors
-LIBS:silabs
-LIBS:siliconi
-LIBS:stm8
-LIBS:stm32
-LIBS:supertex
-LIBS:switches
-LIBS:texas
-LIBS:transf
-LIBS:transistors
-LIBS:ttl_ieee
-LIBS:valves
-LIBS:video
-LIBS:Xicor
-LIBS:xilinx
-LIBS:Zilog
-LIBS:transistor-power
-LIBS:russian-nixies
-LIBS:optocoupler
-LIBS:ws2812b
-LIBS:jumper3-switch
+EESchema Schematic File Version 4
 LIBS:ModularIN-8-2Board-cache
-EELAYER 25 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title "Modular Nixie Clock IN-8-2 boards"
+Title "Modular Nixie Clock IN-8-2 tube holder"
 Date "13 JAN 2016"
 Rev ""
-Comp ""
+Comp "Ian Sparkes Nixie Clocks"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -154,7 +85,7 @@ DIGIT_2_1
 Text Label 7100 2750 0    60   ~ 0
 DIGIT_1_1
 $Comp
-L CONN_02X02 P1.4
+L ModularIN-8-2Board-rescue:CONN_02X02 P1.4
 U 1 1 58B99BC7
 P 3450 3550
 F 0 "P1.4" H 3450 3700 50  0000 C CNN
@@ -165,7 +96,7 @@ F 3 "" H 3450 2350 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_02X02 P1.3
+L ModularIN-8-2Board-rescue:CONN_02X02 P1.3
 U 1 1 58B99C42
 P 3450 3150
 F 0 "P1.3" H 3450 3300 50  0000 C CNN
@@ -176,7 +107,7 @@ F 3 "" H 3450 1950 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_02X02 P1.2
+L ModularIN-8-2Board-rescue:CONN_02X02 P1.2
 U 1 1 58B99CE4
 P 3450 2750
 F 0 "P1.2" H 3450 2900 50  0000 C CNN
@@ -187,7 +118,7 @@ F 3 "" H 3450 1550 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_02X02 P1.1
+L ModularIN-8-2Board-rescue:CONN_02X02 P1.1
 U 1 1 58B99D94
 P 3450 2350
 F 0 "P1.1" H 3450 2500 50  0000 C CNN
@@ -230,7 +161,7 @@ Wire Wire Line
 Wire Wire Line
 	3200 3200 2850 3200
 $Comp
-L WS2812B LED1
+L ModularIN-8-2Board-rescue:WS2812B LED1
 U 1 1 58BBE11F
 P 3450 4600
 F 0 "LED1" H 3450 4200 60  0000 C CNN
@@ -243,9 +174,9 @@ $EndComp
 Wire Wire Line
 	3950 4400 4150 4400
 Wire Wire Line
-	3950 4800 4150 4800
+	3950 4800 4050 4800
 Wire Wire Line
-	2950 4400 2700 4400
+	2950 4400 2850 4400
 Wire Wire Line
 	2950 4800 2700 4800
 Text Label 4150 4400 0    60   ~ 0
@@ -265,7 +196,7 @@ DIN
 Text Label 4000 2400 0    60   ~ 0
 VCC
 $Comp
-L C C1
+L ModularIN-8-2Board-rescue:C C1
 U 1 1 58BC89DD
 P 3450 4000
 F 0 "C1" H 3475 4100 50  0000 L CNN
@@ -276,12 +207,12 @@ F 3 "" H 3450 4000 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	2100 4000 3300 4000
+	2100 4000 2850 4000
 Wire Wire Line
 	2850 4000 2850 4400
 Connection ~ 2850 4400
 Wire Wire Line
-	3600 4000 4850 4000
+	3600 4000 4050 4000
 Wire Wire Line
 	4050 4000 4050 4800
 Connection ~ 4050 4800
@@ -289,7 +220,7 @@ Wire Wire Line
 	2100 4000 2100 3850
 Connection ~ 2850 4000
 $Comp
-L PWR_FLAG #FLG01
+L power:PWR_FLAG #FLG01
 U 1 1 58DB6260
 P 2100 3850
 F 0 "#FLG01" H 2100 3945 50  0001 C CNN
@@ -300,7 +231,7 @@ F 3 "" H 2100 3850 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L PWR_FLAG #FLG02
+L power:PWR_FLAG #FLG02
 U 1 1 58DB62A3
 P 4850 3850
 F 0 "#FLG02" H 4850 3945 50  0001 C CNN
@@ -314,7 +245,7 @@ Wire Wire Line
 	4850 4000 4850 3850
 Connection ~ 4050 4000
 $Comp
-L IN-8-2 N1
+L ModularIN-8-2Board-rescue:IN-8-2 N1
 U 1 1 59D670FB
 P 7950 3250
 F 0 "N1" H 7825 4075 50  0000 L BNN
@@ -326,4 +257,12 @@ F 3 "" H 7950 3250 60  0001 C CNN
 $EndComp
 Wire Wire Line
 	8350 3650 8600 3650
+Wire Wire Line
+	2850 4400 2700 4400
+Wire Wire Line
+	4050 4800 4150 4800
+Wire Wire Line
+	2850 4000 3300 4000
+Wire Wire Line
+	4050 4000 4850 4000
 $EndSCHEMATC

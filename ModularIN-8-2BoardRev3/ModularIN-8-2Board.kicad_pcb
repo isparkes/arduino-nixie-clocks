@@ -1,9 +1,6 @@
-(kicad_pcb (version 4) (host pcbnew 4.0.7-e2-6376~58~ubuntu17.04.1)
+(kicad_pcb (version 20171130) (host pcbnew 5.0.2-bee76a0~70~ubuntu18.04.1)
 
   (general
-    (links 18)
-    (no_connects 0)
-    (area 67.899999 72.199999 99.980172 106.259961)
     (thickness 1.6)
     (drawings 21)
     (tracks 72)
@@ -13,6 +10,12 @@
   )
 
   (page A4)
+  (title_block
+    (title "Modular Nixie Clock IN-8-2 tube holder")
+    (date 2019-01-17)
+    (company "Ian Sparkes Nixie Clocks")
+  )
+
   (layers
     (0 F.Cu signal)
     (31 B.Cu signal)
@@ -61,12 +64,16 @@
     (pad_size 10 10)
     (pad_drill 10)
     (pad_to_mask_clearance 0)
+    (solder_mask_min_width 0.25)
     (aux_axis_origin 70.2524 100.00996)
     (grid_origin 70.2524 100.00996)
     (visible_elements FFFFFF7F)
     (pcbplotparams
       (layerselection 0x010f0_80000001)
       (usegerberextensions false)
+      (usegerberattributes false)
+      (usegerberadvancedattributes false)
+      (creategerberjobfile false)
       (excludeedgelayer true)
       (linewidth 0.100000)
       (plotframeref false)
@@ -75,8 +82,7 @@
       (useauxorigin false)
       (hpglpennumber 1)
       (hpglpenspeed 20)
-      (hpglpendiameter 15)
-      (hpglpenoverlay 2)
+      (hpglpendiameter 15.000000)
       (psnegative false)
       (psa4output false)
       (plotreference true)
@@ -88,7 +94,7 @@
       (mirror false)
       (drillshape 0)
       (scaleselection 1)
-      (outputdirectory CAM/))
+      (outputdirectory "CAM/"))
   )
 
   (net 0 "")

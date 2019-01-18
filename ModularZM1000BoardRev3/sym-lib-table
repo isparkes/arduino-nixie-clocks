@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name ModularZM1000Board-rescue)(type Legacy)(uri ${KIPRJMOD}/ModularZM1000Board-rescue.lib)(options "")(descr ""))
+)

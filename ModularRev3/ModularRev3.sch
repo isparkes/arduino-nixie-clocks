@@ -34,7 +34,7 @@ F 3 "" H 2400 8200 60  0001 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L device:CP C3
+L ModularRev3-rescue:CP-device C3
 U 1 1 5696B9A0
 P 3700 2100
 F 0 "C3" H 3750 2150 70  0000 L BNN
@@ -80,7 +80,7 @@ F 3 "" H 7450 1500 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L device:CP C4
+L ModularRev3-rescue:CP-device C4
 U 1 1 5696BD88
 P 4450 7900
 F 0 "C4" H 4500 7750 70  0000 L BNN
@@ -104,7 +104,7 @@ F 3 "" H 13750 -37750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #GND01
+L ModularRev3-rescue:GND-power1 #GND01
 U 1 1 5696C10C
 P 4000 3000
 F 0 "#GND01" H 3900 2900 70  0001 L BNN
@@ -115,7 +115,7 @@ F 3 "" H 4000 3000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #GND02
+L ModularRev3-rescue:GND-power1 #GND02
 U 1 1 5696C170
 P 6150 2400
 F 0 "#GND02" H 6050 2300 70  0001 L BNN
@@ -126,7 +126,7 @@ F 3 "" H 6150 2400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #GND03
+L ModularRev3-rescue:GND-power1 #GND03
 U 1 1 5696C1D4
 P 5950 8500
 F 0 "#GND03" H 5850 8400 70  0001 L BNN
@@ -137,7 +137,7 @@ F 3 "" H 5950 8500 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #GND04
+L ModularRev3-rescue:GND-power1 #GND04
 U 1 1 5696C238
 P 7650 3000
 F 0 "#GND04" H 7550 2900 70  0001 L BNN
@@ -148,7 +148,7 @@ F 3 "" H 7650 3000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #GND05
+L ModularRev3-rescue:GND-power1 #GND05
 U 1 1 5696C29C
 P 11250 3800
 F 0 "#GND05" H 11150 3700 70  0001 L BNN
@@ -203,7 +203,7 @@ F 3 "" H 4850 8100 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L opto:PC817 OK1
+L ModularRev3-rescue:PC817-opto OK1
 U 1 1 5696C7B0
 P 2100 6250
 F 0 "OK1" H 1825 6475 70  0000 L BNN
@@ -214,7 +214,7 @@ F 3 "" H 2100 6250 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L opto:PC817 OK2
+L ModularRev3-rescue:PC817-opto OK2
 U 1 1 5696C878
 P 2100 5550
 F 0 "OK2" H 1825 5775 70  0000 L BNN
@@ -225,7 +225,7 @@ F 3 "" H 2100 5550 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L opto:PC817 OK3
+L ModularRev3-rescue:PC817-opto OK3
 U 1 1 5696C940
 P 2100 4850
 F 0 "OK3" H 1825 5075 70  0000 L BNN
@@ -236,7 +236,7 @@ F 3 "" H 2100 4850 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L opto:PC817 OK4
+L ModularRev3-rescue:PC817-opto OK4
 U 1 1 5696CA08
 P 5150 6250
 F 0 "OK4" H 4875 6475 70  0000 L BNN
@@ -248,7 +248,7 @@ F 4 "Value" H 5150 6250 60  0001 C CNN "Fieldname"
 	1    0    0    -1  
 $EndComp
 $Comp
-L opto:PC817 OK5
+L ModularRev3-rescue:PC817-opto OK5
 U 1 1 5696CAD0
 P 5150 5550
 F 0 "OK5" H 4875 5775 70  0000 L BNN
@@ -259,7 +259,7 @@ F 3 "" H 5150 5550 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L opto:PC817 OK6
+L ModularRev3-rescue:PC817-opto OK6
 U 1 1 5696CB98
 P 5150 4850
 F 0 "OK6" H 4875 5075 70  0000 L BNN
@@ -503,7 +503,7 @@ F 3 "" H 10350 3300 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_01X04 SV1
+L ModularRev3-rescue:CONN_01X04-conn SV1
 U 1 1 5696E308
 P 1200 8150
 F 0 "SV1" H 1151 8380 70  0000 L BNN
@@ -514,7 +514,7 @@ F 3 "" H 1200 8150 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L conn:CONN_01X04 SV3
+L ModularRev3-rescue:CONN_01X04-conn SV3
 U 1 1 5696E560
 P 14800 2050
 F 0 "SV3" H 14750 1650 70  0000 L BNN
@@ -675,7 +675,7 @@ Text Label 5650 4400 0    59   ~ 0
 Text Label 2600 4550 0    59   ~ 0
 170V
 $Comp
-L device:CP C1
+L ModularRev3-rescue:CP-device C1
 U 1 1 5696B810
 P 1800 2000
 F 0 "C1" H 1850 2100 70  0000 L BNN
@@ -736,7 +736,7 @@ VIN
 Text Label 11850 3450 0    20   ~ 0
 TICK_LED_2
 $Comp
-L power1:PWR_FLAG #FLG06
+L ModularRev3-rescue:PWR_FLAG-power1 #FLG06
 U 1 1 576FED99
 P 3700 1100
 F 0 "#FLG06" H 3700 1195 50  0001 C CNN
@@ -747,7 +747,7 @@ F 3 "" H 3700 1100 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:PWR_FLAG #FLG07
+L ModularRev3-rescue:PWR_FLAG-power1 #FLG07
 U 1 1 5770430D
 P 4200 2650
 F 0 "#FLG07" H 4200 2745 50  0001 C CNN
@@ -782,7 +782,7 @@ F 3 "" H 5250 7900 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:PWR_FLAG #FLG08
+L ModularRev3-rescue:PWR_FLAG-power1 #FLG08
 U 1 1 57765523
 P 6650 850
 F 0 "#FLG08" H 6650 945 50  0001 C CNN
@@ -793,7 +793,7 @@ F 3 "" H 6650 850 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:TEST_1P W1
+L ModularRev3-rescue:TEST_1P-conn W1
 U 1 1 577661AC
 P 4850 7250
 F 0 "W1" H 4850 7520 50  0000 C CNN
@@ -804,7 +804,7 @@ F 3 "" H 5050 7250 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:TEST_1P W2
+L ModularRev3-rescue:TEST_1P-conn W2
 U 1 1 5776667B
 P 6200 8300
 F 0 "W2" H 6200 8570 50  0000 C CNN
@@ -815,7 +815,7 @@ F 3 "" H 6400 8300 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:TEST_1P W3
+L ModularRev3-rescue:TEST_1P-conn W3
 U 1 1 577685B8
 P 1650 850
 F 0 "W3" H 1650 1120 50  0000 C CNN
@@ -858,7 +858,7 @@ PWR_HV_PULSE
 Text Label 2050 8400 0    20   ~ 0
 PWR_GND_IN
 $Comp
-L conn:CONN_01X03 P1
+L ModularRev3-rescue:CONN_01X03-conn P1
 U 1 1 5777FB44
 P 12200 1450
 F 0 "P1" H 12200 1650 50  0000 C CNN
@@ -886,7 +886,7 @@ $EndComp
 Text Label 15100 1050 0    60   ~ 0
 PWR_INPUT
 $Comp
-L power1:GND #GND09
+L ModularRev3-rescue:GND-power1 #GND09
 U 1 1 578CAF4A
 P 15100 1350
 F 0 "#GND09" H 15000 1250 70  0001 L BNN
@@ -961,7 +961,7 @@ Hours
 Text Notes 1600 10950 0    60   ~ 0
 Hours x 10
 $Comp
-L device:Q_NPN_CBE Q3
+L ModularRev3-rescue:Q_NPN_CBE-device Q3
 U 1 1 57B9BECA
 P 10850 3300
 F 0 "Q3" H 11150 3300 50  0000 R CNN
@@ -972,7 +972,7 @@ F 3 "" H 10850 3300 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L dc-dc:LM2596T-5 IC1
+L ModularRev3-rescue:LM2596T-5-dc-dc IC1
 U 1 1 581CEAE6
 P 3150 7800
 F 0 "IC1" H 2750 8150 50  0000 L CNN
@@ -1005,7 +1005,7 @@ F 3 "" H 4100 7400 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L conn:CONN_02X02 P1.1
+L ModularRev3-rescue:CONN_02X02-conn P1.1
 U 1 1 58BC9DF7
 P 1900 9500
 F 0 "P1.1" H 1900 9650 50  0000 C CNN
@@ -1016,7 +1016,7 @@ F 3 "" H 1900 8300 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X02 P1.2
+L ModularRev3-rescue:CONN_02X02-conn P1.2
 U 1 1 58BCA22A
 P 1900 9850
 F 0 "P1.2" H 1900 10000 50  0000 C CNN
@@ -1027,7 +1027,7 @@ F 3 "" H 1900 8650 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X02 P1.3
+L ModularRev3-rescue:CONN_02X02-conn P1.3
 U 1 1 58BCA3A8
 P 1900 10200
 F 0 "P1.3" H 1900 10350 50  0000 C CNN
@@ -1038,7 +1038,7 @@ F 3 "" H 1900 9000 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X02 P1.4
+L ModularRev3-rescue:CONN_02X02-conn P1.4
 U 1 1 58BCA660
 P 1900 10550
 F 0 "P1.4" H 1900 10700 50  0000 C CNN
@@ -1069,7 +1069,7 @@ DIGIT_7
 Text Label 3000 10600 2    60   ~ 0
 DIGIT_9
 $Comp
-L conn:CONN_02X02 P2.1
+L ModularRev3-rescue:CONN_02X02-conn P2.1
 U 1 1 58BD2FDB
 P 3400 9500
 F 0 "P2.1" H 3400 9650 50  0000 C CNN
@@ -1080,7 +1080,7 @@ F 3 "" H 3400 8300 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X02 P2.2
+L ModularRev3-rescue:CONN_02X02-conn P2.2
 U 1 1 58BD2FE1
 P 3400 9850
 F 0 "P2.2" H 3400 10000 50  0000 C CNN
@@ -1091,7 +1091,7 @@ F 3 "" H 3400 8650 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X02 P2.3
+L ModularRev3-rescue:CONN_02X02-conn P2.3
 U 1 1 58BD2FE7
 P 3400 10200
 F 0 "P2.3" H 3400 10350 50  0000 C CNN
@@ -1102,7 +1102,7 @@ F 3 "" H 3400 9000 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X02 P2.4
+L ModularRev3-rescue:CONN_02X02-conn P2.4
 U 1 1 58BD2FED
 P 3400 10550
 F 0 "P2.4" H 3400 10700 50  0000 C CNN
@@ -1133,7 +1133,7 @@ DIGIT_7
 Text Label 4700 10600 2    60   ~ 0
 DIGIT_9
 $Comp
-L conn:CONN_02X02 P3.1
+L ModularRev3-rescue:CONN_02X02-conn P3.1
 U 1 1 58BD35D9
 P 5100 9500
 F 0 "P3.1" H 5100 9650 50  0000 C CNN
@@ -1144,7 +1144,7 @@ F 3 "" H 5100 8300 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X02 P3.2
+L ModularRev3-rescue:CONN_02X02-conn P3.2
 U 1 1 58BD35DF
 P 5100 9850
 F 0 "P3.2" H 5100 10000 50  0000 C CNN
@@ -1155,7 +1155,7 @@ F 3 "" H 5100 8650 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X02 P3.3
+L ModularRev3-rescue:CONN_02X02-conn P3.3
 U 1 1 58BD35E5
 P 5100 10200
 F 0 "P3.3" H 5100 10350 50  0000 C CNN
@@ -1166,7 +1166,7 @@ F 3 "" H 5100 9000 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X02 P3.4
+L ModularRev3-rescue:CONN_02X02-conn P3.4
 U 1 1 58BD35EB
 P 5100 10550
 F 0 "P3.4" H 5100 10700 50  0000 C CNN
@@ -1197,7 +1197,7 @@ DIGIT_7
 Text Label 6300 10600 2    60   ~ 0
 DIGIT_9
 $Comp
-L conn:CONN_02X02 P4.1
+L ModularRev3-rescue:CONN_02X02-conn P4.1
 U 1 1 58BD47ED
 P 6700 9500
 F 0 "P4.1" H 6700 9650 50  0000 C CNN
@@ -1208,7 +1208,7 @@ F 3 "" H 6700 8300 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X02 P4.2
+L ModularRev3-rescue:CONN_02X02-conn P4.2
 U 1 1 58BD47F3
 P 6700 9850
 F 0 "P4.2" H 6700 10000 50  0000 C CNN
@@ -1219,7 +1219,7 @@ F 3 "" H 6700 8650 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X02 P4.3
+L ModularRev3-rescue:CONN_02X02-conn P4.3
 U 1 1 58BD47F9
 P 6700 10200
 F 0 "P4.3" H 6700 10350 50  0000 C CNN
@@ -1230,7 +1230,7 @@ F 3 "" H 6700 9000 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X02 P4.4
+L ModularRev3-rescue:CONN_02X02-conn P4.4
 U 1 1 58BD47FF
 P 6700 10550
 F 0 "P4.4" H 6700 10700 50  0000 C CNN
@@ -1261,7 +1261,7 @@ DIGIT_7
 Text Label 7900 10600 2    60   ~ 0
 DIGIT_9
 $Comp
-L conn:CONN_02X02 P5.1
+L ModularRev3-rescue:CONN_02X02-conn P5.1
 U 1 1 58BD56F9
 P 8300 9500
 F 0 "P5.1" H 8300 9650 50  0000 C CNN
@@ -1272,7 +1272,7 @@ F 3 "" H 8300 8300 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X02 P5.2
+L ModularRev3-rescue:CONN_02X02-conn P5.2
 U 1 1 58BD5700
 P 8300 9850
 F 0 "P5.2" H 8300 10000 50  0000 C CNN
@@ -1283,7 +1283,7 @@ F 3 "" H 8300 8650 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X02 P5.3
+L ModularRev3-rescue:CONN_02X02-conn P5.3
 U 1 1 58BD5707
 P 8300 10200
 F 0 "P5.3" H 8300 10350 50  0000 C CNN
@@ -1294,7 +1294,7 @@ F 3 "" H 8300 9000 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X02 P5.4
+L ModularRev3-rescue:CONN_02X02-conn P5.4
 U 1 1 58BD570E
 P 8300 10550
 F 0 "P5.4" H 8300 10700 50  0000 C CNN
@@ -1325,7 +1325,7 @@ DIGIT_7
 Text Label 9500 10600 2    60   ~ 0
 DIGIT_9
 $Comp
-L conn:CONN_02X02 P6.1
+L ModularRev3-rescue:CONN_02X02-conn P6.1
 U 1 1 58BD5734
 P 9900 9500
 F 0 "P6.1" H 9900 9650 50  0000 C CNN
@@ -1336,7 +1336,7 @@ F 3 "" H 9900 8300 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X02 P6.2
+L ModularRev3-rescue:CONN_02X02-conn P6.2
 U 1 1 58BD573B
 P 9900 9850
 F 0 "P6.2" H 9900 10000 50  0000 C CNN
@@ -1347,7 +1347,7 @@ F 3 "" H 9900 8650 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X02 P6.3
+L ModularRev3-rescue:CONN_02X02-conn P6.3
 U 1 1 58BD5742
 P 9900 10200
 F 0 "P6.3" H 9900 10350 50  0000 C CNN
@@ -1358,7 +1358,7 @@ F 3 "" H 9900 9000 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X02 P6.4
+L ModularRev3-rescue:CONN_02X02-conn P6.4
 U 1 1 58BD5749
 P 9900 10550
 F 0 "P6.4" H 9900 10700 50  0000 C CNN
@@ -1369,7 +1369,7 @@ F 3 "" H 9900 9350 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_01X05 SV2
+L ModularRev3-rescue:CONN_01X05-conn SV2
 U 1 1 58BD6BD2
 P 14250 3250
 F 0 "SV2" H 14250 3600 50  0000 C CNN
@@ -2124,7 +2124,7 @@ F 3 "" H 10350 2600 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:Q_NPN_CBE Q4
+L ModularRev3-rescue:Q_NPN_CBE-device Q4
 U 1 1 58BF20A2
 P 10850 2600
 F 0 "Q4" H 11150 2600 50  0000 R CNN
@@ -2169,7 +2169,7 @@ F 3 "" H 11700 7400 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:CP C11
+L ModularRev3-rescue:CP-device C11
 U 1 1 58C072E8
 P 13050 8100
 F 0 "C11" H 13075 8200 50  0000 L CNN
@@ -2181,7 +2181,7 @@ F 4 "Value" H 13050 8100 60  0001 C CNN "Fieldname"
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:Q_NMOS_GSD Q5
+L ModularRev3-rescue:Q_NMOS_GSD-device Q5
 U 1 1 58C072E9
 P 14050 8450
 F 0 "Q5" H 14350 8500 50  0000 R CNN
@@ -2192,7 +2192,7 @@ F 3 "" H 14050 8450 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:R R24
+L ModularRev3-rescue:R-device R24
 U 1 1 58C072EA
 P 10950 7100
 F 0 "R24" V 11000 7250 50  0000 C CNN
@@ -2203,7 +2203,7 @@ F 3 "" H 10950 7100 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:R R26
+L ModularRev3-rescue:R-device R26
 U 1 1 58C072EB
 P 13400 8200
 F 0 "R26" V 13450 8400 50  0000 C CNN
@@ -2214,7 +2214,7 @@ F 3 "" H 13400 8200 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:Q_NMOS_GSD Q6
+L ModularRev3-rescue:Q_NMOS_GSD-device Q6
 U 1 1 58C072EC
 P 15150 8450
 F 0 "Q6" H 15450 8500 50  0000 R CNN
@@ -2225,7 +2225,7 @@ F 3 "" H 15150 8450 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:R R25
+L ModularRev3-rescue:R-device R25
 U 1 1 58C072ED
 P 11150 7100
 F 0 "R25" V 11200 7250 50  0000 C CNN
@@ -2236,7 +2236,7 @@ F 3 "" H 11150 7100 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:R R27
+L ModularRev3-rescue:R-device R27
 U 1 1 58C072EE
 P 14550 8200
 F 0 "R27" V 14600 8400 50  0000 C CNN
@@ -2247,7 +2247,7 @@ F 3 "" H 14550 8200 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:C_Small C10
+L ModularRev3-rescue:C_Small-device C10
 U 1 1 58C072EF
 P 12700 8100
 F 0 "C10" H 12710 8170 50  0000 L CNN
@@ -2272,7 +2272,7 @@ F 3 "" H 11900 7800 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:C_Small C9
+L ModularRev3-rescue:C_Small-device C9
 U 1 1 58C072F1
 P 10650 7350
 F 0 "C9" H 10660 7420 50  0000 L CNN
@@ -2544,7 +2544,7 @@ Wire Notes Line
 Wire Notes Line
 	10800 8950 450  8950
 $Comp
-L conn:TEST_1P W4
+L ModularRev3-rescue:TEST_1P-conn W4
 U 1 1 58BFF0C9
 P 6400 8300
 F 0 "W4" H 6400 8570 50  0000 C CNN
@@ -2558,7 +2558,7 @@ Wire Wire Line
 	6400 8400 6400 8300
 Connection ~ 6200 8400
 $Comp
-L conn:TEST_1P W5
+L ModularRev3-rescue:TEST_1P-conn W5
 U 1 1 58BFF7E3
 P 3050 1900
 F 0 "W5" H 3050 2170 50  0000 C CNN
@@ -2572,7 +2572,7 @@ Wire Wire Line
 	3050 1900 3050 2100
 Connection ~ 3050 2100
 $Comp
-L conn:CONN_01X03 P3
+L ModularRev3-rescue:CONN_01X03-conn P3
 U 1 1 58C01003
 P 14600 5000
 F 0 "P3" H 14600 5200 50  0000 C CNN
@@ -2606,7 +2606,7 @@ SEP_OUT
 Text Label 12700 2200 0    60   ~ 0
 SEP_DRIVE
 $Comp
-L conn:CONN_01X03 P4
+L ModularRev3-rescue:CONN_01X03-conn P4
 U 1 1 58C2879D
 P 14600 5700
 F 0 "P4" H 14600 5900 50  0000 C CNN

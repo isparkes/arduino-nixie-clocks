@@ -1,15 +1,14 @@
-EESchema Schematic File Version 2
-LIBS:ZM1000
-LIBS:ModularIN14Board-cache
-EELAYER 25 0
+EESchema Schematic File Version 4
+LIBS:ModularZM1000Board-cache
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title "Modular Nixie Clock IN-14 boards"
+Title "Modular Nixie Clock ZM1000 tube holder"
 Date "13 JAN 2016"
 Rev ""
-Comp ""
+Comp "Ian Sparkes Nixie Clocks"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -84,7 +83,7 @@ DIGIT_2_1
 Text Label 7100 2750 0    60   ~ 0
 DIGIT_1_1
 $Comp
-L CONN_02X02 P1.4
+L ModularZM1000Board-rescue:CONN_02X02 P1.4
 U 1 1 58B99BC7
 P 3450 3550
 F 0 "P1.4" H 3450 3700 50  0000 C CNN
@@ -95,7 +94,7 @@ F 3 "" H 3450 2350 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_02X02 P1.3
+L ModularZM1000Board-rescue:CONN_02X02 P1.3
 U 1 1 58B99C42
 P 3450 3150
 F 0 "P1.3" H 3450 3300 50  0000 C CNN
@@ -106,7 +105,7 @@ F 3 "" H 3450 1950 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_02X02 P1.2
+L ModularZM1000Board-rescue:CONN_02X02 P1.2
 U 1 1 58B99CE4
 P 3450 2750
 F 0 "P1.2" H 3450 2900 50  0000 C CNN
@@ -117,7 +116,7 @@ F 3 "" H 3450 1550 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_02X02 P1.1
+L ModularZM1000Board-rescue:CONN_02X02 P1.1
 U 1 1 58B99D94
 P 3450 2350
 F 0 "P1.1" H 3450 2500 50  0000 C CNN
@@ -160,7 +159,7 @@ Wire Wire Line
 Wire Wire Line
 	3200 3200 2850 3200
 $Comp
-L WS2812B LED1
+L ModularZM1000Board-rescue:WS2812B LED1
 U 1 1 58BBE11F
 P 3450 4600
 F 0 "LED1" H 3450 4200 60  0000 C CNN
@@ -173,9 +172,9 @@ $EndComp
 Wire Wire Line
 	3950 4400 4150 4400
 Wire Wire Line
-	3950 4800 4150 4800
+	3950 4800 4050 4800
 Wire Wire Line
-	2950 4400 2700 4400
+	2950 4400 2850 4400
 Wire Wire Line
 	2950 4800 2700 4800
 Text Label 4150 4400 0    60   ~ 0
@@ -195,7 +194,7 @@ DIN
 Text Label 4000 2400 0    60   ~ 0
 VCC
 $Comp
-L C C1
+L ModularZM1000Board-rescue:C C1
 U 1 1 58BC89DD
 P 3450 4000
 F 0 "C1" H 3475 4100 50  0000 L CNN
@@ -206,12 +205,12 @@ F 3 "" H 3450 4000 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	2100 4000 3300 4000
+	2100 4000 2850 4000
 Wire Wire Line
 	2850 4000 2850 4400
 Connection ~ 2850 4400
 Wire Wire Line
-	3600 4000 4850 4000
+	3600 4000 4050 4000
 Wire Wire Line
 	4050 4000 4050 4800
 Connection ~ 4050 4800
@@ -223,7 +222,7 @@ Wire Wire Line
 	2100 4000 2100 3850
 Connection ~ 2850 4000
 $Comp
-L PWR_FLAG #FLG01
+L power:PWR_FLAG #FLG01
 U 1 1 58DB6260
 P 2100 3850
 F 0 "#FLG01" H 2100 3945 50  0001 C CNN
@@ -234,7 +233,7 @@ F 3 "" H 2100 3850 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L PWR_FLAG #FLG02
+L power:PWR_FLAG #FLG02
 U 1 1 58DB62A3
 P 4850 3850
 F 0 "#FLG02" H 4850 3945 50  0001 C CNN
@@ -250,11 +249,11 @@ Connection ~ 4050 4000
 Text Label 8650 2750 0    60   ~ 0
 RHDP_DRIVE
 $Comp
-L ZM1000 N1
+L ModularZM1000Board-rescue:ZM1000 N1
 U 1 1 5AF04653
 P 8150 3250
 F 0 "N1" H 7975 4075 50  0000 L BNN
-F 1 "ZM1000" H 8150 3250 50  0000 L BNN
+F 1 "ZM1000" H 7950 2700 50  0000 L BNN
 F 2 "NixieClockMaster:ZM1000" H 8150 3400 50  0001 C CNN
 F 3 "" H 8150 3250 60  0001 C CNN
 	1    8150 3250
@@ -263,10 +262,20 @@ $EndComp
 Wire Wire Line
 	8550 2750 9300 2750
 Wire Wire Line
-	8550 3250 8750 3250
+	8550 3250 8650 3250
 Wire Wire Line
 	8650 3250 8650 3350
 Wire Wire Line
 	8650 3350 8550 3350
 Connection ~ 8650 3250
+Wire Wire Line
+	2850 4400 2700 4400
+Wire Wire Line
+	4050 4800 4150 4800
+Wire Wire Line
+	2850 4000 3300 4000
+Wire Wire Line
+	4050 4000 4850 4000
+Wire Wire Line
+	8650 3250 8750 3250
 $EndSCHEMATC
