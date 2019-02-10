@@ -20,6 +20,7 @@
 #include <avr/io.h>
 #include <EEPROM.h>
 #include <Wire.h>
+#include <avr/wdt.h>
 
 // Clock specific libraries, install these with "Sketch -> Include Library -> Add .ZIP library
 // using the ZIP files in the "libraries" directory
@@ -760,6 +761,9 @@ void setup()
 
   // mark that we have done the EEPROM setup
   EEPROM.write(EE_NEED_SETUP, false);
+
+  // enable watchdog
+  wdt_enable(WDTO_8S);
 }
 
 //**********************************************************************************
@@ -955,6 +959,9 @@ void performOncePerSecondProcessing() {
   if ((valueDisplayTime > 0) && (valueDisplayTime < 0xff)) {
     valueDisplayTime--;
   }
+
+  // feed the watchdog
+  wdt_reset();
 }
 
 // ************************************************************
