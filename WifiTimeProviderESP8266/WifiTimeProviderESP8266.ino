@@ -5,14 +5,16 @@
 
    Program with following settings (status line / IDE):
 
-   Generic ESP8266 Module, 
+    Board: Generic ESP8266 Module, 
+    Crystal Frequency: 26MHz,
     Flash: 80MHz, 
     CPU: 160MHz, 
-    Flash Mode: DIO, 
+    Flash Mode: QIO, 
     Upload speed: 115200, 
-    Flash size: 1M (no SPIFFS), 
+    Flash size: 1M (64k SPIFFS), 
     Reset method: ck, Disabled, none
-    Erase Flash: All contents
+    Erase Flash: All falsh contents,
+    Builtin LED: 1
 
    Go to http://192.168.4.1 in a web browser connected to this access point to see it
 */
