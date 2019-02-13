@@ -28,9 +28,12 @@
 #define I2C_SET_OPTION_PIR_TIMEOUT    0x16
 #define I2C_SHOW_VALUE                0x17
 #define I2C_SHOW_VALUE_FORMAT         0x18
-#define I2C_SET_OPTION_MIN_DIM        0x19
+#define I2C_SET_OPTION_MIN_DIM_V2     0x19
+#define I2C_SET_OPTION_MIN_DIM_V1     0x16
 
-#define I2C_DATA_SIZE                  24
-#define I2C_PROTOCOL_NUMBER            62
+#define I2C_DATA_SIZE_V1               22
+#define I2C_PROTOCOL_NUMBER_V1         54
+#define I2C_DATA_SIZE_V2               24
+#define I2C_PROTOCOL_NUMBER_V2         62
 
 #endif

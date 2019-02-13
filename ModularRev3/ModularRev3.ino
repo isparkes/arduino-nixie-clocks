@@ -24,8 +24,8 @@
 
 // Clock specific libraries, install these with "Sketch -> Include Library -> Add .ZIP library
 // using the ZIP files in the "libraries" directory
-#include <DS3231.h>
-#include <TimeLib.h>
+#include <DS3231.h>             // https://github.com/NorthernWidget/DS3231 (Wickert 1.0.2)
+#include <TimeLib.h>            // http://playground.arduino.cc/code/time (Margolis 1.5.0)
 #include <Adafruit_NeoPixel.h>
 
 // Other parts of the code, broken out for clarity
