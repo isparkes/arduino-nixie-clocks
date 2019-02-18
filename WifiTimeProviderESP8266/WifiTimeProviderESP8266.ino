@@ -1611,7 +1611,7 @@ int getNtpIntervalFromEEPROM() {
 
 void resetEEPROM() {
   wipeEEPROM();
-  // system_restore();
+  system_restore();
   storeTimeServerURLInEEPROM(DEFAULT_TIME_SERVER_URL);
   storeCredentialsInEEPROM("","");
   storeNtpServerInEEPROM(DEFAULT_NTP_SERVER);
