@@ -7,6 +7,8 @@ This is the main code for an Arduino based Nixie clock, intended for the followi
 
 It is not suitable for clocks with RAGB LED backlights! For those you shoud be using [NixieClockFirmwareV1](https://bitbucket.org/isparkes/nixiefirmwarev1)
 
+Version 356 converges the code bases for Classic Rev6 and Modular Rev 3.01. If you have a Modular Rev3, please see previous versions!
+
 #### Features:
 - Open source
 - Wifi Interface for an ESP8266
@@ -23,8 +25,7 @@ It is not suitable for clocks with RAGB LED backlights! For those you shoud be u
 
 
 #### File Description:
-- ModularRev3.ino: Main code for the 6 Digit Modular Rev 3 Nixie Clock
-- ClassicRev6.ino: Main code for the 6 Digit Nixie Classic Rev6 and Modular Rev 3.01 Clock
+- FirmwareV2.ino: Main code for the 6 Digit Nixie Classic Rev6 and Modular Rev 3.01 Clock
 - WiFiTimeProviderESP8266.ino: Time provider module code
 
 **Instruction and User Manuals (including schematic) can be found at:** [Manuals](https://www.nixieclock.biz/Manuals.html)

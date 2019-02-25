@@ -11,7 +11,7 @@
     CPU: 160MHz, 
     Flash Mode: QIO, 
     Upload speed: 115200, 
-    Flash size: 1M (64k SPIFFS), 
+    Flash size: 512k (No SPIFFS), 
     Reset method: ck, Disabled, none
     Erase Flash: All falsh contents,
     Builtin LED: 1
@@ -31,7 +31,7 @@
 // Other parts of the code, broken out for clarity
 #include "I2CDefs.h"
   
-#define SOFTWARE_VERSION "v355"
+#define SOFTWARE_VERSION "v356"
 #define DEFAULT_TIME_SERVER_URL "http://time-zone-server.scapp.io/getTime/Europe/Zurich"
 
 #define DEBUG_OFF             // DEBUG or DEBUG_OFF

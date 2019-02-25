@@ -82,7 +82,7 @@
 #define EE_MIN_DIM_HI         41     // The minimum dimming value, high byte
 
 // Software version shown in config menu
-#define SOFTWARE_VERSION    655
+#define SOFTWARE_VERSION      356
 
 // how often we make reference to the external time provider
 #define READ_TIME_PROVIDER_MILLIS 60000 // Update the internal time provider from the external source once every minute
