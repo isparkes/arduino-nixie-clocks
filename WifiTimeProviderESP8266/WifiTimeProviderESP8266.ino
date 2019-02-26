@@ -5,13 +5,13 @@
 
    Program with following settings (status line / IDE):
 
-    Board: Generic ESP8266 Module, 
+    Board: Generic ESP8266 Module,
     Crystal Frequency: 26MHz,
-    Flash: 80MHz, 
-    CPU: 160MHz, 
-    Flash Mode: QIO, 
-    Upload speed: 115200, 
-    Flash size: 1M (64k SPIFFS), 
+    Flash: 80MHz,
+    CPU: 160MHz,
+    Flash Mode: QIO,
+    Upload speed: 115200,
+    Flash size: 1M (64k SPIFFS),
     Reset method: ck, Disabled, none
     Erase Flash: All flash contents,
     Builtin LED: 1 (1 for ESP-01)
@@ -35,8 +35,6 @@
 #define DEFAULT_TIME_SERVER_URL_1 "http://its.internet-box.ch/getTime/Europe/Zurich"
 #define DEFAULT_TIME_SERVER_URL_2 "http://time-zone-server.scapp.io/getTime/Europe/Zurich"
 
-#define DEBUG             // DEBUG or DEBUG_OFF - in debug mode there is no LED on the ESP-01!
-
 // Other parts of the code, broken out for clarity
 #include "I2CDefs.h"
   
@@ -47,7 +45,7 @@
 
 const char *serialNumber = "0x0x0x";  // this is to be customized at burn time
 
-int blinkMode = 0; // 0 = Connected, short flash, 1 = connected, update blink, 2 = connected, no time server
+int blinkMode = 2; // 0 = Connected, short flash, 1 = connected, connected, no time server, 2 = not connected
 
 // used for flashing the blue LED
 int blinkOnTime = 1000;
@@ -95,7 +93,7 @@ void configModeCallback (WiFiManager *myWiFiManager) {
   debugMsg("Entered config mode");
   debugMsg(formatIPAsString(WiFi.softAPIP()));
   //if you used auto generated SSID, print it
-  debugMsg(myWiFiManager->getConfigPortalSSID());  
+  debugMsg(myWiFiManager->getConfigPortalSSID());
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -200,7 +198,7 @@ void loop()
       // rollover
       lastI2CUpdateTime = 0;
     }
-    
+
     // See if it is time to update the Clock
     if (((millis() - lastI2CUpdateTime) > 60000) || 
          (lastI2CUpdateTime==0)
@@ -212,14 +210,14 @@ void loop()
       // Send the time to the I2C client, but only if there was no error
       if (!timeStr.startsWith("ERROR:")) {
         sendTimeToI2C(timeStr);
-        
-        blinkMode = 1;
-        
+
+        blinkMode = 0;
+
         // all OK, flash 10 millisecond per second
         debugMsg("Normal time serve mode");
       } else {
         // connected, but time server not found, flash middle speed
-        blinkMode = 2;
+        blinkMode = 1;
         debugMsg("Connected, but no time server found");
       }
 
@@ -230,7 +228,7 @@ void loop()
     }
   } else {
     // offline, flash fast
-    blinkMode = 3;
+    blinkMode = 2;
   }
 
   switch (blinkMode) {
@@ -250,12 +248,6 @@ void loop()
       {
         blinkOnTime = 250;
         blinkTopTime = 500;
-        break;
-      }
-    case 3:
-      {
-        blinkOnTime = 100;
-        blinkTopTime = 200;
         break;
       }
   }
@@ -340,7 +332,7 @@ void rootPageHandler()
   char dtostrfbuffer[15];
   dtostrf(voltaje,7, 2, dtostrfbuffer);
   String vccString = String(dtostrfbuffer);
-  
+
   // ESP8266 Info table
   response_message += getTableHead2Col("ESP8266 information", "Name", "Value");
   response_message += getTableRow2Col("Sketch size", ESP.getSketchSize());
@@ -914,7 +906,7 @@ void setDisplayValuePageHandler() {
       timeValue = timeToSend;
     }
   };
-  
+
   if (server.hasArg("value"))
   {
     debugMsg("Got server arg value: " + server.arg("value"));
@@ -924,7 +916,7 @@ void setDisplayValuePageHandler() {
     byte val1 = hex2bcd(valueToSend % 100);
     valueToSend = valueToSend / 100;
     byte val0 = hex2bcd(valueToSend % 100);
-    
+
     if (sendValueToI2C(val0,val1,val2,timeValue)) {
       resultMessage = "Value sent!";
     } else {
@@ -933,7 +925,7 @@ void setDisplayValuePageHandler() {
   } else {
     resultMessage = "No value to send";
   }
-  
+
   if (server.hasArg("format"))
   {
     debugMsg("Got format");
@@ -947,7 +939,7 @@ void setDisplayValuePageHandler() {
     byte val0 = hex2bcd(formatToSend % 100);
     sendValueFormatToI2C(val0,val1,val2);
   };
-  
+
   String response_message = getHTMLHead();
   response_message += getNavBar();
 
@@ -1047,7 +1039,11 @@ String getTimeFromTimeZoneServer() {
 
 void setBlueLED(boolean newState) {
 #ifndef DEBUG
-  digitalWrite(LED_BUILTIN, newState);
+  if (newState) {
+    digitalWrite(LED_BUILTIN, LOW);
+  } else {
+    digitalWrite(LED_BUILTIN, HIGH);
+  }
 #endif
 }
 
@@ -1769,7 +1765,7 @@ void saveConfigToSpiffs() {
   if (SPIFFS.begin()) {
     debugMsg("mounted file system for write");
     debugMsg("saving config");
-    
+
     DynamicJsonBuffer jsonBuffer;
     JsonObject& json = jsonBuffer.createObject();
     json["time_zone"] = timeServerURL;
@@ -1793,4 +1789,3 @@ void saveConfigToSpiffs() {
   }
   SPIFFS.end();
 }
-
