@@ -11,7 +11,7 @@
     CPU: 160MHz, 
     Flash Mode: QIO, 
     Upload speed: 115200, 
-    Flash size: 512k (No SPIFFS), 
+    Flash size: 512k (32k SPIFFS), 
     Reset method: ck, Disabled, none
     Erase Flash: All falsh contents,
     Builtin LED: 1
@@ -19,7 +19,9 @@
    Go to http://192.168.4.1 in a web browser connected to this access point to see it
 */
 
-#include <ESP8266WiFi.h>
+#include <FS.h>                   //this needs to be first, or it all crashes and burns...
+#include <DNSServer.h>
+// #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266HTTPClient.h>
@@ -27,6 +29,13 @@
 #include <Wire.h>
 #include <EEPROM.h>
 #include <time.h>
+#include <WiFiManager.h>          // https://github.com/tzapu/WiFiManager  (0.14.0)
+#include <ArduinoJson.h>          // https://github.com/bblanchon/ArduinoJson (5.13.2)
+
+#define DEFAULT_TIME_SERVER_URL_1 "http://its.internet-box.ch/getTime/Europe/Zurich"
+#define DEFAULT_TIME_SERVER_URL_2 "http://time-zone-server.scapp.io/getTime/Europe/Zurich"
+
+#define DEBUG             // DEBUG or DEBUG_OFF - in debug mode there is no LED on the ESP-01!
 
 // Other parts of the code, broken out for clarity
 #include "I2CDefs.h"
@@ -45,6 +54,7 @@ const char *serialNumber = "0x0x0x";  // this is to be customized at burn time
 // Pin 1 on ESP-01, pin 2 on ESP-12E
 #define blueLedPin 1
 boolean blueLedState = true;
+int blinkMode = 0; // 0 = Connected, short flash, 1 = connected, update blink, 2 = connected, no time server
 
 // used for flashing the blue LED
 int blinkOnTime = 1000;
@@ -56,7 +66,7 @@ long lastI2CUpdateTime = 0;
 byte preferredI2CSlaveAddress = 0xFF;
 byte preferredAddressFoundBy = 0; // 0 = not found, 1 = found by default, 2 = found by ping
 
-String timeServerURL = "";
+String timeServerURL = DEFAULT_TIME_SERVER_URL_1;
 
 ADC_MODE(ADC_VCC);
 
@@ -85,6 +95,16 @@ unsigned int configMinDim;
 
 ESP8266WebServer server(80);
 
+WiFiManager wifiManager;
+
+//gets called when WiFiManager enters configuration mode
+void configModeCallback (WiFiManager *myWiFiManager) {
+  debugMsg("Entered config mode");
+  debugMsg(formatIPAsString(WiFi.softAPIP()));
+  //if you used auto generated SSID, print it
+  debugMsg(myWiFiManager->getConfigPortalSSID());  
+}
+
 // ----------------------------------------------------------------------------------------------------
 // ----------------------------------------------  Set up  --------------------------------------------
 // ----------------------------------------------------------------------------------------------------
@@ -92,48 +112,55 @@ void setup()
 {
 #ifdef DEBUG
   setupDebug();
+  wifiManager.setDebugOutput(true);
 #else
   pinMode(blueLedPin, OUTPUT);
+  wifiManager.setDebugOutput(false);
 #endif
 
-  EEPROM.begin(512);
-  delay(10);
+  //set callback that gets called when connecting to previous WiFi fails, and enters Access Point mode
+  wifiManager.setAPCallback(configModeCallback);
+  
+  wifiManager.setConfigPortalTimeout(60);
 
-  // read eeprom for ssid and pass
-  String esid = getSSIDFromEEPROM();
-  String epass = getPasswordFromEEPROM();
-  timeServerURL = getTimeServerURLFromEEPROM();
-
-  // Try to connect, if we have valid credentials
-  boolean wlanConnected = false;
-  if (esid.length() > 0) {
-
-    debugMsg("found esid: ");
-    debugMsg(esid);
-    debugMsg("Trying to connect");
-
-    wlanConnected = connectToWLAN(esid.c_str(), epass.c_str());
-  }
-
-  // If we can't connect, fall back into AP mode
-  if (wlanConnected) {
-    debugMsg("WiFi connected, stop softAP");
-    WiFi.mode(WIFI_STA);
-  } else {
-    debugMsg("WiFi not connected, start softAP");
-    WiFi.mode(WIFI_AP_STA);
-    
-    // You can add the password parameter if you want the AP to be password protected
-    if (strlen(ap_password) > 0) {
-      WiFi.softAP(ap_ssid, ap_password);
-    } else {
-      WiFi.softAP(ap_ssid);
+  boolean connected = false;
+  while (!connected) {
+    #ifndef DEBUG
+      for (int i = 0 ; i < 5 ; i++) {
+      blueLedState = false;
+      setBlueLED(blueLedState);
+      delay(100);
+      blueLedState = true;
+      setBlueLED(blueLedState);
+      delay(100);
     }
+    #endif
+    connected = wifiManager.autoConnect("NixieClockTimeModule","SetMeUp!");
   }
 
+  #ifdef DEBUG
+    debugMsg("Connected!");
+  #else  
+    for (int i = 0 ; i < 3 ; i++) {
+      blueLedState = false;
+      setBlueLED(blueLedState);
+      delay(50);
+      blueLedState = true;
+      setBlueLED(blueLedState);
+      delay(500);
+    }
+  #endif
+
+  if(getConfigfromSpiffs()) {
+    debugMsg("Recovered Config from SPIFFS");
+  } else {
+    debugMsg("Setting default tzs");
+    timeServerURL = DEFAULT_TIME_SERVER_URL_1;
+    saveConfigToSpiffs();
+  }
+  
   IPAddress apIP = WiFi.softAPIP();
   IPAddress myIP = WiFi.localIP();
-  debugMsg("AP IP address: " + formatIPAsString(apIP));
   debugMsg("AP IP address: " + formatIPAsString(apIP));
   debugMsg("IP address: " + formatIPAsString(myIP));
 
@@ -142,7 +169,6 @@ void setup()
   
   /* Set page handler functions */
   server.on("/",            rootPageHandler);
-  server.on("/wlan_config", wlanPageHandler);
   server.on("/time",        timeServerPageHandler);
   server.on("/reset",       resetPageHandler);
   server.on("/updatetime",  updateTimePageHandler);
@@ -153,17 +179,24 @@ void setup()
 
   scanI2CBus();
 
-  server.begin();
 
+  // Allow the IP to be displayed on the clock
+  // this allows the user to know the address to log into
+  // We need to send a time update and the IP
+  sendIPAddressToI2C(WiFi.localIP());
+  sendTimeToI2C("2018,01,01,0,0,0");
+  
+  server.begin();
   debugMsg("HTTP server started");
 
-  // Set up mDNS 
-  MDNS.begin("nixieclock");
-
-  // Add service to MDNS-SD
-  MDNS.addService("http", "tcp", 80);
-
-  debugMsg("mDNS responder started");
+// I thin this is handled by the WiFiManager code
+//  // Set up mDNS 
+//  MDNS.begin("nixieclock");
+//
+//  // Add service to MDNS-SD
+//  MDNS.addService("http", "tcp", 80);
+//
+//  debugMsg("mDNS responder started");
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -191,14 +224,13 @@ void loop()
       if (!timeStr.startsWith("ERROR:")) {
         sendTimeToI2C(timeStr);
         
+        blinkMode = 1;
+        
         // all OK, flash 10 millisecond per second
-        blinkOnTime = 5;
-        blinkTopTime = 1000;
         debugMsg("Normal time serve mode");
       } else {
         // connected, but time server not found, flash middle speed
-        blinkOnTime = 250;
-        blinkTopTime = 500;
+        blinkMode = 2;
         debugMsg("Connected, but no time server found");
       }
 
@@ -209,9 +241,34 @@ void loop()
     }
   } else {
     // offline, flash fast
-    blinkOnTime = 100;
-    blinkTopTime = 200;
-    debugMsg("Offline");
+    blinkMode = 3;
+  }
+
+  switch (blinkMode) {
+    case 0:
+      {
+        blinkOnTime = 5;
+        blinkTopTime = 1000;
+        break;
+      }
+    case 1:
+      {
+        blinkOnTime = 250;
+        blinkTopTime = 1000;
+        break;
+      }
+    case 2:
+      {
+        blinkOnTime = 250;
+        blinkTopTime = 500;
+        break;
+      }
+    case 3:
+      {
+        blinkOnTime = 100;
+        blinkTopTime = 200;
+        break;
+      }
   }
   
   if (((millis() - lastMillis) > blinkTopTime) && blueLedState) {
@@ -222,6 +279,9 @@ void loop()
 #endif
   } else if (((millis() - lastMillis) > blinkOnTime) && !blueLedState) {
     blueLedState = true;
+    if (blinkMode == 1) {
+      blinkMode = 0;
+    }
 #ifndef DEBUG
     setBlueLED(blueLedState);
 #endif    
@@ -310,106 +370,10 @@ void rootPageHandler()
   response_message += getTableRow2Col("CPU Freqency (MHz)", ESP.getCpuFreqMHz());
   response_message += getTableRow2Col("SDK version", ESP.getSdkVersion());
   response_message += getTableRow2Col("Chip ID", ESP.getChipId());
-  response_message += getTableRow2Col("Flash Chip ID", ESP.getFlashChipId());
+  response_message += getTableRow2Col("Flash Chip ID", String(ESP.getFlashChipId(), HEX));
   response_message += getTableRow2Col("Flash size", ESP.getFlashChipRealSize());
   response_message += getTableRow2Col("Vcc", vccString);
   response_message += getTableFoot();
-
-  response_message += getHTMLFoot();
-
-  server.send(200, "text/html", response_message);
-}
-
-// ===================================================================================================================
-// ===================================================================================================================
-
-/**
-   WLAN page allows users to set the WiFi credentials
-*/
-void wlanPageHandler()
-{
-  // Check if there are any GET parameters, if there are, we are configuring
-  if (server.hasArg("ssid"))
-  {
-    if (server.hasArg("password"))
-    {
-      debugMsg("Connect WiFi");
-      debugMsg("SSID:");
-      debugMsg(server.arg("ssid"));
-      debugMsg("PASSWORD:");
-      debugMsg(server.arg("password"));
-      WiFi.begin(server.arg("ssid").c_str(), server.arg("password").c_str());
-    }
-    else
-    {
-      WiFi.begin(server.arg("ssid").c_str());
-      debugMsg("Connect WiFi");
-      debugMsg("SSID:");
-      debugMsg(server.arg("ssid"));
-    }
-
-    while (WiFi.status() != WL_CONNECTED)
-    {
-      delay(500);
-      debugMsgContinue(".");
-    }
-
-    storeCredentialsInEEPROM(server.arg("ssid"), server.arg("password"));
-
-    debugMsg("");
-    debugMsg("WiFi connected");
-    debugMsg("IP address: " + formatIPAsString(WiFi.localIP()));
-    debugMsg("SoftAP IP address: " + formatIPAsString(WiFi.softAPIP()));
-  }
-
-  String esid = getSSIDFromEEPROM();
-
-  String response_message = getHTMLHead();
-  response_message += getNavBar();
-
-  // form header
-  response_message += getFormHead("Set Configuration");
-
-  // Get number of visible access points
-  int ap_count = WiFi.scanNetworks();
-
-  // Day blanking
-  response_message += getDropDownHeader("WiFi:", "ssid", true);
-
-  if (ap_count == 0)
-  {
-    response_message += getDropDownOption("-1", "No wifi found", true);
-  }
-  else
-  {
-    // Show access points
-    for (uint8_t ap_idx = 0; ap_idx < ap_count; ap_idx++)
-    {
-      String ssid = String(WiFi.SSID(ap_idx));
-      String wlanId = String(WiFi.SSID(ap_idx));
-      (WiFi.encryptionType(ap_idx) == ENC_TYPE_NONE) ? wlanId += "" : wlanId += " (requires password)";
-      wlanId += " (RSSI: ";
-      wlanId += String(WiFi.RSSI(ap_idx));
-      wlanId += ")";
-
-      debugMsg("");
-      debugMsg("found ssid: " + WiFi.SSID(ap_idx));      
-      if ((esid==ssid)) {
-        debugMsg("IsCurrent: Y");
-      } else {
-        debugMsg("IsCurrent: N");
-      }
-
-      response_message += getDropDownOption(ssid, wlanId, (esid==ssid));
-    }
-
-    response_message += getDropDownFooter();
-
-    response_message += getTextInput("WiFi password (if required)","password","",false);
-    response_message += getSubmitButton("Set");
-
-    response_message += getFormFoot();
-  }
 
   response_message += getHTMLFoot();
 
@@ -429,7 +393,7 @@ void timeServerPageHandler()
   {
     if (strlen(server.arg("timeserverurl").c_str()) > 4) {
       timeServerURL = server.arg("timeserverurl").c_str();
-      storeTimeServerURLInEEPROM(timeServerURL);
+      // storeTimeServerURLInEEPROM(timeServerURL);
     }
   }
 
@@ -441,7 +405,11 @@ void timeServerPageHandler()
 
   // only fill in the value we have if it looks realistic
   if ((timeServerURL.length() < 10) || (timeServerURL.length() > 250)) {
-    timeServerURL = "";
+    debugMsg("Got a bad URL for the TZS, resetting");
+    timeServerURL = DEFAULT_TIME_SERVER_URL_1;
+  } else {
+    // save the timeserver URL
+    saveConfigToSpiffs();
   }
 
   response_message += getTextInputWide("URL", "timeserverurl", timeServerURL, false);
@@ -495,7 +463,7 @@ void updateTimePageHandler()
    Reset the EEPROM and stored values
 */
 void resetPageHandler() {
-  resetEEPROM();
+  wifiManager.resetSettings();
 
   String response_message = getHTMLHead();
   response_message += getNavBar();
@@ -1060,32 +1028,6 @@ void localCSSHandler()
 // ----------------------------------------------------------------------------------------------------
 
 /**
-   Try to connect to the WiFi with the given credentials. Give up after 10 seconds or 20 retries
-   if we can't get in.
-*/
-boolean connectToWLAN(const char* ssid, const char* password) {
-  int retries = 0;
-  debugMsg("Connecting to WLAN");
-  if (password && strlen(password) > 0 ) {
-    WiFi.begin(ssid, password);
-  } else {
-    WiFi.begin(ssid);
-  }
-
-  while (WiFi.status() != WL_CONNECTED)
-  {
-    delay(500);
-    debugMsgContinue(".");
-    retries++;
-    if (retries > 20) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-/**
    Get the local time from the time zone server. Return the error description prefixed by "ERROR:" if something went wrong.
    Uses the global variable timeServerURL.
 */
@@ -1118,119 +1060,6 @@ String getTimeFromTimeZoneServer() {
 
   return payload;
 }
-
-// ----------------------------------------------------------------------------------------------------
-// ------------------------------------------ EEPROM functions ----------------------------------------
-// ----------------------------------------------------------------------------------------------------
-
-String getSSIDFromEEPROM() {
-  String esid = "";
-  for (int i = 0; i < 32; i++)
-  {
-    byte readByte = EEPROM.read(i);
-    if (readByte == 0) {
-      break;
-    } else if ((readByte < 32) || (readByte == 0xFF)) {
-      continue;
-    }
-    esid += char(readByte);
-  }
-  debugMsg("Recovered SSID: " + esid);
-  return esid;
-}
-
-String getPasswordFromEEPROM() {
-  String epass = "";
-  for (int i = 32; i < 96; i++)
-  {
-    byte readByte = EEPROM.read(i);
-    if (readByte == 0) {
-      break;
-    } else if ((readByte < 32) || (readByte == 0xFF)) {
-      continue;
-    }
-    epass += char(EEPROM.read(i));
-  }
-  debugMsg("Recovered password: " + epass);
-
-  return epass;
-}
-
-void storeCredentialsInEEPROM(String qsid, String qpass) {
-  debugMsg("writing eeprom ssid, length " + qsid.length());
-  for (int i = 0; i < 32; i++)
-  {
-    if (i < qsid.length()) {
-      EEPROM.write(i, qsid[i]);
-      debugMsg("Wrote: " + qsid[i]);
-    } else {
-      EEPROM.write(i, 0);
-    }
-  }
-  debugMsg("writing eeprom pass, length " + qpass.length());
-  for (int i = 0; i < 96; i++)
-  {
-    if ( i < qpass.length()) {
-      EEPROM.write(32 + i, qpass[i]);
-      debugMsg("Wrote: " + qpass[i]);
-    } else {
-      EEPROM.write(32 + i, 0);
-    }
-  }
-
-  EEPROM.commit();
-}
-
-String getTimeServerURLFromEEPROM() {
-  String eurl = "";
-  for (int i = 96; i < (96 + 256); i++)
-  {
-    byte readByte = EEPROM.read(i);
-    if (readByte == 0) {
-      break;
-    } else if ((readByte < 32) || (readByte == 0xFF)) {
-      continue;
-    }
-    eurl += char(readByte);
-  }
-  debugMsg("Recovered time server URL: " + eurl);
-  debugMsg("URL length: " + eurl.length());
-
-  if (eurl.length() == 0) {
-    debugMsg("Recovered blank time server URL: ");
-    debugMsg("Returning default time server URL");
-    eurl = DEFAULT_TIME_SERVER_URL;
-  }
-
-  return eurl;
-}
-
-void storeTimeServerURLInEEPROM(String timeServerURL) {
-  debugMsg("writing time server URL, length  " + timeServerURL.length());
-  for (int i = 0; i < 256; i++)
-  {
-    if (i < timeServerURL.length()) {
-      EEPROM.write(96 + i, timeServerURL[i]);
-      debugMsg("Wrote: " + timeServerURL[i]);
-    } else {
-      EEPROM.write(96 + i, 0);
-    }
-  }
-
-  EEPROM.commit();
-}
-
-void resetEEPROM() {
-  wipeEEPROM();
-  storeTimeServerURLInEEPROM(DEFAULT_TIME_SERVER_URL);
-  storeCredentialsInEEPROM("","");
-}
-
-void wipeEEPROM() {
-  for (int i = 0; i < 344; i++) {EEPROM.write(i, 0);}
-  EEPROM.commit();
-}
-
 
 // ----------------------------------------------------------------------------------------------------
 // ----------------------------------------- Utility functions ----------------------------------------
@@ -1645,6 +1474,7 @@ boolean scanI2CBus() {
     preferredI2CSlaveAddress = pingAnsweredFrom;
     preferredAddressFoundBy = 2;
   }
+  debugMsg("Scanning I2C bus done");
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1675,7 +1505,7 @@ String getNavBar() {
   navbar += "<div class=\"container-fluid\"><div class=\"navbar-header\"><button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">";
   navbar += "<span class=\"sr-only\">Toggle navigation</span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button>";
   navbar += "<a class=\"navbar-brand\" href=\"#\">Arduino Nixie Clock Time Module</a></div><div id=\"navbar\" class=\"navbar-collapse collapse\"><ul class=\"nav navbar-nav navbar-right\">";
-  navbar += "<li><a href=\"/\">Summary</a></li><li><a href=\"/time\">Configure Time Server</a></li><li><a href=\"/wlan_config\">Configure WLAN settings</a></li><li><a href=\"/clockconfig\">Configure clock settings</a></li></ul></div></div></nav>";
+  navbar += "<li><a href=\"/\">Summary</a></li><li><a href=\"/time\">Configure Time Server</a></li><li><a href=\"/clockconfig\">Configure clock settings</a></li></ul></div></div></nav>";
   return navbar;
 } 
 
@@ -1910,5 +1740,80 @@ String getSubmitButton(String buttonText) {
   result += buttonText;
   result += "\"></div></div>";
   return result;
+}
+
+// ----------------------------------------------------------------------------------------------------
+// ------------------------------------------- JSON functions -----------------------------------------
+// ----------------------------------------------------------------------------------------------------
+
+bool getConfigfromSpiffs() {
+  bool loaded = false;
+  if (SPIFFS.begin()) { 
+    debugMsg("mounted file system for read");
+    if (SPIFFS.exists("/config.json")) {
+      //file exists, reading and loading
+      debugMsg("reading config file");
+      File configFile = SPIFFS.open("/config.json", "r");
+      if (configFile) {
+        debugMsg("opened config file");
+        size_t size = configFile.size();
+        // Allocate a buffer to store contents of the file.
+        std::unique_ptr<char[]> buf(new char[size]);
+
+        configFile.readBytes(buf.get(), size);
+        DynamicJsonBuffer jsonBuffer;
+        JsonObject& json = jsonBuffer.parseObject(buf.get());
+        json.printTo(Serial);
+        debugMsg("\n");
+        
+        if (json.success()) {
+          debugMsg("parsed json");
+          char tzsTmp[256];
+          strcpy(tzsTmp, json["time_zone"]);
+          timeServerURL = String(tzsTmp);
+          debugMsg("Loaded time server URL: " + timeServerURL);
+          loaded = true;
+        } else {
+          debugMsg("failed to load json config");
+        }
+        debugMsg("Closing config file");
+        configFile.close();
+      }
+    }
+  } else {
+    debugMsg("failed to mount FS");
+  }
+
+  SPIFFS.end();
+  return loaded;
+}
+
+void saveConfigToSpiffs() {
+  if (SPIFFS.begin()) {
+    debugMsg("mounted file system for write");
+    debugMsg("saving config");
+    
+    DynamicJsonBuffer jsonBuffer;
+    JsonObject& json = jsonBuffer.createObject();
+    json["time_zone"] = timeServerURL;
+
+    File configFile = SPIFFS.open("/config.json", "w");
+    if (!configFile) {
+      debugMsg("failed to open config file for writing");
+      configFile.close();
+      return;
+    }
+
+    json.printTo(Serial);
+    debugMsg("\n");
+  
+    json.printTo(configFile);
+    configFile.close();
+    debugMsg("Saved config");
+    //end save
+  } else {
+    debugMsg("failed to mount FS");
+  }
+  SPIFFS.end();
 }
 
