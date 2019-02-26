@@ -979,10 +979,8 @@ void performOncePerMinuteProcessing() {
     getRTCTime();
   }
 
-  // AM/PM indicator
-  if (hourMode) {
-    dpArray[1] = (hour() > 12);
-  }
+  // AM/PM indicator - show if we are in 12H mode and it is PM
+  dpArray[1] = hourMode && (hour() > 12);
 }
 
 // ************************************************************
