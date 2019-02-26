@@ -11,15 +11,15 @@
     CPU: 160MHz, 
     Flash Mode: QIO, 
     Upload speed: 115200, 
-    Flash size: 512k (32k SPIFFS), 
+    Flash size: 1M (64k SPIFFS), 
     Reset method: ck, Disabled, none
-    Erase Flash: All falsh contents,
-    Builtin LED: 1
+    Erase Flash: All flash contents,
+    Builtin LED: 1 (1 for ESP-01)
 
    Go to http://192.168.4.1 in a web browser connected to this access point to see it
 */
 
-#include <FS.h>                   //this needs to be first, or it all crashes and burns...
+#include <FS.h>
 #include <DNSServer.h>
 // #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
@@ -45,15 +45,8 @@
 
 #define DEBUG_OFF             // DEBUG or DEBUG_OFF
 
-// Access point credentials, be default it is as open AP
-const char *ap_ssid = "NixieTimeModule";
-const char *ap_password = "";
-
 const char *serialNumber = "0x0x0x";  // this is to be customized at burn time
 
-// Pin 1 on ESP-01, pin 2 on ESP-12E
-#define blueLedPin 1
-boolean blueLedState = true;
 int blinkMode = 0; // 0 = Connected, short flash, 1 = connected, update blink, 2 = connected, no time server
 
 // used for flashing the blue LED
@@ -114,7 +107,7 @@ void setup()
   setupDebug();
   wifiManager.setDebugOutput(true);
 #else
-  pinMode(blueLedPin, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
   wifiManager.setDebugOutput(false);
 #endif
 
@@ -127,11 +120,9 @@ void setup()
   while (!connected) {
     #ifndef DEBUG
       for (int i = 0 ; i < 5 ; i++) {
-      blueLedState = false;
-      setBlueLED(blueLedState);
+      setBlueLED(false);
       delay(100);
-      blueLedState = true;
-      setBlueLED(blueLedState);
+      setBlueLED(true);
       delay(100);
     }
     #endif
@@ -142,11 +133,9 @@ void setup()
     debugMsg("Connected!");
   #else  
     for (int i = 0 ; i < 3 ; i++) {
-      blueLedState = false;
-      setBlueLED(blueLedState);
+      setBlueLED(false);
       delay(50);
-      blueLedState = true;
-      setBlueLED(blueLedState);
+      setBlueLED(true);
       delay(500);
     }
   #endif
@@ -270,22 +259,13 @@ void loop()
         break;
       }
   }
-  
-  if (((millis() - lastMillis) > blinkTopTime) && blueLedState) {
-    lastMillis = millis();
-    blueLedState = false;
-#ifndef DEBUG
-    setBlueLED(blueLedState);
-#endif
-  } else if (((millis() - lastMillis) > blinkOnTime) && !blueLedState) {
-    blueLedState = true;
-    if (blinkMode == 1) {
-      blinkMode = 0;
-    }
-#ifndef DEBUG
-    setBlueLED(blueLedState);
-#endif    
+
+  unsigned long nowMillis = millis();
+  if ((nowMillis - lastMillis) > blinkTopTime) {
+    lastMillis = nowMillis;
   }
+
+  setBlueLED((nowMillis - lastMillis) < blinkOnTime);
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1065,18 +1045,15 @@ String getTimeFromTimeZoneServer() {
 // ----------------------------------------- Utility functions ----------------------------------------
 // ----------------------------------------------------------------------------------------------------
 
-void toggleBlueLED() {
-  blueLedState = ! blueLedState;
-  digitalWrite(blueLedPin, blueLedState);
-}
-
 void setBlueLED(boolean newState) {
-  digitalWrite(blueLedPin, newState);
+#ifndef DEBUG
+  digitalWrite(LED_BUILTIN, newState);
+#endif
 }
 
 /**
-   Split a string based on a separator, get the element given by index
-*/
+ * Split a string based on a separator, get the element given by index
+ */
 String getValue(String data, char separator, int index)
 {
   int found = 0;
