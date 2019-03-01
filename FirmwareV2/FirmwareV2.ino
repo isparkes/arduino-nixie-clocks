@@ -24,9 +24,9 @@
 
 // Clock specific libraries, install these with "Sketch -> Include Library -> Add .ZIP library
 // using the ZIP files in the "libraries" directory
-#include <DS3231.h>
-#include <TimeLib.h>
-#include <Adafruit_NeoPixel.h>
+#include <DS3231.h>             // https://github.com/NorthernWidget/DS3231 (Wickert 1.0.2)
+#include <TimeLib.h>            // http://playground.arduino.cc/code/time (Margolis 1.5.0)
+#include <Adafruit_NeoPixel.h>  // https://github.com/adafruit/Adafruit_NeoPixel (Adafruit 1.1.8)
 
 // Other parts of the code, broken out for clarity
 #include "ClockButton.h"
@@ -898,9 +898,6 @@ void loop()
     digitOn(digitBurnDigit, digitBurnValue);
   }
 
-  // Slow regulation of the voltage
-  checkHVVoltage();
-
   // Prepare the tick and backlight LEDs
   setLeds();
 }
@@ -959,6 +956,9 @@ void performOncePerSecondProcessing() {
   if ((valueDisplayTime > 0) && (valueDisplayTime < 0xff)) {
     valueDisplayTime--;
   }
+
+  // Slow regulation of the voltage
+  checkHVVoltage();
 
   // feed the watchdog
   wdt_reset();
@@ -2409,6 +2409,7 @@ void digitOn(int digit, int value) {
     case 5: PORTD = PORTD | B00000001; break; // PD0 - equivalent to digitalWrite(ledPin_a_6,HIGH);
   }
   SetSN74141Chip(value);
+  TCNT1 = 0; // Thanks Phil!
   TCCR1A = tccrOn;
 }
 
@@ -3626,4 +3627,3 @@ byte encodeBooleanForI2C(boolean valueToProcess) {
     return byteToSend;
   }
 }
-
