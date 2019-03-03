@@ -34,6 +34,8 @@
 #include "DisplayDefs.h"
 #include "I2CDefs.h"
 
+#define FWV2                    // "REV3" for Modular Rev3 "FWV2" for ClassicRev6 and ModularRev3.01
+
 //**********************************************************************************
 //**********************************************************************************
 //*                               Constants                                        *
@@ -331,7 +333,11 @@
 #define ledPin_0_d  12    // package pin 18 // PB4
 
 // anode pins
-#define ledPin_a_1  7     // high - Hours tens  // package pin 13 // PD7
+#ifdef REV3
+  #define ledPin_a_1  A3  // high - Hours tens  // Package pin 26 // PC3 // Analog or digital input for PIR
+#else
+  #define ledPin_a_1  7   // high - Hours tens  // package pin 13 // PD7
+#endif
 #define ledPin_a_2  4     //      - Hours units // package pin 6  // PD4
 #define ledPin_a_3  3     //      - Mins  tens  // package pin 5  // PD3
 #define ledPin_a_4  2     //      - Mins  units // package pin 4  // PD2
@@ -342,7 +348,11 @@
 #define inputPin1   A2    // Package pin 25 // PC2 // Analog or digital input for button.
 
 // PIR input
-#define pirPin      A3    // Package pin 26 // PC3 // Analog or digital input for PIR
+#ifdef REV3
+  #define pirPin    7     // package pin 13 // PD7
+#else
+  #define pirPin    A3    // Package pin 26 // PC3 // Analog or digital input for PIR
+#endif
 
 // PWM pin used to drive the DC-DC converter
 #define hvDriverPin 9     // package pin 15 // PB1
@@ -2401,7 +2411,11 @@ void outputDisplay()
 // ************************************************************
 void digitOn(int digit, int value) {
   switch (digit) {
+#ifdef REV3
+    case 0: PORTC = PORTC | B00001000; break; // PC3 - equivalent to digitalWrite(ledPin_a_1,HIGH);
+#else
     case 0: PORTD = PORTD | B10000000; break; // PD7 - equivalent to digitalWrite(ledPin_a_1,HIGH);
+#endif
     case 1: PORTD = PORTD | B00010000; break; // PD4 - equivalent to digitalWrite(ledPin_a_2,HIGH);
     case 2: PORTD = PORTD | B00001000; break; // PD3 - equivalent to digitalWrite(ledPin_a_3,HIGH);
     case 3: PORTD = PORTD | B00000100; break; // PD2 - equivalent to digitalWrite(ledPin_a_4,HIGH);
@@ -2418,10 +2432,14 @@ void digitOn(int digit, int value) {
 // ************************************************************
 void digitOff() {
   TCCR1A = tccrOff;
-  //digitalWrite(anodePins[digit], LOW);
 
   // turn all digits off - equivalent to digitalWrite(ledPin_a_n,LOW); (n=1,2,3,4,5,6) but much faster
+#ifdef REV3
+  PORTC = PORTC & B11110111;
+  PORTD = PORTD & B11100000;
+#else
   PORTD = PORTD & B01100000;
+#endif
 }
 
 // ************************************************************
