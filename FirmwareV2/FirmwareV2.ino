@@ -312,10 +312,10 @@
 // RTC address
 #define RTC_I2C_ADDRESS                 0x68
 
-#define MAX_WIFI_TIME                  5
+#define MAX_WIFI_TIME                   5
 
-#define DO_NOT_APPLY_LEAD_0_BLANK     false
-#define APPLY_LEAD_0_BLANK            true
+#define DO_NOT_APPLY_LEAD_0_BLANK       false
+#define APPLY_LEAD_0_BLANK              true
 
 //**********************************************************************************
 //**********************************************************************************
@@ -1117,7 +1117,7 @@ boolean checkPIR(unsigned long nowMillis) {
 // Set back light LEDs to the same colour
 // ************************************************************
 void setAllLEDs(byte red, byte green, byte blue) {
-  for (int i = 0 ; i < 6 ; i++) {
+  for (int i = 0 ; i < DIGIT_COUNT ; i++) {
     ledR[i] = red;
     ledG[i] = green;
     ledB[i] = blue;
@@ -1129,7 +1129,7 @@ void setAllLEDs(byte red, byte green, byte blue) {
 // Put the led buffers out
 // ************************************************************
 void outputLEDBuffer() {
-  for (int i = 0 ; i < 6 ; i++) {
+  for (int i = 0 ; i < DIGIT_COUNT ; i++) {
     leds.setPixelColor(i, leds.Color(ledR[i], ledG[i], ledB[i]));
   }
   leds.show();
