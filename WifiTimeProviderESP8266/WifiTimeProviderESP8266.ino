@@ -50,17 +50,13 @@
 
 #include <FS.h>
 #include <DNSServer.h>
-// #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266HTTPClient.h>
-#include <ESP8266mDNS.h>
 #include <Wire.h>
-#include <EEPROM.h>
-#include <time.h>
+
 #include <WiFiManager.h>          // https://github.com/tzapu/WiFiManager  (0.14.0)
 #include <ArduinoJson.h>          // https://github.com/bblanchon/ArduinoJson (5.13.2)
-
 #include <ezTime.h>               // https://github.com/ropg/ezTime (0.7.9)
 
 // Other parts of the code, broken out for clarity
