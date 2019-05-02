@@ -23,7 +23,7 @@ Power regulator
 Text Notes 3500 9550 0    70   ~ 0
 Cathode control
 $Comp
-L ClassicRev6-rescue:RCL_C-EU050-024X044 C2
+L ClassicRev6-rescue:RCL_C-EU050-024X044-ClassicRev6-rescue C2
 U 1 1 5696B8D8
 P 2800 8150
 F 0 "C2" H 2650 7950 70  0000 L BNN
@@ -34,7 +34,7 @@ F 3 "" H 2800 8150 60  0001 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:CP C4
+L ClassicRev6-rescue:CP-ClassicRev6-rescue C4
 U 1 1 5696B9A0
 P 2250 8050
 F 0 "C4" H 2300 8100 70  0000 L BNN
@@ -47,7 +47,7 @@ F 5 "+" V 2227 8066 50  0001 L BNN "Field4"
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_C-EU050-024X044 C5
+L ClassicRev6-rescue:RCL_C-EU050-024X044-ClassicRev6-rescue C5
 U 1 1 5696BA68
 P 6750 1800
 F 0 "C5" H 6550 1800 70  0000 L BNN
@@ -58,7 +58,7 @@ F 3 "" H 6750 1800 60  0001 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_C-EU050-024X044 C6
+L ClassicRev6-rescue:RCL_C-EU050-024X044-ClassicRev6-rescue C6
 U 1 1 5696BB30
 P 6750 2300
 F 0 "C6" H 6810 2315 70  0000 L BNN
@@ -69,7 +69,7 @@ F 3 "" H 6750 2300 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_C-EU050-024X044 C7
+L ClassicRev6-rescue:RCL_C-EU050-024X044-ClassicRev6-rescue C7
 U 1 1 5696BBF8
 P 7650 1500
 F 0 "C7" H 7710 1515 70  0000 L BNN
@@ -80,7 +80,7 @@ F 3 "" H 7650 1500 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_C-EU050-024X044 C8
+L ClassicRev6-rescue:RCL_C-EU050-024X044-ClassicRev6-rescue C8
 U 1 1 5696BCC0
 P 7650 2400
 F 0 "C8" H 7710 2415 70  0000 L BNN
@@ -91,20 +91,7 @@ F 3 "" H 7650 2400 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:CP C9
-U 1 1 5696BD88
-P 5150 7950
-F 0 "C9" H 5200 7800 70  0000 L BNN
-F 1 "220uF" V 5000 7800 70  0000 L BNN
-F 2 "NixieClockMaster:C_Radial_D6.3_L11.2_P2.5" H 5140 7740 70  0001 L TNN
-F 3 "" H 5150 7950 60  0001 C CNN
-F 4 "Value" H 4900 7600 60  0000 C CNN "Fieldname"
-F 5 "+" V 5127 7966 50  0000 L BNN "Field5"
-	1    5150 7950
-	1    0    0    -1  
-$EndComp
-$Comp
-L ClassicRev6-rescue:FRAMES_FRAME_A_L #FRAME1
+L ClassicRev6-rescue:FRAMES_FRAME_A_L-ClassicRev6-rescue #FRAME1
 U 1 1 5696BF7C
 P 3650 11700
 F 0 "#FRAME1" H 3700 11750 60  0001 C CNN
@@ -170,7 +157,7 @@ F 3 "" H 11450 3800 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:ATMEL_MEGA8-P IC2
+L ClassicRev6-rescue:ATMEL_MEGA8-P-ClassicRev6-rescue IC2
 U 1 1 5696C42C
 P 8950 2300
 F 0 "IC2" H 8250 900 70  0000 L BNN
@@ -181,7 +168,7 @@ F 3 "" H 8950 2300 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:74XX-US_74141N IC3
+L ClassicRev6-rescue:74XX-US_74141N-ClassicRev6-rescue IC3
 U 1 1 5696C4F4
 P 2550 10250
 F 0 "IC3" H 2251 10775 70  0000 L BNN
@@ -192,20 +179,18 @@ F 3 "" H 2550 10250 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:74XX-US_74141N IC3
+L ClassicRev6-rescue:74XX-US_74141N-ClassicRev6-rescue IC3
 U 2 1 5696C558
 P 5950 7950
 F 0 "IC3" H 5925 7925 70  0000 L BNN
 F 1 "74141N" H 5940 7840 70  0001 L TNN
 F 2 "NixieClockMaster:74141_DIL16" H 5940 7740 70  0001 L TNN
 F 3 "" H 5950 7950 60  0001 C CNN
-F 4 "GND" V 6024 7650 50  0000 L BNN "Field4"
-F 5 "VCC" V 6025 8150 50  0000 L BNN "Field5"
 	2    5950 7950
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_L-US6000-XXX-RC L1
+L ClassicRev6-rescue:RCL_L-US6000-XXX-RC-ClassicRev6-rescue L1
 U 1 1 5696C620
 P 3300 1400
 F 0 "L1" V 3250 1200 70  0000 L BNN
@@ -216,7 +201,7 @@ F 3 "" H 3300 1400 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L ClassicRev6-rescue:LED_LED3MM LED1
+L ClassicRev6-rescue:LED_LED3MM-ClassicRev6-rescue LED1
 U 1 1 5696C6E8
 P 5550 8150
 F 0 "LED1" V 5690 7970 70  0000 L BNN
@@ -227,7 +212,7 @@ F 3 "" H 5550 8150 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:PC817 OK1
+L ClassicRev6-rescue:PC817-ClassicRev6-rescue OK1
 U 1 1 5696C7B0
 P 2150 5400
 F 0 "OK1" H 1875 5625 70  0000 L BNN
@@ -239,7 +224,7 @@ F 4 "Value" H 2150 5400 60  0001 C CNN "Fieldname"
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:PC817 OK2
+L ClassicRev6-rescue:PC817-ClassicRev6-rescue OK2
 U 1 1 5696C878
 P 2150 4700
 F 0 "OK2" H 1875 4925 70  0000 L BNN
@@ -251,7 +236,7 @@ F 4 "Value" H 2150 4700 60  0001 C CNN "Fieldname"
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:PC817 OK3
+L ClassicRev6-rescue:PC817-ClassicRev6-rescue OK3
 U 1 1 5696C940
 P 2150 4000
 F 0 "OK3" H 1875 4225 70  0000 L BNN
@@ -263,7 +248,7 @@ F 4 "Value" H 2150 4000 60  0001 C CNN "Fieldname"
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:PC817 OK4
+L ClassicRev6-rescue:PC817-ClassicRev6-rescue OK4
 U 1 1 5696CA08
 P 5550 5600
 F 0 "OK4" H 5275 5825 70  0000 L BNN
@@ -275,7 +260,7 @@ F 4 "Value" H 5550 5600 60  0001 C CNN "Fieldname"
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:PC817 OK5
+L ClassicRev6-rescue:PC817-ClassicRev6-rescue OK5
 U 1 1 5696CAD0
 P 5550 4900
 F 0 "OK5" H 5275 5125 70  0000 L BNN
@@ -287,7 +272,7 @@ F 4 "Value" H 5550 4900 60  0001 C CNN "Fieldname"
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:PC817 OK6
+L ClassicRev6-rescue:PC817-ClassicRev6-rescue OK6
 U 1 1 5696CB98
 P 5550 4200
 F 0 "OK6" H 5275 4425 70  0000 L BNN
@@ -299,7 +284,7 @@ F 4 "Value" H 5550 4200 60  0001 C CNN "Fieldname"
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:CRYSTAL_CRYSTALHC49S Q2
+L ClassicRev6-rescue:CRYSTAL_CRYSTALHC49S-ClassicRev6-rescue Q2
 U 1 1 5696CD28
 P 7050 2000
 F 0 "Q2" H 7150 2040 70  0000 L BNN
@@ -312,7 +297,7 @@ F 5 "2" H 7110 1955 34  0000 L BNN "Field6"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L ClassicRev6-rescue:Q_NPN_CBE Q4
+L ClassicRev6-rescue:Q_NPN_CBE-ClassicRev6-rescue Q4
 U 1 1 5696CEB8
 P 11050 2600
 F 0 "Q4" H 10900 2700 70  0000 L BNN
@@ -323,7 +308,7 @@ F 3 "" H 11050 2600 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:Q_NPN_CBE Q6
+L ClassicRev6-rescue:Q_NPN_CBE-ClassicRev6-rescue Q6
 U 1 1 5696D048
 P 11050 3300
 F 0 "Q6" H 10850 3400 70  0000 L BNN
@@ -334,40 +319,40 @@ F 3 "" H 11050 3300 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R1
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R1
 U 1 1 5696D110
 P 1500 3900
-F 0 "R1" H 1350 3958 70  0000 L BNN
-F 1 "1k" H 1350 3770 70  0000 L BNN
+F 0 "R1" H 1550 3750 70  0000 L BNN
+F 1 "1k" H 1350 3750 70  0000 L BNN
 F 2 "NixieClockMaster:R-0207_2V" H 1490 3690 70  0001 L TNN
 F 3 "" H 1500 3900 60  0001 C CNN
 	1    1500 3900
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R2
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R2
 U 1 1 5696D1D8
 P 1500 4600
-F 0 "R2" H 1350 4658 70  0000 L BNN
-F 1 "1k" H 1350 4470 70  0000 L BNN
+F 0 "R2" H 1550 4450 70  0000 L BNN
+F 1 "1k" H 1350 4450 70  0000 L BNN
 F 2 "NixieClockMaster:R-0207_2V" H 1490 4390 70  0001 L TNN
 F 3 "" H 1500 4600 60  0001 C CNN
 	1    1500 4600
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R3
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R3
 U 1 1 5696D2A0
 P 1500 5300
-F 0 "R3" H 1350 5358 70  0000 L BNN
-F 1 "1k" H 1350 5170 70  0000 L BNN
+F 0 "R3" H 1550 5150 70  0000 L BNN
+F 1 "1k" H 1350 5150 70  0000 L BNN
 F 2 "NixieClockMaster:R-0207_2V" H 1490 5090 70  0001 L TNN
 F 3 "" H 1500 5300 60  0001 C CNN
 	1    1500 5300
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R4
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R4
 U 1 1 5696D368
 P 2800 4100
 F 0 "R4" H 2650 4158 70  0000 L BNN
@@ -378,7 +363,7 @@ F 3 "" H 2800 4100 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R5
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R5
 U 1 1 5696D430
 P 2800 4800
 F 0 "R5" H 2650 4858 70  0000 L BNN
@@ -389,7 +374,7 @@ F 3 "" H 2800 4800 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R6
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R6
 U 1 1 5696D4F8
 P 2800 5500
 F 0 "R6" H 2650 5558 70  0000 L BNN
@@ -400,7 +385,7 @@ F 3 "" H 2800 5500 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R7
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R7
 U 1 1 5696D5C0
 P 3200 2400
 F 0 "R7" H 3050 2459 70  0000 L BNN
@@ -411,7 +396,7 @@ F 3 "" H 3200 2400 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R8
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R8
 U 1 1 5696D688
 P 5550 7750
 F 0 "R8" H 5400 7808 70  0000 L BNN
@@ -422,7 +407,7 @@ F 3 "" H 5550 7750 60  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R9
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R9
 U 1 1 5696D750
 P 1200 1700
 F 0 "R9" H 1050 1759 70  0000 L BNN
@@ -433,7 +418,7 @@ F 3 "" H 1200 1700 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R10
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R10
 U 1 1 5696D818
 P 1200 2400
 F 0 "R10" H 1050 2459 70  0000 L BNN
@@ -444,7 +429,7 @@ F 3 "" H 1200 2400 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R11
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R11
 U 1 1 5696D8E0
 P 6250 7750
 F 0 "R11" H 6100 7809 70  0000 L BNN
@@ -455,40 +440,40 @@ F 3 "" H 6250 7750 60  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R12
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R12
 U 1 1 5696D9A8
 P 4900 4100
-F 0 "R12" H 4750 4158 70  0000 L BNN
-F 1 "1k" H 4750 3970 70  0000 L BNN
+F 0 "R12" H 4950 3950 70  0000 L BNN
+F 1 "1k" H 4750 3950 70  0000 L BNN
 F 2 "NixieClockMaster:R-0207_2V" H 4890 3890 70  0001 L TNN
 F 3 "" H 4900 4100 60  0001 C CNN
 	1    4900 4100
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R13
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R13
 U 1 1 5696DA70
 P 4900 4800
-F 0 "R13" H 4750 4858 70  0000 L BNN
-F 1 "1k" H 4750 4670 70  0000 L BNN
+F 0 "R13" H 4950 4650 70  0000 L BNN
+F 1 "1k" H 4750 4650 70  0000 L BNN
 F 2 "NixieClockMaster:R-0207_2V" H 4890 4590 70  0001 L TNN
 F 3 "" H 4900 4800 60  0001 C CNN
 	1    4900 4800
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R14
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R14
 U 1 1 5696DB38
 P 4900 5500
-F 0 "R14" H 4750 5558 70  0000 L BNN
-F 1 "1k" H 4750 5370 70  0000 L BNN
+F 0 "R14" H 4950 5350 70  0000 L BNN
+F 1 "1k" H 4750 5350 70  0000 L BNN
 F 2 "NixieClockMaster:R-0207_2V" H 4890 5290 70  0001 L TNN
 F 3 "" H 4900 5500 60  0001 C CNN
 	1    4900 5500
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R15
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R15
 U 1 1 5696DC00
 P 6200 4300
 F 0 "R15" H 6050 4358 70  0000 L BNN
@@ -499,7 +484,7 @@ F 3 "" H 6200 4300 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R16
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R16
 U 1 1 5696DCC8
 P 6200 5000
 F 0 "R16" H 6050 5058 70  0000 L BNN
@@ -510,7 +495,7 @@ F 3 "" H 6200 5000 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R17
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R17
 U 1 1 5696DD90
 P 6200 5700
 F 0 "R17" H 6050 5758 70  0000 L BNN
@@ -521,7 +506,7 @@ F 3 "" H 6200 5700 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R18
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R18
 U 1 1 5696DE58
 P 7750 1000
 F 0 "R18" H 7600 1058 70  0000 L BNN
@@ -532,7 +517,7 @@ F 3 "" H 7750 1000 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R19
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R19
 U 1 1 5696DF20
 P 11750 3100
 F 0 "R19" H 11600 3158 70  0000 L BNN
@@ -543,7 +528,7 @@ F 3 "" H 11750 3100 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R21
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R21
 U 1 1 5696E0B0
 P 11750 2400
 F 0 "R21" H 11600 2458 70  0000 L BNN
@@ -554,7 +539,7 @@ F 3 "" H 11750 2400 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R23
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R23
 U 1 1 5696E240
 P 10600 3300
 F 0 "R23" H 10600 3400 70  0000 L BNN
@@ -565,7 +550,7 @@ F 3 "" H 10600 3300 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:ARDUNIX6_MA04-1 SV1
+L ClassicRev6-rescue:ARDUNIX6_MA04-1-ClassicRev6-rescue SV1
 U 1 1 5696E308
 P 1100 8150
 F 0 "SV1" H 1051 8380 70  0000 L BNN
@@ -576,7 +561,7 @@ F 3 "" H 1100 8150 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:CONN_01X05 SV2
+L ClassicRev6-rescue:CONN_01X05-ClassicRev6-rescue SV2
 U 1 1 5696E3D0
 P 14400 2900
 F 0 "SV2" H 14351 3130 70  0000 L BNN
@@ -587,7 +572,7 @@ F 3 "" H 14400 2900 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:ARDUNIX6_MA04-1 SV4
+L ClassicRev6-rescue:ARDUNIX6_MA04-1-ClassicRev6-rescue SV4
 U 1 1 5696E560
 P 14500 4800
 F 0 "SV4" H 14450 5030 70  0000 L BNN
@@ -598,7 +583,7 @@ F 3 "" H 14500 4800 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:ARDUNIX6_MA04-1 SV6
+L ClassicRev6-rescue:ARDUNIX6_MA04-1-ClassicRev6-rescue SV6
 U 1 1 5696E6F0
 P 14500 3800
 F 0 "SV6" H 14450 4030 70  0000 L BNN
@@ -609,7 +594,7 @@ F 3 "" H 14500 3800 60  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L ClassicRev6-rescue:CON-LSTB_MA03-2 SV7
+L ClassicRev6-rescue:CON-LSTB_MA03-2-ClassicRev6-rescue SV7
 U 1 1 5696E7B8
 P 14450 5650
 F 0 "SV7" H 14300 5880 70  0000 L BNN
@@ -672,22 +657,22 @@ DIGIT_D
 Text Label 15050 5750 0    65   ~ 0
 DIGIT_D
 Text Label 6450 8050 0    65   ~ 0
-DLS
+LDR
 Text Label 10150 1300 0    65   ~ 0
-DLS
+LDR
 Text Label 14000 2800 2    65   ~ 0
-DLS
-Text Label 5000 4400 0    65   ~ 0
+LDR
+Text Label 5100 4300 2    65   ~ 0
 GND
-Text Label 5000 5100 0    65   ~ 0
+Text Label 5100 5000 2    65   ~ 0
 GND
-Text Label 5000 5800 0    65   ~ 0
+Text Label 5100 5700 2    65   ~ 0
 GND
-Text Label 1600 4200 0    65   ~ 0
+Text Label 1700 4100 2    65   ~ 0
 GND
-Text Label 1600 4900 0    65   ~ 0
+Text Label 1700 4800 2    65   ~ 0
 GND
-Text Label 1600 5600 0    65   ~ 0
+Text Label 1700 5500 2    65   ~ 0
 GND
 Text Label 14000 2700 2    65   ~ 0
 GND
@@ -743,14 +728,6 @@ Text Label 4100 1400 0    65   ~ 0
 VIN
 Text Label 1200 1500 1    20   ~ 0
 170V
-Text Label 1300 5300 2    20   ~ 0
-ANODE1
-Text Label 1300 4600 2    20   ~ 0
-ANODE2
-Text Label 1300 3900 2    20   ~ 0
-ANODE3
-Text Label 4700 5500 2    20   ~ 0
-ANODE4
 Text Label 8050 1500 2    20   ~ 0
 AREF
 Text Label 7650 2200 1    20   ~ 0
@@ -763,8 +740,8 @@ Text Label 2050 10350 2    20   ~ 0
 DIGIT_C
 Text Label 2050 10450 2    20   ~ 0
 DIGIT_D
-Text Label 6250 7950 3    20   ~ 0
-DLS
+Text Label 4200 7800 0    20   ~ 0
+2596_OUT
 Text Label 6750 1900 3    20   ~ 0
 GND
 Text Label 6750 2100 1    20   ~ 0
@@ -801,20 +778,16 @@ Text Label 7650 1600 3    20   ~ 0
 VCC
 Text Label 7550 1000 2    20   ~ 0
 VCC
-Text Label 6750 1600 1    20   ~ 0
-XTAL1
 Text Label 7050 1900 1    20   ~ 0
 XTAL1
 Text Label 8050 1900 2    20   ~ 0
 XTAL1
-Text Label 6750 2400 3    20   ~ 0
-XTAL2
 Text Label 7050 2100 3    20   ~ 0
 XTAL2
 Text Label 8050 2100 2    20   ~ 0
 XTAL2
 $Comp
-L ClassicRev6-rescue:TEST_1P #PWR1
+L ClassicRev6-rescue:TEST_1P-ClassicRev6-rescue #PWR1
 U 1 1 569E862A
 P 2650 3700
 F 0 "#PWR1" H 2650 3820 50  0001 C CNN
@@ -845,28 +818,12 @@ Text Label 3050 10750 0    20   ~ 0
 CATHODE_9
 Text Label 3050 10650 0    20   ~ 0
 CATHODE_8
-Text Label 4700 4800 2    20   ~ 0
-ANODE5
-Text Label 4700 4100 2    20   ~ 0
-ANODE6
-Text Label 5100 4300 0    20   ~ 0
-GND
-Text Label 5100 5000 0    20   ~ 0
-GND
-Text Label 5100 5700 0    20   ~ 0
-GND
-Text Label 1700 4100 0    20   ~ 0
-gnd
-Text Label 1700 4800 0    20   ~ 0
-GND
-Text Label 1700 5500 0    20   ~ 0
-GND
 Text Label 6050 4000 0    59   ~ 0
 170V
 Text Label 2650 3800 0    59   ~ 0
 170V
 $Comp
-L ClassicRev6-rescue:CP C1
+L ClassicRev6-rescue:CP-ClassicRev6-rescue C1
 U 1 1 5696B810
 P 1800 2000
 F 0 "C1" H 1850 2100 70  0000 L BNN
@@ -879,7 +836,7 @@ F 5 "+" V 1650 2200 50  0001 L BNN "Field4"
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:IRF740 Q1
+L ClassicRev6-rescue:IRF740-ClassicRev6-rescue Q1
 U 1 1 5696CC60
 P 2800 2000
 F 0 "Q1" H 3100 2099 70  0000 L BNN
@@ -894,7 +851,7 @@ F 7 "G" H 2700 1951 32  0000 L BNN "Field7"
 	-1   0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:CONN_01X10 SV5
+L ClassicRev6-rescue:CONN_01X10-ClassicRev6-rescue SV5
 U 1 1 569EDB5E
 P 5650 10300
 F 0 "SV5" H 5650 10850 50  0000 C CNN
@@ -905,7 +862,7 @@ F 3 "" H 5650 10300 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:CONN_01X06 SV3
+L ClassicRev6-rescue:CONN_01X06-ClassicRev6-rescue SV3
 U 1 1 569EE12F
 P 7200 4550
 F 0 "SV3" H 7200 4900 50  0000 C CNN
@@ -927,7 +884,7 @@ F 3 "" H 6250 7450 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:TEST_1P TP1
+L ClassicRev6-rescue:TEST_1P-ClassicRev6-rescue TP1
 U 1 1 56B9107F
 P 6050 4000
 F 0 "TP1" H 6050 4270 50  0000 C CNN
@@ -938,7 +895,7 @@ F 3 "" H 6250 4000 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:TEST_1P TP2
+L ClassicRev6-rescue:TEST_1P-ClassicRev6-rescue TP2
 U 1 1 56B92400
 P 4000 2650
 F 0 "TP2" H 4000 2920 50  0000 C CNN
@@ -960,7 +917,7 @@ F 3 "" H 4300 2600 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:TEST_1P TP3
+L ClassicRev6-rescue:TEST_1P-ClassicRev6-rescue TP3
 U 1 1 56B94615
 P 5150 7450
 F 0 "TP3" H 5150 7720 50  0000 C CNN
@@ -971,7 +928,7 @@ F 3 "" H 5350 7450 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:D-RESCUE-KickstarterNixie D2
+L ClassicRev6-rescue:D-RESCUE-KickstarterNixie-ClassicRev6-rescue D2
 U 1 1 572B289D
 P 2250 1400
 F 0 "D2" H 2250 1500 50  0000 C CNN
@@ -983,7 +940,7 @@ F 4 "UF4007" H 2250 1600 60  0001 C CNN "Fieldname"
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:D-RESCUE-KickstarterNixie D1
+L ClassicRev6-rescue:D-RESCUE-KickstarterNixie-ClassicRev6-rescue D1
 U 1 1 572B3850
 P 1950 7750
 F 0 "D1" H 1950 7850 50  0000 C CNN
@@ -997,7 +954,7 @@ $EndComp
 Text Label 2700 1750 0    20   ~ 0
 DRAIN
 $Comp
-L ClassicRev6-rescue:AP1117 U1
+L ClassicRev6-rescue:AP1117-ClassicRev6-rescue U1
 U 1 1 5860266A
 P 11600 7550
 F 0 "U1" H 11700 7300 50  0000 C CNN
@@ -1008,7 +965,7 @@ F 3 "" H 11600 7550 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:CP C11
+L ClassicRev6-rescue:CP-ClassicRev6-rescue C11
 U 1 1 5860266C
 P 12950 8250
 F 0 "C11" H 12975 8350 50  0000 L CNN
@@ -1020,7 +977,7 @@ F 4 "Value" H 12950 8250 60  0001 C CNN "Fieldname"
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:Q_NMOS_GSD Q7
+L ClassicRev6-rescue:Q_NMOS_GSD-ClassicRev6-rescue Q7
 U 1 1 5860266D
 P 13950 8600
 F 0 "Q7" H 14250 8650 50  0000 R CNN
@@ -1031,7 +988,7 @@ F 3 "" H 13950 8600 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:R R24
+L ClassicRev6-rescue:R-ClassicRev6-rescue R24
 U 1 1 5860266E
 P 10850 7250
 F 0 "R24" V 10900 7400 50  0000 C CNN
@@ -1042,7 +999,7 @@ F 3 "" H 10850 7250 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:R R26
+L ClassicRev6-rescue:R-ClassicRev6-rescue R26
 U 1 1 5860266F
 P 13300 8350
 F 0 "R26" V 13350 8550 50  0000 C CNN
@@ -1053,7 +1010,7 @@ F 3 "" H 13300 8350 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:Q_NMOS_GSD Q8
+L ClassicRev6-rescue:Q_NMOS_GSD-ClassicRev6-rescue Q8
 U 1 1 58602670
 P 15050 8600
 F 0 "Q8" H 15350 8650 50  0000 R CNN
@@ -1064,7 +1021,7 @@ F 3 "" H 15050 8600 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:R R25
+L ClassicRev6-rescue:R-ClassicRev6-rescue R25
 U 1 1 58602671
 P 11050 7250
 F 0 "R25" V 11100 7400 50  0000 C CNN
@@ -1075,7 +1032,7 @@ F 3 "" H 11050 7250 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:R R27
+L ClassicRev6-rescue:R-ClassicRev6-rescue R27
 U 1 1 58602672
 P 14450 8350
 F 0 "R27" V 14500 8550 50  0000 C CNN
@@ -1086,7 +1043,7 @@ F 3 "" H 14450 8350 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:C_Small C10
+L ClassicRev6-rescue:C_Small-ClassicRev6-rescue C10
 U 1 1 58602675
 P 12600 8250
 F 0 "C10" H 12610 8320 50  0000 L CNN
@@ -1100,7 +1057,7 @@ $EndComp
 NoConn ~ 12050 9000
 NoConn ~ 11550 9300
 $Comp
-L ClassicRev6-rescue:ESP8266-01_02X04 P1
+L ClassicRev6-rescue:ESP8266-01_02X04-ClassicRev6-rescue P1
 U 1 1 58602676
 P 11800 9150
 F 0 "P1" H 11800 9400 50  0000 C CNN
@@ -1111,7 +1068,7 @@ F 3 "" H 11800 7950 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ClassicRev6-rescue:C_Small C3
+L ClassicRev6-rescue:C_Small-ClassicRev6-rescue C3
 U 1 1 58602677
 P 10550 7500
 F 0 "C3" H 10560 7570 50  0000 L CNN
@@ -1242,8 +1199,6 @@ Wire Wire Line
 	5250 5000 5100 5000
 Wire Wire Line
 	5250 5700 5100 5700
-Wire Wire Line
-	1850 4100 1700 4100
 Wire Wire Line
 	1850 4800 1700 4800
 Wire Wire Line
@@ -1700,7 +1655,7 @@ Controller
 Text Notes 14200 2350 0    60   ~ 0
 Connections
 $Comp
-L ClassicRev6-rescue:BARREL_JACK CON1
+L ClassicRev6-rescue:BARREL_JACK-ClassicRev6-rescue CON1
 U 1 1 5866D661
 P 13900 1600
 F 0 "CON1" H 13900 1850 50  0000 C CNN
@@ -1735,11 +1690,11 @@ Wire Wire Line
 Wire Wire Line
 	14950 1700 14950 1800
 $Comp
-L ClassicRev6-rescue:LM2596T-5 IC1
+L ClassicRev6-rescue:LM2596T-5-ClassicRev6-rescue IC1
 U 1 1 5866D66A
 P 3550 7850
-F 0 "IC1" H 3150 8200 50  0000 L CNN
-F 1 "LM2596T-5" H 3150 8100 50  0000 L CNN
+F 0 "IC1" H 3150 8100 50  0000 L CNN
+F 1 "LM2596T-5" H 3500 8100 50  0000 L CNN
 F 2 "NixieClockMaster:TO220-5A" H 3850 7600 50  0001 C CIN
 F 3 "" H 3550 7850 50  0000 C CNN
 	1    3550 7850
@@ -1755,7 +1710,7 @@ Wire Wire Line
 	3000 8250 3550 8250
 Connection ~ 3550 8250
 $Comp
-L ClassicRev6-rescue:D-RESCUE-KickstarterNixie D3
+L ClassicRev6-rescue:D-RESCUE-KickstarterNixie-ClassicRev6-rescue D3
 U 1 1 5866D66B
 P 4200 8200
 F 0 "D3" H 4300 8050 70  0000 C CNN
@@ -1772,7 +1727,7 @@ Wire Wire Line
 Wire Wire Line
 	4200 7450 4200 7950
 $Comp
-L ClassicRev6-rescue:RCL_L-US6000-XXX-RC L2
+L ClassicRev6-rescue:RCL_L-US6000-XXX-RC-ClassicRev6-rescue L2
 U 1 1 5866D66C
 P 4500 7450
 F 0 "L2" V 4450 7400 70  0000 L BNN
@@ -1810,10 +1765,10 @@ Wire Wire Line
 	10600 6850 10600 6950
 Wire Wire Line
 	10250 6850 10250 7000
-Text Label 1700 8000 0    60   ~ 0
+Text Label 1700 8000 0    20   ~ 0
 RAW_VIN
 $Comp
-L ClassicRev6-rescue:TEST_1P TP4
+L ClassicRev6-rescue:TEST_1P-ClassicRev6-rescue TP4
 U 1 1 58893154
 P 3050 1950
 F 0 "TP4" H 3050 2220 50  0000 C CNN
@@ -1827,7 +1782,7 @@ Wire Wire Line
 	3050 1950 3050 2100
 Connection ~ 3050 2100
 $Comp
-L ClassicRev6-rescue:TEST_1P TP5
+L ClassicRev6-rescue:TEST_1P-ClassicRev6-rescue TP5
 U 1 1 588B4032
 P 2900 7600
 F 0 "TP5" H 2900 7870 50  0000 C CNN
@@ -1877,7 +1832,7 @@ Wire Wire Line
 Text Label 10150 2700 0    60   ~ 0
 DATAO
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R20
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R20
 U 1 1 5A8483E4
 P 10600 2600
 F 0 "R20" H 10600 2700 70  0000 L BNN
@@ -1904,7 +1859,7 @@ TICK_LED2
 Wire Wire Line
 	13500 3700 14200 3700
 $Comp
-L ClassicRev6-rescue:RCL_R-EU_0207_2V R22
+L ClassicRev6-rescue:RCL_R-EU_0207_2V-ClassicRev6-rescue R22
 U 1 1 5A84EA74
 P 11750 3350
 F 0 "R22" H 11600 3408 70  0000 L BNN
@@ -2057,4 +2012,19 @@ Wire Wire Line
 	11300 3100 11550 3100
 Wire Notes Line
 	5350 450  5350 3450
+Wire Wire Line
+	1700 4100 1850 4100
+Text Label 4500 7200 2    20   ~ 0
+2596_FB
+$Comp
+L ClassicRev6-rescue:CP-ClassicRev6-rescue C9
+U 1 1 5696BD88
+P 5150 7950
+F 0 "C9" H 5200 7800 70  0000 L BNN
+F 1 "220uF" V 5000 7800 70  0000 L BNN
+F 2 "NixieClockMaster:C_Radial_D6.3_L11.2_P2.5" H 5140 7740 70  0001 L TNN
+F 3 "" H 5150 7950 60  0001 C CNN
+	1    5150 7950
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

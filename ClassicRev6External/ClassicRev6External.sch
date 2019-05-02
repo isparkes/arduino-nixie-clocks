@@ -91,7 +91,7 @@ Wire Wire Line
 Wire Wire Line
 	1250 1500 1250 3200
 Text Label 1250 2250 1    60   ~ 0
-DLS
+LDR
 Text Label 1950 2250 1    60   ~ 0
 BTN
 Text Label 2950 2300 1    60   ~ 0
@@ -119,7 +119,7 @@ $Comp
 L ClassicRev6External-rescue:WS2812B LED1
 U 1 1 5B216E25
 P 6950 2100
-F 0 "LED1" H 6950 1700 60  0000 C CNN
+F 0 "LED1" H 6450 2100 60  0000 C CNN
 F 1 "WS2812B" H 6950 2500 60  0000 C CNN
 F 2 "" V 6900 2100 60  0000 C CNN
 F 3 "" V 6900 2100 60  0000 C CNN
@@ -130,7 +130,7 @@ $Comp
 L ClassicRev6External-rescue:WS2812B LED2
 U 1 1 5B216F0E
 P 6950 3250
-F 0 "LED2" H 6950 2850 60  0000 C CNN
+F 0 "LED2" H 6500 3250 60  0000 C CNN
 F 1 "WS2812B" H 6950 3650 60  0000 C CNN
 F 2 "" V 6900 3250 60  0000 C CNN
 F 3 "" V 6900 3250 60  0000 C CNN
@@ -141,7 +141,7 @@ $Comp
 L ClassicRev6External-rescue:WS2812B LED3
 U 1 1 5B216F92
 P 6950 4450
-F 0 "LED3" H 6950 4050 60  0000 C CNN
+F 0 "LED3" H 6450 4450 60  0000 C CNN
 F 1 "WS2812B" H 6950 4850 60  0000 C CNN
 F 2 "" V 6900 4450 60  0000 C CNN
 F 3 "" V 6900 4450 60  0000 C CNN
@@ -151,35 +151,35 @@ $EndComp
 $Comp
 L ClassicRev6External-rescue:C C1
 U 1 1 5B21702B
-P 6000 2100
-F 0 "C1" H 6025 2200 50  0000 L CNN
-F 1 "C" H 6025 2000 50  0000 L CNN
-F 2 "" H 6038 1950 50  0001 C CNN
-F 3 "" H 6000 2100 50  0001 C CNN
-	1    6000 2100
-	1    0    0    -1  
+P 6950 2600
+F 0 "C1" V 6850 2700 50  0000 L CNN
+F 1 "100nF" V 6850 2300 50  0000 L CNN
+F 2 "" H 6988 2450 50  0001 C CNN
+F 3 "" H 6950 2600 50  0001 C CNN
+	1    6950 2600
+	0    1    1    0   
 $EndComp
 $Comp
 L ClassicRev6External-rescue:C C2
 U 1 1 5B217149
-P 6000 3250
-F 0 "C2" H 6025 3350 50  0000 L CNN
-F 1 "C" H 6025 3150 50  0000 L CNN
-F 2 "" H 6038 3100 50  0001 C CNN
-F 3 "" H 6000 3250 50  0001 C CNN
-	1    6000 3250
-	1    0    0    -1  
+P 6950 3750
+F 0 "C2" V 6850 3850 50  0000 L CNN
+F 1 "100nF" V 6850 3500 50  0000 L CNN
+F 2 "" H 6988 3600 50  0001 C CNN
+F 3 "" H 6950 3750 50  0001 C CNN
+	1    6950 3750
+	0    1    1    0   
 $EndComp
 $Comp
 L ClassicRev6External-rescue:C C3
 U 1 1 5B2171D6
-P 6000 4450
-F 0 "C3" H 6025 4550 50  0000 L CNN
-F 1 "C" H 6025 4350 50  0000 L CNN
-F 2 "" H 6038 4300 50  0001 C CNN
-F 3 "" H 6000 4450 50  0001 C CNN
-	1    6000 4450
-	1    0    0    -1  
+P 6950 5000
+F 0 "C3" V 6850 5100 50  0000 L CNN
+F 1 "100nF" V 6850 4700 50  0000 L CNN
+F 2 "" H 6988 4850 50  0001 C CNN
+F 3 "" H 6950 5000 50  0001 C CNN
+	1    6950 5000
+	0    1    1    0   
 $EndComp
 Wire Wire Line
 	9100 1400 7650 1400
@@ -191,12 +191,6 @@ Wire Wire Line
 	6450 1900 6000 1900
 Wire Wire Line
 	6000 1400 6000 1900
-Wire Wire Line
-	6000 2250 6000 2600
-Wire Wire Line
-	6000 2600 7550 2600
-Wire Wire Line
-	7550 2300 7550 2600
 Wire Wire Line
 	7550 2300 7450 2300
 Wire Wire Line
@@ -212,11 +206,6 @@ Wire Wire Line
 Wire Wire Line
 	6000 3050 6450 3050
 Connection ~ 6000 3050
-Connection ~ 6000 2600
-Wire Wire Line
-	6000 3400 6000 3750
-Wire Wire Line
-	6000 3750 7550 3750
 Wire Wire Line
 	7550 3450 7450 3450
 Wire Wire Line
@@ -231,12 +220,7 @@ Wire Wire Line
 	7650 4250 7450 4250
 Wire Wire Line
 	6000 4250 6450 4250
-Connection ~ 6000 3750
 Connection ~ 6000 4250
-Wire Wire Line
-	6000 4600 6000 5000
-Wire Wire Line
-	6000 5000 7550 5000
 Wire Wire Line
 	7550 4650 7450 4650
 Wire Wire Line
@@ -246,8 +230,6 @@ Wire Wire Line
 Text Notes 5700 5450 0    60   ~ 0
 Up to 6 LEDs in daisy-chain
 Connection ~ 7550 4650
-Connection ~ 7550 3750
-Connection ~ 7550 2600
 Connection ~ 7550 3450
 $Comp
 L ClassicRev6External-rescue:LED D2
@@ -297,7 +279,6 @@ F 3 "" H 7550 5100 50  0001 C CNN
 	1    7550 5100
 	1    0    0    -1  
 $EndComp
-Connection ~ 7550 5000
 Connection ~ 6000 1900
 Text Label 6000 1400 0    60   ~ 0
 VCC
@@ -311,36 +292,55 @@ Wire Wire Line
 	8950 2750 9600 2750
 Text Label 9600 2750 0    60   ~ 0
 DECIMAL_POINT
-Text Notes 9200 3000 0    60   ~ 0
-Note: Decimal point driver\nfor tubes which support it
+Text Notes 9200 3200 0    60   ~ 0
+Note: Decimal point driver\nfor tubes which support it\nCan be used as an open collector GPIO\nif you don't use Decimal Points
 Wire Wire Line
 	2950 3050 2950 3100
 Wire Wire Line
 	1950 4300 1250 4300
 Wire Wire Line
-	6000 3050 6000 3100
+	8650 3200 8650 3600
+Text Notes 3600 1800 0    55   ~ 0
+GND\nLDR\nBTN1\nPIR\nVCC (5V)
+Text Notes 9400 1700 0    55   ~ 0
+"L" DATAO\n"1" TICK_LED1\n"2" TICK_LED2\n"D" DP
 Wire Wire Line
-	6000 2600 6000 3050
+	7550 2300 7550 2600
 Wire Wire Line
-	6000 3750 6000 4250
+	6000 1900 6000 2600
 Wire Wire Line
-	6000 4250 6000 4300
-Wire Wire Line
-	7550 4650 7550 5000
-Wire Wire Line
-	7550 3750 7550 4650
+	7100 2600 7550 2600
+Connection ~ 7550 2600
 Wire Wire Line
 	7550 2600 7550 3450
 Wire Wire Line
+	6800 2600 6000 2600
+Connection ~ 6000 2600
+Wire Wire Line
+	6000 2600 6000 3050
+Wire Wire Line
 	7550 3450 7550 3750
 Wire Wire Line
-	8650 3200 8650 3600
+	6000 3050 6000 3750
+Wire Wire Line
+	6000 4250 6000 5000
+Wire Wire Line
+	6000 5000 6800 5000
+Wire Wire Line
+	7100 5000 7550 5000
+Wire Wire Line
+	7550 4650 7550 5000
+Connection ~ 7550 5000
 Wire Wire Line
 	7550 5000 7550 5100
 Wire Wire Line
-	6000 1900 6000 1950
-Text Notes 3600 1800 0    55   ~ 0
-GND\nDLS\nBTN1\nPIR\nVCC (5V)
-Text Notes 9400 1700 0    55   ~ 0
-DATAO\nTICK_LED1\nTICK_LED2\nDP
+	7100 3750 7550 3750
+Connection ~ 7550 3750
+Wire Wire Line
+	7550 3750 7550 4650
+Wire Wire Line
+	6800 3750 6000 3750
+Connection ~ 6000 3750
+Wire Wire Line
+	6000 3750 6000 4250
 $EndSCHEMATC
