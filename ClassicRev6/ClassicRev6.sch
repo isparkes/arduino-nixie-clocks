@@ -814,9 +814,9 @@ Text Label 3050 9950 0    20   ~ 0
 CATHODE_6
 Text Label 3050 9850 0    20   ~ 0
 CATHODE_7
-Text Label 3050 10750 0    20   ~ 0
-CATHODE_9
 Text Label 3050 10650 0    20   ~ 0
+CATHODE_9
+Text Label 3050 10750 0    20   ~ 0
 CATHODE_8
 Text Label 6050 4000 0    59   ~ 0
 170V
