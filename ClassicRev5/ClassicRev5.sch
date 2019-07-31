@@ -979,9 +979,9 @@ Text Label 3050 9950 0    20   ~ 0
 CATHODE_6
 Text Label 3050 9850 0    20   ~ 0
 CATHODE_7
-Text Label 3050 10750 0    20   ~ 0
-CATHODE_9
 Text Label 3050 10650 0    20   ~ 0
+CATHODE_9
+Text Label 3050 10750 0    20   ~ 0
 CATHODE_8
 Text Label 4700 4800 2    20   ~ 0
 ANODE5
