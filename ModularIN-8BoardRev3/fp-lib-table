@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name Nixie)(type KiCad)(uri /data/Copy/Nixie/KiCAD/libraries/KiCad-libs-master/Nixie.pretty)(options "")(descr ""))
+  (lib (name russian-nixies)(type Legacy)(uri /data/Copy/Nixie/KiCAD/lbr/russian-nixies.mod)(options "")(descr ""))
+)

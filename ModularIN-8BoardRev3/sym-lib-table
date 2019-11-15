@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name ModularIN-8-2Board-rescue)(type Legacy)(uri ${KIPRJMOD}/ModularIN-8-2Board-rescue.lib)(options "")(descr ""))
+  (lib (name ModularIN-8Board-rescue)(type Legacy)(uri ${KIPRJMOD}/ModularIN-8Board-rescue.lib)(options "")(descr ""))
+)
