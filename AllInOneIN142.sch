@@ -2761,7 +2761,7 @@ Wire Wire Line
 Wire Wire Line
 	8450 13150 8450 13350
 Text Notes 12900 8550 0    236  ~ 47
-Copyright 2016-2019\nIan Sparkes\nThis is NOT public domain
+Copyright 2016-2020\nIan Sparkes\nThis is NOT public domain
 Wire Wire Line
 	7800 4100 7800 4350
 Wire Wire Line
