@@ -1552,8 +1552,8 @@ void processCurrentMode(int displayMode) {
         if (button1.isButtonPressedAndReleased()) {
           incMonths();
         }
-        loadNumberArrayYear();
-        highlight2and3();
+        loadNumberArrayDayMonth();
+        highlightMonthsDateFormat();
         break;
       }
     case MODE_YEARS_SET: {
