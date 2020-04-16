@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 61)
+    (drawings 64)
     (tracks 1286)
     (zones 0)
     (modules 107)
@@ -3539,6 +3539,15 @@
     (pad 1 thru_hole rect (at 0 0) (size 2 2) (drill 1) (layers *.Cu *.Mask))
   )
 
+  (gr_text "LEDs / tubes\nother side!" (at 94.69284 115.61774) (layer F.SilkS) (tstamp 5E98A165)
+    (effects (font (size 0.75 0.75) (thickness 0.1)))
+  )
+  (gr_text "LEDs / tubes\nother side!" (at 196.58284 115.14774) (layer F.SilkS) (tstamp 5E98A163)
+    (effects (font (size 0.75 0.75) (thickness 0.1)))
+  )
+  (gr_text "LEDs / tubes\nother side!" (at 145.59284 115.54774) (layer F.SilkS) (tstamp 5E98A15E)
+    (effects (font (size 0.75 0.75) (thickness 0.1)))
+  )
   (gr_text GND (at 152.29284 75.04774) (layer B.SilkS) (tstamp 5E989B02)
     (effects (font (size 0.75 0.75) (thickness 0.1)) (justify mirror))
   )
