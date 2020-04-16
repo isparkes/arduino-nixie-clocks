@@ -2713,7 +2713,7 @@ L Regulator_Linear:L78L05_TO92 U1
 U 1 1 5CC052D7
 P 13950 13450
 F 0 "U1" H 13950 13692 50  0000 C CNN
-F 1 "L78L05_TO92" H 13950 13601 50  0000 C CNN
+F 1 "78L33" H 13950 13601 50  0000 C CNN
 F 2 "NixieClockMaster:TO-92_2N7000_inline" H 13950 13675 50  0001 C CIN
 F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/15/55/e5/aa/23/5b/43/fd/CD00000446.pdf/files/CD00000446.pdf/jcr:content/translations/en.CD00000446.pdf" H 13950 13400 50  0001 C CNN
 	1    13950 13450

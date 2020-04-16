@@ -629,27 +629,27 @@ Text Label 8450 13150 0    65   ~ 0
 170V
 Text Label 1750 13650 0    65   ~ 0
 170V
-Text Label 2700 10000 2    65   ~ 0
+Text Label 6100 8850 2    65   ~ 0
 ANODE1
 Text Label 5250 3400 0    65   ~ 0
 ANODE1
-Text Label 2700 9300 2    65   ~ 0
+Text Label 6100 9550 2    65   ~ 0
 ANODE2
 Text Label 5250 3300 0    65   ~ 0
 ANODE2
-Text Label 2700 8600 2    65   ~ 0
+Text Label 6100 10250 2    65   ~ 0
 ANODE3
 Text Label 5250 4400 0    65   ~ 0
 ANODE3
-Text Label 6100 10250 2    65   ~ 0
+Text Label 2700 8600 2    65   ~ 0
 ANODE4
 Text Label 5250 4200 0    65   ~ 0
 ANODE4
-Text Label 6100 9550 2    65   ~ 0
+Text Label 2700 9300 2    65   ~ 0
 ANODE5
 Text Label 5250 4100 0    65   ~ 0
 ANODE5
-Text Label 6100 8850 2    65   ~ 0
+Text Label 2700 10000 2    65   ~ 0
 ANODE6
 Text Label 5250 4000 0    65   ~ 0
 ANODE6
@@ -784,8 +784,6 @@ Text Label 8500 9250 0    59   ~ 0
 CON_AN_4
 Text Label 8500 9150 0    59   ~ 0
 CON_AN_5
-Text Label 8500 9050 0    59   ~ 0
-CON_AN_6
 $Comp
 L AllInOneIN142-rescue:IN-14 N5
 U 1 1 569F6870
@@ -2713,7 +2711,7 @@ L Regulator_Linear:L78L05_TO92 U1
 U 1 1 5CC052D7
 P 13950 13450
 F 0 "U1" H 13950 13692 50  0000 C CNN
-F 1 "L78L05_TO92" H 13950 13601 50  0000 C CNN
+F 1 "78L33" H 13950 13601 50  0000 C CNN
 F 2 "NixieClockMaster:TO-92_2N7000_inline" H 13950 13675 50  0001 C CIN
 F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/15/55/e5/aa/23/5b/43/fd/CD00000446.pdf/files/CD00000446.pdf/jcr:content/translations/en.CD00000446.pdf" H 13950 13400 50  0001 C CNN
 	1    13950 13450
@@ -2816,4 +2814,6 @@ Wire Notes Line width 39 style solid
 	17900 8800 12650 8800
 Wire Notes Line width 39 style solid
 	12650 8800 12650 7250
+Text Label 8500 9050 0    59   ~ 0
+CON_AN_6
 $EndSCHEMATC
