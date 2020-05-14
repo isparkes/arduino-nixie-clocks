@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:AllInOneIN142-cache
-EELAYER 26 0
+EELAYER 30 0
 EELAYER END
 $Descr A2 23386 16535
 encoding utf-8
@@ -408,12 +407,12 @@ $EndComp
 $Comp
 L AllInOneIN142-rescue:RCL_R-EU_0207_2V R10
 U 1 1 5696D5C0
-P 9850 14350
-F 0 "R10" H 9750 14450 70  0000 L BNN
-F 1 "3k" H 9800 14200 70  0000 L BNN
-F 2 "NixieClockMaster:R-0207_2V" H 9840 14140 70  0001 L TNN
-F 3 "" H 9850 14350 60  0001 C CNN
-	1    9850 14350
+P 9150 14350
+F 0 "R10" H 9050 14450 70  0000 L BNN
+F 1 "3k" H 9100 14200 70  0000 L BNN
+F 2 "NixieClockMaster:R-0207_2V" H 9140 14140 70  0001 L TNN
+F 3 "" H 9150 14350 60  0001 C CNN
+	1    9150 14350
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -691,7 +690,7 @@ Text Label 19500 13750 0    65   ~ 0
 GND
 Text Label 20250 13750 2    65   ~ 0
 GND
-Text Label 9950 14050 0    65   ~ 0
+Text Label 8850 14050 0    65   ~ 0
 HVD
 Text Label 5250 5000 0    65   ~ 0
 HVD
@@ -727,7 +726,7 @@ Text Label 5800 3800 0    20   ~ 0
 G_LED_GATE
 Text Label 1850 3800 3    20   ~ 0
 GND
-Text Label 9850 14150 1    20   ~ 0
+Text Label 9150 14150 1    20   ~ 0
 HVD
 Text Label 5800 3100 0    20   ~ 0
 B_LED_GATE
@@ -879,17 +878,6 @@ F 4 "Value" H 8450 13950 60  0001 C CNN "Fieldname"
 F 5 "+" V 8300 14150 50  0001 L BNN "Field4"
 	1    8450 13950
 	1    0    0    -1  
-$EndComp
-$Comp
-L AllInOneIN142-rescue:IRF740 Q1
-U 1 1 5696CC60
-P 9450 13950
-F 0 "Q1" H 9750 14049 70  0000 L BNN
-F 1 "IRF840" H 9750 13950 70  0000 L BNN
-F 2 "NixieClockMaster:2N7000_TO92" H 9440 13740 70  0001 L TNN
-F 3 "" H 9450 13950 60  0001 C CNN
-	1    9450 13950
-	-1   0    0    -1  
 $EndComp
 Text Label 6650 2900 0    60   ~ 0
 B_LED_DRIVE
@@ -1189,7 +1177,7 @@ F 3 "" H 7800 4500 50  0000 C CNN
 	1    7800 4500
 	0    -1   -1   0   
 $EndComp
-Text Label 6950 2000 0    60   ~ 0
+Text Label 7050 1850 0    60   ~ 0
 VIN
 Text Label 7150 5350 0    20   ~ 0
 TICK_LED_2
@@ -1290,7 +1278,7 @@ L AllInOneIN142-rescue:D-RESCUE-KickstarterNixie D2
 U 1 1 5775D290
 P 8900 13350
 F 0 "D2" H 8900 13450 70  0000 C CNN
-F 1 "UF4004/7" H 8900 13200 70  0000 C CNN
+F 1 "UF4004/7" H 9050 13600 70  0000 C CNN
 F 2 "NixieClockMaster:Diode_DO-41_1N4001" H 8900 13350 50  0001 C CNN
 F 3 "" H 8900 13350 50  0000 C CNN
 	1    8900 13350
@@ -1311,22 +1299,11 @@ Text Label 2050 14350 1    20   ~ 0
 PWR_INPUT
 Text Label 2850 14150 0    20   ~ 0
 PWR_VIN
-Text Label 9450 13350 0    20   ~ 0
+Text Label 9150 13350 0    20   ~ 0
 PWR_HV_PULSE
 Text Label 2450 14650 0    20   ~ 0
 PWR_GND_IN
-$Comp
-L AllInOneIN142-rescue:CONN_01X03 P1
-U 1 1 5777FB44
-P 6750 1600
-F 0 "P1" H 6750 1800 50  0000 C CNN
-F 1 "CONN_01X03" V 6850 1600 50  0000 C CNN
-F 2 "NixieClockMaster:Header_MA03-1" H 6750 1600 50  0001 C CNN
-F 3 "" H 6750 1600 50  0000 C CNN
-	1    6750 1600
-	0    -1   -1   0   
-$EndComp
-Text Label 6550 2000 2    60   ~ 0
+Text Label 6450 1850 2    60   ~ 0
 170V
 Text Notes 20900 10250 0    60   ~ 0
 Seconds
@@ -1438,19 +1415,13 @@ Wire Wire Line
 Wire Wire Line
 	19300 13650 19400 13650
 Wire Wire Line
-	9850 14750 9850 14550
-Wire Wire Line
-	9350 14750 9350 14150
+	9150 14750 9150 14550
 Wire Wire Line
 	8450 14100 8450 14750
 Wire Wire Line
-	10350 14750 10350 14200
-Wire Wire Line
 	7850 14750 7850 14550
-Connection ~ 9850 14750
-Connection ~ 9350 14750
+Connection ~ 9150 14750
 Connection ~ 8450 14750
-Connection ~ 10350 14750
 Wire Wire Line
 	6750 9050 6600 9050
 Wire Wire Line
@@ -1521,9 +1492,6 @@ Wire Wire Line
 	5050 3100 5250 3100
 Wire Wire Line
 	5050 5200 5450 5200
-Wire Wire Line
-	9350 13350 9350 13750
-Connection ~ 9350 13350
 Wire Wire Line
 	6600 8850 6750 8850
 Wire Wire Line
@@ -1725,12 +1693,10 @@ Wire Wire Line
 Wire Wire Line
 	6250 5000 6600 5000
 Wire Wire Line
-	9550 14050 9850 14050
+	8850 14050 9150 14050
 Wire Wire Line
-	9850 13850 9850 14050
-Connection ~ 9850 14050
-Wire Wire Line
-	7850 14750 8450 14750
+	9150 13850 9150 14050
+Connection ~ 9150 14050
 Wire Wire Line
 	10650 14750 10650 14950
 Wire Wire Line
@@ -2122,21 +2088,19 @@ Connection ~ 2250 2900
 Wire Wire Line
 	19300 13750 19500 13750
 Wire Wire Line
-	9050 13350 9350 13350
-Wire Wire Line
 	7850 13350 8450 13350
 Wire Wire Line
 	2200 14150 2050 14150
 Wire Wire Line
-	6850 1800 6850 2000
+	6950 1650 6950 1850
 Wire Wire Line
-	6850 2000 6950 2000
+	6950 1850 7050 1850
 Wire Wire Line
 	6750 1800 6750 2150
 Wire Wire Line
-	6650 1800 6650 2000
+	6550 1650 6550 1850
 Wire Wire Line
-	6650 2000 6550 2000
+	6550 1850 6450 1850
 Wire Wire Line
 	6750 2150 7800 2150
 Wire Wire Line
@@ -2458,12 +2422,12 @@ Wire Wire Line
 $Comp
 L AllInOneIN142-rescue:TEST_1P W5
 U 1 1 5A1BDC4D
-P 9850 13850
-F 0 "W5" H 9850 14120 50  0000 C CNN
-F 1 "HVD" H 9850 14050 50  0000 C CNN
-F 2 "NixieClockMaster:TESTPAD_P1-13" H 10050 13850 50  0001 C CNN
-F 3 "" H 10050 13850 50  0001 C CNN
-	1    9850 13850
+P 9150 13850
+F 0 "W5" H 9150 14120 50  0000 C CNN
+F 1 "HVD" H 9150 14050 50  0000 C CNN
+F 2 "NixieClockMaster:TESTPAD_P1-13" H 9350 13850 50  0001 C CNN
+F 3 "" H 9350 13850 50  0001 C CNN
+	1    9150 13850
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -2482,12 +2446,6 @@ Wire Wire Line
 	8450 13350 8450 13800
 Wire Wire Line
 	8450 13350 8750 13350
-Wire Wire Line
-	9850 14750 10350 14750
-Wire Wire Line
-	9350 14750 9850 14750
-Wire Wire Line
-	8450 14750 9350 14750
 Wire Wire Line
 	10350 14750 10650 14750
 Wire Wire Line
@@ -2508,8 +2466,6 @@ Wire Wire Line
 	2950 4600 3050 4600
 Wire Wire Line
 	7850 14050 7850 14150
-Wire Wire Line
-	9350 13350 9650 13350
 Wire Wire Line
 	4850 13650 5250 13650
 Wire Wire Line
@@ -2537,9 +2493,9 @@ Wire Wire Line
 Wire Wire Line
 	6550 4000 6550 4800
 Wire Wire Line
-	9850 14050 9950 14050
+	9150 14050 9250 14050
 Wire Wire Line
-	9850 14050 9850 14150
+	9150 14050 9150 14150
 Wire Wire Line
 	7550 8850 7550 9550
 Wire Wire Line
@@ -2816,4 +2772,47 @@ Wire Notes Line width 39 style solid
 	17900 8800 12650 8800
 Wire Notes Line width 39 style solid
 	12650 8800 12650 7250
+$Comp
+L Jumper:SolderJumper_3_Open JP1
+U 1 1 5EC24D8A
+P 6750 1650
+F 0 "JP1" H 6750 1855 50  0000 C CNN
+F 1 "SolderJumper_3_Open" H 6750 1764 50  0000 C CNN
+F 2 "NixieClockMaster:SOLDER-JUMPER_2-WAY" H 6750 1650 50  0001 C CNN
+F 3 "~" H 6750 1650 50  0001 C CNN
+	1    6750 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_FET:IRF740 Q1
+U 1 1 5ED51DA3
+P 9450 14050
+F 0 "Q1" H 9654 14096 50  0000 L CNN
+F 1 "IRF640" H 9654 14005 50  0000 L CNN
+F 2 "NixieClockMaster:TO-220-3_H" H 9700 13975 50  0001 L CIN
+F 3 "http://www.vishay.com/docs/91054/91054.pdf" H 9450 14050 50  0001 L CNN
+	1    9450 14050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9050 13350 9550 13350
+Wire Wire Line
+	8450 14750 9150 14750
+Wire Wire Line
+	7850 14750 8450 14750
+Wire Wire Line
+	9150 14750 9550 14750
+Connection ~ 10350 14750
+Wire Wire Line
+	10350 14200 10350 14750
+Wire Wire Line
+	9550 14250 9550 14750
+Connection ~ 9550 14750
+Wire Wire Line
+	9550 14750 10350 14750
+Wire Wire Line
+	9550 13850 9550 13350
+Connection ~ 9550 13350
+Wire Wire Line
+	9550 13350 9650 13350
 $EndSCHEMATC
