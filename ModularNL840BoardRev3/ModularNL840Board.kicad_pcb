@@ -3,7 +3,7 @@
   (general
     (thickness 1.6)
     (drawings 16)
-    (tracks 77)
+    (tracks 76)
     (zones 0)
     (modules 7)
     (nets 16)
@@ -69,7 +69,7 @@
     (grid_origin 70.2524 100.00996)
     (visible_elements 7FFFFFFF)
     (pcbplotparams
-      (layerselection 0x010f0_80000001)
+      (layerselection 0x010f0_ffffffff)
       (usegerberextensions false)
       (usegerberattributes false)
       (usegerberadvancedattributes false)
@@ -540,8 +540,6 @@
   (gr_line (start 70.25 75) (end 70.25 100) (layer Edge.Cuts) (width 0.2))
   (gr_line (start 70.25 100) (end 90.25 100) (layer Edge.Cuts) (width 0.2))
 
-  (segment (start 85.21 97.77) (end 84.46244 97.77) (width 0.4064) (layer B.Cu) (net 8) (status 30))
-  (segment (start 75.25 79.77) (end 75.25 79.8965) (width 0.4064) (layer B.Cu) (net 0) (status 30))
   (segment (start 76.2595 77.21716) (end 75.26284 77.21716) (width 0.4064) (layer F.Cu) (net 1))
   (segment (start 75.26284 77.21716) (end 75.25 77.23) (width 0.4064) (layer F.Cu) (net 1))
   (segment (start 77.8343 76.94876) (end 76.5279 76.94876) (width 0.4064) (layer F.Cu) (net 1))
@@ -583,6 +581,7 @@
   (segment (start 79.4224 92.66996) (end 80.2824 93.52996) (width 0.4064) (layer F.Cu) (net 7))
   (segment (start 75.33526 92.66996) (end 79.4224 92.66996) (width 0.4064) (layer F.Cu) (net 7))
   (segment (start 75.10652 92.44122) (end 75.33526 92.66996) (width 0.4064) (layer F.Cu) (net 7))
+  (segment (start 85.21 97.77) (end 84.46244 97.77) (width 0.4064) (layer B.Cu) (net 8) (status 30))
   (segment (start 80.1624 88.70996) (end 73.8924 88.70996) (width 0.4064) (layer B.Cu) (net 8))
   (segment (start 84.098021 88.70996) (end 80.1624 88.70996) (width 0.4064) (layer B.Cu) (net 8))
   (segment (start 87.1624 91.774339) (end 84.098021 88.70996) (width 0.4064) (layer B.Cu) (net 8))
