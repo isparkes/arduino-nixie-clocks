@@ -351,12 +351,12 @@ $EndComp
 $Comp
 L ModularRev3-rescue:RCL_R-EU_0207_2V R18
 U 1 1 5696D5C0
-P 3200 2400
-F 0 "R18" H 3100 2500 70  0000 L BNN
-F 1 "3k" H 3150 2250 70  0000 L BNN
-F 2 "NixieClockMaster:R-0207_2V" H 3190 2190 70  0001 L TNN
-F 3 "" H 3200 2400 60  0001 C CNN
-	1    3200 2400
+P 2550 2400
+F 0 "R18" H 2450 2500 70  0000 L BNN
+F 1 "3k" H 2500 2250 70  0000 L BNN
+F 2 "NixieClockMaster:R-0207_2V" H 2540 2190 70  0001 L TNN
+F 3 "" H 2550 2400 60  0001 C CNN
+	1    2550 2400
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -592,7 +592,7 @@ Text Label 14650 3450 0    65   ~ 0
 GND
 Text Label 14400 2200 2    65   ~ 0
 GND
-Text Label 3300 2100 0    65   ~ 0
+Text Label 2300 2000 0    65   ~ 0
 HVD
 Text Label 9950 3100 0    65   ~ 0
 HVD
@@ -626,8 +626,6 @@ Text Label 5550 7900 3    20   ~ 0
 DLS
 Text Label 6550 1900 3    20   ~ 0
 GND
-Text Label 3200 2200 1    20   ~ 0
-HVD
 Text Label 9950 3300 2    20   ~ 0
 MOSI
 Text Label 10550 3300 0    20   ~ 0
@@ -686,17 +684,6 @@ F 4 "Value" H 1800 2000 60  0001 C CNN "Fieldname"
 F 5 "+" V 1650 2200 50  0001 L BNN "Field4"
 	1    1800 2000
 	1    0    0    -1  
-$EndComp
-$Comp
-L ModularRev3-rescue:IRF740 Q1
-U 1 1 5696CC60
-P 2800 2000
-F 0 "Q1" H 3100 2099 70  0000 L BNN
-F 1 "IRF840" H 3100 2000 70  0000 L BNN
-F 2 "NixieClockMaster:TRANSISTOR-POWER_TO220BV" H 2790 1790 70  0001 L TNN
-F 3 "" H 2800 2000 60  0001 C CNN
-	1    2800 2000
-	-1   0    0    -1  
 $EndComp
 $Comp
 L ModularRev3-rescue:RCL_R-EU_0207_2V R22
@@ -1449,19 +1436,13 @@ Wire Wire Line
 Wire Wire Line
 	14450 3350 14650 3350
 Wire Wire Line
-	3200 2800 3200 2600
-Wire Wire Line
-	2700 2800 2700 2200
+	2950 2800 2950 2200
 Wire Wire Line
 	1800 2150 1800 2800
 Wire Wire Line
 	3700 2800 3700 2250
 Wire Wire Line
 	1200 2800 1200 2600
-Connection ~ 3200 2800
-Connection ~ 2700 2800
-Connection ~ 1800 2800
-Connection ~ 3700 2800
 Wire Wire Line
 	4850 4950 4700 4950
 Wire Wire Line
@@ -1527,8 +1508,7 @@ Wire Wire Line
 Wire Wire Line
 	9750 3300 10150 3300
 Wire Wire Line
-	2700 1400 2700 1800
-Connection ~ 2700 1400
+	2950 1400 2950 1800
 Wire Wire Line
 	4700 4750 4850 4750
 Wire Wire Line
@@ -1668,11 +1648,6 @@ Connection ~ 11250 3500
 Wire Wire Line
 	10950 3100 11300 3100
 Wire Wire Line
-	2900 2100 3050 2100
-Wire Wire Line
-	3200 2100 3200 2200
-Connection ~ 3200 2100
-Wire Wire Line
 	1200 2800 1800 2800
 Wire Wire Line
 	4000 2800 4000 3000
@@ -1772,8 +1747,6 @@ Wire Wire Line
 Connection ~ 6950 1000
 Wire Wire Line
 	14450 3450 14650 3450
-Wire Wire Line
-	2400 1400 2700 1400
 Wire Wire Line
 	1200 1400 1800 1400
 Wire Wire Line
@@ -2549,17 +2522,14 @@ Connection ~ 6200 8400
 $Comp
 L ModularRev3-rescue:TEST_1P-conn W5
 U 1 1 58BFF7E3
-P 3050 1900
-F 0 "W5" H 3050 2170 50  0000 C CNN
-F 1 "HVD" H 3050 2100 50  0000 C CNN
-F 2 "NixieClockMaster:TESTPAD_P1-13" H 3250 1900 50  0001 C CNN
-F 3 "" H 3250 1900 50  0000 C CNN
-	1    3050 1900
+P 2550 1950
+F 0 "W5" H 2550 2220 50  0000 C CNN
+F 1 "HVD" H 2550 2150 50  0000 C CNN
+F 2 "NixieClockMaster:TESTPAD_P1-13" H 2750 1950 50  0001 C CNN
+F 3 "" H 2750 1950 50  0000 C CNN
+	1    2550 1950
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3050 1900 3050 2100
-Connection ~ 3050 2100
 $Comp
 L ModularRev3-rescue:CONN_01X03-conn P3
 U 1 1 58C01003
@@ -2622,12 +2592,6 @@ Wire Wire Line
 Wire Wire Line
 	1800 1400 2100 1400
 Wire Wire Line
-	3200 2800 3700 2800
-Wire Wire Line
-	2700 2800 3200 2800
-Wire Wire Line
-	1800 2800 2700 2800
-Wire Wire Line
 	3700 2800 4000 2800
 Wire Wire Line
 	6550 2000 6550 2100
@@ -2645,8 +2609,6 @@ Wire Wire Line
 	7650 2700 7750 2700
 Wire Wire Line
 	1200 2100 1200 2200
-Wire Wire Line
-	2700 1400 3000 1400
 Wire Wire Line
 	4850 7400 4850 7500
 Wire Wire Line
@@ -2673,8 +2635,6 @@ Wire Wire Line
 	6850 2400 7050 2400
 Wire Wire Line
 	11250 3500 11250 3800
-Wire Wire Line
-	3200 2100 3300 2100
 Wire Wire Line
 	5650 4750 5650 5450
 Wire Wire Line
@@ -2750,8 +2710,6 @@ Wire Wire Line
 Wire Wire Line
 	6200 8400 6400 8400
 Wire Wire Line
-	3050 2100 3200 2100
-Wire Wire Line
 	11300 3100 11350 3100
 Wire Wire Line
 	11300 3100 11300 3450
@@ -2766,4 +2724,87 @@ F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/15/55/e
 	1    11700 7400
 	1    0    0    -1  
 $EndComp
+$Comp
+L Mechanical:MountingHole MH1
+U 1 1 5F1A2730
+P 11050 10250
+F 0 "MH1" H 11150 10296 50  0000 L CNN
+F 1 "MountingHole" H 11150 10205 50  0000 L CNN
+F 2 "NixieClockMaster:MountingHole_3.2mm_M3" H 11050 10250 50  0001 C CNN
+F 3 "~" H 11050 10250 50  0001 C CNN
+	1    11050 10250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole MH2
+U 1 1 5F1A2ADA
+P 11050 10450
+F 0 "MH2" H 11150 10496 50  0000 L CNN
+F 1 "MountingHole" H 11150 10405 50  0000 L CNN
+F 2 "NixieClockMaster:MountingHole_3.2mm_M3" H 11050 10450 50  0001 C CNN
+F 3 "~" H 11050 10450 50  0001 C CNN
+	1    11050 10450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole MH3
+U 1 1 5F1A2C29
+P 11050 10650
+F 0 "MH3" H 11150 10696 50  0000 L CNN
+F 1 "MountingHole" H 11150 10605 50  0000 L CNN
+F 2 "NixieClockMaster:MountingHole_3.2mm_M3" H 11050 10650 50  0001 C CNN
+F 3 "~" H 11050 10650 50  0001 C CNN
+	1    11050 10650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole MH4
+U 1 1 5F1A2D7F
+P 11050 10850
+F 0 "MH4" H 11150 10896 50  0000 L CNN
+F 1 "MountingHole" H 11150 10805 50  0000 L CNN
+F 2 "NixieClockMaster:MountingHole_3.2mm_M3" H 11050 10850 50  0001 C CNN
+F 3 "~" H 11050 10850 50  0001 C CNN
+	1    11050 10850
+	1    0    0    -1  
+$EndComp
+Wire Notes Line
+	11800 9950 10800 9950
+$Comp
+L Transistor_FET:IRF740 Q1
+U 1 1 5F1A37A1
+P 2850 2000
+F 0 "Q1" H 3055 2046 50  0000 L CNN
+F 1 "IRF740" H 3055 1955 50  0000 L CNN
+F 2 "NixieClockMaster:TO-220-3_H" H 3100 1925 50  0001 L CIN
+F 3 "http://www.vishay.com/docs/91054/91054.pdf" H 2850 2000 50  0001 L CNN
+	1    2850 2000
+	1    0    0    -1  
+$EndComp
+Connection ~ 2950 1400
+Wire Wire Line
+	2950 1400 3000 1400
+Wire Wire Line
+	2400 1400 2950 1400
+Wire Wire Line
+	1800 2800 2550 2800
+Connection ~ 1800 2800
+Wire Wire Line
+	2650 2000 2550 2000
+Wire Wire Line
+	2550 2000 2550 2200
+Wire Wire Line
+	2550 2600 2550 2800
+Connection ~ 2550 2800
+Wire Wire Line
+	2550 2800 2950 2800
+Wire Wire Line
+	3700 2800 2950 2800
+Connection ~ 3700 2800
+Connection ~ 2950 2800
+Wire Wire Line
+	2550 1950 2550 2000
+Connection ~ 2550 2000
+Wire Wire Line
+	2550 2000 2300 2000
 $EndSCHEMATC
