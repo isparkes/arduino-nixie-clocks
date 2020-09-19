@@ -671,24 +671,16 @@ void timeServerPageHandler() {
   String response_message = getHTMLHead(getIsConnected());
   response_message += getNavBar();
 
-  // form header
   response_message += getFormHead("Select time server");
-
-  response_message += "<br/><hr/>";
-  response_message += "You can try a POSIX lookup by entering an ";
-  response_message += "<a href=\"https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\" target=\"_blank\">";
-  response_message += "Olson name</a> (like America/Detroit) here, and then copy/paste it to the field above. ";
-  
-  debugMsg("ntpPool is: " + ntpAsync.getNtpPool());
   response_message += getTextInputWide("NTP Pool", "ntppool", ntpAsync.getNtpPool(), false);
   response_message += getNumberInput("Update interval:", "ntpupdate", NTP_UPDATE_INTERVAL_MIN, NTP_UPDATE_INTERVAL_MAX, ntpAsync.getUpdateInterval(), false);
   response_message += getTextInputWide("Time Zone String", "tzs", ntpAsync.getTZS(), false);
-
   response_message += getSubmitButton("Set");
 
   response_message += "<br/><hr/>";
-  response_message += "<a href=\"http://www.gnu.org/software/libc/manual/html_node/TZ-Variable.html\" target=\"_blank\">";
-  response_message += "POSIX time zone string reference,</a> e.g. US Eastern is <b>EST5EDT,M3.2.0,M11.1.0</b>. ";
+  response_message += "For a list of commonly used values Time Zone String values, go to ";
+  response_message += "<a href=\"https://www.nixieclock.biz/help/TZ-Variable.html\" target=\"_blank\">Time Zone Reference</a>";
+  
   response_message += "<br/><hr/>";
   response_message += "The NTP poll time should <i>not</i> be set to a multiple of 60 seconds. That will help spread ";
   response_message += "out the load on the NTP servers. 7261 seconds is good, 7200 is not. If using an ntp.org pool ";
