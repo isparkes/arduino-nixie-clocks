@@ -1,177 +1,125 @@
 /*
    ESP8266 Webserver for the Arduino Nixie Clock Firmware V1
     - Starts the ESP8266 as an access point and provides a web interface to configure and store WiFi credentials.
-    - Allows the time server to be defined and stored
+    - Allows the NTP pool to be defined and stored
+    - Manages time using a POSIX string
+
+    With thanks to MJS, Feb2019
+
+    This build made with:
+      ArduinoIDE 1.8.13, 
+      ESP8266 Community 2.7.4
+      The library versions below NOTE: You need to have EXACTLY the library versions in order to get a clean compile!
+
+   OTA support depends on flash size. Have a look at the flash size reported by esptool on upload. If you have
+   >= 1MB flash, you can enable OTA.
 
    Program with following settings (status line / IDE):
 
-    Board: Generic ESP8266 Module,
+    Board: Generic ESP8266 Module, 
     Crystal Frequency: 26MHz,
-    Flash: 80MHz,
-    CPU: 160MHz,
-    Flash Mode: QIO,
-    Upload speed: 115200,
-    Flash size: 1M (64k SPIFFS),
+    Flash: 40MHz, 
+    CPU: 160MHz, 
+    Flash Mode: QIO, 
+    Upload speed: 115200, 
+    Flash size: 1M (64k SPIFFS), 
     Reset method: ck, Disabled, none
     Erase Flash: All flash contents,
-    Builtin LED: 1 (1 for ESP-01)
+    Builtin LED: 1
 
    Go to http://192.168.4.1 in a web browser connected to this access point to see it
 */
 
-/*
- * 9Feb19 mjs
- * Added ntp and timezone support
- * ntp is preferred if available. If a blank ntp server is configured ("none"), 
- * or the NTP server is unreachable, it will fall back to the configured 
- * (non-ntp) time server.
- * 
- * .3 Initial release
- * .4 Bug fix and added OTA web browser update ability for 1 MB+ flash devices
- *    note that a lot of ESP-8266/ESP-01 modules only come with 512K. Be sure to 
- *    set the size correctly in the IDE Tools menu. It looks like Ian sources 1 MB 
- *    ones, so they should work with OTA.
- * .5 Added tweaks and basic security for pages which can cause harmful changes
- *    (web: admin/setup, update: admin/update)
- *    now syncs clock to NTP within ~25 ms.
- *    bumped EEPROM size to 1024 for future needs.
- * .6 Changed some defaults, more tweaks. Added user/pass hint when in softAP mode.
- *    Added some bounds checking, support for V1 clocks running i2c protocol v54 (untested).
- * .7 Try to sync NTP immediately after changing time server settings. Some refactoring of I2C
- *    clock reading stuff to try and get V1 compatibility working. Now get a compiler warning 
- *    about "uint8_t available = Wire.requestFrom((int)preferredI2CSlaveAddress, 1);" which is
- *    counterintuitive, but causes no harm (C++ experts welcome).
- * .8 Gave /setvalue a 5 second default timeout. Refactored globals. Better I2C scan detail. Changed 
- *    NTP sync to 5 ms. Added Utility page. 7Feb19
- * .9 Show NTP sync status. Revamped status page. Always compile for OTA, enable at run
- *    time based on sketch size and available space. 
- *
-*/
-
 #include <FS.h>
 #include <DNSServer.h>
-#include <WiFiClient.h>
+#include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266HTTPClient.h>
 #include <Wire.h>
+// #include <WebSocketsServer.h>
 
-#include <WiFiManager.h>          // https://github.com/tzapu/WiFiManager  (0.14.0)
+#include <WiFiManager.h>          // https://github.com/tzapu/WiFiManager  (0.15.0)
 #include <ArduinoJson.h>          // https://github.com/bblanchon/ArduinoJson (5.13.2)
-#include <ezTime.h>               // https://github.com/ropg/ezTime (0.7.9)
+#include <TimeLib.h>            // http://playground.arduino.cc/code/time (Margolis 1.5.0) // https://github.com/michaelmargolis/arduino_time
 
-// Other parts of the code, broken out for clarity
+#include "ClockDefs.h"
 #include "I2CDefs.h"
-  
-#define SOFTWARE_VERSION "v357mjs.9"
-#define SERIAL_NUMBER "0x0x0x"
+#include "NtpAsync.h"
+#include "HtmlServer.h"
+#include "SPIFFS.h"
 
-#define BUILD_NOTES "Includes DST change and timeNeedsSync fixes for ezTime 0.7.2 library \
-                     </br>test line"
+#define SOFTWARE_VERSION "vx58"
 
-/* This will compile in OTA support - need at least 1 MB for OTA updates.
-   we check available space at runtime before allowing it.
-*/
-#include <ESP8266HTTPUpdateServer.h>
-ESP8266HTTPUpdateServer httpUpdater;
-const char* update_path = "/update";
+#define DEBUG_OFF             // DEBUG or DEBUG_OFF - in debug mode there is no LED on the ESP-01!
+#define ESP01_LED_BUILTIN     1
 
-// security stuff
-#define WEB_USERNAME "admin"
-#define WEB_PASSWORD "setup"
-#define AP_SSID "NixieTimeModule"   
-#define AP_PSK  ""                                // to add password
-const char* update_username = "admin";
-const char* update_password = "update";
+// ----------------------- Auth ------------------------
 
-// time stuff
-#define DEFAULT_TIME_SERVER_URL_1 "http://time-zone-server.scapp.io/getTime/Europe/Zurich"
-#define DEFAULT_TIME_SERVER_URL_2 "http://its.internet-box.ch/getTime/America/Detroit"
+#define WEB_USERNAME_DEFAULT "admin"
+#define WEB_PASSWORD_DEFAULT "setup"
+#define WEB_AUTH_DEFAULT true
 
-#define DEFAULT_NTP_TZ "CET-1CEST,M3.5.0,M10.5.0/3"
-#define DEFAULT_NTP_TZ "EST5EDT,M3.2.0,M11.1.0"   //POSIX format
-#define DEFAULT_NTP_INTERVAL 7207                 // seconds, best if not a multiple of 60
-#define DEFAULT_NTP_SERVER "0.pool.ntp.org"
-#define MIN_NTP_INTERVAL 601                      // seconds
-#define MAX_NTP_INTERVAL 64999                    // ~18 hours
+const char *serialNumber = "0x0x0x";  // this is to be customized at burn time
 
-#define DEBUG_ON                                  // DEBUG_[ON|OFF] enable debugging output (no blue LED on ESP-01)
-
-#define EZT_DBG_LEVEL DEBUG                       // ezTime - NONE, ERROR, INFO, DEBUG
-
-int blinkMode = 2; // 0 = Connected, short flash, 1 = connected, connected, no time server, 2 = not connected
-
-// ----------------------------------------------------------------------------------------------------
-// ------------------------------------------  Globals (mostly)  --------------------------------------
-// ----------------------------------------------------------------------------------------------------
-const char *ap_ssid = AP_SSID;
-const char *ap_password = AP_PSK;
-const char* web_username = WEB_USERNAME;
-const char* web_password = WEB_PASSWORD;
-
-boolean blueLedState = true;
-// used for flashing the blue LED
-int blinkOnTime = 1000;
-int blinkTopTime = 2000;
 unsigned long lastMillis = 0;
+unsigned long nowMillis = millis();
+int lastSecond = 0;
+boolean triggeredThisSec = false;
+boolean spiffsFailed = false;
 
 // Timer for how often we send the I2C data
 long lastI2CUpdateTime = 0;
 byte preferredI2CSlaveAddress = 0xFF;
 byte preferredAddressFoundBy = 0; // 0 = not found, 1 = found by default, 2 = found by ping
 
-String timeServerURL = DEFAULT_TIME_SERVER_URL_1;
-
-ADC_MODE(ADC_VCC);
-
-// Clock config
-byte configHourMode;
-byte configBlankLead;
-byte configScrollback;
-byte configSuppressACP;
-byte configDateFormat;
-byte configDayBlanking;
-byte configBlankFrom;
-byte configBlankTo;
-byte configFadeSteps;
-byte configScrollSteps;
-byte configBacklightMode;
-byte configRedCnl;
-byte configGreenCnl;
-byte configBlueCnl;
-byte configCycleSpeed;
-byte configUseFade;
-byte configUseLDR;
-byte configBlankMode;
-byte configSlotsMode;
-unsigned int configPirTimeout;
-unsigned int configMinDim;
-const char *serialNumber = SERIAL_NUMBER;
-
-String ntpServer;
-String ntpTZ;
-String tzName;
-String tzPosix;
-unsigned short int ntpInterval;
-boolean wlanConnected = false;
-boolean largeFlash = false;
-
-enum timeSources {none, NTP, TimeServer};
-timeSources timeSource ; // 0=none, 1=ntp, 2=timeserver
+boolean updateOverOTAAvailable = false;
 
 enum i2cProtocols {unKnown, v2v62, v1v54};
 i2cProtocols i2cProtocol ;
 
-ESP8266WebServer server(80);
-Timezone myTz;
+ADC_MODE(ADC_VCC);
 
 WiFiManager wifiManager;
+// WebSocketsServer webSocket(81);
+
+NtpAsync ntpAsync;
 
 //gets called when WiFiManager enters configuration mode
 void configModeCallback (WiFiManager *myWiFiManager) {
   debugMsg("Entered config mode");
+  setBlinkMode(4);
   debugMsg(formatIPAsString(WiFi.softAPIP()));
-  //if you used auto generated SSID, print it
   debugMsg(myWiFiManager->getConfigPortalSSID());
+}
+
+//**********************************************************************************
+//**********************************************************************************
+//*                               ISR Display Multiplex                            *
+//**********************************************************************************
+//**********************************************************************************
+#define LED_ON                false
+#define LED_OFF               true
+volatile uint32_t onTime = 50000;
+volatile uint32_t offTime = 50000;
+volatile boolean currentState = LED_ON;
+
+// ************************************************************
+// Interrupt routine for scheduled interrupts
+// ************************************************************
+ICACHE_RAM_ATTR void statusLEDUpdate() {
+  uint32_t nextIntr = 0;
+  if (currentState == LED_ON) {
+    nextIntr = offTime;
+    currentState = LED_OFF;
+  } else {
+    nextIntr = onTime;
+    currentState = LED_ON;
+  }
+
+#ifndef DEBUG
+  digitalWrite(ESP01_LED_BUILTIN, currentState);
+#endif
+  timer1_write(nextIntr);
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -179,216 +127,359 @@ void configModeCallback (WiFiManager *myWiFiManager) {
 // ----------------------------------------------------------------------------------------------------
 void setup()
 {  
-#ifdef DEBUG_ON
-  setupDebug();
+#ifdef DEBUG
+  setupDebug(true);
   wifiManager.setDebugOutput(true);
+  DebugCallback dbcb = debugMsg;
+  ntpAsync.setDebugCallback(dbcb);
+  ntpAsync.setDebugOutput(true);
+  spiffs.setDebugCallback(dbcb);
+  spiffs.setDebugOutput(true);
 #else
-  pinMode(LED_BUILTIN, OUTPUT);
+  setupDebug(false);
+  pinMode(ESP01_LED_BUILTIN,OUTPUT);
   wifiManager.setDebugOutput(false);
 #endif
 
-  if (setOTAUpdates()) {
-    debugMsg("  --> Set OTA Updates on");
-  } else {
-    debugMsg("  --> Set OTA Updates OFF");
-  }
+  timer1_attachInterrupt(statusLEDUpdate); // Add ISR Function
+  timer1_enable(TIM_DIV256, TIM_EDGE, TIM_SINGLE);
+  /* Dividers:
+    TIM_DIV1 = 0,   //80MHz (80 ticks/us - 104857.588 us max)
+    TIM_DIV16 = 1,  //5MHz (5 ticks/us - 1677721.4 us max)
+    TIM_DIV256 = 3  //312.5Khz (1 tick = 3.2us - 26843542.4 us max)
+  Reloads:
+    TIM_SINGLE  0 //on interrupt routine you need to write a new value to start the timer again
+    TIM_LOOP  1 //on interrupt the counter will start with the same value again
+  */
+
+  debugMsg("Enabling interrupt");
+  timer1_write(onTime);
+  
+  debugMsg("Enabling WifiManager");
+  setBlinkMode(3);
   //set callback that gets called when connecting to previous WiFi fails, and enters Access Point mode
   wifiManager.setAPCallback(configModeCallback);
-  
   wifiManager.setConfigPortalTimeout(60);
 
   boolean connected = false;
   while (!connected) {
-    #ifndef DEBUG
-      for (int i = 0 ; i < 5 ; i++) {
-      setBlueLED(false);
-      delay(100);
-      setBlueLED(true);
-      delay(100);
-    }
-    #endif
     connected = wifiManager.autoConnect("NixieClockTimeModule","SetMeUp!");
   }
 
-  #ifdef DEBUG_ON
-    debugMsg("Connected!");
-  #else  
-    for (int i = 0 ; i < 3 ; i++) {
-      setBlueLED(false);
-      delay(50);
-      setBlueLED(true);
-      delay(500);
+  if (!spiffs.getConfigFromSpiffs(&current_config)) {
+    if (spiffs.testMountSpiffs()) {
+      debugMsg("No config found - resetting everything");
+      factoryReset();
+    } else {
+      // we couldn't mount SPIFFS because no SPIFFS is available
+      spiffsFailed = true;
     }
-  #endif
-
-  if(getConfigfromSpiffs()) {
-    debugMsg("Recovered Config from SPIFFS");
   } else {
-    debugMsg("Setting default tzs");
-    timeServerURL = DEFAULT_TIME_SERVER_URL_1;
-    saveConfigToSpiffs();
+    setWebAuthentication(current_config.webAuthentication);
+    setWebUserName(current_config.webUsername);
+    setWebPassword(current_config.webPassword);
+    
+    ntpAsync.setTZS(current_config.tzs);
+    ntpAsync.setNtpPool(current_config.ntpPool);
+    ntpAsync.setUpdateInterval(current_config.ntpUpdateInterval);
   }
-  
-  /*
-  * Locations of configs
-  * ---
-  * SSID 0-31 (32) -> WiFi Mnanager
-  * Password 32-95 (64) -> WiFi Mnanager
-  * Timeserver 96-351 (256) -> SPIFFS
-  * ntpServer 352-415 (64) -> SPIFFS
-  * ntpTZ 416-469 (64) -> SPIFFS
-  * ntpInterval 470-471 (2) -> SPIFFS
-  */
 
-  if(getConfigfromSpiffs()) {
-    debugMsg("Recovered Config from SPIFFS");
-  } else {
-    debugMsg("Setting default configs");
-    resetConfigs();
-  }
-  
   IPAddress apIP = WiFi.softAPIP();
   IPAddress myIP = WiFi.localIP();
   debugMsg("AP IP address: " + formatIPAsString(apIP));
   debugMsg("IP address: " + formatIPAsString(myIP));
 
+  // If we lose the connection, we try to recover it
+  WiFi.setAutoReconnect(true);
+
+  // set up the NTP component and wire up the "got time update" callback
+  ntpAsync.setUp();
+  NewTimeCallback ntcb = newTimeUpdateReceived;
+  ntpAsync.setNewTimeCallback(ntcb);
+  
+  // kick off NTP updates
+  ntpAsync.getTimeFromNTP();
+
   Wire.begin(0, 2); // SDA = 0, SCL = 2
   debugMsg("I2C master started");
-  
-  /* Set page handler functions */
-  server.on("/",            rootPageHandler);  // no auth here
 
+  /* Set page handler functions */
+  server.on("/",            rootPageHandler);
   server.on("/time", []() {
-    if (!server.authenticate(web_username, web_password)) {
+    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
       return server.requestAuthentication();
     }
     return timeServerPageHandler();
   });
 
-  server.on("/reset", []() {
-    if (!server.authenticate(web_username, web_password)) {
-      return server.requestAuthentication();
-    }
-    return resetPageHandler();
-  });
-
-  server.on("/resetWiFi", []() {
-    if (!server.authenticate(web_username, web_password)) {
+  server.on("/resetwifi", []() {
+    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
       return server.requestAuthentication();
     }
     return resetWiFiPageHandler();
   });
 
-  server.on("/updatetime",   updateTimePageHandler); // no auth here
-    
+  server.on("/resetoptions", []() {
+    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
+      return server.requestAuthentication();
+    }
+    return resetOptionsPageHandler();
+  });
+  
+  server.on("/resetall", []() {
+    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
+      return server.requestAuthentication();
+    }
+    return resetAllPageHandler();
+  });
+
+  server.on("/ntpupdate", []() {
+    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
+      return server.requestAuthentication();
+    }
+    return ntpUpdatePageHandler();
+  });
+
   server.on("/clockconfig", []() {
-    if (!server.authenticate(web_username, web_password)) {
+    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
       return server.requestAuthentication();
     }
     return clockConfigPageHandler();
   });
 
-  server.on("/setvalue", []() {
-    if (!server.authenticate(web_username, web_password)) {
+  server.on("/utility", []() {
+    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
       return server.requestAuthentication();
     }
-    return setDisplayValuePageHandler();
-  });
-
-  server.on("/utility", []() {
-  if (!server.authenticate(web_username, web_password)) {
-    return server.requestAuthentication();
-  }
     return utilityPageHandler();
   });
 
-  server.on("/local.css",   localCSSHandler); // no auth here
-  server.onNotFound(handleNotFound);          // no auth here
+  server.on("/local.css",   localCSSHandler);
+  server.onNotFound(handleNotFound);
 
   scanI2CBus();
-
 
   // Allow the IP to be displayed on the clock
   // this allows the user to know the address to log into
   // We need to send a time update and the IP
   sendIPAddressToI2C(WiFi.localIP());
-  sendTimeToI2C("2018,01,01,0,0,0");
-  
+  setTime(2020,9,13,0,0,0);
+  sendTimeToI2C();
+
   server.begin();
   debugMsg("HTTP server started");
+
+//  webSocket.begin();
+
+  if (ESP.getSketchSize()*2 < ESP.getFlashChipRealSize()) {
+    debugMsg("Can do OTA: sketch size ("+String(ESP.getSketchSize())+"), flash size ("+String(ESP.getFlashChipRealSize())+")");
+    httpUpdater.setup(&server, "/update", "admin", "update");
+    updateOverOTAAvailable = true;
+  } else {
+    debugMsg("NO OTA: sketch size ("+String(ESP.getSketchSize())+"), flash size ("+String(ESP.getFlashChipRealSize())+")");
+  }
+
+  if (mdns.begin(WiFi.hostname(), WiFi.localIP())) {
+    debugMsg("MDNS responder started as http://" + WiFi.hostname() + ".local");
+    mdns.addService("http", "tcp", 80);
+  }
+
+  spiffs.getStatsFromSpiffs(&current_stats);
 }
 
 // ----------------------------------------------------------------------------------------------------
 // --------------------------------------------- Main Loop --------------------------------------------
 // ----------------------------------------------------------------------------------------------------
-void loop() {
-  server.handleClient();                            // for web server
-  events();                                         // for NTP
-  if (WiFi.status() == WL_CONNECTED) {
-    wlanConnected = true;
-    if (lastMillis > millis()) {                    // rollover
-      lastI2CUpdateTime = 0;
-    }
+void loop()
+{
+  server.handleClient();
+  mdns.update();
+//  webSocket.loop();
 
-    if (((millis() - lastI2CUpdateTime) > 60000) || // See if it is time to update the Clock
-        (lastI2CUpdateTime==0)) {
+  // See if it is time to update the Clock
+  nowMillis = millis();
 
-      // Try to recover the current time
-      String timeStr = getTimeFromTimeZoneServer();
-
-      // Send the time to the I2C client, but only if there was no error
-      // note that NTP is tried first, but fails over to the TZ time server,
-      // so we still get this error if we're not getting any external time.
-      if (!timeStr.startsWith("ERROR:")) {
-        sendTimeToI2C(timeStr);
-
-        blinkMode = 0;
-
-        // all OK, flash 10 millisecond per second
-        debugMsg("Normal time serve mode");
-      } else {
-        // connected, but time server not found, flash middle speed
-        blinkMode = 1;
-        debugMsg("Connected, but no time server found");
-      }
-
-      // Allow the IP to be displayed on the clock
-      sendIPAddressToI2C(WiFi.localIP());
-      lastI2CUpdateTime = millis();
-    }
-  } else {
+  if (!WiFi.status() == WL_CONNECTED) {
     // offline, flash fast
-    blinkMode = 2;
+    setBlinkMode(2);
   }
 
-
-  switch (blinkMode) {
-    case 0:
-      {
-        blinkOnTime = 5;
-        blinkTopTime = 1000;
-        break;
-      }
-    case 1:
-      {
-        blinkOnTime = 250;
-        blinkTopTime = 1000;
-        break;
-      }
-    case 2:
-      {
-        blinkOnTime = 250;
-        blinkTopTime = 500;
-        break;
-      }
+  if (lastMillis > nowMillis) {
+    // rollover
+    lastMillis = 0;
   }
 
-  unsigned long nowMillis = millis();
-  if ((nowMillis - lastMillis) > blinkTopTime) {
-    lastMillis = nowMillis;
+  // -------------------------------------------------------------------------------
+
+  if (lastSecond != second()) {
+    lastSecond = second();
+    performOncePerSecondProcessing();
+
+    if ((second() == 0) && (!triggeredThisSec)) {
+      if ((minute() == 0)) {
+        if (hour() == 0) {
+          performOncePerDayProcessing();
+        }
+        performOncePerHourProcessing();
+      }
+      performOncePerMinuteProcessing();
+    }
+
+    // Make sure we don't call multiple times
+    triggeredThisSec = true;
+
+    if ((second() > 0) && triggeredThisSec) {
+      triggeredThisSec = false;
+    }
   }
 
-  setBlueLED((nowMillis - lastMillis) < blinkOnTime);
+  // -------------------------------------------------------------------------------
+  
+  delay(100);
+}
+
+// ************************************************************
+// Called once per second
+// ************************************************************
+void performOncePerSecondProcessing() {
+  if (ntpAsync.getNextUpdate(nowMillis) < 0) {
+    ntpAsync.getTimeFromNTP();
+  }
+  
+  sendTimeToI2C();
+
+  // Set the LED according to the sync status
+  if (ntpAsync.ntpTimeValid(nowMillis)) {
+    // All OK
+    setBlinkMode(0);
+  } else {
+    // connected, but time server not found, flash an error
+    setBlinkMode(1);
+  }
+
+  // Allow the IP to be displayed on the clock
+  sendIPAddressToI2C(WiFi.localIP());
+
+  lastI2CUpdateTime = nowMillis;
+
+//  webSocket.broadcastTXT("Something");
+}
+
+// ************************************************************
+// Called once per minute
+// ************************************************************
+void performOncePerMinuteProcessing() {
+  debugMsg("---> OncePerMinuteProcessing");
+
+  debugMsg("nu: " + String(ntpAsync.getNextUpdate(nowMillis)));
+
+  // Usage stats
+  current_stats.uptimeMins++;
+
+  if (getIsConnected()) {
+    IPAddress ip = WiFi.localIP();
+    debugMsg("IP: " + formatIPAsString(ip));
+  } else {
+    IPAddress ip = WiFi.localIP();
+    debugMsg("Not connected IP: " + formatIPAsString(ip));
+  }
+}
+
+// ************************************************************
+// Called once per hour
+// ************************************************************
+void performOncePerHourProcessing() {
+  debugMsg("---> OncePerHourProcessing");
+  reconnectDroppedConnection();
+}
+
+// ************************************************************
+// Called once per day
+// ************************************************************
+void performOncePerDayProcessing() {
+  debugMsg("---> OncePerDayProcessing");
+  spiffs.saveStatsToSpiffs(&current_stats);
+}
+
+// ************************************************************
+// In the case that we have lost the WiFi connection, try to reconnect
+// ************************************************************
+void reconnectDroppedConnection() {
+  // Try to reconnect if we are  not connected
+  if (WiFi.status() != WL_CONNECTED) {
+    debugMsg("Attepting to reconnect dropped connection WiFi connection to " + WiFi.SSID());
+    ETS_UART_INTR_DISABLE();
+    wifi_station_disconnect();
+    ETS_UART_INTR_ENABLE();
+    WiFi.begin();
+  }
+}
+
+// ************************************************************
+// Reset configuration values back to what they once were
+// ************************************************************
+void factoryReset() {
+  ntpAsync.resetDefaults();
+  spiffs_config_t* cc = &current_config;
+  cc->ntpPool = ntpAsync.getNtpPool();
+  cc->ntpUpdateInterval = ntpAsync.getUpdateInterval();
+  cc->tzs = ntpAsync.getTZS();
+
+  cc->hourMode = HOUR_MODE_DEFAULT;
+  cc->minDim = MIN_DIM_DEFAULT;
+  cc->fade = false;
+  cc->scrollback = false;
+  cc->fadeSteps = FADE_STEPS_DEFAULT;
+  cc->scrollSteps = SCROLL_STEPS_DEFAULT;
+
+  cc->thresholdBright = SENSOR_THRSH_DEFAULT;
+  cc->sensorSmoothCountLDR = SENSOR_SMOOTH_READINGS_DEFAULT;
+  cc->sensitivityLDR = SENSOR_SENSIT_DEFAULT;
+
+  cc->blankHourStart = 0;
+  cc->blankHourEnd = 7;
+  
+  cc->dateFormat = DATE_FORMAT_DEFAULT;
+  cc->dayBlanking = DAY_BLANKING_DEFAULT;
+  cc->blankMode = BLANK_MODE_DEFAULT;
+
+  cc->useLDR = USE_LDR_DEFAULT;
+  cc->pirTimeout = PIR_TIMEOUT_DEFAULT;
+  cc->usePIRPullup = USE_PIR_PULLUP_DEFAULT;
+  
+  cc->backlightMode = BACKLIGHT_DEFAULT;
+  cc->useBLPulse = false;
+  cc->useBLDim = true;
+  cc->redCnl = COLOUR_RED_CNL_DEFAULT;
+  cc->grnCnl = COLOUR_GRN_CNL_DEFAULT;
+  cc->bluCnl = COLOUR_BLU_CNL_DEFAULT;
+  cc->cycleSpeed = CYCLE_SPEED_DEFAULT;
+  
+  cc->slotsMode = SLOTS_MODE_DEFAULT;
+  cc->blankLeading = LEAD_BLANK_DEFAULT;
+  
+  cc->dateFormat = DATE_FORMAT_DEFAULT;
+  
+  cc->testMode = true;
+
+  setWebAuthentication(WEB_AUTH_DEFAULT);
+  cc->webAuthentication = getWebAuthentication();
+  setWebUserName(WEB_USERNAME_DEFAULT);
+  cc->webUsername = getWebUserName();
+  setWebPassword(WEB_PASSWORD_DEFAULT);
+  cc->webPassword = getWebPassword();
+
+  spiffs.saveConfigToSpiffs(cc);
+}
+
+void saveToSpiffsIfChanged(boolean changed) {
+  if (changed) {
+    debugMsg("Config options changed, saving them");
+    spiffs.saveConfigToSpiffs(&current_config);
+
+    // Save the stats while we are at it
+    spiffs.saveStatsToSpiffs(&current_stats);
+  }
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -400,74 +491,58 @@ void loop() {
 */
 void rootPageHandler()
 {
-  String response_message = getHTMLHead();
-  String timeSourceString;
-  String currentTime;
-  
+  String response_message = getHTMLHead(getIsConnected());
   response_message += getNavBar();
 
   // Status table
   response_message += getTableHead2Col("Current Status", "Name", "Value");
 
-  if ( wlanConnected )
+  if (spiffsFailed) {
+    response_message += getTableRow2Col("<strong>SPIFFS FAILED TO MOUNT</strong>", "Please reflash the controller with correct SPIFFS settings");
+  }
+
+  if (WiFi.status() == WL_CONNECTED)
   {
-//    if ( wlanConnected ) {updateNTP();}  // force immediate update
-    switch( timeSource ) {
-      case NTP:          timeSourceString = "NTP";
-                         currentTime = myTz.dateTime(RFC850);
-                         break;
-      case TimeServer:   timeSourceString = "Timeserver";
-                         currentTime = getTimeFromTimeZoneServer();
-                         break;
-      default:           timeSourceString = "none";
-    }
-    response_message += getTableRow2Col("Current time source", timeSourceString);
-    response_message += getTableRow2Col("Current time", currentTime);
-    response_message += getTableRow2Col("NTP server", ntpServer);
-    switch( timeStatus() ) {
-      case timeNotSet:     timeSourceString = "No sync yet"; break;
-      case timeNeedsSync:  timeSourceString = "No contact for polling interval + 1 hour"; break;
-      case timeSet:        timeSourceString = "Last poll valid"; break;
-      default:             timeSourceString = "Unknown"; 
-    }
-    response_message += getTableRow2Col("NTP status", timeSourceString);
-    response_message += getTableRow2Col("Time server URL", timeServerURL);
     IPAddress ip = WiFi.localIP();
     response_message += getTableRow2Col("WLAN IP", formatIPAsString(ip));
     response_message += getTableRow2Col("WLAN MAC", WiFi.macAddress());
     response_message += getTableRow2Col("WLAN SSID", WiFi.SSID());
-    response_message += getTableRow2Col("Time server URL", timeServerURL);
-    response_message += getTableRow2Col("Time according to server", getTimeFromTimeZoneServer());
+    response_message += getTableRow2Col("NTP Pool", ntpAsync.getNtpPool());
+    response_message += getTableRow2Col("TZ", ntpAsync.getTZS());
+    String clockUrl = "http://" + WiFi.hostname() + ".local";
+    clockUrl.toLowerCase();
+    response_message += getTableRow2Col("Clock Name", WiFi.hostname() + " (<a href = \"" + clockUrl + "\">" + clockUrl + "</a>)");
+    response_message += getTableRow2Col("Last NTP time", ntpAsync.getLastTimeFromServer());
   }
   else
   {
-    response_message += getTableRow2Col("name/password to configure<br/>WiFi (WLAN) connection",String(web_username)+"/"+String(web_password));
     IPAddress softapip = WiFi.softAPIP();
-    response_message += getTableRow2Col("AP IP", formatIPAsString(softapip));
+    String ipStrAP = String(softapip[0]) + '.' + String(softapip[1]) + '.' + String(softapip[2]) + '.' + String(softapip[3]);
+    response_message += getTableRow2Col("AP IP", ipStrAP);
     response_message += getTableRow2Col("AP MAC", WiFi.softAPmacAddress());
   }
 
-  String lastUpdateString = String(1 + (60000 - (millis() - lastI2CUpdateTime))/1000) + "s";
-  lastUpdateString += " (<a href=\"/updatetime\">do full update now</a>)";
-  response_message += getTableRow2Col("Next clock update in", lastUpdateString);
+  String currentTime = String(year()) + ":" + String(month()) + ":" + String(day()) + " " + String(hour()) + ":" + String(minute()) + ":" + String(second());
+  response_message += getTableRow2Col("Display Time", currentTime);
+  response_message += getTableRow2Col("Uptime", secsToReadableString(millis() / 1000));
 
-  // Make the uptime readable
-  long upSecs = millis() / 1000;
-  long upDays = upSecs / 86400;
-  long upHours = (upSecs - (upDays * 86400)) / 3600;
-  long upMins = (upSecs - (upDays * 86400) - (upHours * 3600)) / 60;
-  upSecs = upSecs - (upDays * 86400) - (upHours * 3600) - (upMins * 60);
-  String uptimeString = ""; uptimeString += upDays; uptimeString += " days, "; uptimeString += upHours, uptimeString += " hours, "; uptimeString += upMins; uptimeString += " mins, "; uptimeString += upSecs; uptimeString += " secs";
+  long lastUpdateTimeSecs = ntpAsync.getLastUpdateTimeSecs(millis());
+  response_message += getTableRow2Col("Last NTP update", secsToReadableString(lastUpdateTimeSecs) + " ago");
 
-  response_message += getTableRow2Col("Uptime", uptimeString);
-
-  response_message += getTableRow2Col("Time last update", lastUpdateString);
+  signed long absNextUpdate = abs(ntpAsync.getNextUpdate(nowMillis));
+  String overdueInd = "";
+  if (absNextUpdate < 0) {
+    overdueInd = " overdue";
+    absNextUpdate = -absNextUpdate;
+  }
+  response_message += getTableRow2Col("Time before next NTP update", secsToReadableString(absNextUpdate) + overdueInd);
 
   response_message += getTableRow2Col("Version", SOFTWARE_VERSION);
   response_message += getTableRow2Col("Serial Number", serialNumber);
 
   // Scan I2C bus
-  for (int idx = 0 ; idx < 128 ; idx++) { 
+  for (int idx = 0 ; idx < 128 ; idx++)
+  {
     Wire.beginTransmission(idx);
     int error = Wire.endTransmission();
     String slaveMsg = "Found I2C slave ";
@@ -491,507 +566,42 @@ void rootPageHandler()
       response_message += getTableRow2Col(slaveMsg,idx);
     }
   }
-  response_message += getTableFoot();
 
-  float voltaje = (float)ESP.getVcc()/(float)1024;
-  voltaje -= 0.01f;  // by default reads high
-  char dtostrfbuffer[15];
-  dtostrf(voltaje,7, 2, dtostrfbuffer);
-  String vccString = String(dtostrfbuffer);
-
-  // ESP8266 Info table
-  response_message += getTableHead2Col("Platform Information", "Name", "Value");
-  response_message += getTableRow2Col("Sketch compiled", dateTime(compileTime(),"l, d-M-y G:i:s ~U~T~C"));
-  response_message += getTableRow2Col("Build notes",BUILD_NOTES);
-  response_message += getTableRow2Col("Sketch size", ESP.getSketchSize());
-  String ota = String(ESP.getFreeSketchSpace());
-  if ( largeFlash ) { ota += " (OTA update capable)"; }
-  response_message += getTableRow2Col("Free sketch size", ota);
-  response_message += getTableRow2Col("Free heap", ESP.getFreeHeap());
-  response_message += getTableRow2Col("Boot version", ESP.getBootVersion());
-  response_message += getTableRow2Col("CPU Freqency (MHz)", ESP.getCpuFreqMHz());
-  response_message += getTableRow2Col("SDK version", ESP.getSdkVersion());
-  response_message += getTableRow2Col("Chip ID", ESP.getChipId());
-  response_message += getTableRow2Col("Flash Chip ID", String(ESP.getFlashChipId(), HEX));
-  response_message += getTableRow2Col("Flash size", ESP.getFlashChipRealSize());
-  response_message += getTableRow2Col("Last reset reason", ESP.getResetReason());
-  response_message += getTableRow2Col("Vcc", vccString);
-  response_message += getTableFoot();
-
-  response_message += getHTMLFoot();
-
-  server.send(200, "text/html", response_message);
-}
-
-// ===================================================================================================================
-// ===================================================================================================================
-
-/**
-   Get the local time from the time server, and modify the time server URL if needed
-*/
-void timeServerPageHandler() {
-  String serverArg = "";
-  // Check if there are any GET parameters, if there are, we are configuring
-  if (server.hasArg("timeserverurl"))
-  {
-    serverArg = String(server.arg("timeserverurl").c_str());
-    if (serverArg.length() > 4 && serverArg.length() < 256) {
-      timeServerURL = server.arg("timeserverurl").c_str();
-      // storeTimeServerURLInEEPROM(timeServerURL);
-    }
-  }
-
-  if (server.hasArg("ntpserver"))
-  {
-    serverArg = String(server.arg("ntpserver").c_str());
-    if ( serverArg.length() > 4 && serverArg.length() < 64 ) {
-      ntpServer = server.arg("ntpserver").c_str();
-      saveConfigToSpiffs();
-      setServer(ntpServer);
-      waitForSync(15);                                      // try to sync with new server
-    } 
-    else {
-      setInterval(0);
-      setServer("none");
-      ntpServer = "none";
-      saveConfigToSpiffs();
-    }
-  }
-
- if (server.hasArg("ntptz"))
-  {
-    serverArg = String(server.arg("ntptz").c_str());
-    if ( serverArg.length() > 4 && serverArg.length() < 64 ) {
-      lastI2CUpdateTime = 0;                               // force an update to the clock
-      ntpTZ = server.arg("ntptz").c_str();
-      saveConfigToSpiffs();
-      myTz.setPosix(ntpTZ);
-    }
-  }
-
- if (server.hasArg("ntpinterval"))
-  {
-    if (strlen(server.arg("ntpinterval").c_str()) > 2) {
-      unsigned int value = atoi(server.arg("ntpinterval").c_str());
-      if ( value >= MIN_NTP_INTERVAL && value <= MAX_NTP_INTERVAL ) {
-        ntpInterval = value;
-        saveConfigToSpiffs();
-        setInterval(ntpInterval);
-      }  
-    }  
-  }
-
- if (server.hasArg("tzname"))
-  {
-    serverArg = String(server.arg("tzname").c_str());
-    if ( serverArg.length() > 3 && serverArg.length() < 64 ) {
-      tzName = server.arg("tzname").c_str();
-      if (myTz.setLocation(tzName)) {  // also sets TZ string, so we restore after
-        tzPosix = myTz.getPosix();
-        myTz.setPosix(ntpTZ);          // restore the existing string
-      }
-    }
-  }
-
-  String response_message = getHTMLHead();
-  response_message += getNavBar();
-
-  // form header
-  response_message += getFormHead("Configure time servers");
-
-  // only fill in the value we have if it looks realistic
-  if ((timeServerURL.length() < 10) || (timeServerURL.length() > 250)) {
-    debugMsg("Got a bad URL for the TZS, resetting");
-    timeServerURL = DEFAULT_TIME_SERVER_URL_1;
+  String connectionInfo = "";
+  if (getIsConnected()) {
+    connectionInfo += "W";
   } else {
-    // save the timeserver URL
-    saveConfigToSpiffs();
+    connectionInfo += "w";
   }
-
-  response_message += getTextInputWide("NTP server<br/>(name or IP)", "ntpserver", ntpServer, false);
-  String foo = "NTP polling interval<br/> ("+String(MIN_NTP_INTERVAL)+"-"+String(MAX_NTP_INTERVAL)+" seconds)";
-  response_message += getTextInputWide(foo, "ntpinterval", String(ntpInterval), false);
-  response_message += getTextInputWide("POSIX TZ<br/>(see below)", "ntptz", ntpTZ, false);
-  response_message += getTextInputWide("Time service URL<br/>(backup to NTP)", "timeserverurl", timeServerURL, false);
-  response_message += getSubmitButton("Set");
-  response_message += "<br/><hr/>";
-  response_message += "You can try a POSIX lookup by entering an ";
-  response_message += "<a href=\"https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\" target=\"_blank\">";
-  response_message += "Olson name</a> (like America/Detroit) here, and then copy/paste it to the field above. ";
-  // response_message += "TZ changes may take a minute to appear on the clock."
-  response_message += getTextInputWide("Olson name", "tzname", tzName, false);
-  response_message += getTextInputWide("POSIX TZ string:", "tzposix", tzPosix, true);
-  response_message += getSubmitButton("Lookup");
-  response_message += "<br/><hr/>";
-  response_message += "<a href=\"http://www.gnu.org/software/libc/manual/html_node/TZ-Variable.html\" target=\"_blank\">";
-  response_message += "POSIX time zone string reference,</a> e.g. US Eastern is <b>EST5EDT,M3.2.0,M11.1.0</b>. ";
-  response_message += "<br/><hr/>";
-  response_message += "The NTP poll time should <i>not</i> be set to a multiple of 60 seconds. That will help spread ";
-  response_message += "out the load on the NTP servers. 7201 seconds is good, 7200 is not. If using an ntp.org pool ";
-  response_message += "server, polls should happen no more often than every 1/2 hour (1800 seconds) to comply with ";
-  response_message += "their terms of service. Start by setting the polling interval to a high value then observe ";
-  response_message += "how well the clock stays in sync. If it gets more than a second out of sync during that period, ";
-  response_message += "lower it. NTP providers will thank you. Regardless of the polling period, the clock will ";
-  response_message += "be sent a time update every 60 seconds.";
-  response_message += getFormFoot();
-  response_message += getHTMLFoot();
-
-  server.send(200, "text/html", response_message);
-}
-
-// ===================================================================================================================
-// ===================================================================================================================
-
-/**
-   Get the local time from the time server, and send it via I2C right now
-*/
-void updateTimePageHandler()
-{
-  updateNTP();  // force an immediate poll
-  String timeString = getTimeFromTimeZoneServer();
-
-  String response_message = getHTMLHead();
-  response_message += getNavBar();
-
-
-  if (timeString.substring(1,6) == "ERROR:") {
-    response_message += "<div class=\"container\" role=\"main\"><h3 class=\"sub-header\">Send time to I2C right now</h3>";
-    response_message += "<div class=\"alert alert-danger fade in\"><strong>Error!</strong> Could not recover the time from time server. ";
-    response_message += timeString;
-    response_message += "</div></div>";
+  if (ntpAsync.ntpTimeValid(nowMillis)) {
+    connectionInfo += "N";
   } else {
-    boolean result = sendTimeToI2C(timeString);
-
-    response_message += "<div class=\"container\" role=\"main\"><h3 class=\"sub-header\">Send time to I2C right now</h3>";
-    if (result) {
-      response_message += "<div class=\"alert alert-success fade in\"><strong>Success!</strong>Time received, update sent.</div></div>";
-      lastI2CUpdateTime = millis();
-    } else {
-      response_message += "<div class=\"alert alert-danger fade in\"><strong>Error!</strong> Update was not sent.</div></div>";
-    }
+    connectionInfo += "n";
   }
-  response_message += "<script> var timer = setTimeout(function() {window.location='/'}, 3000);</script>";
-  response_message += getHTMLFoot();
-
-  server.send(200, "text/html", response_message);
-}
-
-// ===================================================================================================================
-// ===================================================================================================================
-
-/**
-   Reset the EEPROM and stored values
-*/
-void resetPageHandler() {
-  wifiManager.resetSettings();
-
-  String response_message = getHTMLHead();
-  response_message += getNavBar();
-  response_message += "<div class=\"container\" role=\"main\"><h3 class=\"sub-header\">Send time to I2C right now</h3>";
-  response_message += "<div class=\"alert alert-success fade in\"><strong>Success!</strong> Reset done.</div>";
-  response_message += "<div class=\"alert alert-success fade in\">Attempting reboot, but power cycle if needed. ";
-  response_message += "You will then need to connect to the <b>"+String(ap_ssid)+"</b> SSID and open ";
-  response_message += "<b>http://192.168.4.1</b> in a web browser to reconfigure.</div></div>";
-  response_message += getHTMLFoot();
-  resetConfigs();
-  server.send(200, "text/html", response_message);
-  delay(1000);    // wait to deliver response
-  ESP.restart();  // should reboot
-}
-
-/**
-   Reset the ESP card
-*/
-void resetWiFiPageHandler() {
-  String response_message = getHTMLHead();
-  response_message += getNavBar();
-  response_message += "<div class=\"alert alert-success fade in\"><strong>Attempting a restart.</strong>";
-  response_message += "<script> var timer = setTimeout(function() {window.location='/'}, 10000);</script>";  
-  response_message += getHTMLFoot();
-  server.send(200, "text/html", response_message);
-  delay(1000);    // wait to deliver response
-  ESP.restart();  // should reboot
-}
-
-// ===================================================================================================================
-// ===================================================================================================================
-
-/**
-   Page for the clock configuration.
-*/
-void clockConfigPageHandler()
-{
-  // -----------------------------------------------------------------------------
-
-  if (server.hasArg("12h24hMode"))
-  {
-    debugMsg("Got 24h mode param: " + server.arg("12h24hMode"));
-    if ((server.arg("12h24hMode") == "24h") && (configHourMode)) {
-      debugMsg("I2C --> Set 24h mode");
-      setClockOption12H24H(true);
-    }
-
-    if ((server.arg("12h24hMode") == "12h")  && (!configHourMode)) {
-      debugMsg("I2C --> Set 12h mode");
-      setClockOption12H24H(false);
-    }
+  if (spiffsFailed) {
+    connectionInfo += "s";
+  } else {
+    connectionInfo += "S";
+  }
+  if (updateOverOTAAvailable) {
+    connectionInfo += "U";
+  } else {
+    connectionInfo += "u";
+  }
+  if (getWebAuthentication()) {
+    connectionInfo += "A";
+  } else {
+    connectionInfo += "a";
   }
 
-  // -----------------------------------------------------------------------------
+#ifdef DEBUG
+  connectionInfo += "D";
+#else
+  connectionInfo += "d";
+#endif
 
-  if (server.hasArg("blankLeading"))
-  {
-    debugMsg("Got blankLeading param: " + server.arg("blankLeading"));
-    if ((server.arg("blankLeading") == "blank") && (!configBlankLead)) {
-      debugMsg("I2C --> Set blank leading zero");
-      setClockOptionBlankLeadingZero(false);
-    }
-
-    if ((server.arg("blankLeading") == "show") && (configBlankLead)) {
-      debugMsg("I2C --> Set show leading zero");
-      setClockOptionBlankLeadingZero(true);
-    }
-  }
-
-  // -----------------------------------------------------------------------------
-
-  if (server.hasArg("useScrollback"))
-  {
-    debugMsg("Got useScrollback param: " + server.arg("useScrollback"));
-    if ((server.arg("useScrollback") == "on") && (!configScrollback)) {
-      debugMsg("I2C --> Set scrollback on");
-      setClockOptionScrollback(false);
-    }
-
-    if ((server.arg("useScrollback") == "off") && (configScrollback)) {
-      debugMsg("I2C --> Set scrollback off");
-      setClockOptionScrollback(true);
-    }
-  }
-
-  // -----------------------------------------------------------------------------
-
-  if (server.hasArg("suppressACP"))
-  {
-    debugMsg("Got suppressACP param: " + server.arg("suppressACP"));
-    if ((server.arg("suppressACP") == "on") && (!configSuppressACP)) {
-      debugMsg("I2C --> Set suppressACP on");
-      setClockOptionSuppressACP(false);
-    }
-
-    if ((server.arg("suppressACP") == "off") && (configSuppressACP)) {
-      debugMsg("I2C --> Set suppressACP off");
-      setClockOptionSuppressACP(true);
-    }
-  }
-
-  // -----------------------------------------------------------------------------
-
-  if (server.hasArg("useFade"))
-  {
-    debugMsg("Got useFade param: " + server.arg("useFade"));
-    if ((server.arg("useFade") == "on") && (!configUseFade)) {
-      debugMsg("I2C --> Set useFade on");
-      setClockOptionUseFade(false);
-    }
-
-    if ((server.arg("useFade") == "off") && (configUseFade)) {
-      debugMsg("I2C --> Set useFade off");
-      setClockOptionUseFade(true);
-    }
-  }
-
-  // -----------------------------------------------------------------------------
-
-  if (server.hasArg("useLDR"))
-  {
-    debugMsg("Got useLDR param: " + server.arg("useLDR"));
-    if ((server.arg("useLDR") == "on") && (!configUseLDR)) {
-      debugMsg("I2C --> Set useLDR on");
-      setClockOptionUseLDR(false);
-    }
-
-    if ((server.arg("useLDR") == "off") && (configUseLDR)) {
-      debugMsg("I2C --> Set useLDR off");
-      setClockOptionUseLDR(true);
-    }
-  }
-
-  // -----------------------------------------------------------------------------
-
-  if (server.hasArg("dateFormat")) {
-    debugMsg("Got dateFormat param: " + server.arg("dateFormat"));
-    byte newDateFormat = atoi(server.arg("dateFormat").c_str());
-    if (newDateFormat != configDateFormat) {
-      setClockOptionDateFormat(newDateFormat);
-      debugMsg("I2C --> Set dateFormat: " + newDateFormat);
-    }
-  }
-
-  // -----------------------------------------------------------------------------
-
-  if (server.hasArg("dayBlanking")) {
-    debugMsg("Got dayBlanking param: " + server.arg("dayBlanking"));
-    byte newDayBlanking = atoi(server.arg("dayBlanking").c_str());
-    if (newDayBlanking != configDayBlanking) {
-      setClockOptionDayBlanking(newDayBlanking);
-      debugMsg("I2C --> Set dayBlanking: " + newDayBlanking);
-    }
-  }
-
-  // -----------------------------------------------------------------------------
-
-  if (server.hasArg("blankFrom")) {
-    debugMsg("Got blankFrom param: " + server.arg("blankFrom"));
-    byte newBlankFrom = atoi(server.arg("blankFrom").c_str());
-    if (newBlankFrom != configBlankFrom) {
-      setClockOptionBlankFrom(newBlankFrom);
-      debugMsg("I2C --> Set blankFrom: " + newBlankFrom);
-    }
-  }
-
-  // -----------------------------------------------------------------------------
-
-  if (server.hasArg("blankTo")) {
-    debugMsg("Got blankTo param: " + server.arg("blankTo"));
-    byte newBlankTo = atoi(server.arg("blankTo").c_str());
-    if (newBlankTo != configBlankTo) {
-      setClockOptionBlankTo(newBlankTo);
-      debugMsg("I2C --> Set blankTo: " + newBlankTo);
-    }
-  }
-
-  // -----------------------------------------------------------------------------
-
-  if (server.hasArg("fadeSteps")) {
-    debugMsg("Got fadeSteps param: " + server.arg("fadeSteps"));
-    byte newFadeSteps = atoi(server.arg("fadeSteps").c_str());
-    if (newFadeSteps != configFadeSteps) {
-      setClockOptionFadeSteps(newFadeSteps);
-      debugMsg("I2C --> Set fadeSteps: " + newFadeSteps);
-    }
-  }
-
-  // -----------------------------------------------------------------------------
-
-  if (server.hasArg("scrollSteps")) {
-    debugMsg("Got scrollSteps param: " + server.arg("scrollSteps"));
-    byte newScrollSteps = atoi(server.arg("scrollSteps").c_str());
-    if (newScrollSteps != configScrollSteps) {
-      setClockOptionScrollSteps(newScrollSteps);
-      debugMsg("I2C --> Set fadeSteps: " + newScrollSteps);
-    }
-  }
-
-  // -----------------------------------------------------------------------------
-
-  if (server.hasArg("backLight")) {
-    debugMsg("Got backLight param: " + server.arg("backLight"));
-    byte newBacklight = atoi(server.arg("backLight").c_str());
-    if (newBacklight != configBacklightMode) {
-      setClockOptionBacklightMode(newBacklight);
-      debugMsg("I2C --> Set backLight: " + newBacklight);
-    }
-  }
-
-  // -----------------------------------------------------------------------------
-
-  if (server.hasArg("redCnl")) {
-    debugMsg("Got redCnl param: " + server.arg("redCnl"));
-    byte newRedCnl = atoi(server.arg("redCnl").c_str());
-    if (newRedCnl != configRedCnl) {
-      setClockOptionRedCnl(newRedCnl);
-      debugMsg("I2C --> Set redCnl: " + newRedCnl);
-    }
-  }
-
-  // -----------------------------------------------------------------------------
-
-  if (server.hasArg("grnCnl")) {
-    debugMsg("Got grnCnl param: " + server.arg("grnCnl"));
-    byte newGreenCnl = atoi(server.arg("grnCnl").c_str());
-    if (newGreenCnl != configGreenCnl) {
-      setClockOptionGrnCnl(newGreenCnl);
-      debugMsg("I2C --> Set grnCnl: " + newGreenCnl);
-    }
-  }
-
-  // -----------------------------------------------------------------------------
-
-  if (server.hasArg("bluCnl")) {
-    debugMsg("Got bluCnl param: " + server.arg("bluCnl"));
-    byte newBlueCnl = atoi(server.arg("bluCnl").c_str());
-    if (newBlueCnl != configBlueCnl) {
-      setClockOptionBluCnl(newBlueCnl);
-      debugMsg("I2C --> Set bluCnl: " + newBlueCnl);
-    }
-  }
-
-  // -----------------------------------------------------------------------------
-
-  if (server.hasArg("cycleSpeed")) {
-    debugMsg("Got cycleSpeed param: " + server.arg("cycleSpeed"));
-    byte newCycleSpeed = atoi(server.arg("cycleSpeed").c_str());
-    if (newCycleSpeed != configCycleSpeed) {
-      setClockOptionCycleSpeed(newCycleSpeed);
-      debugMsg("I2C --> Set cycleSpeed: " + newCycleSpeed);
-    }
-  }
-
-  // -----------------------------------------------------------------------------
-
-  if (server.hasArg("blankMode")) {
-    debugMsg("Got blankMode param: " + server.arg("blankMode"));
-    byte newBlankMode = atoi(server.arg("blankMode").c_str());
-    if (newBlankMode != configBlankMode) {
-      setClockOptionBlankMode(newBlankMode);
-      debugMsg("I2C --> Set blankMode: " + newBlankMode);
-    }
-  }
-
-  // -----------------------------------------------------------------------------
-
-  if (server.hasArg("slotsMode")) {
-    debugMsg("Got slotsMode param: " + server.arg("slotsMode"));
-    byte newSlotsMode = atoi(server.arg("slotsMode").c_str());
-    if (newSlotsMode != configSlotsMode) {
-      setClockOptionSlotsMode(newSlotsMode);
-      debugMsg("I2C --> Set slotsMode: " + newSlotsMode);
-    }
-  }
-
-  // -----------------------------------------------------------------------------
-  if ( i2cProtocol == v2v62 ) {
-    if (server.hasArg("pirTimeout")) {
-      debugMsg("Got pirTimeout param: " + server.arg("pirTimeout"));
-      int newPirTimeOut = atoi(server.arg("pirTimeout").c_str());
-      if (newPirTimeOut != configPirTimeout) {
-        setClockOptionPirTimeout(newPirTimeOut);
-        debugMsg("I2C --> Set pirTimeout: " + newPirTimeOut);
-      }
-    }
-  }
-  // -----------------------------------------------------------------------------
-
-  if (server.hasArg("minDim")) {
-    debugMsg("Got minDim param: " + server.arg("minDim"));
-    int newMinDim = atoi(server.arg("minDim").c_str());
-    if (newMinDim != configMinDim) {
-      setClockOptionMinDim(newMinDim);
-      debugMsg("I2C --> Set minDim: " + newMinDim);
-    }
-  }
-
-  // -----------------------------------------------------------------------------
-
-  // Get the options, put the result into variables called "config*"
-  getClockOptionsFromI2C();
-
-  String response_message = getHTMLHead();
-  response_message += getNavBar();
-
-  // form header
-  response_message += getFormHead("Set Configuration");
+  response_message += getTableRow2Col("Status string", connectionInfo);
+  response_message += getTableRow2Col("Total clock on time", String(secsToReadableString(current_stats.uptimeMins * 60)));
   String proto = "";
   switch(i2cProtocol) {
     case v1v54:   proto = "NixieFirmwareV1, I2C v54";
@@ -1001,11 +611,376 @@ void clockConfigPageHandler()
     default:      proto = "<strong>Clock not found!</strong>";
   }  
   proto += "<hr/>";
-  response_message += getTableRow2Col("Communicating with: ", proto);
+  response_message += getTableRow2Col("Communicating with: ", proto);  
+  response_message += getTableFoot();
+
+  float voltaje = (float)ESP.getVcc()/(float)1024;
+  voltaje -= 0.01f;  // by default reads high
+  char dtostrfbuffer[15];
+  dtostrf(voltaje,7, 2, dtostrfbuffer);
+  String vccString = String(dtostrfbuffer);
+
+  // ESP8266 Info table
+  response_message += getTableHead2Col("ESP8266 information", "Name", "Value");
+  const char compile_date[] = __DATE__ " " __TIME__;
+  response_message += getTableRow2Col("Sketch compiled", String(compile_date));
+  response_message += getTableRow2Col("Sketch size", ESP.getSketchSize());
+  response_message += getTableRow2Col("Free sketch size", ESP.getFreeSketchSpace());
+  response_message += getTableRow2Col("Free heap", ESP.getFreeHeap());
+  response_message += getTableRow2Col("Boot version", ESP.getBootVersion());
+  response_message += getTableRow2Col("CPU Freqency (MHz)", ESP.getCpuFreqMHz());
+  response_message += getTableRow2Col("SDK version", ESP.getSdkVersion());
+  response_message += getTableRow2Col("Chip ID", ESP.getChipId());
+  response_message += getTableRow2Col("Flash Chip ID", String(ESP.getFlashChipId(), HEX));
+  response_message += getTableRow2Col("Flash size", ESP.getFlashChipRealSize());
+  response_message += getTableRow2Col("Last reset reason", ESP.getResetReason());
+  response_message += getTableRow2Col("Vcc", vccString);
+  #ifdef DEBUG
+  String ledInfo = String(LED_BUILTIN) + "/Disabled (Debug)";
+  #else
+  String ledInfo = String(LED_BUILTIN) + "/" + String(ESP01_LED_BUILTIN);
+  #endif
+  response_message += getTableRow2Col("LED_BUILTIN / Used", ledInfo);
+  response_message += getTableFoot();
+
+  response_message += getHTMLFoot();
+
+  server.send(200, "text/html", response_message);
+}
+
+// ************************************************************
+// Manage the NTP Settings
+// ************************************************************
+void timeServerPageHandler() {
+  debugMsg("Time page in");
+
+  boolean changed = false;
   
+  changed |= checkServerArgString("ntppool", "NTP Pool", current_config.ntpPool);
+  changed |= checkServerArgInt("ntpupdate", "NTP update interval", current_config.ntpUpdateInterval);
+  changed |= checkServerArgString("tzs", "Time Zone String", current_config.tzs);
+  if (changed) {
+    ntpAsync.setTZS(current_config.tzs);
+    ntpAsync.setNtpPool(current_config.ntpPool);
+    ntpAsync.setUpdateInterval(current_config.ntpUpdateInterval);
+  }
+  saveToSpiffsIfChanged(changed);
+
+  // -----------------------------------------------------------------------------
+
+  String response_message = getHTMLHead(getIsConnected());
+  response_message += getNavBar();
+
+  // form header
+  response_message += getFormHead("Select time server");
+
+  response_message += "<br/><hr/>";
+  response_message += "You can try a POSIX lookup by entering an ";
+  response_message += "<a href=\"https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\" target=\"_blank\">";
+  response_message += "Olson name</a> (like America/Detroit) here, and then copy/paste it to the field above. ";
+  
+  debugMsg("ntpPool is: " + ntpAsync.getNtpPool());
+  response_message += getTextInputWide("NTP Pool", "ntppool", ntpAsync.getNtpPool(), false);
+  response_message += getNumberInput("Update interval:", "ntpupdate", NTP_UPDATE_INTERVAL_MIN, NTP_UPDATE_INTERVAL_MAX, ntpAsync.getUpdateInterval(), false);
+  response_message += getTextInputWide("Time Zone String", "tzs", ntpAsync.getTZS(), false);
+
+  response_message += getSubmitButton("Set");
+
+  response_message += "<br/><hr/>";
+  response_message += "<a href=\"http://www.gnu.org/software/libc/manual/html_node/TZ-Variable.html\" target=\"_blank\">";
+  response_message += "POSIX time zone string reference,</a> e.g. US Eastern is <b>EST5EDT,M3.2.0,M11.1.0</b>. ";
+  response_message += "<br/><hr/>";
+  response_message += "The NTP poll time should <i>not</i> be set to a multiple of 60 seconds. That will help spread ";
+  response_message += "out the load on the NTP servers. 7261 seconds is good, 7200 is not. If using an ntp.org pool ";
+  response_message += "server, polls should happen no more often than every 1/2 hour (1800 seconds) to comply with ";
+  response_message += "their terms of service. Start by setting the polling interval to a high value then observe ";
+  response_message += "how well the clock stays in sync. If it gets more than a second out of sync during that period, ";
+  response_message += "lower it. NTP providers will thank you. Regardless of the polling period, the clock will ";
+  response_message += "be sent a time update every second.";
+
+  response_message += getFormFoot();
+  response_message += getHTMLFoot();
+
+  server.send(200, "text/html", response_message);
+
+  debugMsg("Time page out");
+}
+
+// ===================================================================================================================
+// Update Time right now
+// ===================================================================================================================
+void updateTimePageHandler()
+{
+  // String timeString = getTimeFromTimeZoneServer();
+
+  String response_message = getHTMLHead(getIsConnected());
+  response_message += getNavBar();
+
+
+  if (!ntpAsync.ntpTimeValid(nowMillis)) {
+    response_message += "<div class=\"container\" role=\"main\"><h3 class=\"sub-header\">Send time to I2C right now</h3>";
+    response_message += "<div class=\"alert alert-danger fade in\"><strong>Error!</strong> NTP Time is not currenly valid, please try later. ";
+    response_message += ntpAsync.getLastTimeFromServer();
+    response_message += "</div></div>";
+  } else {
+    boolean result = sendTimeToI2C();
+
+    response_message += "<div class=\"container\" role=\"main\"><h3 class=\"sub-header\">Send time to I2C right now</h3>";
+    if (result) {
+      response_message += "<div class=\"alert alert-success fade in\"><strong>Success!</strong> Update sent.</div></div>";
+    } else {
+      response_message += "<div class=\"alert alert-danger fade in\"><strong>Error!</strong> Update was not sent.</div></div>";
+    }
+  }
+
+  response_message += getHTMLFoot();
+
+  server.send(200, "text/html", response_message);
+}
+
+// ===================================================================================================================
+// ===================================================================================================================
+
+// ************************************************************
+// Access to utility functions
+// ************************************************************
+void utilityPageHandler()
+{
+  debugMsg("Utility page in");
+  String response_message = getHTMLHead(getIsConnected());
+  response_message += getNavBar();
+
+  response_message += getTableHead2Col("Utilities", "Description", "Action");
+  response_message += getTableRow2Col("Reset Wifi Only (Reset WiFi, leaves clock configuration)", "<a href=\"/resetwifi\">Reset WiFi</a>");
+  response_message += getTableRow2Col("Reset Configuration Only (Reset clock configuration, leaves WiFi)", "<a href=\"/resetoptions\">Reset Configuration</a>");
+  response_message += getTableRow2Col("Reset All (Reset clock configuration, rest WiFi)", "<a href=\"/resetall\">Reset All</a>");
+  if(updateOverOTAAvailable) {
+    response_message += getTableRow2Col("Update firmware", "<a href=\"/update\">Update</a>");
+  } else {
+    response_message += getTableRow2Col("Update firmware", "not available - memory too small");
+  }
+  response_message += getTableRow2Col("Force NTP update right now", "<a href=\"/ntpupdate\">Update NTP</a>");
+
+  response_message += getTableFoot();
+
+  response_message += getHTMLFoot();
+  server.send(200, "text/html", response_message);
+  debugMsg("Utility page out");
+}
+
+// ************************************************************
+// Reset just the wifi
+// ************************************************************
+void resetWiFiPageHandler() {
+  debugMsg("Reset WiFi page in");
+
+  WiFiManager wifiManager;
+  wifiManager.resetSettings();
+
+  String response_message = getHTMLHead(getIsConnected());
+  response_message += getNavBar();
+  response_message += "<div class=\"alert alert-success fade in\"><strong>Attempting a restart.</strong>";
+  response_message += "<script> var timer = setTimeout(function() {window.location='/'}, 10000);</script>";
+  response_message += getHTMLFoot();
+  server.send(200, "text/html", response_message);
+  debugMsg("Reset WiFi page out");
+  delay(1000);    // wait to deliver response
+  ESP.restart();  // should reboot
+}
+
+// ************************************************************
+// Reset all clock option settings
+// ************************************************************
+void resetOptionsPageHandler() {
+  debugMsg("Options Factory Reset page in");
+
+  factoryReset();
+
+  server.sendHeader("Location", "/utility", true);
+  server.send(302, "text/plain", "");
+
+  debugMsg("Factory Reset page out");
+}
+
+// ************************************************************
+// Reset the EEPROM and WiFi values, restart
+// ************************************************************
+void resetAllPageHandler() {
+  debugMsg("Reset page in");
+
+  WiFiManager wifiManager;
+  wifiManager.resetSettings();
+  factoryReset();
+
+  String response_message = getHTMLHead(getIsConnected());
+  response_message += getNavBar();
+
+  response_message += "<div class=\"container\" role=\"main\"><h3 class=\"sub-header\">Send time to I2C right now</h3>";
+  response_message += "<div class=\"alert alert-success fade in\"><strong>Success!</strong> Reset done.</div></div>";
+
+  response_message += getHTMLFoot();
+
+  server.send(200, "text/html", response_message);
+
+  debugMsg("Reset page out");
+
+  // let the message get written
+  delay(500);
+
+  // do the restart
+  ESP.restart();
+}
+
+// ************************************************************
+// Do an NTP update now
+// ************************************************************
+void ntpUpdatePageHandler() {
+  debugMsg("NTP Update page in");
+
+  ntpAsync.getTimeFromNTP();
+
+  server.sendHeader("Location", "/utility", true);
+  server.send(302, "text/plain", "");
+
+  debugMsg("NTP Update page out");
+}
+
+
+// ===================================================================================================================
+// ===================================================================================================================
+
+/**
+   Page for the clock configuration.
+*/
+void clockConfigPageHandler()
+{
+  debugMsg("Config page in");
+
+  boolean changed = false;
+  
+  // -----------------------------------------------------------------------------
+  if(checkServerArgBoolean("12h24hMode", "12/24h mode", "12h", "24h", current_config.hourMode)) {
+    setClockOptionBooleanInverse(I2C_SET_OPTION_12_24, current_config.hourMode);
+    changed = true;
+  }
+  if(checkServerArgBoolean("blankLeading", "Leading zero", "blank", "show", current_config.blankLeading)) {
+    setClockOptionBooleanInverse(I2C_SET_OPTION_BLANK_LEAD, current_config.blankLeading);  
+    changed = true;
+  }
+  if(checkServerArgBoolean("scrollback", "Use scrollback", "on", "off", current_config.scrollback)) {
+    setClockOptionBooleanInverse(I2C_SET_OPTION_SCROLLBACK, current_config.scrollback);
+    changed = true;
+  }
+  if(checkServerArgByte("scrollSteps", "scrollSteps", current_config.scrollSteps)) {
+    setClockOptionByte(I2C_SET_OPTION_SCROLL_STEPS, current_config.scrollSteps);
+    changed = true;
+  }
+  if(checkServerArgBoolean("suppressACP", "Use suppressACP", "on", "off", current_config.suppressACP)) {
+    setClockOptionBooleanInverse(I2C_SET_OPTION_SUPPRESS_ACP, current_config.suppressACP);
+    changed = true;
+  }
+  if(checkServerArgBoolean("fade", "Use fade", "on", "off", current_config.fade)) {
+    setClockOptionBooleanInverse(I2C_SET_OPTION_FADE, current_config.fade);
+    changed = true;
+  }
+  if(checkServerArgByte("fadeSteps", "fadeSteps", current_config.fadeSteps)) {
+    setClockOptionByte(I2C_SET_OPTION_FADE_STEPS, current_config.fadeSteps);
+    changed = true;
+  }
+  if(checkServerArgBoolean("useLDR", "Use LDR", "on", "off", current_config.useLDR)) {
+    setClockOptionBooleanInverse(I2C_SET_OPTION_USE_LDR, current_config.useLDR);
+    changed = true;
+  }
+  if(checkServerArgByte("dateFormat", "dateFormat", current_config.dateFormat)) {
+    setClockOptionByte(I2C_SET_OPTION_DATE_FORMAT, current_config.dateFormat);
+    changed = true;
+  }
+  if(checkServerArgByte("slotsMode", "slotsMode", current_config.slotsMode)) {
+    setClockOptionByte(I2C_SET_OPTION_SLOTS_MODE, current_config.slotsMode);
+    changed = true;
+  }
+  if(checkServerArgByte("dayBlanking", "dayBlanking", current_config.dayBlanking)) {
+    setClockOptionByte(I2C_SET_OPTION_DAY_BLANKING, current_config.dayBlanking);
+    changed = true;
+  }
+  if(checkServerArgByte("blankMode", "blankMode", current_config.blankMode)) {
+    setClockOptionByte(I2C_SET_OPTION_BLANK_MODE, current_config.blankMode);
+    changed = true;
+  }
+  if(checkServerArgByte("blankHourStart", "blankHourStart", current_config.blankHourStart)) {
+    setClockOptionByte(I2C_SET_OPTION_BLANK_START, current_config.blankHourStart);
+    changed = true;
+  }
+  if(checkServerArgByte("blankHourEnd", "blankHourEnd", current_config.blankHourEnd)) {
+    setClockOptionByte(I2C_SET_OPTION_BLANK_END, current_config.blankHourEnd);
+    changed = true;
+  }
+  if(checkServerArgByte("backlightMode", "backlightMode", current_config.backlightMode)) {
+    setClockOptionByte(I2C_SET_OPTION_BACKLIGHT_MODE, current_config.backlightMode);
+    changed = true;
+  }
+  if(checkServerArgByte("redCnl", "redCnl", current_config.redCnl)) {
+    setClockOptionByte(I2C_SET_OPTION_RED_CHANNEL, current_config.redCnl);
+    changed = true;
+  }
+  if(checkServerArgByte("grnCnl", "grnCnl", current_config.grnCnl)) {
+    setClockOptionByte(I2C_SET_OPTION_GREEN_CHANNEL, current_config.grnCnl);
+    changed = true;
+  }
+  if(checkServerArgByte("bluCnl", "bluCnl", current_config.bluCnl)) {
+    setClockOptionByte(I2C_SET_OPTION_BLUE_CHANNEL, current_config.bluCnl);
+    changed = true;
+  }
+  if(checkServerArgByte("cycleSpeed", "cycleSpeed", current_config.cycleSpeed)) {
+    setClockOptionByte(I2C_SET_OPTION_CYCLE_SPEED, current_config.cycleSpeed);
+    changed = true;
+  }
+  if(checkServerArgInt("pirTimeout", "pirTimeout", current_config.pirTimeout)) {
+    if ( i2cProtocol == v2v62 ) {
+      // Only send if we are in the right I2C version
+      setClockOptionInt(I2C_SET_OPTION_PIR_TIMEOUT, current_config.pirTimeout);
+      changed = true;
+    } 
+  }
+  if(checkServerArgInt("minDim", "minDim", current_config.minDim)) {
+    if ( i2cProtocol == v2v62 ) {
+      setClockOptionInt(I2C_SET_OPTION_MIN_DIM_V2, current_config.minDim);
+    } else {
+      setClockOptionInt(I2C_SET_OPTION_MIN_DIM_V1, current_config.minDim);
+    } 
+    changed = true;
+  }
+
+  // -----------------------------------------------------------------------------
+  boolean webConfigChanged = false;
+  webConfigChanged |= checkServerArgBoolean("webAuthentication", "Web Authentication", "on", "off", current_config.webAuthentication);
+  webConfigChanged |= checkServerArgString("webUsername", "webUsername", current_config.webUsername);
+  webConfigChanged |= checkServerArgString("webPassword", "webPassword", current_config.webPassword);
+  if (webConfigChanged) {
+    changed = true;
+    setWebAuthentication(current_config.webAuthentication);
+    setWebUserName(current_config.webUsername);
+    setWebPassword(current_config.webPassword);
+  }
+
+  // -----------------------------------------------------------------------------
+
+  saveToSpiffsIfChanged(changed);
+
+  // -----------------------------------------------------------------------------
+  
+  // Get the options, put the result into variables called "config*"
+  getClockOptionsFromI2C();
+
+  String response_message = getHTMLHead(getHTMLHead);
+  response_message += getNavBar();
+
+  // -----------------------------------------------------------------------------
+  response_message += getFormHead("General options");
+
   // 12/24 mode
   response_message += getRadioGroupHeader("12H/24H mode:");
-  if (configHourMode == 0) {
+  if (current_config.hourMode == 0) {
     response_message += getRadioButton("12h24hMode", " 12H", "12h", false);
     response_message += getRadioButton("12h24hMode", " 24H", "24h", true);
   } else {
@@ -1016,7 +991,7 @@ void clockConfigPageHandler()
 
   // blank leading
   response_message += getRadioGroupHeader("Blank leading zero:");
-  if (configBlankLead) {
+  if (current_config.blankLeading) {
     response_message += getRadioButton("blankLeading", "Blank", "blank", true);
     response_message += getRadioButton("blankLeading", "Show", "show", false);
   } else {
@@ -1024,40 +999,47 @@ void clockConfigPageHandler()
     response_message += getRadioButton("blankLeading", "Show", "show", true);
   }
   response_message += getRadioGroupFooter();
+  //response_message += getCheckBox("blankLeadingZero", "on", "Blank leading zero on hours", (configBlankLead == 1));
+
+  // Date format
+  response_message += getDropDownHeader("Date format:", "dateFormat", false, false);
+  response_message += getDropDownOption("0", "YY-MM-DD", (current_config.dateFormat == 0));
+  response_message += getDropDownOption("1", "MM-DD-YY", (current_config.dateFormat == 1));
+  response_message += getDropDownOption("2", "DD-MM-YY", (current_config.dateFormat == 2));
+  response_message += getDropDownFooter();
 
   // Scrollback
   response_message += getRadioGroupHeader("Scrollback effect:");
-  if (configScrollback) {
-    response_message += getRadioButton("useScrollback", "On", "on", true);
-    response_message += getRadioButton("useScrollback", "Off", "off", false);
+  if (current_config.scrollback) {
+    response_message += getRadioButton("scrollback", "On", "on", true);
+    response_message += getRadioButton("scrollback", "Off", "off", false);
   } else {
-    response_message += getRadioButton("useScrollback", "On", "on", false);
-    response_message += getRadioButton("useScrollback", "Off", "off", true);
+    response_message += getRadioButton("scrollback", "On", "on", false);
+    response_message += getRadioButton("scrollback", "Off", "off", true);
   }
   response_message += getRadioGroupFooter();
 
   // Scroll steps
-  boolean scrollStepsDisabled = (configScrollback == 0);
-  response_message += getNumberInput("Scroll steps:", "scrollSteps", 1, 40, configScrollSteps, scrollStepsDisabled);
+  response_message += getNumberInput("Scroll steps:", "scrollSteps", 1, 40, current_config.scrollSteps, current_config.scrollback == false);
 
   // fade
   response_message += getRadioGroupHeader("Fade effect:");
-  if (configUseFade) {
-    response_message += getRadioButton("useFade", "On", "on", true);
-    response_message += getRadioButton("useFade", "Off", "off", false);
+  if (current_config.fade) {
+    response_message += getRadioButton("fade", "On", "on", true);
+    response_message += getRadioButton("fade", "Off", "off", false);
   } else {
-    response_message += getRadioButton("useFade", "On", "on", false);
-    response_message += getRadioButton("useFade", "Off", "off", true);
+    response_message += getRadioButton("fade", "On", "on", false);
+    response_message += getRadioButton("fade", "Off", "off", true);
   }
   response_message += getRadioGroupFooter();
+  //response_message += getCheckBox("useFade", "on", "Use fade effect", (configUseFade == 1));
 
   // Fade steps
-  boolean fadeStepsDisabled = (configUseFade == 0);
-  response_message += getNumberInput("Fade steps:", "fadeSteps", 20, 200, configFadeSteps, fadeStepsDisabled);
+  response_message += getNumberInput("Fade steps:", "fadeSteps", 20, 200, current_config.fadeSteps, current_config.fade == false);
 
   // Suppress ACP
   response_message += getRadioGroupHeader("Suppress ACP when dimmed:");
-  if (configSuppressACP) {
+  if (current_config.suppressACP) {
     response_message += getRadioButton("suppressACP", "On", "on", true);
     response_message += getRadioButton("suppressACP", "Off", "off", false);
   } else {
@@ -1065,11 +1047,17 @@ void clockConfigPageHandler()
     response_message += getRadioButton("suppressACP", "Off", "off", true);
   }
   response_message += getRadioGroupFooter();
-  //response_message += getCheckBox("suppressACP", "on", "Suppress ACP when fully dimmed", (configSuppressACP == 1));
+
+  response_message += getSubmitButton("Set");
+
+  response_message += getFormFoot();
+
+  // -----------------------------------------------------------------------------
+  response_message += getFormHead("Light Dependent Resistor");
 
   // LDR
   response_message += getRadioGroupHeader("Use LDR:");
-  if (configUseLDR) {
+  if (current_config.useLDR) {
     response_message += getRadioButton("useLDR", "On", "on", true);
     response_message += getRadioButton("useLDR", "Off", "off", false);
   } else {
@@ -1079,185 +1067,113 @@ void clockConfigPageHandler()
   response_message += getRadioGroupFooter();
   //response_message += getCheckBox("useLDR", "on", "Use LDR for dimming", (useLDR == 1));
 
-  // Date format
-  response_message += getDropDownHeader("Date format:", "dateFormat", false);
-  response_message += getDropDownOption("0", "YY-MM-DD", (configDateFormat == 0));
-  response_message += getDropDownOption("1", "MM-DD-YY", (configDateFormat == 1));
-  response_message += getDropDownOption("2", "DD-MM-YY", (configDateFormat == 2));
-  response_message += getDropDownFooter();
+  // Min dim
+  response_message += getNumberInput("Min Dim:", "minDim", 100, 500, current_config.minDim, false);
+
+  response_message += getSubmitButton("Set");
+
+  response_message += getFormFoot();
+
+  // -----------------------------------------------------------------------------
+  response_message += getFormHead("Digit blanking");
+  
+  if ( i2cProtocol == v2v62 ) {
+    // PIR timeout
+    response_message += getNumberInput("PIR timeout:", "pirTimeout", 60, 3600, current_config.pirTimeout, false);
+  }
 
   // Day blanking
-  response_message += getDropDownHeader("Day blanking:", "dayBlanking", true);
-  response_message += getDropDownOption("0", "Never blank", (configDayBlanking == 0));
-  response_message += getDropDownOption("1", "Blank all day on weekends", (configDayBlanking == 1));
-  response_message += getDropDownOption("2", "Blank all day on week days", (configDayBlanking == 2));
-  response_message += getDropDownOption("3", "Blank always", (configDayBlanking == 3));
-  response_message += getDropDownOption("4", "Blank during selected hours every day", (configDayBlanking == 4));
-  response_message += getDropDownOption("5", "Blank during selected hours on week days and all day on weekends", (configDayBlanking == 5));
-  response_message += getDropDownOption("6", "Blank during selected hours on weekends and all day on week days", (configDayBlanking == 6));
-  response_message += getDropDownOption("7", "Blank during selected hours on weekends only", (configDayBlanking == 7));
-  response_message += getDropDownOption("8", "Blank during selected hours on week days only", (configDayBlanking == 8));
+  response_message += getDropDownHeader("Day blanking:", "dayBlanking", true, false);
+  response_message += getDropDownOption("0", "Never blank", (current_config.dayBlanking == 0));
+  response_message += getDropDownOption("1", "Blank all day on weekends", (current_config.dayBlanking == 1));
+  response_message += getDropDownOption("2", "Blank all day on week days", (current_config.dayBlanking == 2));
+  response_message += getDropDownOption("3", "Blank always", (current_config.dayBlanking == 3));
+  response_message += getDropDownOption("4", "Blank during selected hours every day", (current_config.dayBlanking == 4));
+  response_message += getDropDownOption("5", "Blank during selected hours on week days and all day on weekends", (current_config.dayBlanking == 5));
+  response_message += getDropDownOption("6", "Blank during selected hours on weekends and all day on week days", (current_config.dayBlanking == 6));
+  response_message += getDropDownOption("7", "Blank during selected hours on weekends only", (current_config.dayBlanking == 7));
+  response_message += getDropDownOption("8", "Blank during selected hours on week days only", (current_config.dayBlanking == 8));
   response_message += getDropDownFooter();
 
   // Blank Mode
-  response_message += getDropDownHeader("Blank Mode:", "blankMode", true);
-  response_message += getDropDownOption("0", "Blank tubes only", (configBlankMode == 0));
-  response_message += getDropDownOption("1", "Blank LEDs only", (configBlankMode == 1));
-  response_message += getDropDownOption("2", "Blank tubes and LEDs", (configBlankMode == 2));
+  response_message += getDropDownHeader("Blank Mode:", "blankMode", true, false);
+  response_message += getDropDownOption("0", "Blank tubes only", (current_config.blankMode == 0));
+  response_message += getDropDownOption("1", "Blank LEDs only", (current_config.blankMode == 1));
+  response_message += getDropDownOption("2", "Blank tubes and LEDs", (current_config.blankMode == 2));
   response_message += getDropDownFooter();
   
-  boolean hoursDisabled = (configDayBlanking < 4);
+  boolean hoursDisabled = (current_config.dayBlanking < 4);
 
   // Blank hours from
-  response_message += getNumberInput("Blank from:", "blankFrom", 0, 23, configBlankFrom, hoursDisabled);
+  response_message += getNumberInput("Blank from:", "blankHourStart", 0, 23, current_config.blankHourStart, hoursDisabled);
 
   // Blank hours to
-  response_message += getNumberInput("Blank to:", "blankTo", 0, 23, configBlankTo, hoursDisabled);
+  response_message += getNumberInput("Blank to:", "blankHourEnd", 0, 23, current_config.blankHourEnd, hoursDisabled);
+
+  response_message += getSubmitButton("Set");
+
+  response_message += getFormFoot();
+
+  // -----------------------------------------------------------------------------
+  response_message += getFormHead("Back/Underlights");
 
   // Back light
-  response_message += getDropDownHeader("Back light:", "backLight", true);
-  response_message += getDropDownOption("0", "Fixed RGB backlight, no dimming", (configBacklightMode == 0));
-  response_message += getDropDownOption("1", "Pulsing RGB backlight, no dimming", (configBacklightMode == 1));
-  response_message += getDropDownOption("2", "Cycling RGB backlight, no dimming", (configBacklightMode == 2));
-  response_message += getDropDownOption("3", "Fixed RGB backlight, dims with ambient light", (configBacklightMode == 3));
-  response_message += getDropDownOption("4", "Pulsing RGB backlight, dims with ambient light", (configBacklightMode == 4));
-  response_message += getDropDownOption("5", "Cycling RGB backlight, dims with ambient light", (configBacklightMode == 5));
+  response_message += getDropDownHeader("Back light:", "backlightMode", true, false);
+  response_message += getDropDownOption("0", "Fixed RGB backlight, no dimming", (current_config.backlightMode == 0));
+  response_message += getDropDownOption("1", "Pulsing RGB backlight, no dimming", (current_config.backlightMode == 1));
+  response_message += getDropDownOption("2", "Cycling RGB backlight, no dimming", (current_config.backlightMode == 2));
+  response_message += getDropDownOption("3", "Fixed RGB backlight, dims with ambient light", (current_config.backlightMode == 3));
+  response_message += getDropDownOption("4", "Pulsing RGB backlight, dims with ambient light", (current_config.backlightMode == 4));
+  response_message += getDropDownOption("5", "Cycling RGB backlight, dims with ambient light", (current_config.backlightMode == 5));
   if ( i2cProtocol == v2v62 ) {
-    response_message += getDropDownOption("6", "'Colourtime' backlight", (configBacklightMode == 6));
-    response_message += getDropDownOption("7", "'Colourtime' backlight, dims with ambient light", (configBacklightMode == 7));
+    response_message += getDropDownOption("6", "'Colourtime' backlight", (current_config.backlightMode == 6));
+    response_message += getDropDownOption("7", "'Colourtime' backlight, dims with ambient light", (current_config.backlightMode == 7));
   }
   response_message += getDropDownFooter();
 
-  boolean cycleEnabled = !((configBacklightMode == 2) || (configBacklightMode == 5));
-  boolean colourChannelEnabled = !((configBacklightMode == 0) || (configBacklightMode == 1) || (configBacklightMode == 3) || (configBacklightMode == 4));
+  boolean cycleEnabled = !((current_config.backlightMode == 2) || (current_config.backlightMode == 5));
+  boolean colourChannelEnabled = !((current_config.backlightMode == 0) || (current_config.backlightMode == 1) || (current_config.backlightMode == 3) || (current_config.backlightMode == 4));
 
   // RGB channels
-  response_message += getNumberInput("Red intensity:", "redCnl", 0, 15, configRedCnl, colourChannelEnabled);
-  response_message += getNumberInput("Green intensity:", "grnCnl", 0, 15, configGreenCnl, colourChannelEnabled);
-  response_message += getNumberInput("Blue intensity:", "bluCnl", 0, 15, configBlueCnl, colourChannelEnabled);
+  response_message += getNumberInput("Red intensity:", "redCnl", 0, 15, current_config.redCnl, colourChannelEnabled);
+  response_message += getNumberInput("Green intensity:", "grnCnl", 0, 15, current_config.grnCnl, colourChannelEnabled);
+  response_message += getNumberInput("Blue intensity:", "bluCnl", 0, 15, current_config.bluCnl, colourChannelEnabled);
 
   // Cycle speed
-  response_message += getNumberInput("Backlight Cycle Speed:", "cycleSpeed", 2, 64, configCycleSpeed, cycleEnabled);
-
-  // Slots Mode
-  response_message += getDropDownHeader("Date Slots:", "slotsMode", true);
-  response_message += getDropDownOption("0", "Don't use slots mode", (configSlotsMode == 0));
-  response_message += getDropDownOption("1", "Scroll In, Scramble Out", (configSlotsMode == 1));
-  response_message += getDropDownFooter();
-
-  if ( i2cProtocol == v2v62 ) {
-    // PIR timeout
-    response_message += getNumberInput("PIR timeout:", "pirTimeout", 60, 3600, configPirTimeout, false);
-  }
-  
-  // Min Dim
-  response_message += getNumberInput("Min Dim:", "minDim", 100, 500, configMinDim, false);
+  response_message += getNumberInput("Backlight Cycle Speed:", "cycleSpeed", 2, 64, current_config.cycleSpeed, cycleEnabled);
 
   // form footer
   response_message += getSubmitButton("Set");
 
-  response_message += "</form></div>";
+  response_message += getFormFoot();
+
+  // -----------------------------------------------------------------------------
+  response_message += getFormHead("Security");
+
+  // web auth mode
+  response_message += getRadioGroupHeader("Web Authentication:");
+  if (current_config.webAuthentication) {
+    response_message += getRadioButton("webAuthentication", " On", "on", true);
+    response_message += getRadioButton("webAuthentication", " Off", "off", false);
+  } else {
+    response_message += getRadioButton("webAuthentication", " On", "on", false);
+    response_message += getRadioButton("webAuthentication", " Off", "off", true);
+  }
+  response_message += getRadioGroupFooter();
+
+  response_message += getTextInput("User Name", "webUsername", current_config.webUsername, !current_config.webAuthentication);
+  response_message += getTextInput("Password", "webPassword", current_config.webPassword, !current_config.webAuthentication);
+
+  response_message += getSubmitButton("Set");
+
+  response_message += getFormFoot();
+
+  // -----------------------------------------------------------------------------
 
   // all done
   response_message += getHTMLFoot();
 
   server.send(200, "text/html", response_message);
-}
-
-// ===================================================================================================================
-// ===================================================================================================================
-
-/**
-   Utility functions
-*/
-void utilityPageHandler()
-{
-  String response_message = getHTMLHead();
-  response_message += getNavBar();
-
-  response_message += "<hr><li><a href=\"/resetWiFi\">Restart WiFi module</a></li>";
-  response_message += "<hr><li><a href=\"/reset\">Clear WiFi config and restart module</a></li>";
-  if ( largeFlash ) {
-  response_message += "<hr><li><a href=\"/update\">Update firmware</a></li>";
-  }
-
-  response_message += getHTMLFoot();
-  server.send(200, "text/html", response_message);
-}
-
-
-
-/**
-   Send a value to the clock for display
-*/
-void setDisplayValuePageHandler() {
-  String resultMessage;
-  byte timeValue = 0x05;
-  if (server.hasArg("time"))
-  {
-    debugMsg("Got time");
-    debugMsg(server.arg("time"));
-    unsigned int timeToSend = atoi(server.arg("time").c_str());
-    if (timeToSend > 255) 
-    {
-      timeValue = 0xff;
-    } else {
-      timeValue = timeToSend;
-    }
-  };
-
-  if (server.hasArg("value"))
-  {
-    debugMsg("Got server arg value: " + server.arg("value"));
-    long valueToSend = atol(server.arg("value").c_str());
-    byte val2 = hex2bcd(valueToSend % 100);
-    valueToSend = valueToSend / 100;
-    byte val1 = hex2bcd(valueToSend % 100);
-    valueToSend = valueToSend / 100;
-    byte val0 = hex2bcd(valueToSend % 100);
-
-    if (sendValueToI2C(val0,val1,val2,timeValue)) {
-      resultMessage = "Value sent!";
-    } else {
-      resultMessage = "Error sending value!";
-    }
-  } else {
-    resultMessage = "No value to send";
-  }
-
-  if (server.hasArg("format"))
-  {
-    debugMsg("Got format");
-    debugMsg(server.arg("format"));
-
-    long formatToSend = atol(server.arg("format").c_str());
-    byte val2 = hex2bcd(formatToSend % 100);
-    formatToSend = formatToSend / 100;
-    byte val1 = hex2bcd(formatToSend % 100);
-    formatToSend = formatToSend / 100;
-    byte val0 = hex2bcd(formatToSend % 100);
-    sendValueFormatToI2C(val0,val1,val2);
-  };
-
-  String response_message = getHTMLHead();
-  response_message += getNavBar();
-
-  response_message += "<div class=\"container\" role=\"main\"><h3 class=\"sub-header\">Send value to I2C</h3>";
-  response_message += "<div class=\"alert alert-success fade in\"><strong>";
-  response_message += resultMessage;
-  response_message += "</strong></div></div>";
-
-  response_message += getHTMLFoot();
-
-  server.send(200, "text/html", response_message);
-}
-
-unsigned char hex2bcd (unsigned char x)
-{
-    unsigned char y;
-    y = (x / 10) << 4;
-    y = y | (x % 10);
-    return (y);
 }
 
 // ===================================================================================================================
@@ -1298,125 +1214,77 @@ void localCSSHandler()
 // ----------------------------------------- Network handling -----------------------------------------
 // ----------------------------------------------------------------------------------------------------
 
-/**
-   Get the local time from the time zone server. Return the error description prefixed by "ERROR:" if something went wrong.
-   Uses the global variable timeServerURL.
-*/
-String getTimeFromTimeZoneServer() {
-  String payload = "";
-  timeSource = none;
-  if ( wlanConnected && timeStatus() == timeSet && ntpServer != "none" ) {   // try NTP first
-    while ( ms() > 5 ) {                               // exit when we're within 25 ms of actual time
-      yield();
-    }
-    payload = myTz.dateTime(TIME_NOW,"Y,n,j,G,i,s");     // format is 2019,2,1,10,16,46 
-    timeSource = NTP;
-  } else {                                              // otherwise, use the http time service
-    HTTPClient http;
-    http.begin(timeServerURL);
-    String espId = "";espId += ESP.getChipId();
-    http.addHeader("ESP",espId);
-    http.addHeader("ClientID",serialNumber);
-
-    int httpCode = http.GET();
-
-    // file found at server
-    if (httpCode == HTTP_CODE_OK) {
-      payload = http.getString();
-      timeSource = TimeServer;
-    } else {
-      debugMsg("[HTTP] GET... failed, error: " + http.errorToString(httpCode));
-      if (httpCode > 0) {
-        // RFC error codes don't have a string mapping
-        payload = "ERROR: " + String(httpCode);
-      } else {
-        // ESP error codes have a string mapping
-        payload = "ERROR: " + String(httpCode) + " ("+ http.errorToString(httpCode) + ")";
-      }
-    }
-  http.end();
-  }
-  return payload;
+// ************************************************************
+// What it says on the tin
+// ************************************************************
+boolean getIsConnected() {
+  return WiFi.isConnected();
 }
 
-
-// ----------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------
 // ----------------------------------------- Utility functions ----------------------------------------
 // ----------------------------------------------------------------------------------------------------
 
-void setBlueLED(boolean newState) {
-#ifndef DEBUG
-  if (newState) {
-    digitalWrite(LED_BUILTIN, LOW);
-  } else {
-    digitalWrite(LED_BUILTIN, HIGH);
+// ************************************************************
+// Callback: When the NTP component tells us there is an update
+// go and get it
+// ************************************************************
+void newTimeUpdateReceived() {
+  debugMsg("Got a new time update");
+  setTimeFromServer(ntpAsync.getLastTimeFromServer());
+}
+
+// ************************************************************
+// Set the time from the value we get back from the time server
+// ************************************************************
+void setTimeFromServer(String timeString) {
+  int intValues[6];
+  grabInts(timeString, &intValues[0], ",");
+  setTime(intValues[SYNC_HOURS], intValues[SYNC_MINS], intValues[SYNC_SECS], intValues[SYNC_DAY], intValues[SYNC_MONTH], intValues[SYNC_YEAR]);
+  debugMsg("Set internal time to NTP time: " + String(year()) + ":" + String(month()) + ":" + String(day()) + " " + String(hour()) + ":" + String(minute()) + ":" + String(second()));
+}
+
+// ************************************************************
+// ************************************************************
+void setBlinkMode(byte blinkMode) {
+  switch (blinkMode) {
+    case 0:
+      {
+        // normal running - 1S short flash
+        onTime = 100;
+        offTime = 312400;
+        break;
+      }
+    case 1:
+      {
+        // WiFi connected, but no time
+        onTime = 50000;
+        offTime = 5000;
+        break;
+      }
+    case 2:
+      {
+        // Offline
+        onTime = 18310;
+        offTime = 18310;
+        break;
+      }
+    case 3:
+      {
+        // WiFi Connecting - slow flash
+        onTime = 156200;
+        offTime = 156200;
+        break;
+      }
+    case 4:
+      {
+        // Access Point Open - very fast flash
+        onTime = 2000;
+        offTime = 20000;
+        break;
+      }
+    break;
   }
-#endif
-}
-
-/**
- * Split a string based on a separator, get the element given by index
- */
-String getValue(String data, char separator, int index)
-{
-  int found = 0;
-  int strIndex[] = {0, -1};
-  int maxIndex = data.length() - 1;
-  for (int i = 0; i <= maxIndex && found <= index; i++) {
-    if (data.charAt(i) == separator || i == maxIndex) {
-      found++;
-      strIndex[0] = strIndex[1] + 1;
-      strIndex[1] = (i == maxIndex) ? i + 1 : i;
-    }
-  }
-  return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
-}
-
-/**
-   Split a string based on a separator, get the element given by index, return an integer value
-*/
-int getIntValue(String data, char separator, int index) {
-  String result = getValue(data, separator, index);
-  return atoi(result.c_str());
-}
-
-void debugMsg(String msg) {
-  #ifdef DEBUG_ON
-  Serial.println(msg);
-  delay(10); //will this let string get sent?
-  #endif
-}
-
-void debugMsgContinue(String msg) {
-  #ifdef DEBUG_ON
-  Serial.print(msg);
-  #endif
-}
-
-void setupDebug() {
-#ifdef DEBUG_ON
-  Serial.begin(115200);
-  debugMsg("Starting debug session");
-  setDebug(EZT_DBG_LEVEL, Serial); // ezTime
-#else
-  setDebug(NONE); // ezTime
-#endif
-}
-
-String formatIPAsString(IPAddress ip) {
-  return String(ip[0]) + '.' + String(ip[1]) + '.' + String(ip[2]) + '.' + String(ip[3]);
-}
-
-boolean setOTAUpdates() {
-  if ( ESP.getSketchSize() + 4096 < ESP.getFreeSketchSpace() ) { largeFlash = true; }
-  
-  if ( largeFlash ) {
-    httpUpdater.setup(&server, update_path, update_username, update_password);
-    return true;
-  }
-
-  return false;
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1426,27 +1294,28 @@ boolean setOTAUpdates() {
 /**
  * Send the time to the I2C slave. If the transmission went OK, return true, otherwise false.
  */
-boolean sendTimeToI2C(String timeString) {
+boolean sendTimeToI2C() {
 
-  int year = getIntValue(timeString, ',', 0);
-  byte month = getIntValue(timeString, ',', 1);
-  byte day = getIntValue(timeString, ',', 2);
-  byte hour = getIntValue(timeString, ',', 3);
-  byte minute = getIntValue(timeString, ',', 4);
-  byte sec = getIntValue(timeString, ',', 5);
+  byte yearAdjusted = (year() - 2000);
 
-  byte yearAdjusted = (year - 2000);
-
-  debugMsg("Sending time to I2C: " + timeString);
+#ifdef DEBUG
+  String timeString = String(yearAdjusted)+"-"+
+    String(month()) + "-" +
+    String(day()) + " " +
+    String(hour()) + ":" +
+    String(minute()) + ":" +
+    String(second());
+  // debugMsg("Sending time to I2C: " + timeString);
+#endif
 
   Wire.beginTransmission(preferredI2CSlaveAddress);
   Wire.write(I2C_TIME_UPDATE); // Command
   Wire.write(yearAdjusted);
-  Wire.write(month);
-  Wire.write(day);
-  Wire.write(hour);
-  Wire.write(minute);
-  Wire.write(sec);
+  Wire.write(month());
+  Wire.write(day());
+  Wire.write(hour());
+  Wire.write(minute());
+  Wire.write(second());
   int error = Wire.endTransmission();
   return (error == 0);
 }
@@ -1484,114 +1353,138 @@ boolean getClockOptionsFromI2C() {
     if (available == dataLen ) {
       receivedByte = Wire.read();                                              // throw away i2c version, we already know it
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got hour mode: " + receivedByte);
-      configHourMode = receivedByte;
+    // IDX 1
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got hour mode: " + receivedByte);
+    current_config.hourMode = receivedByte;
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got blank lead: " + receivedByte);
-      configBlankLead = receivedByte;
+    // IDX 2
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got blank lead: " + receivedByte);
+    current_config.blankLeading = receivedByte;
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got scrollback: " + receivedByte);
-      configScrollback = receivedByte;
+    // IDX 3
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got scrollback: " + receivedByte);
+    current_config.scrollback = receivedByte;
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got suppress ACP: " + receivedByte);
-      configSuppressACP = receivedByte;
+    // IDX 4
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got suppress ACP: " + receivedByte);
+    current_config.suppressACP = receivedByte;
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got useFade: " + receivedByte);
-      configUseFade = receivedByte;
+    // IDX 5
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got useFade: " + receivedByte);
+    current_config.fade = receivedByte;
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got date format: " + receivedByte);
-      configDateFormat = receivedByte;
+    // IDX 6
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got date format: " + receivedByte);
+    current_config.dateFormat = receivedByte;
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got day blanking: " + receivedByte);
-      configDayBlanking = receivedByte;
+    // IDX 7
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got day blanking: " + receivedByte);
+    current_config.dayBlanking = receivedByte;
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got blank hour start: " + receivedByte);
-      configBlankFrom = receivedByte;
+    // IDX 8
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got blank hour start: " + receivedByte);
+    current_config.blankHourStart = receivedByte;
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got blank hour end: " + receivedByte);
-      configBlankTo = receivedByte;
+    // IDX 9
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got blank hour end: " + receivedByte);
+    current_config.blankHourEnd = receivedByte;
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got fade steps: " + receivedByte);
-      configFadeSteps = receivedByte;
+    // IDX 10
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got fade steps: " + receivedByte);
+    current_config.fadeSteps = receivedByte;
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got scroll steps: " + receivedByte);
-      configScrollSteps = receivedByte;
+    // IDX 11
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got scroll steps: " + receivedByte);
+    current_config.scrollSteps = receivedByte;
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got backlight mode: " + receivedByte);
-      configBacklightMode = receivedByte;
+    // IDX 12
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got backlight mode: " + receivedByte);
+    current_config.backlightMode = receivedByte;
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got red channel: " + receivedByte);
-      configRedCnl = receivedByte;
+    // IDX 13
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got red channel: " + receivedByte);
+    current_config.redCnl = receivedByte;
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got green channel: " + receivedByte);
-      configGreenCnl = receivedByte;
+    // IDX 14
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got green channel: " + receivedByte);
+    current_config.grnCnl = receivedByte;
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got blue channel: " + receivedByte);
-      configBlueCnl = receivedByte;
+    // IDX 15
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got blue channel: " + receivedByte);
+    current_config.bluCnl = receivedByte;
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got cycle speed: " + receivedByte);
-      configCycleSpeed = receivedByte;
+    // IDX 16
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got cycle speed: " + receivedByte);
+    current_config.cycleSpeed = receivedByte;
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got useLDR: " + receivedByte);
-      configUseLDR = receivedByte;
+    // IDX 17
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got useLDR: " + receivedByte);
+    current_config.useLDR = receivedByte;
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got blankMode: " + receivedByte);
-      configBlankMode = receivedByte;
+    // IDX 18
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got blankMode: " + receivedByte);
+    current_config.blankMode = receivedByte;
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got slotsMode: " + receivedByte);
-      configSlotsMode = receivedByte;
-  
-      if ( i2cProtocol == v2v62 ) {                                  // only for V2
+    // IDX 19
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got slotsMode: " + receivedByte);
+    current_config.slotsMode = receivedByte;
+
+    if ( i2cProtocol == v2v62 ) {                                  // only for V2
+        // IDX 20
         receivedByte = Wire.read();
         debugMsg("I2C <-- Got pirTimeOut Hi: " + receivedByte);
         int pirTO = receivedByte * 256;
-
+        
+        // IDX 21
         receivedByte = Wire.read();
         debugMsg("I2C <-- Got pirTimeOut Lo: " + receivedByte);
         pirTO += receivedByte;
         debugMsg("I2C <-- Got pirTimeOut combined: " + pirTO);
-        configPirTimeout = pirTO;
-      }
+        current_config.pirTimeout = pirTO;
+    }
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got minDim Hi: " + receivedByte);
-      int minDimNew = receivedByte * 256;
+    // IDX 20/22
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got minDim Hi: " + receivedByte);
+    int newMinDim = receivedByte * 256;
 
-      receivedByte = Wire.read();
-      debugMsg("I2C <-- Got minDim Lo: " + receivedByte);
-      minDimNew += receivedByte;
-      debugMsg("I2C <-- Got minDim combined: " + minDimNew);
-      configMinDim = minDimNew;
-    } else {
+    // IDX 21/23
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got minDim Lo: " + receivedByte);
+    newMinDim += receivedByte;
+    debugMsg("I2C <-- Got minDim combined: " + newMinDim);
+    current_config.minDim = newMinDim;
+
+  } else {
       // didn't get the right number of bytes
       debugMsg("I2C <-- Got wrong number of bytes, expected " + String(I2C_DATA_SIZE_V1) + " or " + String(I2C_DATA_SIZE_V2) + ", got: " + available);
-    }
+  }
 
   int error = Wire.endTransmission();
   return (error == 0);
 }
 
-boolean sendIPAddressToI2C(IPAddress ip) {  
-  debugMsg("Sending IP Address to I2C: " + formatIPAsString(ip));
+boolean sendIPAddressToI2C(IPAddress ip) {
+  // debugMsg("Sending IP Address to I2C: " + formatIPAsString(ip));
 
   Wire.beginTransmission(preferredI2CSlaveAddress);
   Wire.write(I2C_SHOW_IP_ADDR); // Command
@@ -1599,125 +1492,9 @@ boolean sendIPAddressToI2C(IPAddress ip) {
   Wire.write(ip[1]);
   Wire.write(ip[2]);
   Wire.write(ip[3]);
-  
+
   int error = Wire.endTransmission();
   return (error == 0);
-}
-
-boolean sendValueToI2C(byte digit01, byte digit23, byte digit45, byte timeValue) {
-  debugMsg("Sending Arbitrary value to I2C: " + String(digit01) + "," + String(digit23) + "," + String(digit45));
-
-  Wire.beginTransmission(preferredI2CSlaveAddress);
-  Wire.write(I2C_SHOW_VALUE); // Command
-  Wire.write(digit01);
-  Wire.write(digit23);
-  Wire.write(digit45);
-  Wire.write(timeValue);
-  
-  int error = Wire.endTransmission();
-  return (error == 0);
-}
-
-boolean sendValueFormatToI2C(byte digit01, byte digit23, byte digit45) {  
-  debugMsg("Sending Arbitrary value format to I2C: " + String(digit01) + "," + String(digit23) + "," + String(digit45));
-
-  Wire.beginTransmission(preferredI2CSlaveAddress);
-  Wire.write(I2C_SHOW_VALUE_FORMAT); // Command
-  Wire.write(digit01);
-  Wire.write(digit23);
-  Wire.write(digit45);
-  
-  int error = Wire.endTransmission();
-  return (error == 0);
-}
-
-boolean setClockOption12H24H(boolean newMode) {
-  return setClockOptionBoolean(I2C_SET_OPTION_12_24, newMode);
-}
-
-boolean setClockOptionBlankLeadingZero(boolean newMode) {
-  return setClockOptionBoolean(I2C_SET_OPTION_BLANK_LEAD, newMode);
-}
-
-boolean setClockOptionScrollback(boolean newMode) {
-  return setClockOptionBoolean(I2C_SET_OPTION_SCROLLBACK, newMode);
-}
-
-boolean setClockOptionSuppressACP(boolean newMode) {
-  return setClockOptionBoolean(I2C_SET_OPTION_SUPPRESS_ACP, newMode);
-}
-
-boolean setClockOptionUseFade(boolean newMode) {
-  return setClockOptionBoolean(I2C_SET_OPTION_FADE, newMode);
-}
-
-boolean setClockOptionUseLDR(boolean newMode) {
-  return setClockOptionBoolean(I2C_SET_OPTION_USE_LDR, newMode);
-}
-
-boolean setClockOptionDateFormat(byte newMode) {
-  return setClockOptionByte(I2C_SET_OPTION_DATE_FORMAT, newMode);
-}
-
-boolean setClockOptionDayBlanking(byte newMode) {
-  return setClockOptionByte(I2C_SET_OPTION_DAY_BLANKING, newMode);
-}
-
-boolean setClockOptionBlankFrom(byte newMode) {
-  return setClockOptionByte(I2C_SET_OPTION_BLANK_START, newMode);
-}
-
-boolean setClockOptionBlankTo(byte newMode) {
-  return setClockOptionByte(I2C_SET_OPTION_BLANK_END, newMode);
-}
-
-boolean setClockOptionFadeSteps(byte newMode) {
-  return setClockOptionByte(I2C_SET_OPTION_FADE_STEPS, newMode);
-}
-
-boolean setClockOptionScrollSteps(byte newMode) {
-  return setClockOptionByte(I2C_SET_OPTION_SCROLL_STEPS, newMode);
-}
-
-boolean setClockOptionBacklightMode(byte newMode) {
-  return setClockOptionByte(I2C_SET_OPTION_BACKLIGHT_MODE, newMode);
-}
-
-boolean setClockOptionRedCnl(byte newMode) {
-  return setClockOptionByte(I2C_SET_OPTION_RED_CHANNEL, newMode);
-}
-
-boolean setClockOptionGrnCnl(byte newMode) {
-  return setClockOptionByte(I2C_SET_OPTION_GREEN_CHANNEL, newMode);
-}
-
-boolean setClockOptionBluCnl(byte newMode) {
-  return setClockOptionByte(I2C_SET_OPTION_BLUE_CHANNEL, newMode);
-}
-
-boolean setClockOptionCycleSpeed(byte newMode) {
-  return setClockOptionByte(I2C_SET_OPTION_CYCLE_SPEED, newMode);
-}
-
-boolean setClockOptionBlankMode(byte newMode) {
-  return setClockOptionByte(I2C_SET_OPTION_BLANK_MODE, newMode);
-}
-
-boolean setClockOptionSlotsMode(byte newMode) {
-  return setClockOptionByte(I2C_SET_OPTION_SLOTS_MODE, newMode);
-}
-
-boolean setClockOptionPirTimeout(int newMode) {
-  return setClockOptionInt(I2C_SET_OPTION_PIR_TIMEOUT, newMode);
-}
-
-
-boolean setClockOptionMinDim(int newMode) {
-  if ( i2cProtocol == v2v62 ) {
-    return setClockOptionInt(I2C_SET_OPTION_MIN_DIM_V2, newMode);
-  } else if ( i2cProtocol == v1v54 ) {
-    return setClockOptionInt(I2C_SET_OPTION_MIN_DIM_V1, newMode);
-  }  
 }
 
 /**
@@ -1733,6 +1510,26 @@ boolean setClockOptionBoolean(byte option, boolean newMode) {
     newOption = 0;
   } else {
     newOption = 1;
+  }
+  Wire.write(newOption);
+  int error = Wire.endTransmission();
+  delay(10);
+  return (error == 0);
+}
+
+/**
+   Send the options from the I2C slave. If the transmission went OK, return true, otherwise false.
+*/
+boolean setClockOptionBooleanInverse(byte option, boolean newMode) {
+  debugMsg("I2C --> setting boolean option: " + String(option) + " with value: " + String(newMode));
+
+  Wire.beginTransmission(preferredI2CSlaveAddress);
+  Wire.write(option);
+  byte newOption;
+  if (newMode) {
+    newOption = 1;
+  } else {
+    newOption = 0;
   }
   Wire.write(newOption);
   int error = Wire.endTransmission();
@@ -1771,6 +1568,7 @@ boolean setClockOptionInt(byte option, int newMode) {
   return (error == 0);
 }
 
+
 boolean scanI2CBus() {
   debugMsg("Scanning I2C bus");
   byte pingAnsweredFrom = 0xff;
@@ -1795,369 +1593,4 @@ boolean scanI2CBus() {
     preferredAddressFoundBy = 2;
   }
   debugMsg("Scanning I2C bus done");
-}
-
-// ----------------------------------------------------------------------------------------------------
-// ------------------------------------------- HTML functions -----------------------------------------
-// ----------------------------------------------------------------------------------------------------
-
-String getHTMLHead() {
-  String header = "<!DOCTYPE html><html><head>";
-
-  if (WiFi.status() == WL_CONNECTED) {
-    header += "<link href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7\" crossorigin=\"anonymous\">";
-    header += "<link href=\"http://www.open-rate.com/wl.css\" rel=\"stylesheet\" type=\"text/css\">";
-    header += "<script src=\"http://code.jquery.com/jquery-1.12.3.min.js\" integrity=\"sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=\" crossorigin=\"anonymous\"></script>";
-    header += "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\" integrity=\"sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS\" crossorigin=\"anonymous\"></script>";
-  } else {
-    header += "<link href=\"local.css\" rel=\"stylesheet\">";
-  }
-  header += "<title>Arduino Nixie Clock Time Module</title></head>";
-  header += "<body>";
-  return header;
-}
-
-/**
-   Get the bootstrap top row navbar, including the Bootstrap links
-*/
-String getNavBar() {
-  String navbar = "<nav class=\"navbar navbar-inverse navbar-fixed-top\">";
-  navbar += "<div class=\"container-fluid\"><div class=\"navbar-header\"><button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">";
-  navbar += "<span class=\"sr-only\">Toggle navigation</span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button>";
-  navbar += "<a class=\"navbar-brand\" href=\"https://www.nixieclock.biz/Store.html\">Arduino Nixie Clock Time Module</a></div><div id=\"navbar\" class=\"navbar-collapse collapse\"><ul class=\"nav navbar-nav navbar-right\">";
-  navbar += "<li><a href=\"/\">Status</a></li>  ";
-  navbar += "<li><a href=\"/clockconfig\">Clock</a></li>";
-  navbar += "<li><a href=\"/time\">Time servers</a></li>  ";
-  navbar += "<li><a href=\"/wlan_config\">WLAN</a></li>";
-  navbar += "<li><a href=\"/utility\">Utility</a></li>";
-  navbar += "</ul></div></div></nav>";
-  return navbar;
-} 
-
-/**
-   Get the header for a 2 column table
-*/
-String getTableHead2Col(String tableHeader, String col1Header, String col2Header) {
-  String tableHead = "<div class=\"container\" role=\"main\"><h3 class=\"sub-header\">";
-  tableHead += tableHeader;
-  tableHead += "</h3><div class=\"table-responsive\"><table class=\"table table-striped\"><thead><tr><th>";
-  tableHead += col1Header;
-  tableHead += "</th><th>";
-  tableHead += col2Header;
-  tableHead += "</th></tr></thead><tbody>";
-
-  return tableHead;
-}
-
-String getTableRow2Col(String col1Val, String col2Val) {
-  String tableRow = "<tr><td>";
-  tableRow += col1Val;
-  tableRow += "</td><td>";
-  tableRow += col2Val;
-  tableRow += "</td></tr>";
-
-  return tableRow;
-}
-
-String getTableRow2Col(String col1Val, int col2Val) {
-  String tableRow = "<tr><td>";
-  tableRow += col1Val;
-  tableRow += "</td><td>";
-  tableRow += col2Val;
-  tableRow += "</td></tr>";
-
-  return tableRow;
-}
-
-String getTableFoot() {
-  return "</tbody></table></div></div>";
-}
-
-/**
-   Get the header for an input form
-*/
-String getFormHead(String formTitle) {
-  String tableHead = "<div class=\"container\" role=\"main\"><h3 class=\"sub-header\">";
-  tableHead += formTitle;
-  tableHead += "</h3><form class=\"form-horizontal\">";
-
-  return tableHead;
-}
-
-/**
-   Get the header for an input form
-*/
-String getFormFoot() {
-  return "</form></div>";
-}
-
-String getHTMLFoot() {
-  return "</body></html>";
-}
-
-String getRadioGroupHeader(String header) {
-  String result = "<div class=\"form-group\"><label class=\"control-label col-xs-3\">";
-  result += header;
-  result += "</label>";
-  return result;
-}
-
-String getRadioButton(String group_name, String text, String value, boolean checked) {
-  String result = "<div class=\"col-xs-1\">";
-  if (checked) {
-    result += "<label class=\"radio-inline\"><input checked type=\"radio\" name=\"";
-  } else {
-    result += "<label class=\"radio-inline\"><input type=\"radio\" name=\"";
-  }
-  result += group_name;
-  result += "\" value=\"";
-  result += value;
-  result += "\"> ";
-  result += text;
-  result += "</label></div>";
-  return result;
-}
-
-String getRadioGroupFooter() {
-  String result = "</div>";
-  return result;
-}
-
-String getCheckBox(String checkbox_name, String value, String text, boolean checked) {
-  String result = "<div class=\"form-group\"><div class=\"col-xs-offset-3 col-xs-9\"><label class=\"checkbox-inline\">";
-  if (checked) {
-    result += "<input checked type=\"checkbox\" name=\"";
-  } else {
-    result += "<input type=\"checkbox\" name=\"";
-  }
-
-  result += checkbox_name;
-  result += "\" value=\"";
-  result += value;
-  result += "\"> ";
-  result += text;
-  result += "</label></div></div>";
-
-  return result;
-}
-
-String getDropDownHeader(String heading, String group_name, boolean wide) {
-  String result = "<div class=\"form-group\"><label class=\"control-label col-xs-3\">";
-  result += heading;
-  if (wide) {
-    result += "</label><div class=\"col-xs-8\"><select class=\"form-control\" name=\"";
-  } else {
-    result += "</label><div class=\"col-xs-2\"><select class=\"form-control\" name=\"";
-  }
-  result += group_name;
-  result += "\">";
-  return result;
-}
-
-String getDropDownOption (String value, String text, boolean checked) {
-  String result = "";
-  if (checked) {
-    result += "<option selected value=\"";
-  } else {
-    result += "<option value=\"";
-  }
-  result += value;
-  result += "\">";
-  result += text;
-  result += "</option>";
-  return result;
-}
-
-String getDropDownFooter() {
-  return "</select></div></div>";
-}
-
-String getNumberInput(String heading, String input_name, int minVal, int maxVal, int value, boolean disabled) {
-  String result = "<div class=\"form-group\"><label class=\"control-label col-xs-3\" for=\"";
-  result += input_name;
-  result += "\">";
-  result += heading;
-  result += "</label><div class=\"col-xs-2\"><input type=\"number\" class=\"form-control\" name=\"";
-  result += input_name;
-  result += "\" id=\"";
-  result += input_name;
-  result += "\" min=\"";
-  result += minVal;
-  result += "\" max=\"";
-  result += maxVal;
-  result += "\" value=\"";
-  result += value;
-  result += "\"";
-  if (disabled) {
-    result += " disabled";
-  }
-  result += "></div></div>";
-
-  return result;
-}
-
-String getNumberInputWide(String heading, String input_name, byte minVal, byte maxVal, byte value, boolean disabled) {
-  String result = "<div class=\"form-group\"><label class=\"control-label col-xs-8\" for=\"";
-  result += input_name;
-  result += "\">";
-  result += heading;
-  result += "</label><div class=\"col-xs-2\"><input type=\"number\" class=\"form-control\" name=\"";
-  result += input_name;
-  result += "\" id=\"";
-  result += input_name;
-  result += "\" min=\"";
-  result += minVal;
-  result += "\" max=\"";
-  result += maxVal;
-  result += "\" value=\"";
-  result += value;
-  result += "\"";
-  if (disabled) {
-    result += " disabled";
-  }
-  result += "></div></div>";
-
-  return result;
-}
-
-String getTextInput(String heading, String input_name, String value, boolean disabled) {
-  String result = "<div class=\"form-group\"><label class=\"control-label col-xs-3\" for=\"";
-  result += input_name;
-  result += "\">";
-  result += heading;
-  result += "</label><div class=\"col-xs-2\"><input type=\"text\" class=\"form-control\" name=\"";
-  result += input_name;
-  result += "\" id=\"";
-  result += input_name;
-  result += "\" value=\"";
-  result += value;
-  result += "\"";
-  if (disabled) {
-    result += " disabled";
-  }
-  result += "></div></div>";
-
-  return result;
-}
-
-String getTextInputWide(String heading, String input_name, String value, boolean disabled) {
-  String result = "<div class=\"form-group\"><label class=\"control-label col-xs-3\" for=\"";
-  result += input_name;
-  result += "\">";
-  result += heading;
-  result += "</label><div class=\"col-xs-8\"><input type=\"text\" class=\"form-control\" name=\"";
-  result += input_name;
-  result += "\" id=\"";
-  result += input_name;
-  result += "\" value=\"";
-  result += value;
-  result += "\"";
-  if (disabled) {
-    result += " disabled";
-  }
-  result += "></div></div>";
-
-  return result;
-}
-
-String getSubmitButton(String buttonText) {
-  String result = "<div class=\"form-group\"><div class=\"col-xs-offset-3 col-xs-9\"><input type=\"submit\" class=\"btn btn-primary\" value=\"";
-  result += buttonText;
-  result += "\"></div></div>";
-  return result;
-}
-
-// ----------------------------------------------------------------------------------------------------
-// ------------------------------------------- JSON functions -----------------------------------------
-// ----------------------------------------------------------------------------------------------------
-
-bool getConfigfromSpiffs() {
-  bool loaded = false;
-  if (SPIFFS.begin()) { 
-    debugMsg("mounted file system for read");
-    if (SPIFFS.exists("/config.json")) {
-      //file exists, reading and loading
-      debugMsg("reading config file");
-      File configFile = SPIFFS.open("/config.json", "r");
-      if (configFile) {
-        debugMsg("opened config file");
-        size_t size = configFile.size();
-        // Allocate a buffer to store contents of the file.
-        std::unique_ptr<char[]> buf(new char[size]);
-
-        configFile.readBytes(buf.get(), size);
-        DynamicJsonBuffer jsonBuffer;
-        JsonObject& json = jsonBuffer.parseObject(buf.get());
-        json.printTo(Serial);
-        debugMsg("\n");
-        
-        if (json.success()) {
-          debugMsg("parsed json");
-
-          timeServerURL = json["time_zone"].as<String>();
-          debugMsg("Loaded time server URL: " + timeServerURL);
-
-          ntpServer = json["ntp_server"].as<String>();
-          debugMsg("Loaded NTP server: " + ntpServer);
-
-          ntpTZ = json["ntp_tz"].as<String>();
-          debugMsg("Loaded NTP timezone: " + ntpTZ);
-
-          ntpInterval = json["ntp_interval"].as<int>();
-          debugMsg("Loaded NTP interval: " + String(ntpInterval));
-
-          loaded = true;
-        } else {
-          debugMsg("failed to load json config");
-        }
-        debugMsg("Closing config file");
-        configFile.close();
-      }
-    }
-  } else {
-    debugMsg("failed to mount FS");
-  }
-
-  SPIFFS.end();
-  return loaded;
-}
-
-void saveConfigToSpiffs() {
-  if (SPIFFS.begin()) {
-    debugMsg("mounted file system for write");
-    debugMsg("saving config");
-
-    DynamicJsonBuffer jsonBuffer;
-    JsonObject& json = jsonBuffer.createObject();
-    json["time_zone"]    = timeServerURL;
-    json["ntp_server"]   = ntpServer;
-    json["ntp_tz"]       = ntpTZ;
-    json["ntp_interval"] = ntpInterval;
-
-    File configFile = SPIFFS.open("/config.json", "w");
-    if (!configFile) {
-      debugMsg("failed to open config file for writing");
-      configFile.close();
-      return;
-    }
-
-    json.printTo(Serial);
-    debugMsg("\n");
-  
-    json.printTo(configFile);
-    configFile.close();
-    debugMsg("Saved config");
-    //end save
-  } else {
-    debugMsg("failed to mount FS");
-  }
-  SPIFFS.end();
-}
-
-void resetConfigs() {
-  timeServerURL = DEFAULT_TIME_SERVER_URL_1;
-  ntpServer     = DEFAULT_NTP_SERVER;
-  ntpTZ         = DEFAULT_NTP_TZ;
-  ntpInterval   = DEFAULT_NTP_INTERVAL;
-  saveConfigToSpiffs();
 }
