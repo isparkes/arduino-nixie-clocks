@@ -1,14 +1,6 @@
 #include "NtpAsync.h"
 
 // ************************************************************
-// Reset defaults and set up
-// ************************************************************
-void NtpAsync::setUp() {
-  debugMsg("Set up");
-  resetDefaults();
-}
-
-// ************************************************************
 // reset all the internal defaults
 // ************************************************************
 void NtpAsync::resetDefaults() {

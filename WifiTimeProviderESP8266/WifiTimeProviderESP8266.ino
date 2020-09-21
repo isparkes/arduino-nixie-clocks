@@ -193,10 +193,9 @@ void setup()
   WiFi.setAutoReconnect(true);
 
   // set up the NTP component and wire up the "got time update" callback
-  ntpAsync.setUp();
   NewTimeCallback ntcb = newTimeUpdateReceived;
   ntpAsync.setNewTimeCallback(ntcb);
-  
+
   // kick off NTP updates
   ntpAsync.getTimeFromNTP();
 

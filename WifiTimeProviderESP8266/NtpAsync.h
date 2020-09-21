@@ -24,7 +24,6 @@ typedef void (*NewTimeCallback) ();
 class NtpAsync
 {
   public:
-    void setUp();
     void setDebugOutput(bool newDebug);
     void getTimeFromNTP();
     bool getIsConnected();
