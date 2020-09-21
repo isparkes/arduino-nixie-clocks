@@ -964,7 +964,7 @@ void clockConfigPageHandler()
   // Get the options, put the result into variables called "config*"
   getClockOptionsFromI2C();
 
-  String response_message = getHTMLHead(getHTMLHead);
+  String response_message = getHTMLHead(getIsConnected());
   response_message += getNavBar();
 
   // -----------------------------------------------------------------------------
