@@ -1,5 +1,5 @@
 /*
-   ESP8266 Webserver for the Arduino Nixie Clock Firmware V1
+   ESP8266 Webserver for the Arduino Nixie Clock Firmware V1 and V2
     - Starts the ESP8266 as an access point and provides a web interface to configure and store WiFi credentials.
     - Allows the NTP pool to be defined and stored
     - Manages time using a POSIX string
