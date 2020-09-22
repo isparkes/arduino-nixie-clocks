@@ -163,7 +163,8 @@ void setup()
 
   boolean connected = false;
   while (!connected) {
-    connected = wifiManager.autoConnect("NixieClockTimeModule","SetMeUp!");
+    String wifiName = "Nixie"+WiFi.hostname();
+    connected = wifiManager.autoConnect(wifiName.c_str(),"SetMeUp!");
   }
 
   if (!spiffs.getConfigFromSpiffs(&current_config)) {
