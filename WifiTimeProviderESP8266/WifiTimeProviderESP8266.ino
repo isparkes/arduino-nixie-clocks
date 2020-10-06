@@ -48,7 +48,7 @@
 #include "HtmlServer.h"
 #include "SPIFFS.h"
 
-#define SOFTWARE_VERSION "vx58"
+#define SOFTWARE_VERSION "vx58a"
 
 #define DEBUG_OFF             // DEBUG or DEBUG_OFF - in debug mode there is no LED on the ESP-01!
 #define ESP01_LED_BUILTIN     1
@@ -1028,6 +1028,12 @@ void clockConfigPageHandler()
 
   // Fade steps
   response_message += getNumberInput("Fade steps:", "fadeSteps", 20, 200, current_config.fadeSteps, current_config.fade == false);
+
+  // Slots mode
+  response_message += getDropDownHeader("Slots mode:", "slotsMode", false, false);
+  response_message += getDropDownOption("0", "No slots", (current_config.slotsMode == 0));
+  response_message += getDropDownOption("1", "Scroll, scramble", (current_config.slotsMode == 1));
+  response_message += getDropDownFooter();
 
   // Suppress ACP
   response_message += getRadioGroupHeader("Suppress ACP when dimmed:");
