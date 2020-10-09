@@ -512,21 +512,20 @@ void rootPageHandler()
     clockUrl.toLowerCase();
     response_message += getTableRow2Col("Clock Name", WiFi.hostname() + " (<a href = \"" + clockUrl + "\">" + clockUrl + "</a>)");
     response_message += getTableRow2Col("Last NTP time", timeStringToReadableString(ntpAsync.getLastTimeFromServer()));
+    long lastUpdateTimeSecs = ntpAsync.getLastUpdateTimeSecs(millis());
+    response_message += getTableRow2Col("Last NTP update", secsToReadableString(lastUpdateTimeSecs) + " ago");
+
+    signed long absNextUpdate = abs(ntpAsync.getNextUpdate(nowMillis));
+    String overdueInd = "";
+    if (absNextUpdate < 0) {
+      overdueInd = " overdue";
+      absNextUpdate = -absNextUpdate;
+    }
+    response_message += getTableRow2Col("Time before next NTP update", secsToReadableString(absNextUpdate) + overdueInd);
   }
 
   response_message += getTableRow2Col("Display Time", timeToReadableString(year(),month(),day(),hour(),minute(),second()));
   response_message += getTableRow2Col("Uptime", secsToReadableString(millis() / 1000));
-
-  long lastUpdateTimeSecs = ntpAsync.getLastUpdateTimeSecs(millis());
-  response_message += getTableRow2Col("Last NTP update", secsToReadableString(lastUpdateTimeSecs) + " ago");
-
-  signed long absNextUpdate = abs(ntpAsync.getNextUpdate(nowMillis));
-  String overdueInd = "";
-  if (absNextUpdate < 0) {
-    overdueInd = " overdue";
-    absNextUpdate = -absNextUpdate;
-  }
-  response_message += getTableRow2Col("Time before next NTP update", secsToReadableString(absNextUpdate) + overdueInd);
 
   response_message += getTableRow2Col("Version", SOFTWARE_VERSION);
   response_message += getTableRow2Col("Serial Number", serialNumber);
@@ -601,7 +600,6 @@ void rootPageHandler()
                   break;
     default:      proto = "<strong>Clock not found!</strong>";
   }  
-  proto += "<hr/>";
   response_message += getTableRow2Col("Communicating with: ", proto);  
   response_message += getTableFoot();
 
