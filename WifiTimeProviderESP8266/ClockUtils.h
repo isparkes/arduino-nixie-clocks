@@ -47,6 +47,8 @@ String getTextInput(String heading, String input_name, String value, boolean dis
 String getTextInputWide(String heading, String input_name, String value, boolean disabled);
 String getSubmitButton(String buttonText);
 String secsToReadableString(long secsValue);
+String timeToReadableString(int y, int m, int d, int h, int mi, int s);
+String timeStringToReadableString(String timeString);
 
 // ----------------------------------------------------------------------------------------------------
 // --------------------------------------------- Debugging --------------------------------------------

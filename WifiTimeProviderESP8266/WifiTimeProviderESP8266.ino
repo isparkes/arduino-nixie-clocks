@@ -48,7 +48,7 @@
 #include "HtmlServer.h"
 #include "SPIFFS.h"
 
-#define SOFTWARE_VERSION "vx58a"
+#define SOFTWARE_VERSION "vx58c"
 
 #define DEBUG_OFF             // DEBUG or DEBUG_OFF - in debug mode there is no LED on the ESP-01!
 #define ESP01_LED_BUILTIN     1
@@ -163,8 +163,7 @@ void setup()
 
   boolean connected = false;
   while (!connected) {
-    String wifiName = "Nixie"+WiFi.hostname();
-    connected = wifiManager.autoConnect(wifiName.c_str(),"SetMeUp!");
+    connected = wifiManager.autoConnect("Nixie","SetMeUp!");
   }
 
   if (!spiffs.getConfigFromSpiffs(&current_config)) {
@@ -512,18 +511,10 @@ void rootPageHandler()
     String clockUrl = "http://" + WiFi.hostname() + ".local";
     clockUrl.toLowerCase();
     response_message += getTableRow2Col("Clock Name", WiFi.hostname() + " (<a href = \"" + clockUrl + "\">" + clockUrl + "</a>)");
-    response_message += getTableRow2Col("Last NTP time", ntpAsync.getLastTimeFromServer());
-  }
-  else
-  {
-    IPAddress softapip = WiFi.softAPIP();
-    String ipStrAP = String(softapip[0]) + '.' + String(softapip[1]) + '.' + String(softapip[2]) + '.' + String(softapip[3]);
-    response_message += getTableRow2Col("AP IP", ipStrAP);
-    response_message += getTableRow2Col("AP MAC", WiFi.softAPmacAddress());
+    response_message += getTableRow2Col("Last NTP time", timeStringToReadableString(ntpAsync.getLastTimeFromServer()));
   }
 
-  String currentTime = String(year()) + ":" + String(month()) + ":" + String(day()) + " " + String(hour()) + ":" + String(minute()) + ":" + String(second());
-  response_message += getTableRow2Col("Display Time", currentTime);
+  response_message += getTableRow2Col("Display Time", timeToReadableString(year(),month(),day(),hour(),minute(),second()));
   response_message += getTableRow2Col("Uptime", secsToReadableString(millis() / 1000));
 
   long lastUpdateTimeSecs = ntpAsync.getLastUpdateTimeSecs(millis());
