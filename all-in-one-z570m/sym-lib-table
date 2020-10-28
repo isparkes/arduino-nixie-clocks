@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name AllInOneIN142-rescue)(type Legacy)(uri ${KIPRJMOD}/AllInOneIN142-rescue.lib)(options "")(descr ""))
+  (lib (name AllInOneZ570M-rescue)(type Legacy)(uri ${KIPRJMOD}/AllInOneZ570M-rescue.lib)(options "")(descr ""))
+  (lib (name Z570M)(type Legacy)(uri ${KIPRJMOD}/Z570M.lib)(options "")(descr ""))
+)
