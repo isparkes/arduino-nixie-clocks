@@ -394,7 +394,7 @@
     (descr "Diode, DO-41, SOD81, Vertical, Anode Up,")
     (tags "Diode, DO-41, SOD81, Vertical, Anode Up, 1N4007, SB140,")
     (path /57761D7A)
-    (fp_text reference D1 (at 5.47624 0.01778 270) (layer F.SilkS)
+    (fp_text reference D1 (at 3.77 -2.04) (layer F.SilkS)
       (effects (font (size 0.75 0.75) (thickness 0.1)))
     )
     (fp_text value 1N4001 (at 5.207 -1.93294 270) (layer F.Fab)

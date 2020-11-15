@@ -1,4 +1,4 @@
-(kicad_pcb (version 20171130) (host pcbnew 5.1.5+dfsg1-2build2)
+(kicad_pcb (version 20171130) (host pcbnew 5.0.2-bee76a0~70~ubuntu18.04.1)
 
   (general
     (thickness 1.6)
@@ -46,6 +46,8 @@
     (zone_clearance 0.508)
     (zone_45_only no)
     (trace_min 0.25)
+    (segment_width 0.2)
+    (edge_width 0.1)
     (via_size 0.6)
     (via_drill 0.4)
     (via_min_size 0.4)
@@ -55,8 +57,6 @@
     (uvias_allowed no)
     (uvia_min_size 0.4)
     (uvia_min_drill 0.1)
-    (edge_width 0.1)
-    (segment_width 0.2)
     (pcb_text_width 0.3)
     (pcb_text_size 1.5 1.5)
     (mod_edge_width 0.15)
@@ -378,7 +378,7 @@
     (descr "Diode, DO-41, SOD81, Vertical, Anode Up,")
     (tags "Diode, DO-41, SOD81, Vertical, Anode Up, 1N4007, SB140,")
     (path /57761D7A)
-    (fp_text reference D1 (at 5.47624 0.01778 270) (layer F.SilkS)
+    (fp_text reference D1 (at 3.88 -1.95) (layer F.SilkS)
       (effects (font (size 0.75 0.75) (thickness 0.1)))
     )
     (fp_text value 1N4001 (at 5.207 -1.93294 270) (layer F.Fab)
