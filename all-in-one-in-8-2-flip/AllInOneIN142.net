@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /data/sdb/Clocks/all-in-one/all-in-one-in-8-2-flip/AllInOneIN142.sch)
-    (date "Do 30 Apr 2020 11:35:36")
+    (date "Fr 20 Nov 2020 15:16:28")
     (tool "Eeschema 5.1.5+dfsg1-2build2")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -153,7 +153,7 @@
       (sheetpath (names /) (tstamps /))
       (tstamp 5696CF80))
     (comp (ref Q6)
-      (value 2N7000)
+      (value MPSA42)
       (footprint NixieClockMaster:TO-92_inline_MPSA42)
       (libsource (lib Device) (part Q_NPN_EBC) (description "NPN transistor, emitter/base/collector"))
       (sheetpath (names /) (tstamps /))

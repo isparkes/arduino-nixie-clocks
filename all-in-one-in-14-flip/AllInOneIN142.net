@@ -1,7 +1,7 @@
 (export (version D)
   (design
-    (source /data/sdb/Clocks/all-in-one/all-in-one-flip/AllInOneIN142.sch)
-    (date "Do 30 Apr 2020 09:52:02")
+    (source /data/sdb/Clocks/all-in-one/all-in-one-in-14-flip/AllInOneIN142.sch)
+    (date "Fr 20 Nov 2020 15:08:46")
     (tool "Eeschema 5.1.5+dfsg1-2build2")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -153,7 +153,7 @@
       (sheetpath (names /) (tstamps /))
       (tstamp 5696CF80))
     (comp (ref Q6)
-      (value 2N7000)
+      (value MPSA42)
       (footprint NixieClockMaster:TO-92_inline_MPSA42)
       (libsource (lib Device) (part Q_NPN_EBC) (description "NPN transistor, emitter/base/collector"))
       (sheetpath (names /) (tstamps /))
@@ -1030,7 +1030,7 @@
         (pin (num 3) (name S) (type passive)))))
   (libraries
     (library (logical AllInOneIN142-rescue)
-      (uri /data/sdb/Clocks/all-in-one/all-in-one-flip/AllInOneIN142-rescue.lib))
+      (uri /data/sdb/Clocks/all-in-one/all-in-one-in-14-flip/AllInOneIN142-rescue.lib))
     (library (logical Device)
       (uri /usr/share/kicad/library/Device.lib))
     (library (logical Regulator_Linear)
