@@ -403,7 +403,7 @@ ENDDEF
 #
 # ClassicRev6-rescue_FRAMES_FRAME_A_L-ClassicRev6-rescue
 #
-DEF ~ClassicRev6-rescue_FRAMES_FRAME_A_L-ClassicRev6-rescue #FRAME 0 40 N N 2 L N
+DEF ClassicRev6-rescue_FRAMES_FRAME_A_L-ClassicRev6-rescue #FRAME 0 40 N N 2 L N
 F0 "#FRAME" 0 0 50 H I C CNN
 F1 "ClassicRev6-rescue_FRAMES_FRAME_A_L-ClassicRev6-rescue" 0 0 50 H I C CNN
 F2 "" 0 0 60 H V C CNN
