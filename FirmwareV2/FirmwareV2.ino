@@ -82,9 +82,10 @@
 #define EE_PIR_PULLUP         39     // If we use the internal pullup on the PIR pin (false = use 3V3 PIR, PIR connected, true = no PIR connected or 5V PIR)
 #define EE_MIN_DIM_LO         40     // The minimum dimming value, low byte
 #define EE_MIN_DIM_HI         41     // The minimum dimming value, high byte
+#define EE_DP_ENABLE          42     // Control the decimal points
 
 // Software version shown in config menu
-#define SOFTWARE_VERSION      357
+#define SOFTWARE_VERSION      358
 
 // how often we make reference to the external time provider
 #define READ_TIME_PROVIDER_MILLIS 60000 // Update the internal time provider from the external source once every minute
@@ -205,6 +206,7 @@
 // HV generation - Not Available over I2C
 #define MODE_TARGET_HV_UP               30 // 
 #define MODE_TARGET_HV_DOWN             31 // 
+
 #define MODE_PULSE_UP                   32 // 
 #define MODE_PULSE_DOWN                 33 // 
 
@@ -220,16 +222,18 @@
 #define MODE_USE_PIR_PULLUP             38 // 1 = use Pullup
 #define USE_PIR_PULLUP_DEFAULT          true
 
+#define MODE_ENABLE_DP                  39 // Set the decimal points
+
 // Temperature
-#define MODE_TEMP                       39 // 
+#define MODE_TEMP                       40 // Show the temperature
 
 // Software Version
-#define MODE_VERSION                    40 // 
+#define MODE_VERSION                    41 // 
 
 // Tube test - all six digits, so no flashing mode indicator
-#define MODE_TUBE_TEST                  41
+#define MODE_TUBE_TEST                  42
 
-#define MODE_MAX                        41
+#define MODE_MAX                        42
 
 // Pseudo mode - burn the tubes and nothing else
 #define MODE_DIGIT_BURN                 99 // Digit burn mode - accesible by super long press
@@ -269,8 +273,9 @@
 #define BLANK_MODE_TUBES                0  // Use blanking for tubes only 
 #define BLANK_MODE_LEDS                 1  // Use blanking for LEDs only
 #define BLANK_MODE_BOTH                 2  // Use blanking for tubes and LEDs
-#define BLANK_MODE_MAX                  2
-#define BLANK_MODE_DEFAULT              2
+#define BLANK_MODE_ALL                  3  // Use blanking for tubes, LEDs and separators
+#define BLANK_MODE_MAX                  BLANK_MODE_BOTH
+#define BLANK_MODE_DEFAULT              BLANK_MODE_ALL
 
 #define BACKLIGHT_MIN                   0
 #define BACKLIGHT_FIXED                 0   // Just define a colour and stick to it
@@ -308,6 +313,13 @@
 #define SLOTS_MODE_1M_SCR_SCR           1   // use slots effect every minute, scroll in, scramble out
 #define SLOTS_MODE_MAX                  1
 #define SLOTS_MODE_DEFAULT              1
+
+#define DP_ENABLE_MIN                   0
+#define DP_ENABLE_ALL                   0   // Use all DPs
+#define DP_ENABLE_AMPM                  1   // Use only he AM/PM indicator (no PIR)
+#define DP_ENABLE_NONE                  2   // Use no DPs - all off
+#define DP_ENABLE_MAX                   DP_ENABLE_NONE
+#define DP_ENABLE_DEFAULT               DP_ENABLE_AMPM
 
 // RTC address
 #define RTC_I2C_ADDRESS                 0x68
@@ -444,6 +456,8 @@ byte blankHourEnd = 0;
 byte blankMode = 0;
 boolean blankTubes = false;
 boolean blankLEDs = false;
+boolean blankSeparators = false;
+byte dpEnable = DP_ENABLE_DEFAULT;
 
 // ************************ Ambient light dimming ************************
 int dimDark = SENSOR_LOW_DEFAULT;
@@ -971,7 +985,11 @@ void performOncePerMinuteProcessing() {
   }
 
   // AM/PM indicator - show if we are in 12H mode and it is PM
-  dpArray[1] = hourMode && (hour() > 12);
+  if ((dpEnable == DP_ENABLE_ALL) || (dpEnable == DP_ENABLE_AMPM)) {
+    dpArray[1] = hourMode && (hour() > 12);
+  } else {
+    dpArray[1] = false;
+  }
 }
 
 // ************************************************************
@@ -1097,7 +1115,8 @@ void setLeds()
 boolean checkPIR(unsigned long nowMillis) {
   boolean pirvalue = (digitalRead(pirPin) == HIGH);
 
-  dpArray[5] = pirvalue;
+  boolean useDPs = (dpEnable == DP_ENABLE_ALL);
+  dpArray[5] = pirvalue && useDPs;
   
   if (pirvalue) {
     pirLastSeen = nowMillis;
@@ -1107,7 +1126,7 @@ boolean checkPIR(unsigned long nowMillis) {
       dpArray[4] = false;
       return true;
     } else {
-      dpArray[4] = true;
+      dpArray[4] = true && useDPs;
       return false;
     }
   }
@@ -1327,6 +1346,11 @@ void setNextMode(int displayMode) {
       }
     case MODE_USE_PIR_PULLUP: {
         loadNumberArrayConfBool(usePIRPullup, displayMode);
+        displayConfig();
+        break;
+      }
+    case MODE_ENABLE_DP: {
+        loadNumberArrayConfInt(dpEnable, displayMode);
         displayConfig();
         break;
       }
@@ -1874,6 +1898,17 @@ void processCurrentMode(int displayMode) {
         }
         loadNumberArrayConfBool(usePIRPullup, displayMode);
         digitalWrite(pirPin, usePIRPullup);
+        displayConfig();
+        break;
+      }
+    case MODE_ENABLE_DP: {
+        if (button1.isButtonPressedAndReleased()) {
+          dpEnable++;
+          if (dpEnable > DP_ENABLE_MAX) {
+            dpEnable = DP_ENABLE_MIN;
+          }
+        }
+        loadNumberArrayConfInt(dpEnable, displayMode);
         displayConfig();
         break;
       }
@@ -2758,18 +2793,28 @@ void setTubesAndLEDSBlankMode() {
       {
         blankTubes = true;
         blankLEDs = false;
+        blankSeparators = false;
         break;
       }
       case BLANK_MODE_LEDS:
       {
         blankTubes = false;
         blankLEDs = true;
+        blankSeparators = false;
         break;
       }
       case BLANK_MODE_BOTH:
       {
         blankTubes = true;
         blankLEDs = true;
+        blankSeparators = false;
+        break;
+      }
+      case BLANK_MODE_ALL:
+      {
+        blankTubes = true;
+        blankLEDs = true;
+        blankSeparators = true;
         break;
       }
     }
@@ -2934,6 +2979,7 @@ void saveEEPROMValues() {
   EEPROM.write(EE_BLANK_MODE, blankMode);
   EEPROM.write(EE_SLOTS_MODE, slotsMode);
   EEPROM.write(EE_PIR_PULLUP, usePIRPullup);
+  EEPROM.write(EE_DP_ENABLE, dpEnable);
 }
 
 // ************************************************************
@@ -3073,6 +3119,12 @@ void readEEPROMValues() {
   }
 
   usePIRPullup = EEPROM.read(EE_PIR_PULLUP);
+  
+  dpEnable = EEPROM.read(EE_DP_ENABLE);
+  if ((dpEnable < DP_ENABLE_MIN) || (dpEnable > DP_ENABLE_MAX)) {
+    dpEnable = DP_ENABLE_DEFAULT;
+  }
+
 }
 
 // ************************************************************
@@ -3110,6 +3162,7 @@ void factoryReset() {
   blankMode = BLANK_MODE_DEFAULT;
   slotsMode = SLOTS_MODE_DEFAULT;
   usePIRPullup = USE_PIR_PULLUP_DEFAULT;
+  dpEnable = DP_ENABLE_DEFAULT;
 
   saveEEPROMValues();
 }
@@ -3525,6 +3578,9 @@ void receiveEvent(int bytes) {
   } else if (operation == I2C_SET_OPTION_SLOTS_MODE) {
     slotsMode = Wire.read();
     EEPROM.write(EE_SLOTS_MODE, slotsMode);
+  } else if (operation == I2C_SET_OPTION_DP_ENABLE) {
+    dpEnable = Wire.read();
+    EEPROM.write(EE_DP_ENABLE, dpEnable);
   } else if (operation == I2C_SHOW_VALUE) {
     // Three BCD values, plus time to show in seconds
     valueToShow[0] = Wire.read();
@@ -3570,6 +3626,7 @@ void requestEvent() {
   configArray[idx++] = pirTimeout % 256;
   configArray[idx++] = minDim / 256;
   configArray[idx++] = minDim % 256;
+  configArray[idx++] = dpEnable;
 
   Wire.write(configArray, I2C_DATA_SIZE);
 }
