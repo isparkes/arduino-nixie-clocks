@@ -1,4 +1,4 @@
-16996085479025363
+17002514966187363
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -52115,6 +52115,13 @@ capacitor 1206
 2
 2
 NixieClockMaster
+C_Naked
+Radial Electrolytic Capacitor, Diameter 6.3mm x Length 11.2mm, Pitch 2.5mm
+Electrolytic Capacitor
+0
+2
+2
+NixieClockMaster
 C_Radial_D6.3_L11.2_P2.5
 Radial Electrolytic Capacitor, Diameter 6.3mm x Length 11.2mm, Pitch 2.5mm
 Electrolytic Capacitor
@@ -52305,6 +52312,13 @@ PIN HEADER
 12
 NixieClockMaster
 Header_MA02-6_BackMount
+PIN HEADER
+PIN HEADER
+0
+12
+12
+NixieClockMaster
+Header_MA02-6_NoPaste
 PIN HEADER
 PIN HEADER
 0
@@ -52703,6 +52717,13 @@ LED 5mm round vertical
 2
 2
 NixieClockMaster
+NEON-Small-Square
+LED 5mm round vertical
+LED 5mm round vertical
+0
+2
+2
+NixieClockMaster
 NL840-RTS-14-DSUB
 
 
@@ -52984,6 +53005,22 @@ Height from PCB: 47.6mm
 0
 13
 13
+NixieClockMaster
+Z570M-NoDP
+This is the footprint suitable for the following nixie tubes: <br>
+* Z570M <br>
+* Z5700M <br>
+* Z573M <br>
+* Z5730M <br>
+* Z574M <br>
+* Z5740M <br>
+<br>
+Tube diameter: 19mm<br>
+Height from PCB: 47.6mm
+
+0
+11
+11
 NixieClockMaster
 ZM1000R3
 

@@ -598,7 +598,7 @@ U 1 1 5696E7B8
 P 14450 5650
 F 0 "SV7" H 14300 5880 70  0000 L BNN
 F 1 "CONN_ISCP" H 14300 5350 70  0000 L BNN
-F 2 "NixieClockMaster:Header_MA03-1" H 14440 5440 70  0001 L TNN
+F 2 "NixieClockMaster:Header_MA03-2" H 14440 5440 70  0001 L TNN
 F 3 "" H 14450 5650 60  0001 C CNN
 	1    14450 5650
 	1    0    0    -1  
@@ -608,29 +608,29 @@ Text Label 1800 1000 0    65   ~ 0
 Text Label 1400 7450 0    65   ~ 0
 170V
 Text Label 800  5300 0    65   ~ 0
-ANODE1
+ANODE6
 Text Label 10150 2800 0    65   ~ 0
-ANODE1
+ANODE6
 Text Label 800  4600 0    65   ~ 0
-ANODE2
+ANODE5
 Text Label 10150 2500 0    65   ~ 0
-ANODE2
+ANODE5
 Text Label 800  3900 0    65   ~ 0
-ANODE3
+ANODE4
 Text Label 10150 2400 0    65   ~ 0
-ANODE3
+ANODE4
 Text Label 4200 5500 0    65   ~ 0
-ANODE4
+ANODE3
 Text Label 10150 2300 0    65   ~ 0
-ANODE4
+ANODE3
 Text Label 4200 4800 0    65   ~ 0
-ANODE5
+ANODE2
 Text Label 10150 2200 0    65   ~ 0
-ANODE5
+ANODE2
 Text Label 4200 4100 0    65   ~ 0
-ANODE6
+ANODE1
 Text Label 10150 2100 0    65   ~ 0
-ANODE6
+ANODE1
 Text Label 10150 1400 0    65   ~ 0
 BTN1
 Text Label 14000 2900 2    65   ~ 0
