@@ -6,10 +6,6 @@
 #define ClockDefs_h
 
 // -------------------------------------------------------------------------------
-// Software version shown in config menu
-#define SOFTWARE_VERSION      8
-
-// -------------------------------------------------------------------------------
 #define MIN_DIM_DEFAULT       4  // The default minimum dim count
 #define MIN_DIM_MIN           2  // The minimum dim count
 #define MIN_DIM_MAX           20 // The maximum dim count
