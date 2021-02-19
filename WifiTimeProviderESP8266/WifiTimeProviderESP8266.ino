@@ -247,6 +247,8 @@ void setup()
     return utilityPageHandler();
   });
 
+  server.on("/setvalue", setDisplayValuePageHandler);
+
   server.on("/local.css",   localCSSHandler);
   server.onNotFound(handleNotFound);
 
@@ -818,6 +820,67 @@ void ntpUpdatePageHandler() {
 
   debugMsg("NTP Update page out");
 }
+
+// ************************************************************
+// Send a value to the clock for display
+// ************************************************************
+void setDisplayValuePageHandler() {
+  String resultMessage;
+  byte timeValue = 0xff;
+
+  int valueToDisplay = 0;
+  int valueTime = 10;
+  int valueFormat = 0;
+
+  if (checkServerArgInt("time", "time", valueTime)) {
+    if (valueTime >= 255) {
+      valueTime = 255;
+    }
+  }
+
+  String response_message = getHTMLHead(getIsConnected());
+  response_message += getNavBar();
+
+  response_message += "<div class=\"container\" role=\"main\"><h3 class=\"sub-header\">Show a value on the clock</h3>";
+
+  if (checkServerArgInt("value", "value", valueToDisplay)) {  
+    byte val2 = hex2bcd(valueToDisplay % 100);
+    valueToDisplay = valueToDisplay / 100;
+    byte val1 = hex2bcd(valueToDisplay % 100);
+    valueToDisplay = valueToDisplay / 100;
+    byte val0 = hex2bcd(valueToDisplay % 100);
+    
+    if (sendValueToI2C(val0,val1,val2,valueTime)) {
+      response_message += "<div class=\"alert alert-success fade in\"><strong>";
+      response_message += "display value was set!";
+      response_message += "</strong></div></div>";
+    } else {
+      response_message += "<div class=\"alert alert-error fade in\"><strong>";
+      response_message += "Could not send value to clock";
+      response_message += "</strong><br>";
+    }
+  } else {
+    response_message += "<div class=\"alert alert-error fade in\"><strong>";
+    response_message += "You need to set at least the \"value\" parameter! A valid command line is http://clock.ip.addres/setvalue?value=123456&time=60&format=333333";
+    response_message += "</strong><br>";
+    response_message += "The format values are: 0 = blanked digit, 1 = normal display, 2 = blinking digit</div></div>";
+  }
+
+
+  if (checkServerArgInt("format", "format", valueFormat)) {
+    byte val2 = hex2bcd(valueFormat % 100);
+    valueFormat = valueFormat / 100;
+    byte val1 = hex2bcd(valueFormat % 100);
+    valueFormat = valueFormat / 100;
+    byte val0 = hex2bcd(valueFormat % 100);
+    sendValueFormatToI2C(val0,val1,val2);
+  }
+
+  response_message += getHTMLFoot();
+
+  server.send(200, "text/html", response_message);
+}
+
 
 
 // ===================================================================================================================
@@ -1638,6 +1701,33 @@ boolean sendIPAddressToI2C(IPAddress ip) {
   Wire.write(ip[2]);
   Wire.write(ip[3]);
 
+  int error = Wire.endTransmission();
+  return (error == 0);
+}
+
+boolean sendValueToI2C(byte digit01, byte digit23, byte digit45, byte timeValue) {
+  debugMsg("Sending Arbitrary value to I2C: " + String(digit01) + "," + String(digit23) + "," + String(digit45));
+
+  Wire.beginTransmission(preferredI2CSlaveAddress);
+  Wire.write(I2C_SHOW_VALUE); // Command
+  Wire.write(digit01);
+  Wire.write(digit23);
+  Wire.write(digit45);
+  Wire.write(timeValue);
+  
+  int error = Wire.endTransmission();
+  return (error == 0);
+}
+
+boolean sendValueFormatToI2C(byte digit01, byte digit23, byte digit45) {  
+  debugMsg("Sending Arbitrary value format to I2C: " + String(digit01) + "," + String(digit23) + "," + String(digit45));
+
+  Wire.beginTransmission(preferredI2CSlaveAddress);
+  Wire.write(I2C_SHOW_VALUE_FORMAT); // Command
+  Wire.write(digit01);
+  Wire.write(digit23);
+  Wire.write(digit45);
+  
   int error = Wire.endTransmission();
   return (error == 0);
 }
