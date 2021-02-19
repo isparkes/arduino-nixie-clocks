@@ -157,22 +157,20 @@
 #define DAY_BLANKING_DEFAULT            0
 
 // -------------------------------------------------------------------------------
-#define BLANK_MODE_MIN                  0
 #define BLANK_MODE_TUBES                0  // Use blanking for tubes only 
 #define BLANK_MODE_LEDS                 1  // Use blanking for LEDs only
 #define BLANK_MODE_BOTH                 2  // Use blanking for tubes and LEDs
 #define BLANK_MODE_ALL                  3  // Use blanking for tubes, LEDs and separators
-#define BLANK_MODE_MAX                  3
-#define BLANK_MODE_DEFAULT              2
 
 // --------------------------- Strategy Backlights -------------------------------
-#define BACKLIGHT_MIN                   0
 #define BACKLIGHT_FIXED                 0  // Just define a colour and stick to it
-#define BACKLIGHT_CYCLE                 1  // cycle through random colours, strategy 3
-#define BACKLIGHT_COLOUR_TIME           2  // use "ColourTime" - different colours for each digit value
-#define BACKLIGHT_DAY_OF_WEEK           3  // use "DayOfWeek" - different colours for each day
-#define BACKLIGHT_MAX                   3
-#define BACKLIGHT_DEFAULT               1
+#define BACKLIGHT_PULSE                 1  // pulse defined colour
+#define BACKLIGHT_CYCLE                 2  // cycle through random colours, strategy 3
+#define BACKLIGHT_FIXED_DIM             3  // Just define a colour and stick to it, dim
+#define BACKLIGHT_PULSE_DIM             4  // pulse defined colour, dim
+#define BACKLIGHT_CYCLE_DIM             5  // cycle through random colours, strategy 3, dim
+#define BACKLIGHT_COLOUR_TIME           6  // use "ColourTime" - different colours for each digit value
+#define BACKLIGHT_COLOUR_TIME_DIM       7  // use "ColourTime" - different colours for each digit value, dim
 
 // -------------------------------------------------------------------------------
 #define ANTI_GHOST_MIN                  0
@@ -219,6 +217,26 @@
 // -------------------------------------------------------------------------------
 #define DO_NOT_APPLY_LEAD_0_BLANK       false
 #define APPLY_LEAD_0_BLANK              true
+
+// -------------------------------------------------------------------------------
+#define ACP_MODE_OFF                    0
+#define ACP_MODE_1MIN                   1
+#define ACP_MODE_10MIN                  2
+#define ACP_MODE_1HOUR                  3
+
+// -------------------------------------------------------------------------------
+#define PIR_OVERRIDE_BLANK              0     // Motion detection overrides blanking period
+#define PIR_RESPECT_BLANK               1     // Motion detection will not trigger during blanking period
+
+// -------------------------------------------------------------------------------
+#define ALARM_MODE_OFF                  0
+#define ALARM_MODE_ON                   1
+
+// -------------------------------------------------------------------------------
+#define SEP_MODE_OFF                    0
+#define SEP_MODE_SLOW                   1
+#define SEP_MODE_FAST                   2
+#define SEP_MODE_ON                     3
 
 // -------------------------------------------------------------------------------
 #define DIGIT_COUNT                     4

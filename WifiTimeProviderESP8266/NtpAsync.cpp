@@ -114,7 +114,7 @@ void NtpAsync::setDebugOutput(bool newDebug) {
 // ************************************************************
 // Asynchronous NTP query
 // ************************************************************
-void NtpAsync::getTimeFromNTP() {
+void NtpAsync::getTimeFromNTP(unsigned long nowMillis) {
   debugMsg("Async NTP in");
 
   if (WiFi.status() != WL_CONNECTED) {
@@ -122,6 +122,13 @@ void NtpAsync::getTimeFromNTP() {
     return;
   }
 
+
+  // Don't spam the pool
+  if ((_ntpStarted > 0) && (nowMillis - _ntpStarted) < NTP_RETRY_INTERVAL_MS) {
+    debugMsg("Suppressing NTP retry");
+    return;
+  }
+  
   IPAddress serverIP;
   WiFi.hostByName(_ntpPool.c_str(), serverIP);
   String str = "NTP IPAddr: ";
@@ -140,7 +147,7 @@ void NtpAsync::getTimeFromNTP() {
   buffer[14]  = 'N';
   buffer[15]  = 'C';
 
-  _ntpStarted = millis();
+  _ntpStarted = nowMillis;
   debugMsg("Connect to NTP");
   _udp.connect(serverIP, 123); //NTP requests are to port 123
   debugMsg("Write to NTP");
@@ -202,6 +209,9 @@ void NtpAsync::getTimeFromNTP() {
       String timeString = String(tm->tm_year + 1900) + "," + String(tm->tm_mon + 1) + "," + String(tm->tm_mday) + "," + String(tm->tm_hour) + "," + String(tm->tm_min) + "," + String(tm->tm_sec);
       debugMsg("NTP Update time str: " + timeString);
       _lastTimeFromServer = timeString;
+
+      // Reset when we last started.
+      _ntpStarted = 0;
 
       // Notify the outside world that we have updated
       if (_ntcb != NULL) {

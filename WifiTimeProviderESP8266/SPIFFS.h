@@ -45,6 +45,13 @@ typedef struct {
   String webUsername;
   String webPassword;
   byte antiGhost;
+  byte dpEnable;
+  byte acpMode;
+  byte pirBlankMode;
+  byte alarmMode;
+  byte alarmHour;
+  byte alarmMinute;
+  byte sepMode;  
 } spiffs_config_t;
 
 typedef struct {
@@ -60,8 +67,9 @@ class SPIFFS_CLOCK
 {
   public:
     void setDebugOutput(bool newDebug);
-    
+
     boolean testMountSpiffs();
+    boolean getSpiffsMounted();
 
     boolean getConfigFromSpiffs(spiffs_config_t* spiffs_config);
     void    saveConfigToSpiffs(spiffs_config_t* spiffs_config);
@@ -74,6 +82,7 @@ class SPIFFS_CLOCK
   private:
     DebugCallback _dbcb;
     bool _debug = false;
+    bool _spiffsMounted = false;
 
     void debugMsg(String message);                        // print a debug message to the callback
 };

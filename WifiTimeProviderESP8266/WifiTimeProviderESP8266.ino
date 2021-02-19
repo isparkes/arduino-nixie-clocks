@@ -40,7 +40,7 @@
 
 #include <WiFiManager.h>          // https://github.com/tzapu/WiFiManager  (0.15.0)
 #include <ArduinoJson.h>          // https://github.com/bblanchon/ArduinoJson (5.13.2)
-#include <TimeLib.h>            // http://playground.arduino.cc/code/time (Margolis 1.5.0) // https://github.com/michaelmargolis/arduino_time
+#include <TimeLib.h>              // http://playground.arduino.cc/code/time (Margolis 1.5.0) // https://github.com/michaelmargolis/arduino_time
 
 #include "ClockDefs.h"
 #include "I2CDefs.h"
@@ -48,10 +48,10 @@
 #include "HtmlServer.h"
 #include "SPIFFS.h"
 
-#define SOFTWARE_VERSION "vx58c"
+#define SOFTWARE_VERSION "vx59a"
 
 #define DEBUG_OFF             // DEBUG or DEBUG_OFF - in debug mode there is no LED on the ESP-01!
-#define ESP01_LED_BUILTIN     1
+#define ESP01_LED_BUILTIN     LED_BUILTIN
 
 // ----------------------- Auth ------------------------
 
@@ -65,16 +65,13 @@ unsigned long lastMillis = 0;
 unsigned long nowMillis = millis();
 int lastSecond = 0;
 boolean triggeredThisSec = false;
-boolean spiffsFailed = false;
 
 // Timer for how often we send the I2C data
 long lastI2CUpdateTime = 0;
 byte preferredI2CSlaveAddress = 0xFF;
 byte preferredAddressFoundBy = 0; // 0 = not found, 1 = found by default, 2 = found by ping
 
-boolean updateOverOTAAvailable = false;
-
-enum i2cProtocols {unKnown, v2v62, v1v54};
+enum i2cProtocols {unKnown, v2p62, v1p54, v2p63, v2p64};
 i2cProtocols i2cProtocol ;
 
 ADC_MODE(ADC_VCC);
@@ -170,9 +167,6 @@ void setup()
     if (spiffs.testMountSpiffs()) {
       debugMsg("No config found - resetting everything");
       factoryReset();
-    } else {
-      // we couldn't mount SPIFFS because no SPIFFS is available
-      spiffsFailed = true;
     }
   } else {
     setWebAuthentication(current_config.webAuthentication);
@@ -197,13 +191,13 @@ void setup()
   ntpAsync.setNewTimeCallback(ntcb);
 
   // kick off NTP updates
-  ntpAsync.getTimeFromNTP();
+  ntpAsync.getTimeFromNTP(nowMillis);
 
   Wire.begin(0, 2); // SDA = 0, SCL = 2
   debugMsg("I2C master started");
 
   /* Set page handler functions */
-  server.on("/",            rootPageHandler);
+  server.on("/",rootPageHandler);
   server.on("/time", []() {
     if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
       return server.requestAuthentication();
@@ -262,18 +256,15 @@ void setup()
   // this allows the user to know the address to log into
   // We need to send a time update and the IP
   sendIPAddressToI2C(WiFi.localIP());
-  setTime(2020,9,13,0,0,0);
-  sendTimeToI2C();
 
   server.begin();
   debugMsg("HTTP server started");
 
 //  webSocket.begin();
 
-  if (ESP.getSketchSize()*2 < ESP.getFlashChipRealSize()) {
+  if (getOTAvailable()) {
     debugMsg("Can do OTA: sketch size ("+String(ESP.getSketchSize())+"), flash size ("+String(ESP.getFlashChipRealSize())+")");
     httpUpdater.setup(&server, "/update", "admin", "update");
-    updateOverOTAAvailable = true;
   } else {
     debugMsg("NO OTA: sketch size ("+String(ESP.getSketchSize())+"), flash size ("+String(ESP.getFlashChipRealSize())+")");
   }
@@ -342,7 +333,7 @@ void loop()
 // ************************************************************
 void performOncePerSecondProcessing() {
   if (ntpAsync.getNextUpdate(nowMillis) < 0) {
-    ntpAsync.getTimeFromNTP();
+    ntpAsync.getTimeFromNTP(nowMillis);
   }
   
   sendTimeToI2C();
@@ -360,8 +351,6 @@ void performOncePerSecondProcessing() {
   sendIPAddressToI2C(WiFi.localIP());
 
   lastI2CUpdateTime = nowMillis;
-
-//  webSocket.broadcastTXT("Something");
 }
 
 // ************************************************************
@@ -424,42 +413,42 @@ void factoryReset() {
   cc->ntpUpdateInterval = ntpAsync.getUpdateInterval();
   cc->tzs = ntpAsync.getTZS();
 
-  cc->hourMode = HOUR_MODE_DEFAULT;
-  cc->minDim = MIN_DIM_DEFAULT;
-  cc->fade = false;
-  cc->scrollback = false;
-  cc->fadeSteps = FADE_STEPS_DEFAULT;
-  cc->scrollSteps = SCROLL_STEPS_DEFAULT;
-
-  cc->thresholdBright = SENSOR_THRSH_DEFAULT;
-  cc->sensorSmoothCountLDR = SENSOR_SMOOTH_READINGS_DEFAULT;
-  cc->sensitivityLDR = SENSOR_SENSIT_DEFAULT;
-
-  cc->blankHourStart = 0;
-  cc->blankHourEnd = 7;
-  
-  cc->dateFormat = DATE_FORMAT_DEFAULT;
-  cc->dayBlanking = DAY_BLANKING_DEFAULT;
-  cc->blankMode = BLANK_MODE_DEFAULT;
-
-  cc->useLDR = USE_LDR_DEFAULT;
-  cc->pirTimeout = PIR_TIMEOUT_DEFAULT;
-  cc->usePIRPullup = USE_PIR_PULLUP_DEFAULT;
-  
-  cc->backlightMode = BACKLIGHT_DEFAULT;
-  cc->useBLPulse = false;
-  cc->useBLDim = true;
-  cc->redCnl = COLOUR_RED_CNL_DEFAULT;
-  cc->grnCnl = COLOUR_GRN_CNL_DEFAULT;
-  cc->bluCnl = COLOUR_BLU_CNL_DEFAULT;
-  cc->cycleSpeed = CYCLE_SPEED_DEFAULT;
-  
-  cc->slotsMode = SLOTS_MODE_DEFAULT;
-  cc->blankLeading = LEAD_BLANK_DEFAULT;
-  
-  cc->dateFormat = DATE_FORMAT_DEFAULT;
-  
-  cc->testMode = true;
+//  cc->hourMode = HOUR_MODE_DEFAULT;
+//  cc->minDim = MIN_DIM_DEFAULT;
+//  cc->fade = false;
+//  cc->scrollback = false;
+//  cc->fadeSteps = FADE_STEPS_DEFAULT;
+//  cc->scrollSteps = SCROLL_STEPS_DEFAULT;
+//
+//  cc->thresholdBright = SENSOR_THRSH_DEFAULT;
+//  cc->sensorSmoothCountLDR = SENSOR_SMOOTH_READINGS_DEFAULT;
+//  cc->sensitivityLDR = SENSOR_SENSIT_DEFAULT;
+//
+//  cc->blankHourStart = 0;
+//  cc->blankHourEnd = 7;
+//  
+//  cc->dateFormat = DATE_FORMAT_DEFAULT;
+//  cc->dayBlanking = DAY_BLANKING_DEFAULT;
+//  cc->blankMode = BLANK_MODE_DEFAULT;
+//
+//  cc->useLDR = USE_LDR_DEFAULT;
+//  cc->pirTimeout = PIR_TIMEOUT_DEFAULT;
+//  cc->usePIRPullup = USE_PIR_PULLUP_DEFAULT;
+//  
+//  cc->backlightMode = BACKLIGHT_DEFAULT;
+//  cc->useBLPulse = false;
+//  cc->useBLDim = true;
+//  cc->redCnl = COLOUR_RED_CNL_DEFAULT;
+//  cc->grnCnl = COLOUR_GRN_CNL_DEFAULT;
+//  cc->bluCnl = COLOUR_BLU_CNL_DEFAULT;
+//  cc->cycleSpeed = CYCLE_SPEED_DEFAULT;
+//  
+//  cc->slotsMode = SLOTS_MODE_DEFAULT;
+//  cc->blankLeading = LEAD_BLANK_DEFAULT;
+//  
+//  cc->dateFormat = DATE_FORMAT_DEFAULT;
+//  
+//  cc->testMode = true;
 
   setWebAuthentication(WEB_AUTH_DEFAULT);
   cc->webAuthentication = getWebAuthentication();
@@ -496,7 +485,7 @@ void rootPageHandler()
   // Status table
   response_message += getTableHead2Col("Current Status", "Name", "Value");
 
-  if (spiffsFailed) {
+  if (!spiffs.testMountSpiffs()) {
     response_message += getTableRow2Col("<strong>SPIFFS FAILED TO MOUNT</strong>", "Please reflash the controller with correct SPIFFS settings");
   }
 
@@ -568,12 +557,12 @@ void rootPageHandler()
   } else {
     connectionInfo += "n";
   }
-  if (spiffsFailed) {
-    connectionInfo += "s";
-  } else {
+  if (spiffs.testMountSpiffs()) {
     connectionInfo += "S";
+  } else {
+    connectionInfo += "s";
   }
-  if (updateOverOTAAvailable) {
+  if (getOTAvailable()) {
     connectionInfo += "U";
   } else {
     connectionInfo += "u";
@@ -594,9 +583,13 @@ void rootPageHandler()
   response_message += getTableRow2Col("Total clock on time", String(secsToReadableString(current_stats.uptimeMins * 60)));
   String proto = "";
   switch(i2cProtocol) {
-    case v1v54:   proto = "NixieFirmwareV1, I2C v54";
+    case v1p54:   proto = "NixieFirmwareV1, I2C v54";
                   break;
-    case v2v62:   proto = "NixieFirmwareV2, I2C v62";
+    case v2p62:   proto = "NixieFirmwareV2, I2C v62";
+                  break;
+    case v2p63:   proto = "NixieFirmwareV2, I2C v63";
+                  break;
+    case v2p64:   proto = "NixieFirmwareV2, I2C v64";
                   break;
     default:      proto = "<strong>Clock not found!</strong>";
   }  
@@ -735,7 +728,7 @@ void utilityPageHandler()
   response_message += getTableRow2Col("Reset Wifi Only (Reset WiFi, leaves clock configuration)", "<a href=\"/resetwifi\">Reset WiFi</a>");
   response_message += getTableRow2Col("Reset Configuration Only (Reset clock configuration, leaves WiFi)", "<a href=\"/resetoptions\">Reset Configuration</a>");
   response_message += getTableRow2Col("Reset All (Reset clock configuration, rest WiFi)", "<a href=\"/resetall\">Reset All</a>");
-  if(updateOverOTAAvailable) {
+  if(getOTAvailable()) {
     response_message += getTableRow2Col("Update firmware", "<a href=\"/update\">Update</a>");
   } else {
     response_message += getTableRow2Col("Update firmware", "not available - memory too small");
@@ -818,7 +811,7 @@ void resetAllPageHandler() {
 void ntpUpdatePageHandler() {
   debugMsg("NTP Update page in");
 
-  ntpAsync.getTimeFromNTP();
+  ntpAsync.getTimeFromNTP(nowMillis);
 
   server.sendHeader("Location", "/utility", true);
   server.send(302, "text/plain", "");
@@ -917,21 +910,65 @@ void clockConfigPageHandler()
     changed = true;
   }
   if(checkServerArgInt("pirTimeout", "pirTimeout", current_config.pirTimeout)) {
-    if ( i2cProtocol == v2v62 ) {
+    if (( i2cProtocol == v2p62 ) || (i2cProtocol == v2p63)) {
       // Only send if we are in the right I2C version
       setClockOptionInt(I2C_SET_OPTION_PIR_TIMEOUT, current_config.pirTimeout);
       changed = true;
     } 
   }
   if(checkServerArgInt("minDim", "minDim", current_config.minDim)) {
-    if ( i2cProtocol == v2v62 ) {
+    if (( i2cProtocol == v2p62 ) || (i2cProtocol == v2p63)) {
       setClockOptionInt(I2C_SET_OPTION_MIN_DIM_V2, current_config.minDim);
     } else {
       setClockOptionInt(I2C_SET_OPTION_MIN_DIM_V1, current_config.minDim);
     } 
     changed = true;
   }
+//  if(checkServerArgByte("dpEnable", "dpEnable", current_config.dpEnable)) {
+//    if (i2cProtocol == v2p63) {
+//      setClockOptionInt(I2C_SET_OPTION_DP_ENABLE, current_config.minDim);
+//    } 
+//    changed = true;
+//  }
 
+  if(checkServerArgByte("acpMode", "acpMode", current_config.acpMode)) {
+    if (i2cProtocol == v2p64) {
+      setClockOptionByte(I2C_SET_OPTION_ACP_MODE, current_config.acpMode);
+    } 
+    changed = true;
+  }
+
+  if(checkServerArgByte("pirBlankMode", "pirBlankMode", current_config.pirBlankMode)) {
+    if (i2cProtocol == v2p64) {
+      setClockOptionByte(I2C_SET_OPTION_PIR_BLNK_MODE, current_config.pirBlankMode);
+    } 
+    changed = true;
+  }
+
+  if(checkServerArgByte("alarmMode", "alarmMode", current_config.alarmMode)) {
+    if (i2cProtocol == v2p64) {
+      setClockOptionByte(I2C_SET_OPTION_ALARM_MODE, current_config.alarmMode);
+    } 
+    changed = true;
+  }
+  if(checkServerArgByte("alarmHour", "alarmHour", current_config.alarmHour)) {
+    if (i2cProtocol == v2p64) {
+      setClockOptionByte(I2C_SET_OPTION_ALARM_HOUR, current_config.alarmHour);
+    } 
+    changed = true;
+  }
+  if(checkServerArgByte("alarmMinute", "alarmMinute", current_config.alarmMinute)) {
+    if (i2cProtocol == v2p64) {
+      setClockOptionByte(I2C_SET_OPTION_ALARM_MIN, current_config.alarmMinute);
+    } 
+    changed = true;
+  }
+  if(checkServerArgByte("sepMode", "sepMode", current_config.sepMode)) {
+    if (i2cProtocol == v2p64) {
+      setClockOptionByte(I2C_SET_OPTION_SEP_MODE, current_config.sepMode);
+    } 
+    changed = true;
+  }
   // -----------------------------------------------------------------------------
   boolean webConfigChanged = false;
   webConfigChanged |= checkServerArgBoolean("webAuthentication", "Web Authentication", "on", "off", current_config.webAuthentication);
@@ -1035,10 +1072,48 @@ void clockConfigPageHandler()
   }
   response_message += getRadioGroupFooter();
 
+  // Decimal Points
+  if (i2cProtocol == v2p63) {
+    response_message += getDropDownHeader("Decimal Points:", "dpEnable", true, false);
+    response_message += getDropDownOption("0", "Decimal Points for AM/PM and PIR", (current_config.dpEnable == 0));
+    response_message += getDropDownOption("1", "Decimal Points for AM/PM", (current_config.dpEnable == 1));
+    response_message += getDropDownOption("2", "Turn off Decimal Points", (current_config.dpEnable == 2));
+    response_message += getDropDownFooter();
+  }
+
+  // ACP Mode
+  if (i2cProtocol == v2p64) {
+    response_message += getDropDownHeader("ACP Mode:", "acpMode", true, false);
+    response_message += getDropDownOption("0", "ACP Off", (current_config.acpMode == ACP_MODE_OFF));
+    response_message += getDropDownOption("1", "ACP every minute", (current_config.acpMode == ACP_MODE_1MIN));
+    response_message += getDropDownOption("2", "ACP every 10 minutes", (current_config.acpMode == ACP_MODE_10MIN));
+    response_message += getDropDownOption("3", "ACP every hour", (current_config.acpMode == ACP_MODE_1HOUR));
+    response_message += getDropDownFooter();
+  }
+
   response_message += getSubmitButton("Set");
 
   response_message += getFormFoot();
+  
+  // -----------------------------------------------------------------------------
+  if (i2cProtocol == v2p64) {
+    response_message += getFormHead("Alarm");
 
+    // Alarm Mode
+    response_message += getDropDownHeader("Alarm:", "alarmMode", true, false);
+    response_message += getDropDownOption("0", "Alarm Off", (current_config.alarmMode == ALARM_MODE_OFF));
+    response_message += getDropDownOption("1", "Alarm On", (current_config.alarmMode == ALARM_MODE_ON));
+    response_message += getDropDownFooter();
+    
+    response_message += getNumberInput("Alarm Hour:", "alarmHour", 0, 24, current_config.alarmHour, false);
+    
+    response_message += getNumberInput("Alarm Minute:", "alarmMinute", 0, 24, current_config.alarmMinute, false);
+    
+    response_message += getSubmitButton("Set");
+
+    response_message += getFormFoot();
+  }
+  
   // -----------------------------------------------------------------------------
   response_message += getFormHead("Light Dependent Resistor");
 
@@ -1052,7 +1127,6 @@ void clockConfigPageHandler()
     response_message += getRadioButton("useLDR", "Off", "off", true);
   }
   response_message += getRadioGroupFooter();
-  //response_message += getCheckBox("useLDR", "on", "Use LDR for dimming", (useLDR == 1));
 
   // Min dim
   response_message += getNumberInput("Min Dim:", "minDim", 100, 500, current_config.minDim, false);
@@ -1064,29 +1138,39 @@ void clockConfigPageHandler()
   // -----------------------------------------------------------------------------
   response_message += getFormHead("Digit blanking");
   
-  if ( i2cProtocol == v2v62 ) {
+  if (( i2cProtocol == v2p62 ) || (i2cProtocol == v2p63) || (i2cProtocol == v2p64)) {
     // PIR timeout
     response_message += getNumberInput("PIR timeout:", "pirTimeout", 60, 3600, current_config.pirTimeout, false);
   }
 
+  if (i2cProtocol == v2p64) {
+    response_message += getDropDownHeader("Motion Sensor Mode:", "pirBlankMode", true, false);
+    response_message += getDropDownOption("0", "Motion sensor overrides blanking", (current_config.pirBlankMode == PIR_OVERRIDE_BLANK));
+    response_message += getDropDownOption("1", "Motion sensor respects blanking", (current_config.pirBlankMode == PIR_RESPECT_BLANK));
+    response_message += getDropDownFooter();
+  }
+
   // Day blanking
   response_message += getDropDownHeader("Day blanking:", "dayBlanking", true, false);
-  response_message += getDropDownOption("0", "Never blank", (current_config.dayBlanking == 0));
-  response_message += getDropDownOption("1", "Blank all day on weekends", (current_config.dayBlanking == 1));
-  response_message += getDropDownOption("2", "Blank all day on week days", (current_config.dayBlanking == 2));
-  response_message += getDropDownOption("3", "Blank always", (current_config.dayBlanking == 3));
-  response_message += getDropDownOption("4", "Blank during selected hours every day", (current_config.dayBlanking == 4));
-  response_message += getDropDownOption("5", "Blank during selected hours on week days and all day on weekends", (current_config.dayBlanking == 5));
-  response_message += getDropDownOption("6", "Blank during selected hours on weekends and all day on week days", (current_config.dayBlanking == 6));
-  response_message += getDropDownOption("7", "Blank during selected hours on weekends only", (current_config.dayBlanking == 7));
-  response_message += getDropDownOption("8", "Blank during selected hours on week days only", (current_config.dayBlanking == 8));
+  response_message += getDropDownOption("0", "Never blank", (current_config.dayBlanking == DAY_BLANKING_NEVER));
+  response_message += getDropDownOption("1", "Blank all day on weekends", (current_config.dayBlanking == DAY_BLANKING_WEEKEND));
+  response_message += getDropDownOption("2", "Blank all day on week days", (current_config.dayBlanking == DAY_BLANKING_WEEKDAY));
+  response_message += getDropDownOption("3", "Blank always", (current_config.dayBlanking == DAY_BLANKING_ALWAYS));
+  response_message += getDropDownOption("4", "Blank during selected hours every day", (current_config.dayBlanking == DAY_BLANKING_HOURS));
+  response_message += getDropDownOption("5", "Blank during selected hours on week days and all day on weekends", (current_config.dayBlanking == DAY_BLANKING_WEEKEND_OR_HOURS));
+  response_message += getDropDownOption("6", "Blank during selected hours on weekends and all day on week days", (current_config.dayBlanking == DAY_BLANKING_WEEKDAY_OR_HOURS));
+  response_message += getDropDownOption("7", "Blank during selected hours on weekends only", (current_config.dayBlanking == DAY_BLANKING_WEEKEND_AND_HOURS));
+  response_message += getDropDownOption("8", "Blank during selected hours on week days only", (current_config.dayBlanking == DAY_BLANKING_WEEKDAY_AND_HOURS));
   response_message += getDropDownFooter();
 
   // Blank Mode
   response_message += getDropDownHeader("Blank Mode:", "blankMode", true, false);
-  response_message += getDropDownOption("0", "Blank tubes only", (current_config.blankMode == 0));
-  response_message += getDropDownOption("1", "Blank LEDs only", (current_config.blankMode == 1));
-  response_message += getDropDownOption("2", "Blank tubes and LEDs", (current_config.blankMode == 2));
+  response_message += getDropDownOption("0", "Blank tubes only", (current_config.blankMode == BLANK_MODE_TUBES));
+  response_message += getDropDownOption("1", "Blank LEDs only", (current_config.blankMode == BLANK_MODE_LEDS));
+  response_message += getDropDownOption("2", "Blank tubes and LEDs", (current_config.blankMode == BLANK_MODE_BOTH));
+  if (i2cProtocol == v2p63) {
+    response_message += getDropDownOption("2", "Blank tubes, LEDs and separators", (current_config.blankMode == BLANK_MODE_ALL));
+  }
   response_message += getDropDownFooter();
   
   boolean hoursDisabled = (current_config.dayBlanking < 4);
@@ -1106,20 +1190,23 @@ void clockConfigPageHandler()
 
   // Back light
   response_message += getDropDownHeader("Back light:", "backlightMode", true, false);
-  response_message += getDropDownOption("0", "Fixed RGB backlight, no dimming", (current_config.backlightMode == 0));
-  response_message += getDropDownOption("1", "Pulsing RGB backlight, no dimming", (current_config.backlightMode == 1));
-  response_message += getDropDownOption("2", "Cycling RGB backlight, no dimming", (current_config.backlightMode == 2));
-  response_message += getDropDownOption("3", "Fixed RGB backlight, dims with ambient light", (current_config.backlightMode == 3));
-  response_message += getDropDownOption("4", "Pulsing RGB backlight, dims with ambient light", (current_config.backlightMode == 4));
-  response_message += getDropDownOption("5", "Cycling RGB backlight, dims with ambient light", (current_config.backlightMode == 5));
-  if ( i2cProtocol == v2v62 ) {
-    response_message += getDropDownOption("6", "'Colourtime' backlight", (current_config.backlightMode == 6));
-    response_message += getDropDownOption("7", "'Colourtime' backlight, dims with ambient light", (current_config.backlightMode == 7));
+  response_message += getDropDownOption("0", "Fixed RGB backlight, no dimming", (current_config.backlightMode == BACKLIGHT_FIXED));
+  response_message += getDropDownOption("1", "Pulsing RGB backlight, no dimming", (current_config.backlightMode == BACKLIGHT_PULSE));
+  response_message += getDropDownOption("2", "Cycling RGB backlight, no dimming", (current_config.backlightMode == BACKLIGHT_CYCLE));
+  response_message += getDropDownOption("3", "Fixed RGB backlight, dims with ambient light", (current_config.backlightMode == BACKLIGHT_FIXED_DIM));
+  response_message += getDropDownOption("4", "Pulsing RGB backlight, dims with ambient light", (current_config.backlightMode == BACKLIGHT_PULSE_DIM));
+  response_message += getDropDownOption("5", "Cycling RGB backlight, dims with ambient light", (current_config.backlightMode == BACKLIGHT_CYCLE_DIM));
+  if (( i2cProtocol == v2p62 ) || ( i2cProtocol == v2p63 ) || ( i2cProtocol == v2p64 )) {
+    response_message += getDropDownOption("6", "'Colourtime' backlight", (current_config.backlightMode == BACKLIGHT_COLOUR_TIME));
+    response_message += getDropDownOption("7", "'Colourtime' backlight, dims with ambient light", (current_config.backlightMode == BACKLIGHT_COLOUR_TIME_DIM));
   }
   response_message += getDropDownFooter();
 
-  boolean cycleEnabled = !((current_config.backlightMode == 2) || (current_config.backlightMode == 5));
-  boolean colourChannelEnabled = !((current_config.backlightMode == 0) || (current_config.backlightMode == 1) || (current_config.backlightMode == 3) || (current_config.backlightMode == 4));
+  boolean cycleEnabled = !((current_config.backlightMode == BACKLIGHT_CYCLE) || (current_config.backlightMode == BACKLIGHT_CYCLE_DIM));
+  boolean colourChannelEnabled = !( (current_config.backlightMode == BACKLIGHT_FIXED) || 
+                                    (current_config.backlightMode == BACKLIGHT_PULSE) || 
+                                    (current_config.backlightMode == BACKLIGHT_FIXED_DIM) || 
+                                    (current_config.backlightMode == BACKLIGHT_PULSE_DIM) );
 
   // RGB channels
   response_message += getNumberInput("Red intensity:", "redCnl", 0, 15, current_config.redCnl, colourChannelEnabled);
@@ -1128,6 +1215,15 @@ void clockConfigPageHandler()
 
   // Cycle speed
   response_message += getNumberInput("Backlight Cycle Speed:", "cycleSpeed", 2, 64, current_config.cycleSpeed, cycleEnabled);
+
+  if (i2cProtocol == v2p64) {
+    response_message += getDropDownHeader("Separators Mode:", "sepMode", true, false);
+    response_message += getDropDownOption("0", "Separators off", (current_config.sepMode == SEP_MODE_OFF));
+    response_message += getDropDownOption("1", "Slow blink", (current_config.sepMode == SEP_MODE_SLOW));
+    response_message += getDropDownOption("2", "Fast blink", (current_config.sepMode == SEP_MODE_FAST));
+    response_message += getDropDownOption("3", "Separators on", (current_config.sepMode == SEP_MODE_ON));
+    response_message += getDropDownFooter();
+  }
 
   // form footer
   response_message += getSubmitButton("Set");
@@ -1238,7 +1334,7 @@ void setBlinkMode(byte blinkMode) {
     case 0:
       {
         // normal running - 1S short flash
-        onTime = 100;
+        onTime = 300;
         offTime = 312400;
         break;
       }
@@ -1272,6 +1368,13 @@ void setBlinkMode(byte blinkMode) {
       }
     break;
   }
+}
+
+// ************************************************************
+// See if we have enough flash space for OTA
+// ************************************************************
+boolean getOTAvailable() {
+  return ESP.getSketchSize()*2 < ESP.getFlashChipRealSize();
 }
 
 // ----------------------------------------------------------------------------------------------------
@@ -1318,152 +1421,204 @@ boolean getClockOptionsFromI2C() {
   if (available == 1 ) {
     receivedByte = Wire.read();                                           // get the protocol number
     debugMsg("I2C <-- Got protocol header: " + receivedByte);
-    if (receivedByte != I2C_PROTOCOL_NUMBER_V1 && receivedByte != I2C_PROTOCOL_NUMBER_V2 ) {
-      debugMsg("I2C Protocol ERROR! Expected header " + String(I2C_PROTOCOL_NUMBER_V1) + " or " + String(I2C_PROTOCOL_NUMBER_V2) + ", but got: " + receivedByte);
+    if (receivedByte != I2C_PROTOCOL_NUMBER_V1_54 && 
+        receivedByte != I2C_PROTOCOL_NUMBER_V2_62 && 
+        receivedByte != I2C_PROTOCOL_NUMBER_V2_63 && 
+        receivedByte != I2C_PROTOCOL_NUMBER_V2_64 ) {
+      debugMsg("I2C Protocol ERROR! Expected header " + 
+        String(I2C_PROTOCOL_NUMBER_V1_54) + " or " +
+        String(I2C_PROTOCOL_NUMBER_V2_62) + " or " +
+        String(I2C_PROTOCOL_NUMBER_V2_63) + " or " +
+        String(I2C_PROTOCOL_NUMBER_V2_64) + ", but got: " + receivedByte);
       return false;
-    } else if ( receivedByte == I2C_PROTOCOL_NUMBER_V1 ) {
-      i2cProtocol = v1v54;
-    } else if ( receivedByte == I2C_PROTOCOL_NUMBER_V2 ) {
-      i2cProtocol = v2v62;
+    } else if ( receivedByte == I2C_PROTOCOL_NUMBER_V1_54 ) {
+      i2cProtocol = v1p54;
+    } else if ( receivedByte == I2C_PROTOCOL_NUMBER_V2_62 ) {
+      i2cProtocol = v2p62;
+    } else if ( receivedByte == I2C_PROTOCOL_NUMBER_V2_63 ) {
+      i2cProtocol = v2p63;
+    } else if ( receivedByte == I2C_PROTOCOL_NUMBER_V2_64 ) {
+      i2cProtocol = v2p64;
     } else {
-      return false;     // didn't get either protocol number
+      return false;     // didn't get a protocol number we know
     }
   } else {
     return false;       // didn't get 1 byte as expected
   }
-    // now get the data
-    byte dataLen = 0;
-    if ( i2cProtocol == v1v54 ) { dataLen = I2C_DATA_SIZE_V1; }
-    if ( i2cProtocol == v2v62 ) { dataLen = I2C_DATA_SIZE_V2; }
-    available = Wire.requestFrom((uint8_t)preferredI2CSlaveAddress, (uint8_t)dataLen ); 
-    debugMsg("I2C <-- Received bytes (expecting " + String(dataLen) +  "): " + available);
-    if (available == dataLen ) {
-      receivedByte = Wire.read();                                              // throw away i2c version, we already know it
-
-    // IDX 1
+  
+  // now get the data
+  byte dataLen = 0;
+  if ( i2cProtocol == v1p54 ) { dataLen = I2C_DATA_SIZE_V1_54; }
+  if ( i2cProtocol == v2p62 ) { dataLen = I2C_DATA_SIZE_V2_62; }
+  if ( i2cProtocol == v2p63 ) { dataLen = I2C_DATA_SIZE_V2_63; }
+  if ( i2cProtocol == v2p64 ) { dataLen = I2C_DATA_SIZE_V2_64; }
+  available = Wire.requestFrom((uint8_t)preferredI2CSlaveAddress, (uint8_t)dataLen ); 
+  debugMsg("I2C <-- Received bytes (expecting " + String(dataLen) +  "): " + available);
+  if (available == dataLen ) {
+    // IDX 0
+    receivedByte = Wire.read(); // throw away i2c version, we already know it
+                                                                              //    V1_54  |  V2_62  |  V2_63  |  V2_64
+    // IDX 1                                                                  //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got hour mode: " + receivedByte);
     current_config.hourMode = receivedByte;
 
-    // IDX 2
+    // IDX 2                                                                  //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got blank lead: " + receivedByte);
     current_config.blankLeading = receivedByte;
 
-    // IDX 3
+    // IDX 3                                                                  //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got scrollback: " + receivedByte);
     current_config.scrollback = receivedByte;
 
-    // IDX 4
+    // IDX 4                                                                  //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got suppress ACP: " + receivedByte);
     current_config.suppressACP = receivedByte;
 
-    // IDX 5
+    // IDX 5                                                                  //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got useFade: " + receivedByte);
     current_config.fade = receivedByte;
 
-    // IDX 6
+    // IDX 6                                                                  //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got date format: " + receivedByte);
     current_config.dateFormat = receivedByte;
 
-    // IDX 7
+    // IDX 7                                                                  //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got day blanking: " + receivedByte);
     current_config.dayBlanking = receivedByte;
 
-    // IDX 8
+    // IDX 8                                                                  //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got blank hour start: " + receivedByte);
     current_config.blankHourStart = receivedByte;
 
-    // IDX 9
+    // IDX 9                                                                  //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got blank hour end: " + receivedByte);
     current_config.blankHourEnd = receivedByte;
 
-    // IDX 10
+    // IDX 10                                                                  //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got fade steps: " + receivedByte);
     current_config.fadeSteps = receivedByte;
 
-    // IDX 11
+    // IDX 11                                                                  //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got scroll steps: " + receivedByte);
     current_config.scrollSteps = receivedByte;
 
-    // IDX 12
+    // IDX 12                                                                  //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got backlight mode: " + receivedByte);
     current_config.backlightMode = receivedByte;
 
-    // IDX 13
+    // IDX 13                                                                  //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got red channel: " + receivedByte);
     current_config.redCnl = receivedByte;
 
-    // IDX 14
+    // IDX 14                                                                  //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got green channel: " + receivedByte);
     current_config.grnCnl = receivedByte;
 
-    // IDX 15
+    // IDX 15                                                                  //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got blue channel: " + receivedByte);
     current_config.bluCnl = receivedByte;
 
-    // IDX 16
+    // IDX 16                                                                  //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got cycle speed: " + receivedByte);
     current_config.cycleSpeed = receivedByte;
 
-    // IDX 17
+    // IDX 17                                                                  //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got useLDR: " + receivedByte);
     current_config.useLDR = receivedByte;
 
-    // IDX 18
+    // IDX 18                                                                  //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got blankMode: " + receivedByte);
     current_config.blankMode = receivedByte;
 
-    // IDX 19
+    // IDX 19                                                                  //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got slotsMode: " + receivedByte);
     current_config.slotsMode = receivedByte;
 
-    if ( i2cProtocol == v2v62 ) {                                  // only for V2
-        // IDX 20
+    if ( i2cProtocol != v1p54 ) {
+        // IDX 20                                                              //      N         Y         Y         Y
         receivedByte = Wire.read();
         debugMsg("I2C <-- Got pirTimeOut Hi: " + receivedByte);
         int pirTO = receivedByte * 256;
         
-        // IDX 21
+        // IDX 21                                                              //      N         Y         Y         Y
         receivedByte = Wire.read();
         debugMsg("I2C <-- Got pirTimeOut Lo: " + receivedByte);
         pirTO += receivedByte;
+        
         debugMsg("I2C <-- Got pirTimeOut combined: " + pirTO);
         current_config.pirTimeout = pirTO;
     }
 
-    // IDX 20/22
+    // IDX 20/22                                                               //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got minDim Hi: " + receivedByte);
     int newMinDim = receivedByte * 256;
 
-    // IDX 21/23
+    // IDX 21/23                                                               //      Y         Y         Y         Y
     receivedByte = Wire.read();
     debugMsg("I2C <-- Got minDim Lo: " + receivedByte);
     newMinDim += receivedByte;
+    
     debugMsg("I2C <-- Got minDim combined: " + newMinDim);
     current_config.minDim = newMinDim;
 
+    if ( i2cProtocol == v2p64 ) {
+      // IDX 24                                                                //      N         N         N         Y
+      receivedByte = Wire.read();
+      debugMsg("I2C <-- Got acpMode: " + receivedByte);
+      current_config.acpMode = receivedByte;
+        
+      // IDX 25                                                                //      N         N         N         Y
+      receivedByte = Wire.read();
+      debugMsg("I2C <-- Got pirBlankMode: " + receivedByte);
+      current_config.pirBlankMode = receivedByte;
+        
+      // IDX 26                                                                //      N         N         N         Y
+      receivedByte = Wire.read();
+      debugMsg("I2C <-- Got alarmMode: " + receivedByte);
+      current_config.alarmMode = receivedByte;
+        
+      // IDX 27                                                                //      N         N         N         Y
+      receivedByte = Wire.read();
+      debugMsg("I2C <-- Got alarmHour: " + receivedByte);
+      current_config.alarmHour = receivedByte;
+        
+      // IDX 28                                                                //      N         N         N         Y
+      receivedByte = Wire.read();
+      debugMsg("I2C <-- Got alarmMinute: " + receivedByte);
+      current_config.alarmMinute = receivedByte;
+        
+      // IDX 29                                                                //      N         N         N         Y
+      receivedByte = Wire.read();
+      debugMsg("I2C <-- Got sepMode: " + receivedByte);
+      current_config.sepMode = receivedByte;
+    }
   } else {
       // didn't get the right number of bytes
-      debugMsg("I2C <-- Got wrong number of bytes, expected " + String(I2C_DATA_SIZE_V1) + " or " + String(I2C_DATA_SIZE_V2) + ", got: " + available);
+      debugMsg("I2C <-- Got wrong number of bytes, expected " +
+        String(I2C_DATA_SIZE_V1_54) + " or " + 
+        String(I2C_DATA_SIZE_V2_62) + " or " + 
+        String(I2C_DATA_SIZE_V2_63) + " or " + 
+        String(I2C_DATA_SIZE_V2_64) + ", got: " + available);
   }
 
   int error = Wire.endTransmission();

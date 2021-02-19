@@ -25,15 +25,35 @@
 #define I2C_SET_OPTION_USE_LDR        0x13
 #define I2C_SET_OPTION_BLANK_MODE     0x14
 #define I2C_SET_OPTION_SLOTS_MODE     0x15
+
+// V1 clocks
+#define I2C_SET_OPTION_MIN_DIM_V1     0x16
+
+// V2 62 clocks
 #define I2C_SET_OPTION_PIR_TIMEOUT    0x16
 #define I2C_SHOW_VALUE                0x17
 #define I2C_SHOW_VALUE_FORMAT         0x18
 #define I2C_SET_OPTION_MIN_DIM_V2     0x19
-#define I2C_SET_OPTION_MIN_DIM_V1     0x16
 
-#define I2C_DATA_SIZE_V1               22
-#define I2C_PROTOCOL_NUMBER_V1         54
-#define I2C_DATA_SIZE_V2               24
-#define I2C_PROTOCOL_NUMBER_V2         62
+// BDD MNC6 - v2 64
+#define I2C_SET_OPTION_ACP_MODE       0x1a
+#define I2C_SET_OPTION_PIR_BLNK_MODE  0x1b
+#define I2C_SET_OPTION_ALARM_MODE     0x1c
+#define I2C_SET_OPTION_ALARM_HOUR     0x1d
+#define I2C_SET_OPTION_ALARM_MIN      0x1e
+#define I2C_SET_OPTION_SEP_MODE       0x1f
+
+// Protocols
+#define I2C_DATA_SIZE_V1_54            22
+#define I2C_PROTOCOL_NUMBER_V1_54      54
+
+#define I2C_DATA_SIZE_V2_62            24
+#define I2C_PROTOCOL_NUMBER_V2_62      62
+
+#define I2C_DATA_SIZE_V2_63            25
+#define I2C_PROTOCOL_NUMBER_V2_63      63
+
+#define I2C_DATA_SIZE_V2_64            30
+#define I2C_PROTOCOL_NUMBER_V2_64      64
 
 #endif

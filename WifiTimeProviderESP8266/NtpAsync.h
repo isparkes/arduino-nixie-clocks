@@ -20,12 +20,13 @@ typedef void (*NewTimeCallback) ();
 #define NTP_UPDATE_INTERVAL_DEFAULT 7261
 #define NTP_UPDATE_INTERVAL_MIN 60
 #define NTP_UPDATE_INTERVAL_MAX 86400
+#define NTP_RETRY_INTERVAL_MS 30000
 
 class NtpAsync
 {
   public:
     void setDebugOutput(bool newDebug);
-    void getTimeFromNTP();
+    void getTimeFromNTP(unsigned long nowMillis);
     bool getIsConnected();
     void resetDefaults();
     
