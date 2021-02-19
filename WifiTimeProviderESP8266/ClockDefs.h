@@ -161,6 +161,7 @@
 #define BLANK_MODE_LEDS                 1  // Use blanking for LEDs only
 #define BLANK_MODE_BOTH                 2  // Use blanking for tubes and LEDs
 #define BLANK_MODE_ALL                  3  // Use blanking for tubes, LEDs and separators
+#define BLANK_MODE_DIM                  3  // Dim tubes, LEDs and separators (v2p64)
 
 // --------------------------- Strategy Backlights -------------------------------
 #define BACKLIGHT_FIXED                 0  // Just define a colour and stick to it

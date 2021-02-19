@@ -1104,10 +1104,10 @@ void clockConfigPageHandler()
     response_message += getDropDownOption("0", "Alarm Off", (current_config.alarmMode == ALARM_MODE_OFF));
     response_message += getDropDownOption("1", "Alarm On", (current_config.alarmMode == ALARM_MODE_ON));
     response_message += getDropDownFooter();
-    
-    response_message += getNumberInput("Alarm Hour:", "alarmHour", 0, 24, current_config.alarmHour, false);
-    
-    response_message += getNumberInput("Alarm Minute:", "alarmMinute", 0, 24, current_config.alarmMinute, false);
+
+    bool alarmTimeEnabled = !(current_config.alarmMode == ALARM_MODE_ON);
+    response_message += getNumberInput("Alarm Hour:", "alarmHour", 0, 24, current_config.alarmHour, alarmTimeEnabled);
+    response_message += getNumberInput("Alarm Minute:", "alarmMinute", 0, 24, current_config.alarmMinute, alarmTimeEnabled);
     
     response_message += getSubmitButton("Set");
 
@@ -1169,7 +1169,10 @@ void clockConfigPageHandler()
   response_message += getDropDownOption("1", "Blank LEDs only", (current_config.blankMode == BLANK_MODE_LEDS));
   response_message += getDropDownOption("2", "Blank tubes and LEDs", (current_config.blankMode == BLANK_MODE_BOTH));
   if (i2cProtocol == v2p63) {
-    response_message += getDropDownOption("2", "Blank tubes, LEDs and separators", (current_config.blankMode == BLANK_MODE_ALL));
+    response_message += getDropDownOption("3", "Blank tubes, LEDs and separators", (current_config.blankMode == BLANK_MODE_ALL));
+  }
+  if (i2cProtocol == v2p64) {
+    response_message += getDropDownOption("3", "Dim tubes and LEDs", (current_config.blankMode == BLANK_MODE_DIM));
   }
   response_message += getDropDownFooter();
   
