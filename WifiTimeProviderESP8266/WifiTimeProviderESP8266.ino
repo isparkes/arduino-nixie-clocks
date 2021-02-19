@@ -861,7 +861,7 @@ void setDisplayValuePageHandler() {
     }
   } else {
     response_message += "<div class=\"alert alert-error fade in\"><strong>";
-    response_message += "You need to set at least the \"value\" parameter! A valid command line is http://clock.ip.addres/setvalue?value=123456&time=60&format=333333";
+    response_message += "You need to set at least the \"value\" parameter! A valid command line is http://clock.ip.addres/setvalue?value=123456&time=60&format=000011";
     response_message += "</strong><br>";
     response_message += "The format values are: 0 = blanked digit, 1 = normal display, 2 = blinking digit</div></div>";
   }
@@ -1169,8 +1169,8 @@ void clockConfigPageHandler()
     response_message += getDropDownFooter();
 
     bool alarmTimeEnabled = !(current_config.alarmMode == ALARM_MODE_ON);
-    response_message += getNumberInput("Alarm Hour:", "alarmHour", 0, 24, current_config.alarmHour, alarmTimeEnabled);
-    response_message += getNumberInput("Alarm Minute:", "alarmMinute", 0, 24, current_config.alarmMinute, alarmTimeEnabled);
+    response_message += getNumberInput("Alarm Hour:", "alarmHour", 0, 23, current_config.alarmHour, alarmTimeEnabled);
+    response_message += getNumberInput("Alarm Minute:", "alarmMinute", 0, 59, current_config.alarmMinute, alarmTimeEnabled);
     
     response_message += getSubmitButton("Set");
 
