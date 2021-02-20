@@ -74,6 +74,11 @@ byte preferredAddressFoundBy = 0; // 0 = not found, 1 = found by default, 2 = fo
 enum i2cProtocols {unKnown, v2p62, v1p54, v2p63, v2p64};
 i2cProtocols i2cProtocol ;
 
+// Stats/requests from slave
+bool slaveBlanked = false;
+bool requestAP = false;
+bool pirSense = false;
+
 ADC_MODE(ADC_VCC);
 
 WiFiManager wifiManager;
@@ -353,6 +358,10 @@ void performOncePerSecondProcessing() {
   sendIPAddressToI2C(WiFi.localIP());
 
   lastI2CUpdateTime = nowMillis;
+
+  if (i2cProtocol == v2p64) {
+    getStatsFromI2C();
+  }
 }
 
 // ************************************************************
@@ -372,6 +381,11 @@ void performOncePerMinuteProcessing() {
   } else {
     IPAddress ip = WiFi.localIP();
     debugMsg("Not connected IP: " + formatIPAsString(ip));
+  }
+
+  if (requestAP) {
+    // reset wifi and restart ESP
+    resetWiFiPageHandler();
   }
 }
 
@@ -581,6 +595,24 @@ void rootPageHandler()
   connectionInfo += "d";
 #endif
 
+  if (slaveBlanked) {
+    connectionInfo += "B";
+  } else {
+    connectionInfo += "b";
+  }
+
+  if (requestAP) {
+    connectionInfo += "R";
+  } else {
+    connectionInfo += "r";
+  }
+  
+  if (pirSense) {
+    connectionInfo += "M";
+  } else {
+    connectionInfo += "m";
+  }
+  
   response_message += getTableRow2Col("Status string", connectionInfo);
   response_message += getTableRow2Col("Total clock on time", String(secsToReadableString(current_stats.uptimeMins * 60)));
   String proto = "";
@@ -973,7 +1005,7 @@ void clockConfigPageHandler()
     changed = true;
   }
   if(checkServerArgInt("pirTimeout", "pirTimeout", current_config.pirTimeout)) {
-    if (( i2cProtocol == v2p62 ) || (i2cProtocol == v2p63)) {
+    if (( i2cProtocol == v2p62 ) || (i2cProtocol == v2p63) || (i2cProtocol == v2p64)) {
       // Only send if we are in the right I2C version
       setClockOptionInt(I2C_SET_OPTION_PIR_TIMEOUT, current_config.pirTimeout);
       changed = true;
@@ -1477,7 +1509,33 @@ boolean sendTimeToI2C() {
 }
 
 /**
-   Get the options from the I2C slave. If the transmission went OK, return true, otherwise false.
+ * Get stats from the I2C slave
+ */
+boolean getStatsFromI2C() {
+  Wire.beginTransmission(preferredI2CSlaveAddress);
+  Wire.write(I2C_GET_STATS); // Command
+  int error = Wire.endTransmission();
+
+  // Immediately get the stuff which should be waiting for us
+  byte receivedByte = 0;
+  uint8_t available = Wire.requestFrom((uint8_t)preferredI2CSlaveAddress, (uint8_t)I2C_STATS_SIZE);
+  if (available == I2C_STATS_SIZE) {
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got blanked status: " + receivedByte);
+    slaveBlanked = receivedByte;
+    
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got request AP: " + receivedByte);
+    requestAP = receivedByte;
+    
+    receivedByte = Wire.read();
+    debugMsg("I2C <-- Got PIR status: " + receivedByte);
+    pirSense = receivedByte;
+  }
+}
+
+/**
+ Get the options from the I2C slave. If the transmission went OK, return true, otherwise false.
 */
 boolean getClockOptionsFromI2C() {
   byte receivedByte = 0;

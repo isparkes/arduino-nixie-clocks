@@ -56,4 +56,14 @@
 #define I2C_DATA_SIZE_V2_64            30
 #define I2C_PROTOCOL_NUMBER_V2_64      64
 
+// -------------- Stats handling --------------
+#define I2C_GET_STATS                 0xf0
+
+#define I2C_STATS_BLANKED             0x00
+#define I2C_STATS_RST_WIFI            0x01
+#define I2C_STATS_PIR                 0x02
+
+#define I2C_STATS_SIZE                 3
+
+
 #endif
