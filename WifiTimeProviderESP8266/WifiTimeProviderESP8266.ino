@@ -28,6 +28,17 @@
     Builtin LED: 1
 
    Go to http://192.168.4.1 in a web browser connected to this access point to see it
+
+  ---------------------------
+  
+   There is a hack to allow the password to be seen on initial configuration: In the file "wifiManager.h"
+
+   change the line
+
+   "const char HTTP_FORM_START[] PROGMEM      = "<form method='get' action='wifisave'><input id='s' name='s' length=32 placeholder='SSID'><br/><input id='p' name='p' length=64 placeholder='password'><br/>";"
+
+   to remove the "type = password"  
+   
 */
 
 #include <FS.h>
@@ -189,7 +200,10 @@ void setup()
   debugMsg("IP address: " + formatIPAsString(myIP));
 
   // If we lose the connection, we try to recover it
+  // This appears to be patchy in efficacy
   WiFi.setAutoReconnect(true);
+  // V2: wifiManager.setWiFiAutoReconnect(true);
+  
 
   // set up the NTP component and wire up the "got time update" callback
   NewTimeCallback ntcb = newTimeUpdateReceived;
@@ -403,6 +417,9 @@ void performOncePerHourProcessing() {
 void performOncePerDayProcessing() {
   debugMsg("---> OncePerDayProcessing");
   spiffs.saveStatsToSpiffs(&current_stats);
+
+  // If, notwithstanding every attempt, we are still not connected, we get medieval on it's ass...
+  reconnectDroppedConnectionBrutal();
 }
 
 // ************************************************************
@@ -412,10 +429,27 @@ void reconnectDroppedConnection() {
   // Try to reconnect if we are  not connected
   if (WiFi.status() != WL_CONNECTED) {
     debugMsg("Attepting to reconnect dropped connection WiFi connection to " + WiFi.SSID());
-    ETS_UART_INTR_DISABLE();
-    wifi_station_disconnect();
-    ETS_UART_INTR_ENABLE();
+
+    // Dis
+    WiFi.persistent(false);      
+    WiFi.disconnect();          
+    WiFi.persistent(true);
+
+    delay(2000);
+    
     WiFi.begin();
+    
+    delay(2000);
+  }
+}
+
+// ************************************************************
+// In the case that we have lost the WiFi connection, just reboot
+// ************************************************************
+void reconnectDroppedConnectionBrutal() {
+  // Try to reconnect if we are  not connected
+  if (WiFi.status() != WL_CONNECTED) {
+    ESP.restart();
   }
 }
 
@@ -595,22 +629,24 @@ void rootPageHandler()
   connectionInfo += "d";
 #endif
 
-  if (slaveBlanked) {
-    connectionInfo += "B";
-  } else {
-    connectionInfo += "b";
-  }
+  // These are only supported by protocol 64
+  if (i2cProtocol == v2p64) {
+    if (slaveBlanked) {
+      connectionInfo += "B";
+    } else {
+      connectionInfo += "b";    }
 
-  if (requestAP) {
-    connectionInfo += "R";
-  } else {
-    connectionInfo += "r";
-  }
-  
-  if (pirSense) {
-    connectionInfo += "M";
-  } else {
-    connectionInfo += "m";
+    if (requestAP) {
+      connectionInfo += "R";
+    } else {
+      connectionInfo += "r";
+    }
+    
+    if (pirSense) {
+      connectionInfo += "M";
+    } else {
+      connectionInfo += "m";
+    }
   }
   
   response_message += getTableRow2Col("Status string", connectionInfo);
