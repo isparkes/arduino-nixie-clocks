@@ -35,6 +35,9 @@
 #define I2C_SHOW_VALUE_FORMAT         0x18
 #define I2C_SET_OPTION_MIN_DIM_V2     0x19
 
+// V2 63 clocks
+#define I2C_SET_OPTION_DP_ENABLE      0x1a
+
 // BDD MNC6 - v2 64
 #define I2C_SET_OPTION_ACP_MODE       0x1a
 #define I2C_SET_OPTION_PIR_BLNK_MODE  0x1b

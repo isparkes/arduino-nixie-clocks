@@ -1048,19 +1048,20 @@ void clockConfigPageHandler()
     } 
   }
   if(checkServerArgInt("minDim", "minDim", current_config.minDim)) {
-    if (( i2cProtocol == v2p62 ) || (i2cProtocol == v2p63)) {
+    if (( i2cProtocol == v2p62 ) || (i2cProtocol == v2p63) || (i2cProtocol == v2p64)) {
       setClockOptionInt(I2C_SET_OPTION_MIN_DIM_V2, current_config.minDim);
     } else {
       setClockOptionInt(I2C_SET_OPTION_MIN_DIM_V1, current_config.minDim);
     } 
     changed = true;
   }
-//  if(checkServerArgByte("dpEnable", "dpEnable", current_config.dpEnable)) {
-//    if (i2cProtocol == v2p63) {
-//      setClockOptionInt(I2C_SET_OPTION_DP_ENABLE, current_config.minDim);
-//    } 
-//    changed = true;
-//  }
+  
+  if(checkServerArgByte("dpEnable", "dpEnable", current_config.dpEnable)) {
+    if (i2cProtocol == v2p63) {
+      setClockOptionInt(I2C_SET_OPTION_DP_ENABLE, current_config.minDim);
+    } 
+    changed = true;
+  }
 
   if(checkServerArgByte("acpMode", "acpMode", current_config.acpMode)) {
     if (i2cProtocol == v2p64) {
