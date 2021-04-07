@@ -25,6 +25,7 @@
     Flash size: 1M (64k SPIFFS), 
     Reset method: ck, Disabled, none
     Erase Flash: All flash contents,
+    lwIPVariant: v2 Lower Memory (ne features)
     Builtin LED: 1
 
    Go to http://192.168.4.1 in a web browser connected to this access point to see it
@@ -156,14 +157,6 @@ void setup()
 
   timer1_attachInterrupt(statusLEDUpdate); // Add ISR Function
   timer1_enable(TIM_DIV256, TIM_EDGE, TIM_SINGLE);
-  /* Dividers:
-    TIM_DIV1 = 0,   //80MHz (80 ticks/us - 104857.588 us max)
-    TIM_DIV16 = 1,  //5MHz (5 ticks/us - 1677721.4 us max)
-    TIM_DIV256 = 3  //312.5Khz (1 tick = 3.2us - 26843542.4 us max)
-  Reloads:
-    TIM_SINGLE  0 //on interrupt routine you need to write a new value to start the timer again
-    TIM_LOOP  1 //on interrupt the counter will start with the same value again
-  */
 
   debugMsg("Enabling interrupt");
   timer1_write(onTime);
