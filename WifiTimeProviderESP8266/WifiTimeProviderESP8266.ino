@@ -62,8 +62,15 @@
 
 #define SOFTWARE_VERSION "vx59a"
 
-#define DEBUG_OFF             // DEBUG or DEBUG_OFF - in debug mode there is no LED on the ESP-01!
+#define ESP01S                // ESP01 or ESP01S
+#define DEBUG             // DEBUG or DEBUG_OFF - in debug mode there is no LED on the ESP-01!
 #define ESP01_LED_BUILTIN     LED_BUILTIN
+
+#ifndef ESP01S
+  #define SOFTWARE_VERSION "vx59a"
+#else
+  #define SOFTWARE_VERSION "vx59aS"
+#endif
 
 // ----------------------- Auth ------------------------
 
@@ -130,9 +137,11 @@ ICACHE_RAM_ATTR void statusLEDUpdate() {
     currentState = LED_ON;
   }
 
-#ifndef DEBUG
-  digitalWrite(ESP01_LED_BUILTIN, currentState);
-#endif
+  #ifndef ESP01S
+    #ifndef DEBUG
+    digitalWrite(ESP01_LED_BUILTIN, currentState);
+    #endif
+  #endif
   timer1_write(nextIntr);
 }
 
@@ -151,7 +160,9 @@ void setup()
   spiffs.setDebugOutput(true);
 #else
   setupDebug(false);
-  pinMode(ESP01_LED_BUILTIN,OUTPUT);
+  #ifndef ESP01S
+    pinMode(ESP01_LED_BUILTIN,OUTPUT);
+  #endif
   wifiManager.setDebugOutput(false);
 #endif
 
@@ -231,12 +242,14 @@ void setup()
     return resetOptionsPageHandler();
   });
   
-  server.on("/resetall", []() {
-    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
-      return server.requestAuthentication();
-    }
-    return resetAllPageHandler();
-  });
+  server.on("/resetall", resetAllPageHandler);
+
+//  server.on("/resetall", []() {
+//    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
+//      return server.requestAuthentication();
+//    }
+//    return resetAllPageHandler();
+//  });
 
   server.on("/ntpupdate", []() {
     if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
@@ -680,10 +693,14 @@ void rootPageHandler()
   response_message += getTableRow2Col("Flash size", ESP.getFlashChipRealSize());
   response_message += getTableRow2Col("Last reset reason", ESP.getResetReason());
   response_message += getTableRow2Col("Vcc", vccString);
-  #ifdef DEBUG
-  String ledInfo = String(LED_BUILTIN) + "/Disabled (Debug)";
+  #ifdef ESP01S
+    String ledInfo = "Disabled (ESP01S)";
   #else
-  String ledInfo = String(LED_BUILTIN) + "/" + String(ESP01_LED_BUILTIN);
+    #ifdef DEBUG
+    String ledInfo = String(LED_BUILTIN) + "/Disabled (Debug)";
+    #else
+    String ledInfo = String(LED_BUILTIN) + "/" + String(ESP01_LED_BUILTIN);
+    #endif
   #endif
   response_message += getTableRow2Col("LED_BUILTIN / Used", ledInfo);
   response_message += getTableFoot();
