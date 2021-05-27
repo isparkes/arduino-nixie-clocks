@@ -131,6 +131,13 @@ void NtpAsync::getTimeFromNTP(unsigned long nowMillis) {
   
   IPAddress serverIP;
   WiFi.hostByName(_ntpPool.c_str(), serverIP);
+
+  // Check if we got a valid addr
+  if (serverIP[0] == 255) {
+    debugMsg("Invalid NTP address");
+    return;
+  }
+  
   String str = "NTP IPAddr: ";
   str += serverIP.toString();
   debugMsg(str);

@@ -83,7 +83,7 @@ const char *serialNumber = "0x0x0x";  // this is to be customized at burn time
 unsigned long lastMillis = 0;
 unsigned long nowMillis = millis();
 int lastSecond = 0;
-boolean triggeredThisSec = false;
+bool triggeredThisSec = false;
 
 // Timer for how often we send the I2C data
 long lastI2CUpdateTime = 0;
@@ -122,7 +122,7 @@ void configModeCallback (WiFiManager *myWiFiManager) {
 #define LED_OFF               true
 volatile uint32_t onTime = 50000;
 volatile uint32_t offTime = 50000;
-volatile boolean currentState = LED_ON;
+volatile bool currentState = LED_ON;
 
 // ************************************************************
 // Interrupt routine for scheduled interrupts
@@ -178,7 +178,7 @@ void setup()
   wifiManager.setAPCallback(configModeCallback);
   wifiManager.setConfigPortalTimeout(60);
 
-  boolean connected = false;
+  bool connected = false;
   while (!connected) {
     connected = wifiManager.autoConnect("Nixie","SetMeUp!");
   }
@@ -242,14 +242,14 @@ void setup()
     return resetOptionsPageHandler();
   });
   
-  server.on("/resetall", resetAllPageHandler);
+//  server.on("/resetall", resetAllPageHandler);
 
-//  server.on("/resetall", []() {
-//    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
-//      return server.requestAuthentication();
-//    }
-//    return resetAllPageHandler();
-//  });
+  server.on("/resetall", []() {
+    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
+      return server.requestAuthentication();
+    }
+    return resetAllPageHandler();
+  });
 
   server.on("/ntpupdate", []() {
     if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
@@ -277,6 +277,7 @@ void setup()
   server.on("/local.css",   localCSSHandler);
   server.onNotFound(handleNotFound);
 
+  // Find out if we have a clock attached
   scanI2CBus();
 
   // Allow the IP to be displayed on the clock
@@ -286,8 +287,6 @@ void setup()
 
   server.begin();
   debugMsg("HTTP server started");
-
-//  webSocket.begin();
 
   if (getOTAvailable()) {
     debugMsg("Can do OTA: sketch size ("+String(ESP.getSketchSize())+"), flash size ("+String(ESP.getFlashChipRealSize())+")");
@@ -311,7 +310,6 @@ void loop()
 {
   server.handleClient();
   mdns.update();
-//  webSocket.loop();
 
   // See if it is time to update the Clock
   nowMillis = millis();
@@ -377,11 +375,11 @@ void performOncePerSecondProcessing() {
   // Allow the IP to be displayed on the clock
   sendIPAddressToI2C(WiFi.localIP());
 
-  lastI2CUpdateTime = nowMillis;
-
   if (i2cProtocol == v2p64) {
     getStatsFromI2C();
   }
+
+  lastI2CUpdateTime = nowMillis;
 }
 
 // ************************************************************
@@ -436,7 +434,7 @@ void reconnectDroppedConnection() {
   if (WiFi.status() != WL_CONNECTED) {
     debugMsg("Attepting to reconnect dropped connection WiFi connection to " + WiFi.SSID());
 
-    // Dis
+    // Try reconnection
     WiFi.persistent(false);      
     WiFi.disconnect();          
     WiFi.persistent(true);
@@ -516,7 +514,7 @@ void factoryReset() {
   spiffs.saveConfigToSpiffs(cc);
 }
 
-void saveToSpiffsIfChanged(boolean changed) {
+void saveToSpiffsIfChanged(bool changed) {
   if (changed) {
     debugMsg("Config options changed, saving them");
     spiffs.saveConfigToSpiffs(&current_config);
@@ -552,6 +550,16 @@ void rootPageHandler()
     response_message += getTableRow2Col("WLAN MAC", WiFi.macAddress());
     response_message += getTableRow2Col("WLAN SSID", WiFi.SSID());
     response_message += getTableRow2Col("NTP Pool", ntpAsync.getNtpPool());
+
+    IPAddress ntpIP;
+    WiFi.hostByName(ntpAsync.getNtpPool().c_str(), ntpIP);
+
+    if (ntpIP[0] == 255) {
+      response_message += getTableRow2Col("NTP Pool Address", "Invalid pool given!");
+    } else {
+      response_message += getTableRow2Col("NTP Pool Address", ntpIP.toString());
+    }
+    
     response_message += getTableRow2Col("TZ", ntpAsync.getTZS());
     String clockUrl = "http://" + WiFi.hostname() + ".local";
     clockUrl.toLowerCase();
@@ -716,7 +724,7 @@ void rootPageHandler()
 void timeServerPageHandler() {
   debugMsg("Time page in");
 
-  boolean changed = false;
+  bool changed = false;
   
   changed |= checkServerArgString("ntppool", "NTP Pool", current_config.ntpPool);
   changed |= checkServerArgInt("ntpupdate", "NTP update interval", current_config.ntpUpdateInterval);
@@ -777,7 +785,7 @@ void updateTimePageHandler()
     response_message += ntpAsync.getLastTimeFromServer();
     response_message += "</div></div>";
   } else {
-    boolean result = sendTimeToI2C();
+    bool result = sendTimeToI2C();
 
     response_message += "<div class=\"container\" role=\"main\"><h3 class=\"sub-header\">Send time to I2C right now</h3>";
     if (result) {
@@ -971,7 +979,7 @@ void clockConfigPageHandler()
 {
   debugMsg("Config page in");
 
-  boolean changed = false;
+  bool changed = false;
   
   // -----------------------------------------------------------------------------
   if(checkServerArgBoolean("12h24hMode", "12/24h mode", "12h", "24h", current_config.hourMode)) {
@@ -1112,7 +1120,7 @@ void clockConfigPageHandler()
     changed = true;
   }
   // -----------------------------------------------------------------------------
-  boolean webConfigChanged = false;
+  bool webConfigChanged = false;
   webConfigChanged |= checkServerArgBoolean("webAuthentication", "Web Authentication", "on", "off", current_config.webAuthentication);
   webConfigChanged |= checkServerArgString("webUsername", "webUsername", current_config.webUsername);
   webConfigChanged |= checkServerArgString("webPassword", "webPassword", current_config.webPassword);
@@ -1318,7 +1326,7 @@ void clockConfigPageHandler()
   }
   response_message += getDropDownFooter();
   
-  boolean hoursDisabled = (current_config.dayBlanking < 4);
+  bool hoursDisabled = (current_config.dayBlanking < 4);
 
   // Blank hours from
   response_message += getNumberInput("Blank from:", "blankHourStart", 0, 23, current_config.blankHourStart, hoursDisabled);
@@ -1347,8 +1355,8 @@ void clockConfigPageHandler()
   }
   response_message += getDropDownFooter();
 
-  boolean cycleEnabled = !((current_config.backlightMode == BACKLIGHT_CYCLE) || (current_config.backlightMode == BACKLIGHT_CYCLE_DIM));
-  boolean colourChannelEnabled = !( (current_config.backlightMode == BACKLIGHT_FIXED) || 
+  bool cycleEnabled = !((current_config.backlightMode == BACKLIGHT_CYCLE) || (current_config.backlightMode == BACKLIGHT_CYCLE_DIM));
+  bool colourChannelEnabled = !( (current_config.backlightMode == BACKLIGHT_FIXED) || 
                                     (current_config.backlightMode == BACKLIGHT_PULSE) || 
                                     (current_config.backlightMode == BACKLIGHT_FIXED_DIM) || 
                                     (current_config.backlightMode == BACKLIGHT_PULSE_DIM) );
@@ -1445,7 +1453,7 @@ void localCSSHandler()
 // ************************************************************
 // What it says on the tin
 // ************************************************************
-boolean getIsConnected() {
+bool getIsConnected() {
   return WiFi.isConnected();
 }
 
@@ -1518,7 +1526,7 @@ void setBlinkMode(byte blinkMode) {
 // ************************************************************
 // See if we have enough flash space for OTA
 // ************************************************************
-boolean getOTAvailable() {
+bool getOTAvailable() {
   return ESP.getSketchSize()*2 < ESP.getFlashChipRealSize();
 }
 
@@ -1529,7 +1537,7 @@ boolean getOTAvailable() {
 /**
  * Send the time to the I2C slave. If the transmission went OK, return true, otherwise false.
  */
-boolean sendTimeToI2C() {
+bool sendTimeToI2C() {
 
   byte yearAdjusted = (year() - 2000);
 
@@ -1558,7 +1566,7 @@ boolean sendTimeToI2C() {
 /**
  * Get stats from the I2C slave
  */
-boolean getStatsFromI2C() {
+bool getStatsFromI2C() {
   Wire.beginTransmission(preferredI2CSlaveAddress);
   Wire.write(I2C_GET_STATS); // Command
   int error = Wire.endTransmission();
@@ -1584,7 +1592,7 @@ boolean getStatsFromI2C() {
 /**
  Get the options from the I2C slave. If the transmission went OK, return true, otherwise false.
 */
-boolean getClockOptionsFromI2C() {
+bool getClockOptionsFromI2C() {
   byte receivedByte = 0;
   uint8_t available = Wire.requestFrom((uint8_t)preferredI2CSlaveAddress, (uint8_t)1);  // just ask for i2c version byte
 
@@ -1796,7 +1804,7 @@ boolean getClockOptionsFromI2C() {
   return (error == 0);
 }
 
-boolean sendIPAddressToI2C(IPAddress ip) {
+bool sendIPAddressToI2C(IPAddress ip) {
   // debugMsg("Sending IP Address to I2C: " + formatIPAsString(ip));
 
   Wire.beginTransmission(preferredI2CSlaveAddress);
@@ -1810,7 +1818,7 @@ boolean sendIPAddressToI2C(IPAddress ip) {
   return (error == 0);
 }
 
-boolean sendValueToI2C(byte digit01, byte digit23, byte digit45, byte timeValue) {
+bool sendValueToI2C(byte digit01, byte digit23, byte digit45, byte timeValue) {
   debugMsg("Sending Arbitrary value to I2C: " + String(digit01) + "," + String(digit23) + "," + String(digit45));
 
   Wire.beginTransmission(preferredI2CSlaveAddress);
@@ -1824,7 +1832,7 @@ boolean sendValueToI2C(byte digit01, byte digit23, byte digit45, byte timeValue)
   return (error == 0);
 }
 
-boolean sendValueFormatToI2C(byte digit01, byte digit23, byte digit45) {  
+bool sendValueFormatToI2C(byte digit01, byte digit23, byte digit45) {  
   debugMsg("Sending Arbitrary value format to I2C: " + String(digit01) + "," + String(digit23) + "," + String(digit45));
 
   Wire.beginTransmission(preferredI2CSlaveAddress);
@@ -1840,8 +1848,8 @@ boolean sendValueFormatToI2C(byte digit01, byte digit23, byte digit45) {
 /**
    Send the options from the I2C slave. If the transmission went OK, return true, otherwise false.
 */
-boolean setClockOptionBoolean(byte option, boolean newMode) {
-  debugMsg("I2C --> setting boolean option: " + String(option) + " with value: " + String(newMode));
+bool setClockOptionBoolean(byte option, bool newMode) {
+  debugMsg("I2C --> setting bool option: " + String(option) + " with value: " + String(newMode));
 
   Wire.beginTransmission(preferredI2CSlaveAddress);
   Wire.write(option);
@@ -1860,8 +1868,8 @@ boolean setClockOptionBoolean(byte option, boolean newMode) {
 /**
    Send the options from the I2C slave. If the transmission went OK, return true, otherwise false.
 */
-boolean setClockOptionBooleanInverse(byte option, boolean newMode) {
-  debugMsg("I2C --> setting boolean option: " + String(option) + " with value: " + String(newMode));
+bool setClockOptionBooleanInverse(byte option, bool newMode) {
+  debugMsg("I2C --> setting bool option: " + String(option) + " with value: " + String(newMode));
 
   Wire.beginTransmission(preferredI2CSlaveAddress);
   Wire.write(option);
@@ -1880,7 +1888,7 @@ boolean setClockOptionBooleanInverse(byte option, boolean newMode) {
 /**
    Send the options from the I2C slave. If the transmission went OK, return true, otherwise false.
 */
-boolean setClockOptionByte(byte option, byte newMode) {
+bool setClockOptionByte(byte option, byte newMode) {
   debugMsg("I2C --> setting byte option: " + String(option) + " with value: " + String(newMode));
 
   Wire.beginTransmission(preferredI2CSlaveAddress);
@@ -1894,7 +1902,7 @@ boolean setClockOptionByte(byte option, byte newMode) {
 /**
    Send the options from the I2C slave. If the transmission went OK, return true, otherwise false.
 */
-boolean setClockOptionInt(byte option, int newMode) {
+bool setClockOptionInt(byte option, int newMode) {
   byte loByte = newMode % 256;
   byte hiByte = newMode / 256; 
   debugMsg("I2C --> setting int option: " + String(option) + " with value: " + String(newMode));
@@ -1909,7 +1917,7 @@ boolean setClockOptionInt(byte option, int newMode) {
 }
 
 
-boolean scanI2CBus() {
+bool scanI2CBus() {
   debugMsg("Scanning I2C bus");
   byte pingAnsweredFrom = 0xff;
   for (int idx = 0 ; idx < 128 ; idx++)
