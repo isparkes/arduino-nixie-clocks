@@ -1,4 +1,4 @@
-update=Fr 20 Nov 2020 15:17:37
+update=Mi 16 Jun 2021 18:42:10
 version=1
 last_client=kicad
 [cvpcb]
@@ -9,6 +9,16 @@ version=1
 [eeschema]
 version=1
 LibDir=
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=./
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=Pcbnew
+SpiceAjustPassiveValues=0
+LabSize=60
+ERC_TestSimilarLabels=1
 [pcbnew]
 version=1
 PageLayoutDescrFile=
@@ -28,7 +38,7 @@ MinHoleToHole=0.25
 TrackWidth1=0.25
 ViaDiameter1=0.6
 ViaDrill1=0.4
-dPairWidth1=0.2
+dPairWidth1=0.254
 dPairGap1=0.25
 dPairViaGap1=0.25
 SilkLineWidth=0.15
@@ -52,7 +62,7 @@ OthersTextSizeThickness=0.15
 OthersTextItalic=0
 OthersTextUpright=1
 SolderMaskClearance=0
-SolderMaskMinWidth=0.25
+SolderMaskMinWidth=0
 SolderPasteClearance=0
 SolderPasteRatio=0
 [pcbnew/Layer.F.Cu]
@@ -230,7 +240,7 @@ ViaDiameter=0.6
 ViaDrill=0.4
 uViaDiameter=0.4
 uViaDrill=0.3
-dPairWidth=0.2
+dPairWidth=0.254
 dPairGap=0.25
 dPairViaGap=0.25
 [pcbnew/Netclasses/1]
@@ -241,16 +251,6 @@ ViaDiameter=1
 ViaDrill=0.8
 uViaDiameter=0.5
 uViaDrill=0.3
-dPairWidth=0.2
+dPairWidth=0.254
 dPairGap=0.25
 dPairViaGap=0.25
-[schematic_editor]
-version=1
-PageLayoutDescrFile=
-PlotDirectoryName=./
-SubpartIdSeparator=0
-SubpartFirstId=65
-NetFmtName=Pcbnew
-SpiceAjustPassiveValues=0
-LabSize=60
-ERC_TestSimilarLabels=1
