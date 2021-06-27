@@ -60,17 +60,19 @@
 #include "HtmlServer.h"
 #include "SPIFFS.h"
 
-#define SOFTWARE_VERSION "vx59a"
-
-#define ESP01S                // ESP01 or ESP01S
-#define DEBUG             // DEBUG or DEBUG_OFF - in debug mode there is no LED on the ESP-01!
-#define ESP01_LED_BUILTIN     LED_BUILTIN
+#define ESP01                     // ESP01 or ESP01S
+#define DEBUG_OFF                 // DEBUG or DEBUG_OFF - in debug mode there is no LED on the ESP-01!
 
 #ifndef ESP01S
   #define SOFTWARE_VERSION "vx59a"
+  #define ESP01_LED_BUILTIN 1
 #else
   #define SOFTWARE_VERSION "vx59aS"
+  #define ESP01_LED_BUILTIN 2
 #endif
+
+#define SDA   0
+#define SCL   2
 
 // ----------------------- Auth ------------------------
 
@@ -84,6 +86,9 @@ unsigned long lastMillis = 0;
 unsigned long nowMillis = millis();
 int lastSecond = 0;
 bool triggeredThisSec = false;
+
+long restartAtMillis = 0;
+boolean restartResetWifi = false;
 
 // Timer for how often we send the I2C data
 long lastI2CUpdateTime = 0;
@@ -174,6 +179,7 @@ void setup()
   
   debugMsg("Enabling WifiManager");
   setBlinkMode(3);
+  
   //set callback that gets called when connecting to previous WiFi fails, and enters Access Point mode
   wifiManager.setAPCallback(configModeCallback);
   wifiManager.setConfigPortalTimeout(60);
@@ -208,7 +214,6 @@ void setup()
   WiFi.setAutoReconnect(true);
   // V2: wifiManager.setWiFiAutoReconnect(true);
   
-
   // set up the NTP component and wire up the "got time update" callback
   NewTimeCallback ntcb = newTimeUpdateReceived;
   ntpAsync.setNewTimeCallback(ntcb);
@@ -242,8 +247,6 @@ void setup()
     return resetOptionsPageHandler();
   });
   
-//  server.on("/resetall", resetAllPageHandler);
-
   server.on("/resetall", []() {
     if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
       return server.requestAuthentication();
@@ -272,6 +275,10 @@ void setup()
     return utilityPageHandler();
   });
 
+  server.on("/restart", silentRestartPageHandler);
+  
+  server.on("/resetallemerg", resetAllPageHandler);
+  
   server.on("/setvalue", setDisplayValuePageHandler);
 
   server.on("/local.css",   localCSSHandler);
@@ -380,6 +387,19 @@ void performOncePerSecondProcessing() {
   }
 
   lastI2CUpdateTime = nowMillis;
+  
+  // Async restart
+  if (restartAtMillis > 0) {
+    restartAtMillis -=1000;
+    if (restartAtMillis <= 0) {
+      if (restartResetWifi) {
+        WiFiManager wifiManager;
+        wifiManager.resetSettings();
+        delay(500);
+      }
+      ESP.restart();
+    }
+  }
 }
 
 // ************************************************************
@@ -535,6 +555,14 @@ void rootPageHandler()
 {
   String response_message = getHTMLHead(getIsConnected());
   response_message += getNavBar();
+
+  if (restartAtMillis > 0) {
+      if (restartResetWifi) {
+        response_message += "<div class=\"alert alert-warning fade in\"><strong>Reset scheduled!</strong> Clock will now restart to apply the changes. After the restart you will need to enter the WiFi credentials again</div></div>";
+      } else {
+        response_message += "<div class=\"alert alert-warning fade in\"><strong>Restart scheduled!</strong> Clock will now restart to apply the changes</div></div>";
+      }
+  }
 
   // Status table
   response_message += getTableHead2Col("Current Status", "Name", "Value");
@@ -836,61 +864,49 @@ void utilityPageHandler()
 void resetWiFiPageHandler() {
   debugMsg("Reset WiFi page in");
 
-  WiFiManager wifiManager;
-  wifiManager.resetSettings();
-
-  String response_message = getHTMLHead(getIsConnected());
-  response_message += getNavBar();
-  response_message += "<div class=\"alert alert-success fade in\"><strong>Attempting a restart.</strong>";
-  response_message += "<script> var timer = setTimeout(function() {window.location='/'}, 10000);</script>";
-  response_message += getHTMLFoot();
-  server.send(200, "text/html", response_message);
+  server.sendHeader("Location", "/", true);
+  server.send(302, "text/plain", "");
+  
   debugMsg("Reset WiFi page out");
-  delay(1000);    // wait to deliver response
-  ESP.restart();  // should reboot
+
+  // schedule a restart
+  restartAtMillis = 2000;
+  restartResetWifi = true;
 }
 
 // ************************************************************
 // Reset all clock option settings
 // ************************************************************
 void resetOptionsPageHandler() {
-  debugMsg("Options Factory Reset page in");
+  debugMsg("Reset Options page in");
 
   factoryReset();
-
-  server.sendHeader("Location", "/utility", true);
+  
+  server.sendHeader("Location", "/", true);
   server.send(302, "text/plain", "");
 
-  debugMsg("Factory Reset page out");
+  debugMsg("Reset Options page out");
+  
+  // schedule a restart
+  restartAtMillis = 2000;
 }
 
 // ************************************************************
 // Reset the EEPROM and WiFi values, restart
 // ************************************************************
 void resetAllPageHandler() {
-  debugMsg("Reset page in");
+  debugMsg("Reset All page in");
 
-  WiFiManager wifiManager;
-  wifiManager.resetSettings();
   factoryReset();
+  
+  server.sendHeader("Location", "/", true);
+  server.send(302, "text/plain", "");
 
-  String response_message = getHTMLHead(getIsConnected());
-  response_message += getNavBar();
-
-  response_message += "<div class=\"container\" role=\"main\"><h3 class=\"sub-header\">Send time to I2C right now</h3>";
-  response_message += "<div class=\"alert alert-success fade in\"><strong>Success!</strong> Reset done.</div></div>";
-
-  response_message += getHTMLFoot();
-
-  server.send(200, "text/html", response_message);
-
-  debugMsg("Reset page out");
-
-  // let the message get written
-  delay(500);
-
-  // do the restart
-  ESP.restart();
+  debugMsg("Reset All page out");
+  
+  // schedule a restart
+  restartAtMillis = 2000;
+  restartResetWifi = true;
 }
 
 // ************************************************************
@@ -967,7 +983,23 @@ void setDisplayValuePageHandler() {
   server.send(200, "text/html", response_message);
 }
 
+// ************************************************************
+// Emergency restart point
+// ************************************************************
+void silentRestartPageHandler() {
+  debugMsg("Silent Restart page in");
 
+  factoryReset();
+  
+  server.sendHeader("Location", "/", true);
+  server.send(302, "text/plain", "");
+
+  debugMsg("Silent Restart page out");
+  
+  // schedule a restart
+  restartAtMillis = 2000;
+  restartResetWifi = false;
+}
 
 // ===================================================================================================================
 // ===================================================================================================================
