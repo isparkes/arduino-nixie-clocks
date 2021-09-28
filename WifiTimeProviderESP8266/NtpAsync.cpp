@@ -122,7 +122,6 @@ void NtpAsync::getTimeFromNTP(unsigned long nowMillis) {
     return;
   }
 
-
   // Don't spam the pool
   if ((_ntpStarted > 0) && (nowMillis - _ntpStarted) < NTP_RETRY_INTERVAL_MS) {
     debugMsg("Suppressing NTP retry");
