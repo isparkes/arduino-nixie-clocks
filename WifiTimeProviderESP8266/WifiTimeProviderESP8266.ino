@@ -224,66 +224,8 @@ void setup()
   Wire.begin(0, 2); // SDA = 0, SCL = 2
   debugMsg("I2C master started");
 
-  /* Set page handler functions */
-  server.on("/",rootPageHandler);
-  server.on("/time", []() {
-    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
-      return server.requestAuthentication();
-    }
-    return timeServerPageHandler();
-  });
-
-  server.on("/resetwifi", []() {
-    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
-      return server.requestAuthentication();
-    }
-    return resetWiFiPageHandler();
-  });
-
-  server.on("/resetoptions", []() {
-    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
-      return server.requestAuthentication();
-    }
-    return resetOptionsPageHandler();
-  });
+  setServerPageHandlers();
   
-  server.on("/resetall", []() {
-    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
-      return server.requestAuthentication();
-    }
-    return resetAllPageHandler();
-  });
-
-  server.on("/ntpupdate", []() {
-    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
-      return server.requestAuthentication();
-    }
-    return ntpUpdatePageHandler();
-  });
-
-  server.on("/clockconfig", []() {
-    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
-      return server.requestAuthentication();
-    }
-    return clockConfigPageHandler();
-  });
-
-  server.on("/utility", []() {
-    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
-      return server.requestAuthentication();
-    }
-    return utilityPageHandler();
-  });
-
-  server.on("/restart", silentRestartPageHandler);
-  
-  server.on("/resetallemerg", resetAllPageHandler);
-  
-  server.on("/setvalue", setDisplayValuePageHandler);
-
-  server.on("/local.css",   localCSSHandler);
-  server.onNotFound(handleNotFound);
-
   // Find out if we have a clock attached
   scanI2CBus();
 
@@ -1560,6 +1502,71 @@ void setBlinkMode(byte blinkMode) {
 // ************************************************************
 bool getOTAvailable() {
   return ESP.getSketchSize()*2 < ESP.getFlashChipRealSize();
+}
+
+// ************************************************************
+// Configures the web server
+// ************************************************************
+void setServerPageHandlers() {
+  /* Set page handler functions */
+  server.on("/",rootPageHandler);
+  server.on("/time", []() {
+    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
+      return server.requestAuthentication();
+    }
+    return timeServerPageHandler();
+  });
+
+  server.on("/resetwifi", []() {
+    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
+      return server.requestAuthentication();
+    }
+    return resetWiFiPageHandler();
+  });
+
+  server.on("/resetoptions", []() {
+    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
+      return server.requestAuthentication();
+    }
+    return resetOptionsPageHandler();
+  });
+  
+  server.on("/resetall", []() {
+    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
+      return server.requestAuthentication();
+    }
+    return resetAllPageHandler();
+  });
+
+  server.on("/ntpupdate", []() {
+    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
+      return server.requestAuthentication();
+    }
+    return ntpUpdatePageHandler();
+  });
+
+  server.on("/clockconfig", []() {
+    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
+      return server.requestAuthentication();
+    }
+    return clockConfigPageHandler();
+  });
+
+  server.on("/utility", []() {
+    if (getWebAuthentication() && (!server.authenticate(getWebUserName().c_str(), getWebPassword().c_str()))) {
+      return server.requestAuthentication();
+    }
+    return utilityPageHandler();
+  });
+
+  server.on("/restart", silentRestartPageHandler);
+  
+  server.on("/resetallemerg", resetAllPageHandler);
+  
+  server.on("/setvalue", setDisplayValuePageHandler);
+
+  server.on("/local.css",   localCSSHandler);
+  server.onNotFound(handleNotFound);
 }
 
 // ----------------------------------------------------------------------------------------------------
