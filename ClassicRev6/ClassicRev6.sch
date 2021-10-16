@@ -101,7 +101,7 @@ F 3 "" H 3650 -29900 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #GND01
+L ClassicRev6-rescue:GND-power #GND01
 U 1 1 5696C10C
 P 4000 3000
 F 0 "#GND01" H 3900 2900 70  0001 L BNN
@@ -112,7 +112,7 @@ F 3 "" H 4000 3000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #GND02
+L ClassicRev6-rescue:GND-power #GND02
 U 1 1 5696C170
 P 6350 2400
 F 0 "#GND02" H 6250 2300 70  0001 L BNN
@@ -123,7 +123,7 @@ F 3 "" H 6350 2400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #GND03
+L ClassicRev6-rescue:GND-power #GND03
 U 1 1 5696C1D4
 P 6650 8550
 F 0 "#GND03" H 6550 8450 70  0001 L BNN
@@ -134,7 +134,7 @@ F 3 "" H 6650 8550 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #GND04
+L ClassicRev6-rescue:GND-power #GND04
 U 1 1 5696C238
 P 7850 3000
 F 0 "#GND04" H 7750 2900 70  0001 L BNN
@@ -145,7 +145,7 @@ F 3 "" H 7850 3000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #GND05
+L ClassicRev6-rescue:GND-power #GND05
 U 1 1 5696C29C
 P 11450 3800
 F 0 "#GND05" H 11350 3700 70  0001 L BNN
@@ -872,7 +872,7 @@ F 3 "" H 7200 4550 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:PWR_FLAG #FLG06
+L ClassicRev6-rescue:PWR_FLAG-power #FLG06
 U 1 1 56B900AF
 P 6250 7450
 F 0 "#FLG06" H 6250 7545 50  0001 C CNN
@@ -905,7 +905,7 @@ F 3 "" H 4200 2650 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:PWR_FLAG #FLG07
+L ClassicRev6-rescue:PWR_FLAG-power #FLG07
 U 1 1 56B92529
 P 4300 2600
 F 0 "#FLG07" H 4300 2695 50  0001 C CNN
@@ -1667,7 +1667,7 @@ $EndComp
 Text Label 14950 1500 0    60   ~ 0
 RAW_VIN
 $Comp
-L power:GND #GND08
+L ClassicRev6-rescue:GND-power #GND08
 U 1 1 5866D662
 P 14950 1800
 F 0 "#GND08" H 14850 1700 70  0001 L BNN
@@ -1750,7 +1750,7 @@ Wire Wire Line
 Connection ~ 3550 8450
 Connection ~ 4200 8450
 $Comp
-L power:PWR_FLAG #FLG09
+L ClassicRev6-rescue:PWR_FLAG-power #FLG09
 U 1 1 586E9E0D
 P 3700 1300
 F 0 "#FLG09" H 3700 1395 50  0001 C CNN
@@ -2024,6 +2024,50 @@ F 1 "220uF" V 5000 7800 70  0000 L BNN
 F 2 "NixieClockMaster:C_Radial_D6.3_L11.2_P2.5" H 5140 7740 70  0001 L TNN
 F 3 "" H 5150 7950 60  0001 C CNN
 	1    5150 7950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H1
+U 1 1 616CD8AE
+P 8690 10430
+F 0 "H1" H 8790 10476 50  0000 L CNN
+F 1 "MountingHole" H 8790 10385 50  0000 L CNN
+F 2 "NixieClockMaster:MountingHole_3mm_M3" H 8690 10430 50  0001 C CNN
+F 3 "~" H 8690 10430 50  0001 C CNN
+	1    8690 10430
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H2
+U 1 1 616CF1FD
+P 8690 10615
+F 0 "H2" H 8790 10661 50  0000 L CNN
+F 1 "MountingHole" H 8790 10570 50  0000 L CNN
+F 2 "NixieClockMaster:MountingHole_3mm_M3" H 8690 10615 50  0001 C CNN
+F 3 "~" H 8690 10615 50  0001 C CNN
+	1    8690 10615
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H3
+U 1 1 616CF7BE
+P 8700 10800
+F 0 "H3" H 8800 10846 50  0000 L CNN
+F 1 "MountingHole" H 8800 10755 50  0000 L CNN
+F 2 "NixieClockMaster:MountingHole_3mm_M3" H 8700 10800 50  0001 C CNN
+F 3 "~" H 8700 10800 50  0001 C CNN
+	1    8700 10800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H4
+U 1 1 616CF940
+P 8700 10985
+F 0 "H4" H 8800 11031 50  0000 L CNN
+F 1 "MountingHole" H 8800 10940 50  0000 L CNN
+F 2 "NixieClockMaster:MountingHole_3mm_M3" H 8700 10985 50  0001 C CNN
+F 3 "~" H 8700 10985 50  0001 C CNN
+	1    8700 10985
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC
