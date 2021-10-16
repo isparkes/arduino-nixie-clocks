@@ -105,7 +105,7 @@ F 3 "" H 17600 -27600 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #GND01
+L AllInOneIN142-rescue:GND-power #GND01
 U 1 1 5696C10C
 P 10650 14950
 F 0 "#GND01" H 10550 14850 70  0001 L BNN
@@ -116,7 +116,7 @@ F 3 "" H 10650 14950 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #GND02
+L AllInOneIN142-rescue:GND-power #GND02
 U 1 1 5696C170
 P 1450 4300
 F 0 "#GND02" H 1350 4200 70  0001 L BNN
@@ -127,7 +127,7 @@ F 3 "" H 1450 4300 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #GND03
+L AllInOneIN142-rescue:GND-power #GND03
 U 1 1 5696C1D4
 P 5250 14750
 F 0 "#GND03" H 5150 14650 70  0001 L BNN
@@ -138,7 +138,7 @@ F 3 "" H 5250 14750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #GND04
+L AllInOneIN142-rescue:GND-power #GND04
 U 1 1 5696C238
 P 2950 4900
 F 0 "#GND04" H 2850 4800 70  0001 L BNN
@@ -149,7 +149,7 @@ F 3 "" H 2950 4900 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #GND05
+L AllInOneIN142-rescue:GND-power #GND05
 U 1 1 5696C29C
 P 6550 5700
 F 0 "#GND05" H 6450 5600 70  0001 L BNN
@@ -1182,7 +1182,7 @@ VIN
 Text Label 7150 5350 0    20   ~ 0
 TICK_LED_2
 $Comp
-L power:PWR_FLAG #FLG06
+L AllInOneIN142-rescue:PWR_FLAG-power #FLG06
 U 1 1 576FED99
 P 10350 13050
 F 0 "#FLG06" H 10350 13145 50  0001 C CNN
@@ -1193,7 +1193,7 @@ F 3 "" H 10350 13050 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:PWR_FLAG #FLG07
+L AllInOneIN142-rescue:PWR_FLAG-power #FLG07
 U 1 1 5770430D
 P 10850 14600
 F 0 "#FLG07" H 10850 14695 50  0001 C CNN
@@ -1228,7 +1228,7 @@ F 3 "" H 5250 14150 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:PWR_FLAG #FLG08
+L AllInOneIN142-rescue:PWR_FLAG-power #FLG08
 U 1 1 57765523
 P 1950 2750
 F 0 "#FLG08" H 1950 2845 50  0001 C CNN
@@ -2135,7 +2135,7 @@ Wire Wire Line
 Text Label 22100 13450 0    60   ~ 0
 PWR_INPUT
 $Comp
-L power:GND #GND09
+L AllInOneIN142-rescue:GND-power #GND09
 U 1 1 578CAF4A
 P 22100 13750
 F 0 "#GND09" H 22000 13650 70  0001 L BNN
@@ -2665,7 +2665,7 @@ Wire Wire Line
 Wire Wire Line
 	10850 14750 11200 14750
 $Comp
-L Regulator_Linear:L78L05_TO92 U1
+L AllInOneIN142-rescue:L78L05_TO92-Regulator_Linear U1
 U 1 1 5CC052D7
 P 13950 13450
 F 0 "U1" H 13950 13692 50  0000 C CNN
@@ -2773,7 +2773,7 @@ Wire Notes Line width 39 style solid
 Wire Notes Line width 39 style solid
 	12650 8800 12650 7250
 $Comp
-L Jumper:SolderJumper_3_Open JP1
+L AllInOneIN142-rescue:SolderJumper_3_Open-Jumper JP1
 U 1 1 5EC24D8A
 P 6750 1650
 F 0 "JP1" H 6750 1855 50  0000 C CNN
