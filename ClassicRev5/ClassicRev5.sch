@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:ClassicRev5-cache
-EELAYER 26 0
+EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
@@ -115,7 +114,7 @@ F 3 "" H 3650 -29900 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #GND01
+L ClassicRev5-rescue:GND-power #GND01
 U 1 1 5696C10C
 P 4000 3000
 F 0 "#GND01" H 3900 2900 70  0001 L BNN
@@ -126,7 +125,7 @@ F 3 "" H 4000 3000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #GND02
+L ClassicRev5-rescue:GND-power #GND02
 U 1 1 5696C170
 P 6350 2400
 F 0 "#GND02" H 6250 2300 70  0001 L BNN
@@ -137,7 +136,7 @@ F 3 "" H 6350 2400 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #GND03
+L ClassicRev5-rescue:GND-power #GND03
 U 1 1 5696C1D4
 P 6650 8550
 F 0 "#GND03" H 6550 8450 70  0001 L BNN
@@ -148,7 +147,7 @@ F 3 "" H 6650 8550 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #GND04
+L ClassicRev5-rescue:GND-power #GND04
 U 1 1 5696C238
 P 7850 3000
 F 0 "#GND04" H 7750 2900 70  0001 L BNN
@@ -159,7 +158,7 @@ F 3 "" H 7850 3000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #GND05
+L ClassicRev5-rescue:GND-power #GND05
 U 1 1 5696C29C
 P 11450 3800
 F 0 "#GND05" H 11350 3700 70  0001 L BNN
@@ -349,7 +348,7 @@ L ClassicRev5-rescue:Q_NPN_CBE Q6
 U 1 1 5696D048
 P 11050 3300
 F 0 "Q6" H 10850 3400 70  0000 L BNN
-F 1 "2N7000" H 10700 3050 70  0000 L BNN
+F 1 "MPSA42" H 10700 3050 70  0000 L BNN
 F 2 "NixieClockMaster:2N7000_TO92" H 11040 3090 70  0001 L TNN
 F 3 "" H 11050 3300 60  0001 C CNN
 	1    11050 3300
@@ -725,17 +724,17 @@ Text Label 10150 1300 0    65   ~ 0
 DLS
 Text Label 14000 2800 2    65   ~ 0
 DLS
-Text Label 5000 4400 0    65   ~ 0
+Text Label 5100 4300 2    65   ~ 0
 GND
-Text Label 5000 5100 0    65   ~ 0
+Text Label 5100 5000 2    65   ~ 0
 GND
-Text Label 5000 5800 0    65   ~ 0
+Text Label 5100 5700 2    65   ~ 0
 GND
-Text Label 1600 4200 0    65   ~ 0
+Text Label 1700 4100 2    65   ~ 0
 GND
-Text Label 1600 4900 0    65   ~ 0
+Text Label 1700 4800 2    65   ~ 0
 GND
-Text Label 1600 5600 0    65   ~ 0
+Text Label 1700 5500 2    65   ~ 0
 GND
 Text Label 14000 2700 2    65   ~ 0
 GND
@@ -987,18 +986,6 @@ Text Label 4700 4800 2    20   ~ 0
 ANODE5
 Text Label 4700 4100 2    20   ~ 0
 ANODE6
-Text Label 5100 4300 0    20   ~ 0
-GND
-Text Label 5100 5000 0    20   ~ 0
-GND
-Text Label 5100 5700 0    20   ~ 0
-GND
-Text Label 1700 4100 0    20   ~ 0
-gnd
-Text Label 1700 4800 0    20   ~ 0
-GND
-Text Label 1700 5500 0    20   ~ 0
-GND
 Text Label 6050 4000 0    59   ~ 0
 170V
 Text Label 2650 3800 0    59   ~ 0
@@ -1054,7 +1041,7 @@ F 3 "" H 7200 4550 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:PWR_FLAG #FLG06
+L ClassicRev5-rescue:PWR_FLAG-power #FLG06
 U 1 1 56B900AF
 P 6250 7450
 F 0 "#FLG06" H 6250 7545 50  0001 C CNN
@@ -1087,7 +1074,7 @@ F 3 "" H 4200 2650 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:PWR_FLAG #FLG07
+L ClassicRev5-rescue:PWR_FLAG-power #FLG07
 U 1 1 56B92529
 P 4300 2600
 F 0 "#FLG07" H 4300 2695 50  0001 C CNN
@@ -1885,7 +1872,7 @@ $EndComp
 Text Label 14950 1500 0    60   ~ 0
 RAW_VIN
 $Comp
-L power:GND #GND08
+L ClassicRev5-rescue:GND-power #GND08
 U 1 1 5866D662
 P 14950 1800
 F 0 "#GND08" H 14850 1700 70  0001 L BNN
@@ -1968,7 +1955,7 @@ Wire Wire Line
 Connection ~ 3550 8450
 Connection ~ 4200 8450
 $Comp
-L power:PWR_FLAG #FLG09
+L ClassicRev5-rescue:PWR_FLAG-power #FLG09
 U 1 1 586E9E0D
 P 3700 1300
 F 0 "#FLG09" H 3700 1395 50  0001 C CNN
