@@ -24,9 +24,40 @@ Version 356 converges the code bases for Classic Rev6 and Modular Rev 3.01. If y
 - Automatic linear dimming using light sensor
 
 
-#### File Description:
-- FirmwareV2.ino: Main code for the 6 Digit Nixie Classic Rev6 and Modular Rev 3.01 Clock
-- WiFiTimeProviderESP8266.ino: Time provider module code
+#### Building
+
+The firmware is a [PlatformIO](https://platformio.org/) project targeting the
+ATmega328P. Install PlatformIO Core (or the VSCode extension), then from the
+`Software/` directory:
+
+```
+pio run                             # build both variants
+pio run -e nixie6digit              # build the 6 digit firmware
+pio run -e nixie4digit -t upload    # build and flash the 4 digit firmware
+pio run -t clean                    # remove build products
+pio device monitor                  # serial monitor
+```
+
+Both environments assume a bare ATmega328P at 16 MHz / 5 V, as fitted to the
+Classic Rev6 and Modular Rev 3.01 boards, flashed through the FTDI header. If
+you are building on stock Arduino hardware, change `board` and `upload_speed`
+in `Software/platformio.ini` - the alternatives for Uno and Nano are listed in
+the comments there.
+
+The three clock libraries are vendored under `Software/lib/`, so nothing is
+fetched from the PlatformIO registry and the build is reproducible. The `.zip`
+files beside them are the same libraries packaged for the Arduino IDE, kept for
+reference.
+
+#### Layout:
+- `Software/platformio.ini`: Build configuration for both firmware variants
+- `Software/src/FirmwareV2/`: Main code for the 6 Digit Nixie Classic Rev6 and
+  Modular Rev 3.01 Clock (`main.cpp` was previously `FirmwareV2.ino`)
+- `Software/src/FirmwareV2-4Digit/`: Main code for the 4 Digit Clock
+  (`main.cpp` was previously `FirmwareV2-4Digit.ino`)
+- `Software/lib/`: Vendored DS3231, TimeLib and Adafruit_NeoPixel libraries
+- `Software/WifiTimeProviderESP8266/`: Pointer to the ESP8266 time provider,
+  which now lives in its own repository
 
 **Instruction and User Manuals (including schematic) can be found at:** [Manuals](https://www.nixieclock.biz/Manuals.html)
 

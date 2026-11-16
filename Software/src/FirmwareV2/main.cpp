@@ -17,13 +17,14 @@
 //**********************************************************************************
 //**********************************************************************************
 // Standard Libraries
+#include <Arduino.h>
 #include <avr/io.h>
 #include <EEPROM.h>
 #include <Wire.h>
 #include <avr/wdt.h>
 
-// Clock specific libraries, install these with "Sketch -> Include Library -> Add .ZIP library
-// using the ZIP files in the "libraries" directory
+// Clock specific libraries. These are vendored under Software/lib/ and are
+// picked up automatically by PlatformIO - nothing to install by hand.
 #include <DS3231.h>             // https://github.com/NorthernWidget/DS3231 (Wickert 1.0.2)
 #include <TimeLib.h>            // http://playground.arduino.cc/code/time (Margolis 1.5.0)
 #include <Adafruit_NeoPixel.h>  // https://github.com/adafruit/Adafruit_NeoPixel (Adafruit 1.1.8)
@@ -33,6 +34,90 @@
 #include "Transition.h"
 #include "DisplayDefs.h"
 #include "I2CDefs.h"
+
+//**********************************************************************************
+//**********************************************************************************
+//*                          Forward declarations                                  *
+//*                                                                                *
+//* This file was an Arduino .ino sketch, where the IDE generated these for us.    *
+//* As a plain C++ translation unit we have to declare them ourselves.             *
+//**********************************************************************************
+//**********************************************************************************
+void performOncePerSecondProcessing();
+void performOncePerMinuteProcessing();
+void performOncePerHourProcessing();
+void performOncePerDayProcessing();
+void setLeds();
+boolean checkPIR(unsigned long nowMillis);
+void setAllLEDs(byte red, byte green, byte blue);
+void outputLEDBuffer();
+void setNextMode(int displayMode);
+void processCurrentMode(int displayMode);
+byte getLEDAdjusted(float rawValue, float ledPWMVal, float dimFactor);
+void cycleColours3(int colors[3]);
+void loadNumberArrayTime();
+void loadNumberArrayValue();
+void loadNumberArraySameValue(byte val);
+void loadNumberArrayDate();
+void loadNumberArrayTemp(int confNum);
+void loadNumberArrayLDR();
+void loadNumberArrayTestDigits();
+void loadNumberArrayACP();
+void loadNumberArrayConfInt(int confValue, int confNum);
+void loadNumberArrayConfBool(boolean confValue, int confNum);
+void loadNumberArrayIP(byte byte1, byte byte2);
+void SetSN74141Chip(int num1);
+void outputDisplay();
+void digitOn(int digit, int value);
+void digitOff();
+void applyBlanking();
+void allFadeOrNormal(boolean blanking);
+void allFade();
+void allBright();
+void highlightYearsDateFormat();
+void highlightMonthsDateFormat();
+void highlightDaysDateFormat();
+void highlight0and1();
+void highlight2and3();
+void highlight4and5();
+void allNormal();
+void displayConfig();
+void displayConfig3();
+void displayConfig2();
+void allBlanked();
+void loadDisplayConfigValue();
+void resetSecond();
+void incSecond();
+void incMins();
+void incHours();
+void incDays();
+void incMonths();
+void incYears();
+boolean checkBlanking();
+boolean getHoursBlanked();
+void setTubesAndLEDSBlankMode();
+void randomRGBFlash(int delayVal);
+void setNewNextMode(int newNextMode);
+void getRTCTime();
+void setRTC();
+float getRTCTemp();
+void saveEEPROMValues();
+void readEEPROMValues();
+void factoryReset();
+void checkHVVoltage();
+int getInc();
+int getRawHVADCThreshold(double targetVoltage);
+int getDimmingFromLDR();
+void checkLEDPWM(byte LEDPin, int step);
+void calibrateHVG();
+void setPWMTopTime(int newTopTime);
+void setPWMOnTime(int newOnTime);
+void incPWMOnTime();
+void decPWMOnTime();
+int getSmoothedHVSensorReading();
+void receiveEvent(int bytes);
+void requestEvent();
+byte encodeBooleanForI2C(boolean valueToProcess);
 
 #define FWV2                    // "REV3" for Modular Rev3 "FWV2" for ClassicRev6 and ModularRev3.01
 
@@ -70,8 +155,9 @@
 #define EE_PWM_TOP_LO         27     // The PWM top value if we know it, 0xFF if we need to calculate
 #define EE_PWM_TOP_HI         28     // The PWM top value if we know it, 0xFF if we need to calculate
 #define EE_HVG_NEED_CALIB     29     // 1 if we need to calibrate the HVGenerator, otherwise 0
-#define EE_MIN_DIM_LO         30     // The min dim value
-#define EE_MIN_DIM_HI         31     // The min dim value
+// 30 and 31 held an earlier EE_MIN_DIM_LO/HI. They were redefined as 40/41
+// further down, so 40/41 are what the code has always actually used. The old
+// pair is removed here; addresses 30 and 31 are now spare.
 #define EE_ANTI_GHOST         32     // The value we use for anti-ghosting
 #define EE_NEED_SETUP         33     // used for detecting auto config for startup. By default the flashed, empty EEPROM shows us we need to do a setup 
 #define EE_USE_LDR            34     // if we use the LDR or not (if we don't use the LDR, it has 100% brightness
@@ -1064,18 +1150,18 @@ void setLeds()
                       getLEDAdjusted(colors[2], 1, dimFactor));
           break;
         case BACKLIGHT_COLOUR_TIME:
-            for (int i = 0 ; i < 6 ; i++) {
-              ledR[5-i] = getLEDAdjusted(colourTimeR[NumberArray[i]],1,1);
-              ledG[5-i] = getLEDAdjusted(colourTimeG[NumberArray[i]],1,1);
-              ledB[5-i] = getLEDAdjusted(colourTimeB[NumberArray[i]],1,1);
+            for (int i = 0 ; i < DIGIT_COUNT ; i++) {
+              ledR[DIGIT_COUNT-1-i] = getLEDAdjusted(colourTimeR[NumberArray[i]],1,1);
+              ledG[DIGIT_COUNT-1-i] = getLEDAdjusted(colourTimeG[NumberArray[i]],1,1);
+              ledB[DIGIT_COUNT-1-i] = getLEDAdjusted(colourTimeB[NumberArray[i]],1,1);
             }
             outputLEDBuffer();
           break;
         case BACKLIGHT_COLOUR_TIME_DIM:
-            for (int i = 0 ; i < 6 ; i++) {
-              ledR[5-i] = getLEDAdjusted(colourTimeR[NumberArray[i]],1,dimFactor);
-              ledG[5-i] = getLEDAdjusted(colourTimeG[NumberArray[i]],1,dimFactor);
-              ledB[5-i] = getLEDAdjusted(colourTimeB[NumberArray[i]],1,dimFactor);
+            for (int i = 0 ; i < DIGIT_COUNT ; i++) {
+              ledR[DIGIT_COUNT-1-i] = getLEDAdjusted(colourTimeR[NumberArray[i]],1,dimFactor);
+              ledG[DIGIT_COUNT-1-i] = getLEDAdjusted(colourTimeG[NumberArray[i]],1,dimFactor);
+              ledB[DIGIT_COUNT-1-i] = getLEDAdjusted(colourTimeB[NumberArray[i]],1,dimFactor);
             }
             outputLEDBuffer();
           break;
@@ -2233,11 +2319,7 @@ void outputDisplay()
   int digitOnTime;
   int digitOffTime;
   int digitSwitchTime;
-  float digitSwitchTimeFloat;
   int tmpDispType;
-
-  // used to blank all leading digits if 0
-  boolean leadingZeros = true;
 
   for ( int i = 0 ; i < DIGIT_COUNT ; i ++ )
   {
@@ -2764,6 +2846,10 @@ boolean checkBlanking() {
         return true;
     }
   }
+
+  // Not in time mode, or an unrecognised dayBlanking value: don't blank.
+  // Without this the function falls off the end and returns a garbage value.
+  return false;
 }
 
 // ************************************************************
