@@ -9,8 +9,12 @@ It is not suitable for clocks with RAGB LED backlights! For those you shoud be u
 
 Version 356 converges the code bases for Classic Rev6 and Modular Rev 3.01. If you have a Modular Rev3, please see previous versions!
 
+All firmware now lives under `Software/` and is built with PlatformIO rather
+than the Arduino IDE. The ESP8266 time provider, which was split out into its
+own repository for a while, has been merged back in with its history intact.
+
 #### Features:
-- Open source
+- Open source (CC BY-NC 4.0, see [LICENSE](LICENSE))
 - Wifi Interface for an ESP8266 (included, see `Software/src/WifiTimeProviderESP8266/`)
 - Real Time Clock interface for DS3231
 - Digit fading with configurable fade length
@@ -58,6 +62,18 @@ first build of each target needs a network connection. Every version is
 pinned in `Software/platformio.ini`; please rebuild and check the reported
 flash use before floating any of them.
 
+| Library | Version | Used by |
+| --- | --- | --- |
+| `paulstoffregen/Time` | 1.5 | all three targets |
+| `northernwidget/DS3231` | 1.1.2 | the two clock firmwares |
+| `adafruit/Adafruit NeoPixel` | 1.1.3 | the two clock firmwares |
+| `bblanchon/ArduinoJson` | 5.13.2 (git tag) | `wifitimeprovider` |
+| `tzapu/WiFiManager` | 0.15.0 (git tag) | `wifitimeprovider` |
+| `me-no-dev/ESPAsyncUDP` | master, pinned by commit | `wifitimeprovider` |
+
+ArduinoJson 5 and WiFiManager 0.15.0 come from upstream git tags because the
+PlatformIO registry no longer carries those versions.
+
 The ESP8266 target is additionally pinned to Arduino core 2.7.4, because its
 sketch header warns that the toolchain and library versions must match exactly
 to compile cleanly. Its board settings reproduce the Arduino IDE board menu
@@ -72,6 +88,17 @@ flash, 1M flash with 64k SPIFFS, lwIP v2 low memory.
   (`main.cpp` was previously `FirmwareV2-4Digit.ino`)
 - `Software/src/WifiTimeProviderESP8266/`: ESP8266 time provider module code
   (`main.cpp` was previously `WifiTimeProviderESP8266.ino`)
+- `LICENSE`: The licence this work is released under
+
+#### Licence
+
+This work is released under the
+[Creative Commons Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/)
+licence. You may share and adapt it for non-commercial purposes as long as you
+give credit. The full terms are in [LICENSE](LICENSE).
+
+The libraries listed above are fetched at build time, are not part of this
+work, and carry their own licences.
 
 **Instruction and User Manuals (including schematic) can be found at:** [Manuals](https://www.nixieclock.biz/Manuals.html)
 

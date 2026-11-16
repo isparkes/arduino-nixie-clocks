@@ -1668,6 +1668,11 @@ bool getStatsFromI2C() {
     debugMsg("I2C <-- Got PIR status: " + receivedByte);
     pirSense = receivedByte;
   }
+
+  // Report whether the command we sent above got through. Without this the
+  // function fell off the end and returned whatever was in the return
+  // register, and "error" was set but never read.
+  return (error == 0);
 }
 
 /**
@@ -2022,4 +2027,8 @@ bool scanI2CBus() {
     preferredAddressFoundBy = 2;
   }
   debugMsg("Scanning I2C bus done");
+
+  // Report whether we found a slave at all. Without this the function fell
+  // off the end and returned whatever was in the return register.
+  return (preferredAddressFoundBy != 0);
 }
