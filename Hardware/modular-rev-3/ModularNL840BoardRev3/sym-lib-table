@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name ModularZM1000Board-rescue)(type Legacy)(uri ${KIPRJMOD}/ModularZM1000Board-rescue.lib)(options "")(descr ""))
+  (lib (name ModularNL840Board-rescue)(type Legacy)(uri ${KIPRJMOD}/ModularNL840Board-rescue.lib)(options "")(descr ""))
+  (lib (name mynixies)(type Legacy)(uri /data/Copy/Nixie/KiCAD/Eagle-and-KiCAD-Nixie-Libs-master/mynixies.lib)(options "")(descr ""))
+)

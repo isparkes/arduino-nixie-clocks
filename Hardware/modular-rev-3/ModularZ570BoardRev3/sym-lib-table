@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name ModularZ57xMBoard-rescue)(type Legacy)(uri ${KIPRJMOD}/ModularZ57xMBoard-rescue.lib)(options "")(descr ""))
+  (lib (name Z570M)(type Legacy)(uri ${KIPRJMOD}/Z570M.lib)(options "")(descr ""))
+)

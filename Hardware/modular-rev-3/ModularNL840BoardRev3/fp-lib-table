@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name "mynixies")(type "Legacy")(uri "/data/Copy/Nixie/KiCAD/Eagle-and-KiCAD-Nixie-Libs-master/mynixies.mod")(options "")(descr ""))
+  (lib (name "NixieClockMaster")(type "KiCad")(uri "${KI_GLOW_CUSTOM}/NixieClockMaster.pretty")(options "")(descr ""))
+)

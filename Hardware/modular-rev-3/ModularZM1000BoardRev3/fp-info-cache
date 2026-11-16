@@ -1,0 +1,932 @@
+202637018382621
+NixieClockMaster
+2N7000_TO92
+TO 92
+TO 92
+0
+3
+3
+NixieClockMaster
+74HC595_DIL16
+DUAL IN LINE PACKAGE
+DUAL IN LINE PACKAGE
+0
+16
+16
+NixieClockMaster
+328P_DIL28
+DUAL IN LINE 0.3 INCH
+DUAL IN LINE 0.3 INCH
+0
+28
+28
+NixieClockMaster
+7805_TO220V
+TO 200 VERTICAL
+TO 200 VERTICAL
+0
+3
+3
+NixieClockMaster
+74141_DIL16
+DUAL IN LINE PACKAGE
+DUAL IN LINE PACKAGE
+0
+16
+16
+NixieClockMaster
+Arduino_Uno_Shield
+
+
+0
+32
+31
+NixieClockMaster
+Arduino_Uno_Shield_NoICSP
+
+
+0
+32
+31
+NixieClockMaster
+BARREL_JACK
+DC Barrel Jack
+Power Jack
+0
+3
+3
+NixieClockMaster
+BN-1
+
+
+0
+15
+15
+NixieClockMaster
+BN-1-NoLED
+
+
+0
+11
+11
+NixieClockMaster
+BN-1.sync-conflict-20191204-115536-XQK4ZST
+
+
+0
+15
+15
+NixieClockMaster
+Bols-Z573M
+MAY BE USED WITH SOCKET: U11
+MAY BE USED WITH SOCKET: U11
+0
+15
+15
+NixieClockMaster
+C025-024X044
+CAPACITOR
+CAPACITOR
+0
+2
+2
+NixieClockMaster
+C050-024X044
+CAPACITOR
+CAPACITOR
+0
+2
+2
+NixieClockMaster
+CR1220-CoinCell
+http://www.keyelco.com/product-pdf.cfm?p=778
+Keystone type 3001 coin cell retainer
+0
+2
+2
+NixieClockMaster
+C_0805_HandSoldering
+Capacitor SMD 0805, hand soldering
+capacitor 0805
+0
+2
+2
+NixieClockMaster
+C_1206_HandSoldering
+Capacitor SMD 1206, hand soldering
+capacitor 1206
+0
+2
+2
+NixieClockMaster
+C_Radial_D6.3_L11.2_P2.5
+Radial Electrolytic Capacitor, Diameter 6.3mm x Length 11.2mm, Pitch 2.5mm
+Electrolytic Capacitor
+0
+2
+2
+NixieClockMaster
+C_Radial_D10_L11.2_P2.5_3.5
+Radial Electrolytic Capacitor, Diameter 6.3mm x Length 11.2mm, Pitch 2.5mm
+Electrolytic Capacitor
+0
+2
+2
+NixieClockMaster
+C_Radial_D10_L11.2_P2.5_3.5_5
+Radial Electrolytic Capacitor, Diameter 6.3mm x Length 11.2mm, Pitch 2.5mm
+Electrolytic Capacitor
+0
+6
+2
+NixieClockMaster
+Crystal_DS10_d1.0mm_l4.3mm_Horizontal
+Crystal THT DS10 4.3mm length 1.0mm diameter http://www.microcrystal.com/images/_Product-Documentation/03_TF_metal_Packages/01_Datasheet/DS-Series.pdf
+['DS10']
+0
+2
+2
+NixieClockMaster
+Crystal_DS10_d1.0mm_l4.3mm_Vertical
+Crystal THT DS10 4.3mm length 1.0mm diameter http://www.microcrystal.com/images/_Product-Documentation/03_TF_metal_Packages/01_Datasheet/DS-Series.pdf
+['DS10']
+0
+2
+2
+NixieClockMaster
+Crystal_HC49-U_Vertical
+Crystal, Quarz, HC49/U, vertical, stehend,
+Crystal, Quarz, HC49/U, vertical, stehend,
+0
+2
+2
+NixieClockMaster
+DA-2000
+Valve ECC-83-1 round pins
+Valve ECC-83-1 round pins
+0
+9
+9
+NixieClockMaster
+DA-2000_Receptacle
+Valve ECC-83-1 round pins
+Valve ECC-83-1 round pins
+0
+9
+9
+NixieClockMaster
+DS1307_DIL8
+DUAL IN LINE PACKAGE
+DUAL IN LINE PACKAGE
+0
+8
+8
+NixieClockMaster
+Diode_DO-41_1N4001
+Diode, DO-41, SOD81, Horizontal, RM 10mm,
+Diode, DO-41, SOD81, Horizontal, RM 10mm, 1N4007, SB140,
+0
+2
+2
+NixieClockMaster
+Diode_DO-41_SOD81_Vertical_AnodeUp
+Diode, DO-41, SOD81, Vertical, Anode Up,
+Diode, DO-41, SOD81, Vertical, Anode Up, 1N4007, SB140,
+0
+2
+2
+NixieClockMaster
+ESP-12F_THT
+Wi-Fi Module, http://wiki.ai-thinker.com/_media/esp8266/docs/aithinker_esp_12f_datasheet_en.pdf
+Wi-Fi Module
+0
+22
+22
+NixieClockMaster
+ESP8266_2x04
+Through hole socket strip
+socket strip
+0
+8
+8
+NixieClockMaster
+HVSMPS-34063
+
+
+0
+4
+4
+NixieClockMaster
+HVSMPS-Andrews
+
+
+0
+6
+6
+NixieClockMaster
+HVSMPS-Andrews-Flip
+
+
+0
+6
+6
+NixieClockMaster
+Header_MA02-1
+PIN HEADER
+PIN HEADER
+0
+2
+2
+NixieClockMaster
+Header_MA02-1_Small
+PIN HEADER
+PIN HEADER
+0
+2
+2
+NixieClockMaster
+Header_MA02-1_Small_Back
+PIN HEADER
+PIN HEADER
+0
+2
+2
+NixieClockMaster
+Header_MA02-2
+PIN HEADER
+PIN HEADER
+0
+4
+4
+NixieClockMaster
+Header_MA02-2_RearMount
+PIN HEADER
+PIN HEADER
+0
+4
+4
+NixieClockMaster
+Header_MA02-6
+PIN HEADER
+PIN HEADER
+0
+12
+12
+NixieClockMaster
+Header_MA02-6-ST-BackMount
+PIN HEADER
+PIN HEADER
+0
+12
+12
+NixieClockMaster
+Header_MA02-6_BackMount
+PIN HEADER
+PIN HEADER
+0
+12
+12
+NixieClockMaster
+Header_MA02-8
+PIN HEADER
+PIN HEADER
+0
+16
+16
+NixieClockMaster
+Header_MA03-1
+PIN HEADER
+PIN HEADER
+0
+3
+3
+NixieClockMaster
+Header_MA03-1_Small
+PIN HEADER
+PIN HEADER
+0
+3
+3
+NixieClockMaster
+Header_MA03-1_Small_Back
+PIN HEADER
+PIN HEADER
+0
+3
+3
+NixieClockMaster
+Header_MA03-2
+PIN HEADER
+PIN HEADER
+0
+6
+6
+NixieClockMaster
+Header_MA03-2_Special
+PIN HEADER
+PIN HEADER
+0
+6
+6
+NixieClockMaster
+Header_MA04-1
+PIN HEADER
+PIN HEADER
+0
+4
+4
+NixieClockMaster
+Header_MA05-1
+PIN HEADER
+PIN HEADER
+0
+5
+5
+NixieClockMaster
+Header_MA06-1
+PIN HEADER
+PIN HEADER
+0
+6
+6
+NixieClockMaster
+Header_MA06-1_SmallPads
+PIN HEADER
+PIN HEADER
+0
+6
+6
+NixieClockMaster
+Header_MA08-1
+PIN HEADER
+PIN HEADER
+0
+8
+8
+NixieClockMaster
+Header_MA10-1
+PIN HEADER
+PIN HEADER
+0
+10
+10
+NixieClockMaster
+Header_MA10-1_narrow
+Through hole straight pin header, 1x10, 2.54mm pitch, single row
+Through hole pin header THT 1x10 2.54mm single row
+0
+10
+10
+NixieClockMaster
+Header_MA12-1
+PIN HEADER
+PIN HEADER
+0
+12
+12
+NixieClockMaster
+IN-1
+MAY BE USED WITH SOCKET: U11
+MAY BE USED WITH SOCKET: U11
+0
+11
+11
+NixieClockMaster
+IN-1-FrontMount
+MAY BE USED WITH SOCKET: U11
+MAY BE USED WITH SOCKET: U11
+0
+11
+11
+NixieClockMaster
+IN-1-FrontMount-WidePads
+MAY BE USED WITH SOCKET: U11
+MAY BE USED WITH SOCKET: U11
+0
+11
+11
+NixieClockMaster
+IN-1-WIP
+MAY BE USED WITH SOCKET: U11
+MAY BE USED WITH SOCKET: U11
+0
+11
+11
+NixieClockMaster
+IN-8
+MAY BE USED WITH SOCKET: 11-PIN- RUSSIAN
+MAY BE USED WITH SOCKET: 11-PIN- RUSSIAN
+0
+11
+11
+NixieClockMaster
+IN-8-2
+
+
+0
+12
+12
+NixieClockMaster
+IN-8-2-Wide
+
+
+0
+12
+12
+NixieClockMaster
+IN-12
+MAY BE USED WITH SOCKET: SK-136
+MAY BE USED WITH SOCKET: SK-136
+0
+12
+12
+NixieClockMaster
+IN-12-Receptacle
+MAY BE USED WITH SOCKET: SK-136
+MAY BE USED WITH SOCKET: SK-136
+0
+12
+12
+NixieClockMaster
+IN-12_Wide
+MAY BE USED WITH SOCKET: SK-136
+MAY BE USED WITH SOCKET: SK-136
+0
+12
+12
+NixieClockMaster
+IN-14
+
+
+0
+13
+13
+NixieClockMaster
+IN-14_LargePads
+
+
+0
+13
+13
+NixieClockMaster
+IN-18
+MAY BE USED WITH SOCKET: PL31-P
+MAY BE USED WITH SOCKET: PL31-P
+0
+14
+14
+NixieClockMaster
+IN-18-CentreHole_5.5mm
+Mounting Hole 5mm, no annular
+mounting hole 5mm no annular
+0
+0
+0
+NixieClockMaster
+IN-18-Receptacle
+MAY BE USED WITH SOCKET: PL31-P
+MAY BE USED WITH SOCKET: PL31-P
+0
+11
+11
+NixieClockMaster
+IN-18-Small-Hole
+MAY BE USED WITH SOCKET: PL31-P
+MAY BE USED WITH SOCKET: PL31-P
+0
+11
+11
+NixieClockMaster
+IN14Centre_11.5mm
+Mounting hole, Befestigungsbohrung, 5,5mm, No Annular, Kein Restring,
+Mounting hole, Befestigungsbohrung, 5,5mm, No Annular, Kein Restring,
+0
+0
+0
+NixieClockMaster
+IN14Centre_12mm
+Mounting hole, Befestigungsbohrung, 5,5mm, No Annular, Kein Restring,
+Mounting hole, Befestigungsbohrung, 5,5mm, No Annular, Kein Restring,
+0
+0
+0
+NixieClockMaster
+IV-6_Wide
+
+
+0
+11
+11
+NixieClockMaster
+IV-9
+
+
+0
+9
+9
+NixieClockMaster
+IV-9-splayed
+
+
+0
+9
+9
+NixieClockMaster
+IV-13_Receptacle
+Valve ECC-83-1 round pins
+Valve ECC-83-1 round pins
+0
+9
+9
+NixieClockMaster
+Inductor-33mH-TH-SMD
+RADIAL LEAD RF CHOKES
+RADIAL LEAD RF CHOKES
+0
+4
+2
+NixieClockMaster
+Inductor-100mH
+RADIAL LEAD RF CHOKES
+RADIAL LEAD RF CHOKES
+0
+2
+2
+NixieClockMaster
+K155ID1_DIL16
+DUAL IN LINE PACKAGE
+DUAL IN LINE PACKAGE
+0
+16
+16
+NixieClockMaster
+LED-5MM-Centred
+LED 5mm round vertical
+LED 5mm round vertical
+0
+2
+2
+NixieClockMaster
+LED5_RGB_CA
+
+
+0
+4
+4
+NixieClockMaster
+LED5_RGB_CA_Offset
+
+
+0
+4
+4
+NixieClockMaster
+LED5_RGB_CA_Offset_Tighter
+
+
+0
+4
+4
+NixieClockMaster
+LEDHole_6mm
+Mounting Hole 6.4mm, no annular, M6
+mounting hole 6.4mm no annular m6
+0
+0
+0
+NixieClockMaster
+LED_3MM
+LED
+LED
+0
+2
+2
+NixieClockMaster
+MC34063_DIL8
+DUAL IN LINE PACKAGE
+DUAL IN LINE PACKAGE
+0
+8
+8
+NixieClockMaster
+Measurement_Point_Round-TH_Big
+Mesurement Point, Square, Trough Hole,  DM 3mm, Drill 1.5mm,
+Mesurement Point, Square, Trough Hole, DM 3mm, Drill 1.5mm,
+0
+1
+1
+NixieClockMaster
+MountingHole_3.2mm_M3
+Mounting Hole 3.2mm, no annular, M3
+mounting hole 3.2mm no annular m3
+0
+0
+0
+NixieClockMaster
+MountingHole_3mm
+Mounting hole, Befestigungsbohrung, 3mm, No Annular, Kein Restring,
+Mounting hole, Befestigungsbohrung, 3mm, No Annular, Kein Restring,
+0
+0
+0
+NixieClockMaster
+NEON-5MM-Centred
+LED 5mm round vertical
+LED 5mm round vertical
+0
+2
+2
+NixieClockMaster
+Pin_Header_Straight_2x06_BottomMount
+Through hole pin header
+pin header
+0
+12
+12
+NixieClockMaster
+Potentiometer_Trimmer_Bourns_3296X
+Spindle Trimmer Potentiometer, Bourns 3296X, https://www.bourns.com/pdfs/3296.pdf
+Spindle Trimmer Potentiometer   Bourns 3296X
+0
+3
+3
+NixieClockMaster
+R-0207_2V
+RESISTOR
+RESISTOR
+0
+2
+2
+NixieClockMaster
+R-Long
+
+
+0
+2
+2
+NixieClockMaster
+R_2W
+Resistor, Axial_DIN0414 series, Axial, Horizontal, pin pitch=15.24mm, 2W, length*diameter=11.9*4.5mm^2, http://www.vishay.com/docs/20128/wkxwrx.pdf
+Resistor Axial_DIN0414 series Axial Horizontal pin pitch 15.24mm 2W length 11.9mm diameter 4.5mm
+0
+2
+2
+NixieClockMaster
+R_1206_HandSoldering
+Resistor SMD 1206, hand soldering
+resistor 1206
+0
+2
+2
+NixieClockMaster
+R_Short_P7.62mm_Horizontal
+Resistor, Axial_DIN0204 series, Axial, Horizontal, pin pitch=7.62mm, 0.167W, length*diameter=3.6*1.6mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf
+Resistor Axial_DIN0204 series Axial Horizontal pin pitch 7.62mm 0.167W length 3.6mm diameter 1.6mm
+0
+2
+2
+NixieClockMaster
+SOLDER-JUMPER
+
+
+0
+2
+2
+NixieClockMaster
+SOLDER-JUMPER_2-WAY
+
+
+0
+3
+3
+NixieClockMaster
+SOLDER-JUMPER_2-WAY-CLOSED
+
+
+0
+3
+2
+NixieClockMaster
+SOT-23_Handsoldering
+SOT-23, Handsoldering
+SOT-23
+0
+3
+3
+NixieClockMaster
+SOT-223
+module CMS SOT223 4 pins
+CMS SOT
+0
+4
+4
+NixieClockMaster
+SW_Tactile_SPST_Angled_PTS645Vx31-2LFS
+tactile switch SPST right angle, PTS645VL31-2 LFS
+tactile switch SPST angled PTS645VL31-2 LFS C&K Button
+0
+4
+2
+NixieClockMaster
+TESTPAD_P1-13
+TEST PAD
+TEST PAD
+0
+1
+1
+NixieClockMaster
+TO-92_2N7000_inline
+TO-92 leads in-line, narrow, oval pads, drill 0.6mm (see NXP sot054_po.pdf)
+to-92 sc-43 sc-43a sot54 PA33 transistor
+0
+3
+3
+NixieClockMaster
+TO-92_inline_2N3906
+TO-92 leads in-line, narrow, oval pads, drill 0.6mm (see NXP sot054_po.pdf)
+to-92 sc-43 sc-43a sot54 PA33 transistor
+0
+3
+3
+NixieClockMaster
+TO-92_inline_2N7000
+TO-92 leads in-line, narrow, oval pads, drill 0.6mm (see NXP sot054_po.pdf)
+to-92 sc-43 sc-43a sot54 PA33 transistor
+0
+3
+3
+NixieClockMaster
+TO-92_inline_MPSA42
+TO-92 leads in-line, narrow, oval pads, drill 0.6mm (see NXP sot054_po.pdf)
+to-92 sc-43 sc-43a sot54 PA33 transistor
+0
+3
+3
+NixieClockMaster
+TO-220-3_H
+Non Isolated JEDEC TO-220 Package
+Power Integration YN Package
+0
+3
+3
+NixieClockMaster
+TO-220-3_V
+Non Isolated JEDEC TO-220 Package
+Power Integration YN Package
+0
+3
+3
+NixieClockMaster
+TO220-5A
+<b>Molded Package</b>
+
+0
+5
+5
+NixieClockMaster
+TQFP-32_7x7mm_Pitch0.8mm
+32-Lead Plastic Thin Quad Flatpack (PT) - 7x7x1.0 mm Body, 2.00 mm [TQFP] (see Microchip Packaging Specification 00000049BS.pdf)
+QFP 0.8
+0
+32
+32
+NixieClockMaster
+TRANSISTOR-POWER_TO220BV
+MOLDED PACKAGE
+MOLDED PACKAGE
+0
+3
+3
+NixieClockMaster
+USB_Micro-B_Molex-105017-0001
+http://www.molex.com/pdm_docs/sd/1050170001_sd.pdf
+Micro-USB SMD Typ-B
+0
+13
+6
+NixieClockMaster
+USB_Micro-B_Molex-105017-0001_Power_Only
+http://www.molex.com/pdm_docs/sd/1050170001_sd.pdf
+Micro-USB SMD Typ-B
+0
+13
+6
+NixieClockMaster
+USB_Micro-B_Molex-105017-0001_Power_Only_No_Data
+http://www.molex.com/pdm_docs/sd/1050170001_sd.pdf
+Micro-USB SMD Typ-B
+0
+13
+6
+NixieClockMaster
+WS2812B
+
+
+0
+4
+4
+NixieClockMaster
+WS2812B-SmallPads
+
+
+0
+4
+4
+NixieClockMaster
+WS2812B_Bottom_Thru
+
+
+0
+4
+4
+NixieClockMaster
+WS2812B_Bottom_Thru_Small_Pad
+
+
+0
+4
+4
+NixieClockMaster
+WeMos_D1_mini_board
+
+
+0
+16
+16
+NixieClockMaster
+WeMos_D1_mini_board_flipped
+
+
+0
+16
+16
+NixieClockMaster
+WeMos_D1_mini_board_simple
+
+
+0
+16
+16
+NixieClockMaster
+Z570M
+This is the footprint suitable for the following nixie tubes: <br>
+* Z570M <br>
+0
+0
+0
+* Z574M <br>
+* Z5740M <br>
+<br>
+Tube diameter: 19mm<br>
+0
+0
+0
+13
+13
+NixieClockMaster
+ZM1000R3
+0
+0
+0
+14
+14
+NixieClockMaster
+nixies-us-IN-2-DSUB
+0
+0
+0
+11
+11
+NixieClockMaster
+nixies-us-IN-2-DSUB-1mm1-pins
+0
+0
+0
+11
+11
+NixieClockMaster
+nixies-us-IN-18
+0
+0
+0
+12
+12
+NixieClockMaster
+optocoupler-DIL04
+0
+0
+0
+4
+4
+NixieClockMaster
+rcl-C050-024X044
+0
+0
+0
+2
+2
+NixieClockMaster
+russian-nixies-IN-1
+0
+0
+0
