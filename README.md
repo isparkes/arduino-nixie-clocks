@@ -9,9 +9,11 @@ It is not suitable for clocks with RAGB LED backlights! For those you shoud be u
 
 Version 356 converges the code bases for Classic Rev6 and Modular Rev 3.01. If you have a Modular Rev3, please see previous versions!
 
-All firmware now lives under `Software/` and is built with PlatformIO rather
-than the Arduino IDE. The ESP8266 time provider, which was split out into its
-own repository for a while, has been merged back in with its history intact.
+This repository now holds both the firmware and the KiCad hardware designs.
+Firmware lives under `Software/` and is built with PlatformIO rather than the
+Arduino IDE; the board designs live under `Hardware/`. The ESP8266 time
+provider and the two hardware repositories were each developed separately for
+a while and have been merged back in with their histories intact.
 
 #### Features:
 - Open source (CC BY-NC 4.0, see [LICENSE](LICENSE))
@@ -81,7 +83,12 @@ recorded in that same header: Generic ESP8266 Module, 160 MHz CPU, 40 MHz QIO
 flash, 1M flash with 64k SPIFFS, lwIP v2 low memory.
 
 #### Layout:
-- `Software/platformio.ini`: Build configuration for all three targets
+- `Hardware/classic-rev-6/`: KiCad design for the Classic Rev6 clock, as the
+  `ClassicRev6` main board and the `ClassicRev6External` connector board
+- `Hardware/modular-rev-3/`: KiCad design for the Modular Rev 3 clock, as the
+  `ModularRev3` main board, the `ModularRev3External` connector board and a
+  display board per tube type (IN-8, IN-8-2, IN-14, NL840, Z570, ZM1000)
+- `Software/platformio.ini`: Build configuration for all three firmware targets
 - `Software/src/FirmwareV2/`: Main code for the 6 Digit Nixie Classic Rev6 and
   Modular Rev 3.01 Clock (`main.cpp` was previously `FirmwareV2.ino`)
 - `Software/src/FirmwareV2-4Digit/`: Main code for the 4 Digit Clock
@@ -89,6 +96,18 @@ flash, 1M flash with 64k SPIFFS, lwIP v2 low memory.
 - `Software/src/WifiTimeProviderESP8266/`: ESP8266 time provider module code
   (`main.cpp` was previously `WifiTimeProviderESP8266.ino`)
 - `LICENSE`: The licence this work is released under
+
+#### Imported history
+
+The firmware, the ESP8266 time provider and the two hardware designs were
+separate repositories, and each was merged in whole rather than copied, so
+`git log --follow` reaches back through every file's original history. The
+fab tags that came with the Modular Rev 3 design keep their `Y*` names
+alongside the firmware's own `v*` tags.
+
+One branch had no counterpart to merge into and is kept as-is:
+`imported/wifi-time-provider/feature/web_interface`. It predates the merge,
+so its files sit at the repository root rather than under `Software/`.
 
 #### Licence
 
