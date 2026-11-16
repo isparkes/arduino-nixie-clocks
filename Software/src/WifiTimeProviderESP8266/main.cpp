@@ -42,6 +42,7 @@
    
 */
 
+#include <Arduino.h>
 #include <FS.h>
 #include <DNSServer.h>
 #include <ESP8266WiFi.h>
@@ -111,6 +112,54 @@ WiFiManager wifiManager;
 NtpAsync ntpAsync;
 
 //gets called when WiFiManager enters configuration mode
+//**********************************************************************************
+//**********************************************************************************
+//*                          Forward declarations                                  *
+//*                                                                                *
+//* This file was an Arduino .ino sketch, where the IDE generated these for us.    *
+//* As a plain C++ translation unit we have to declare them ourselves.             *
+//**********************************************************************************
+//**********************************************************************************
+void configModeCallback (WiFiManager *myWiFiManager);
+ICACHE_RAM_ATTR void statusLEDUpdate();
+void performOncePerSecondProcessing();
+void performOncePerMinuteProcessing();
+void performOncePerHourProcessing();
+void performOncePerDayProcessing();
+void reconnectDroppedConnection();
+void reconnectDroppedConnectionBrutal();
+void factoryReset();
+void saveToSpiffsIfChanged(bool changed);
+void rootPageHandler();
+void timeServerPageHandler();
+void updateTimePageHandler();
+void utilityPageHandler();
+void resetWiFiPageHandler();
+void resetOptionsPageHandler();
+void resetAllPageHandler();
+void ntpUpdatePageHandler();
+void setDisplayValuePageHandler();
+void silentRestartPageHandler();
+void clockConfigPageHandler();
+void handleNotFound();
+void localCSSHandler();
+bool getIsConnected();
+void newTimeUpdateReceived();
+void setTimeFromServer(String timeString);
+void setBlinkMode(byte blinkMode);
+bool getOTAvailable();
+bool sendTimeToI2C();
+bool getStatsFromI2C();
+bool getClockOptionsFromI2C();
+bool sendIPAddressToI2C(IPAddress ip);
+bool sendValueToI2C(byte digit01, byte digit23, byte digit45, byte timeValue);
+bool sendValueFormatToI2C(byte digit01, byte digit23, byte digit45);
+bool setClockOptionBoolean(byte option, bool newMode);
+bool setClockOptionBooleanInverse(byte option, bool newMode);
+bool setClockOptionByte(byte option, byte newMode);
+bool setClockOptionInt(byte option, int newMode);
+bool scanI2CBus();
+
 void configModeCallback (WiFiManager *myWiFiManager) {
   debugMsg("Entered config mode");
   setBlinkMode(4);
