@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name "ClassicRev5-rescue")(type "Legacy")(uri "${KIPRJMOD}/ClassicRev5-rescue.lib")(options "")(descr ""))
+  (lib (name "ClassicRev5")(type "Legacy")(uri "${KIPRJMOD}/ClassicRev5.lib")(options "")(descr ""))
+  (lib (name "NixieClockMaster")(type "KiCad")(uri "${KI_GLOW_CUSTOM}/libraries/NixieClockMaster.kicad_sym")(options "")(descr ""))
+)
