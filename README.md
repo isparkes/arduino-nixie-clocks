@@ -5,7 +5,12 @@ This is the main code for an Arduino based Nixie clock, intended for the followi
 - [ModularRev3](https://www.nixieclock.biz/StoreModular.html)
 - [Classic Rev6](https://www.nixieclock.biz/StoreClassicRev6.html)
 
-It is not suitable for clocks with RAGB LED backlights! For those you shoud be using [NixieClockFirmwareV1](https://bitbucket.org/isparkes/nixiefirmwarev1)
+The firmware now also covers the older V1 clocks with RAGB LED backlights -
+Classic Rev4 / Rev5, All-In-One IN-14 and the Arduino All-In-One shield - which
+used to live in
+[NixieClockFirmwareV1](https://bitbucket.org/isparkes/nixiefirmwarev1). Both
+the 6 digit and the 4 digit firmware build for either generation; pick the
+board with a single define at build time, see [Building](#building) below.
 
 Version 356 converges the code bases for Classic Rev6 and Modular Rev 3.01. If you have a Modular Rev3, please see previous versions!
 
@@ -36,7 +41,7 @@ The software is a [PlatformIO](https://platformio.org/) project. Install
 PlatformIO Core (or the VSCode extension), then from the `Software/` directory:
 
 ```
-pio run                                 # build all three targets
+pio run                                 # build everything
 pio run -e nixie6digit                  # build the 6 digit clock firmware
 pio run -e nixie4digit -t upload        # build and flash the 4 digit firmware
 pio run -e wifitimeprovider -t upload   # build and flash the ESP8266 module
@@ -44,16 +49,36 @@ pio run -t clean                        # remove build products
 pio device monitor                      # serial monitor
 ```
 
-There are three targets, one per environment. They are separate programs that
-share no code, so each compiles only its own directory under `Software/src/`.
+Pick the environment that matches your clock:
 
-| Environment | Target | Source |
-| --- | --- | --- |
-| `nixie6digit` | ATmega328P | `src/FirmwareV2/` |
-| `nixie4digit` | ATmega328P | `src/FirmwareV2-4Digit/` |
-| `wifitimeprovider` | ESP8266 (ESP-01 / ESP-01S) | `src/WifiTimeProviderESP8266/` |
+| Environment | Clock | Backlight | Source |
+| --- | --- | --- | --- |
+| `nixie6digit` | Classic Rev6, Modular Rev 3.01 | NeoPixel | `src/Firmware6Digit/` |
+| `nixie6digitV1` | Classic Rev4 / Rev5, All-In-One IN-14, Arduino AIO shield | RAGB | `src/Firmware6Digit/` |
+| `nixie6digitV1aio` | All-In-One Rev1 (mixed up tube wiring) | RAGB | `src/Firmware6Digit/` |
+| `nixie4digit` | 4 digit V2 clocks | NeoPixel | `src/Firmware4Digit/` |
+| `nixie4digitV1` | 4 digit V1 clocks | RAGB | `src/Firmware4Digit/` |
+| `wifitimeprovider` | ESP8266 (ESP-01 / ESP-01S) time provider | - | `src/WifiTimeProviderESP8266/` |
 
-The two clock firmwares assume a bare ATmega328P at 16 MHz / 5 V, as fitted to
+Each source tree covers both clock generations. The environments that share a
+tree differ only in the one define each passes - `FWV2`, `FWV1` or
+`FWV1_AIO_REV1` - which is the only hardware switch in the code. Everything
+else, the pin map, the backlight driver and whether the PIR and decimal point
+menus exist, is derived from it. The variant is set in
+`Software/platformio.ini` and nowhere else; see the "Hardware variant
+selection" block at the top of each `main.cpp` for what the defines select.
+There is no `FWV1_AIO_REV1` for the 4 digit tree, because the All-In-One Rev1
+is a 6 digit clock.
+
+The 4 and 6 digit trees are still separate. Their display layouts differ in
+function signatures and menu structure, not just in pin maps, so folding them
+together would need a refactor rather than another define.
+
+The V1 builds report the same I2C protocol as the V2 builds, so they need a
+current ESP8266 time provider. Its settings page will offer PIR and decimal
+point options that a V1 clock does not have; they are simply ignored.
+
+The clock firmwares assume a bare ATmega328P at 16 MHz / 5 V, as fitted to
 the Classic Rev6 and Modular Rev 3.01 boards, flashed through the FTDI header.
 If you are building on stock Arduino hardware, change `board` and
 `upload_speed` in `Software/platformio.ini` - the alternatives for Uno and Nano
@@ -66,9 +91,9 @@ flash use before floating any of them.
 
 | Library | Version | Used by |
 | --- | --- | --- |
-| `paulstoffregen/Time` | 1.5 | all three targets |
-| `northernwidget/DS3231` | 1.1.2 | the two clock firmwares |
-| `adafruit/Adafruit NeoPixel` | 1.1.3 | the two clock firmwares |
+| `paulstoffregen/Time` | 1.5 | all targets |
+| `northernwidget/DS3231` | 1.1.2 | the clock firmwares |
+| `adafruit/Adafruit NeoPixel` | 1.1.3 | the clock firmwares, except the V1 builds |
 | `bblanchon/ArduinoJson` | 5.13.2 (git tag) | `wifitimeprovider` |
 | `tzapu/WiFiManager` | 0.15.0 (git tag) | `wifitimeprovider` |
 | `me-no-dev/ESPAsyncUDP` | master, pinned by commit | `wifitimeprovider` |
@@ -82,17 +107,27 @@ to compile cleanly. Its board settings reproduce the Arduino IDE board menu
 recorded in that same header: Generic ESP8266 Module, 160 MHz CPU, 40 MHz QIO
 flash, 1M flash with 64k SPIFFS, lwIP v2 low memory.
 
+#### Known issues:
+- `checkPIR()` in `Software/src/Firmware4Digit/main.cpp` writes `dpArray[4]`
+  and `dpArray[5]`, but on the 4 digit clock that array only has four entries.
+  The two writes run off the end of it. The indices were carried over from the
+  6 digit code. This affects the `nixie4digit` build only - `nixie4digitV1` has
+  no PIR and does not compile the function. Found during the V1 merge and left
+  alone there so that the V2 build stayed unchanged; it still wants fixing.
+
 #### Layout:
 - `Hardware/classic-rev-6/`: KiCad design for the Classic Rev6 clock, as the
   `ClassicRev6` main board and the `ClassicRev6External` connector board
 - `Hardware/modular-rev-3/`: KiCad design for the Modular Rev 3 clock, as the
   `ModularRev3` main board, the `ModularRev3External` connector board and a
   display board per tube type (IN-8, IN-8-2, IN-14, NL840, Z570, ZM1000)
-- `Software/platformio.ini`: Build configuration for all three firmware targets
-- `Software/src/FirmwareV2/`: Main code for the 6 Digit Nixie Classic Rev6 and
-  Modular Rev 3.01 Clock (`main.cpp` was previously `FirmwareV2.ino`)
-- `Software/src/FirmwareV2-4Digit/`: Main code for the 4 Digit Clock
-  (`main.cpp` was previously `FirmwareV2-4Digit.ino`)
+- `Software/platformio.ini`: Build configuration for all firmware targets
+- `Software/src/Firmware6Digit/`: Main code for every 6 Digit clock, V1 and V2
+  alike, selected by one define per build environment (this was previously
+  `FirmwareV2/`, and `main.cpp` before that `FirmwareV2.ino`)
+- `Software/src/Firmware4Digit/`: Main code for every 4 Digit clock, V1 and V2
+  alike, selected by one define per build environment (this was previously
+  `FirmwareV2-4Digit/`, and `main.cpp` before that `FirmwareV2-4Digit.ino`)
 - `Software/src/WifiTimeProviderESP8266/`: ESP8266 time provider module code
   (`main.cpp` was previously `WifiTimeProviderESP8266.ino`)
 - `LICENSE`: The licence this work is released under

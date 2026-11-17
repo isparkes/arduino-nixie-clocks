@@ -16,6 +16,52 @@
 //*                                                                                *
 //**********************************************************************************
 //**********************************************************************************
+//*                          Hardware variant selection                            *
+//*                                                                                *
+//* Exactly one of these is defined, normally from platformio.ini build_flags.     *
+//* This is the ONLY switch that selects the target hardware - every other         *
+//* difference in this file is derived from it.                                    *
+//*                                                                                *
+//*   FWV1  V1 4 digit boards. RAGB backlight driven from three PWM pins,          *
+//*         no PIR. Anodes on PD4/PD2/PD1/PD0, button on D7.                       *
+//*   FWV2  Classic Rev6 and Modular Rev 3.01, which share a pinout - NeoPixel     *
+//*         backlight, PIR on A3. Used if nothing is given.                        *
+//*                                                                                *
+//* There was once a separate REV3 variant for the Modular Rev3, putting the       *
+//* hours tens anode on A3 and the PIR on D7. It was removed because it matched    *
+//* neither committed board design: the ModularRev3 and ClassicRev6 netlists both  *
+//* wire the anodes to PD7/PD4/PD3/PD2 and the PIR to PC3, so FWV2 covers both.    *
+//* Early Modular Rev3 boards with the old wiring need a firmware from before      *
+//* version 356, as the README says.                                               *
+//*                                                                                *
+//* There is no FWV1_AIO_REV1 here - the All-In-One Rev1 is a 6 digit clock, so    *
+//* that variant exists only in Firmware6Digit.                                    *
+//*                                                                                *
+//* Everything below keys off the derived capability macros, not off the variant   *
+//* names, so adding a board means adding a pin map and picking capabilities.      *
+//**********************************************************************************
+//**********************************************************************************
+#if !defined(FWV1) && !defined(FWV2)
+  #define FWV2
+#endif
+
+#if defined(FWV1) && defined(FWV2)
+  #error "Define exactly one of FWV1 or FWV2"
+#endif
+
+// ---- Capabilities derived from the variant ----
+#ifdef FWV1
+  // One RAGB backlight for the whole clock, driven from three PWM pins.
+  #define BACKLIGHT_RGB_PWM
+#else
+  // A chain of WS2812B NeoPixels, one per digit.
+  #define BACKLIGHT_NEOPIXEL
+  #define HAVE_PIR
+  #define HAVE_DP
+#endif
+
+//**********************************************************************************
+//**********************************************************************************
 // Standard Libraries
 #include <Arduino.h>
 #include <avr/io.h>
@@ -27,7 +73,9 @@
 // picked up automatically by PlatformIO - nothing to install by hand.
 #include <DS3231.h>             // https://github.com/NorthernWidget/DS3231 (Wickert 1.0.2)
 #include <TimeLib.h>            // http://playground.arduino.cc/code/time (Margolis 1.5.0)
+#ifdef BACKLIGHT_NEOPIXEL
 #include <Adafruit_NeoPixel.h>  // https://github.com/adafruit/Adafruit_NeoPixel (Adafruit 1.1.8)
+#endif
 
 // Other parts of the code, broken out for clarity
 #include "ClockButton.h"
@@ -48,7 +96,9 @@ void performOncePerMinuteProcessing();
 void performOncePerHourProcessing();
 void performOncePerDayProcessing();
 void setLeds();
+#ifdef HAVE_PIR
 boolean checkPIR(unsigned long nowMillis);
+#endif
 void setAllLEDs(byte red, byte green, byte blue);
 void outputLEDBuffer();
 void setNextMode(int displayMode);
@@ -125,8 +175,6 @@ int getSmoothedHVSensorReading();
 void receiveEvent(int bytes);
 void requestEvent();
 byte encodeBooleanForI2C(boolean valueToProcess);
-
-#define FWV2                    // "REV3" for Modular Rev3 "FWV2" for ClassicRev6 and ModularRev3.01
 
 //**********************************************************************************
 //**********************************************************************************
@@ -376,8 +424,15 @@ byte encodeBooleanForI2C(boolean valueToProcess);
 #define BACKLIGHT_CYCLE_DIM             5   // cycle through random colours, dims with bulb dimming
 #define BACKLIGHT_COLOUR_TIME           6   // use "ColourTime" - different colours for each digit value
 #define BACKLIGHT_COLOUR_TIME_DIM       7   // use "ColourTime" - dims with bulb dimming
-#define BACKLIGHT_MAX                   7
-#define BACKLIGHT_DEFAULT               4
+#ifdef BACKLIGHT_NEOPIXEL
+  #define BACKLIGHT_MAX                 7
+  #define BACKLIGHT_DEFAULT             4
+#else
+  // ColourTime needs one LED per digit. V1 has a single backlight for the whole
+  // clock, so the menu stops at the cycle modes.
+  #define BACKLIGHT_MAX                 5
+  #define BACKLIGHT_DEFAULT             0
+#endif
 
 #define CYCLE_SPEED_MIN                 4
 #define CYCLE_SPEED_MAX                 64
@@ -428,24 +483,28 @@ byte encodeBooleanForI2C(boolean valueToProcess);
 #define ledPin_0_d  12    // package pin 18 // PB4
 
 // anode pins
-#ifdef REV3
-  #define ledPin_a_1  A3  // high - Hours tens  // Package pin 26 // PC3 // Analog or digital input for PIR
+#ifdef FWV1
+  // V1 packs the four anodes into the low end of port D and puts the button on D7
+  #define ledPin_a_1  4   // high - Hours tens  // package pin 6  // PD4
+  #define ledPin_a_2  2   //      - Hours units // package pin 4  // PD2
+  #define ledPin_a_3  1   //      - Mins  tens  // package pin 3  // PD1
+  #define ledPin_a_4  0   // low  - Mins  units // package pin 2  // PD0
 #else
   #define ledPin_a_1  7   // high - Hours tens  // package pin 13 // PD7
+  #define ledPin_a_2  4   //      - Hours units // package pin 6  // PD4
+  #define ledPin_a_3  3   //      - Mins  tens  // package pin 5  // PD3
+  #define ledPin_a_4  2   // low  - Mins  units // package pin 4  // PD2
 #endif
-#define ledPin_a_2  4     //      - Hours units // package pin 6  // PD4
-#define ledPin_a_3  3     //      - Mins  tens  // package pin 5  // PD3
-#define ledPin_a_4  2     //      - Mins  units // package pin 4  // PD2
-//#define ledPin_a_5  1     //      - Secs  tens  // package pin 3  // PD1
-//#define ledPin_a_6  0     // low  - Secs  units // package pin 2  // PD0
 
 // button input
-#define inputPin1   A2    // Package pin 25 // PC2 // Analog or digital input for button.
+#ifdef FWV1
+  #define inputPin1 7     // package pin 13 // PD7
+#else
+  #define inputPin1 A2    // Package pin 25 // PC2 // Analog or digital input for button.
+#endif
 
 // PIR input
-#ifdef REV3
-  #define pirPin    7     // package pin 13 // PD7
-#else
+#ifdef HAVE_PIR
   #define pirPin    A3    // Package pin 26 // PC3 // Analog or digital input for PIR
 #endif
 
@@ -455,11 +514,21 @@ byte encodeBooleanForI2C(boolean valueToProcess);
 // Tick led - PWM capable
 #define tickLed     11    // package pin 17 // PB3
 
+#ifdef HAVE_DP
 // Decimal point - PWM capable
 #define DP          5     // package pin 11 // PD5
+#endif
 
+#ifdef BACKLIGHT_NEOPIXEL
 // PWM capable output for backlight - Neo Pixel chain
 #define LED_DOUT    6     // package pin 12 // PD6
+#else
+// PWM capable outputs for the V1 RAGB backlight. Note that BLed sits on PD3,
+// which the V2 boards use as an anode, and GLed on PD5, which V2 uses for DP.
+#define RLed        6     // package pin 12 // PD6
+#define GLed        5     // package pin 11 // PD5
+#define BLed        3     // package pin 5  // PD3
+#endif
 
 #define sensorPin   A0    // Package pin 23 // PC0 // Analog input pin for HV sense: HV divided through 390k and 4k7 divider, using 5V reference
 #define LDRPin      A1    // Package pin 24 // PC1 // Analog input for Light dependent resistor.
@@ -600,7 +669,9 @@ byte ledG[DIGIT_COUNT];
 byte ledB[DIGIT_COUNT];
 
 // set up the NeoPixel library
+#ifdef BACKLIGHT_NEOPIXEL
 Adafruit_NeoPixel leds = Adafruit_NeoPixel(6, LED_DOUT, NEO_GRB + NEO_KHZ800);
+#endif
 
 // Strategy 3
 int changeSteps = 0;
@@ -640,9 +711,19 @@ void setup()
 //  pinMode(ledPin_a_6, OUTPUT);
 
   pinMode(tickLed, OUTPUT);
+#ifdef BACKLIGHT_NEOPIXEL
   pinMode(LED_DOUT, OUTPUT);
+#else
+  pinMode(RLed, OUTPUT);
+  pinMode(GLed, OUTPUT);
+  pinMode(BLed, OUTPUT);
+#endif
+#ifdef HAVE_DP
   pinMode(DP, OUTPUT);
+#endif
+#ifdef HAVE_PIR
   pinMode(pirPin, INPUT);
+#endif
 
   // The LEDS sometimes glow at startup, it annoys me, so turn them completely off
   analogWrite(tickLed, 0);
@@ -674,6 +755,12 @@ void setup()
 
   tccrOn = TCCR1A;
 
+#ifdef BACKLIGHT_RGB_PWM
+  // Set up timer 2 like timer 0, so that we can analogWrite() the RGB leds
+  TCCR2A = (1 << COM2B1) | (1 << WGM21) | (1 << WGM20);
+  TCCR2B = (1 << CS22);
+#endif
+
   // we don't need the HV yet, so turn it off
   TCCR1A = tccrOff;
 
@@ -682,8 +769,10 @@ void setup()
 
   // **********************************************************************
 
+#ifdef BACKLIGHT_NEOPIXEL
   // Set up the LED output
   leds.begin();
+#endif
 
   // Set up the PRNG with something so that it looks random
   randomSeed(analogRead(LDRPin));
@@ -732,8 +821,10 @@ void setup()
   // Read EEPROM values
   readEEPROMValues();
 
+#ifdef HAVE_PIR
   // Not setting the pullup resistor allows us to use 3V3 devices (e.g. RCWL-0516)
   digitalWrite(pirPin, usePIRPullup); // set pull up resistor - if no PIR connected, default to "triggered"
+#endif
 
   // set our PWM profile
   setPWMOnTime(pwmOn);
@@ -759,7 +850,12 @@ void setup()
     scrollback = false;
 
     // set backlights to change with the displayed digits
+#ifdef BACKLIGHT_NEOPIXEL
     backlightMode = BACKLIGHT_COLOUR_TIME;
+#else
+    // V1 has one backlight for the whole clock, so cycle it instead
+    backlightMode = BACKLIGHT_CYCLE;
+#endif
 
     // All the digits on full
     allBright();
@@ -1021,7 +1117,11 @@ void performOncePerSecondProcessing() {
   // Get the blanking status, this may be overridden by blanking suppression
   // Only blank if we are in TIME mode
   if (currentMode == MODE_TIME) {
+#ifdef HAVE_PIR
     boolean pirBlanked = checkPIR(nowMillis);
+#else
+    boolean pirBlanked = false;
+#endif
     boolean nativeBlanked = checkBlanking();
 
     // Check if we are in blanking suppression mode
@@ -1065,8 +1165,10 @@ void performOncePerMinuteProcessing() {
     getRTCTime();
   }
 
+#ifdef HAVE_DP
   // AM/PM indicator - show if we are in 12H mode and it is PM
   dpArray[1] = hourMode && (hour() > 12);
+#endif
 }
 
 // ************************************************************
@@ -1140,6 +1242,7 @@ void setLeds()
                       getLEDAdjusted(colors[1], 1, dimFactor),
                       getLEDAdjusted(colors[2], 1, dimFactor));
           break;
+#ifdef BACKLIGHT_NEOPIXEL
         case BACKLIGHT_COLOUR_TIME:
             for (int i = 0 ; i < DIGIT_COUNT ; i++) {
               ledR[DIGIT_COUNT-1-i] = getLEDAdjusted(colourTimeR[NumberArray[i]],1,1);
@@ -1156,6 +1259,7 @@ void setLeds()
             }
             outputLEDBuffer();
           break;
+#endif
       }
     } else {
       // Settings modes
@@ -1189,6 +1293,13 @@ void setLeds()
 // the sensor.
 // Returns true if PIR sensor is installed and we are blanked
 // ************************************************************
+#ifdef HAVE_PIR
+// NOTE: dpArray only has DIGIT_COUNT (4) entries here, but the indices used
+// below are 4 and 5, carried over from the 6 digit code. Those two writes land
+// past the end of the array and corrupt whatever the linker placed after it.
+// This predates the V1 merge. It is left alone for now so that the FWV2 build
+// is byte for byte what it was; the FWV1 build does not compile this function
+// at all. See "Known issues" in the README.
 boolean checkPIR(unsigned long nowMillis) {
   boolean pirvalue = (digitalRead(pirPin) == HIGH);
 
@@ -1207,6 +1318,7 @@ boolean checkPIR(unsigned long nowMillis) {
     }
   }
 }
+#endif
 
 // ************************************************************
 // Set back light LEDs to the same colour
@@ -1224,10 +1336,19 @@ void setAllLEDs(byte red, byte green, byte blue) {
 // Put the led buffers out
 // ************************************************************
 void outputLEDBuffer() {
+#ifdef BACKLIGHT_NEOPIXEL
   for (int i = 0 ; i < DIGIT_COUNT ; i++) {
     leds.setPixelColor(i, leds.Color(ledR[i], ledG[i], ledB[i]));
   }
   leds.show();
+#else
+  // V1 has a single RAGB backlight for the whole clock on three PWM pins.
+  // Every caller sets all the digits to the same colour apart from the
+  // ColourTime modes, which are not offered on V1, so digit 0 is the colour.
+  analogWrite(RLed, ledR[0]);
+  analogWrite(GLed, ledG[0]);
+  analogWrite(BLed, ledB[0]);
+#endif
 }
 
 // ************************************************************
@@ -1354,6 +1475,10 @@ void setNextMode(int displayMode) {
       }
     case MODE_PIR_TIMEOUT_UP:
     case MODE_PIR_TIMEOUT_DOWN: {
+#ifndef HAVE_PIR
+        // No PIR on this hardware, skip past both timeout settings
+        setNewNextMode(MODE_BACKLIGHT_MODE);
+#endif
         loadNumberArrayConfMode(displayMode);
         displayConfigModeWide();
         break;
@@ -1421,6 +1546,10 @@ void setNextMode(int displayMode) {
         break;
       }
     case MODE_USE_PIR_PULLUP: {
+#ifndef HAVE_PIR
+        // No PIR on this hardware, skip the pullup setting
+        setNewNextMode(MODE_TEMP);
+#endif
         loadNumberArrayConfBool(usePIRPullup, displayMode);
         displayConfig();
         break;
@@ -1807,6 +1936,10 @@ void processCurrentMode(int displayMode) {
         break;
       }
     case MODE_PIR_TIMEOUT_UP: {
+#ifndef HAVE_PIR
+        // No PIR on this hardware, skip past both timeout settings
+        setNewNextMode(MODE_BACKLIGHT_MODE);
+#endif
         if (button1.isButtonPressedAndReleased()) {
           pirTimeout+=10;
           if (pirTimeout > PIR_TIMEOUT_MAX) {
@@ -1989,11 +2122,18 @@ void processCurrentMode(int displayMode) {
         break;
       }
     case MODE_USE_PIR_PULLUP: {
+#ifdef HAVE_PIR
         if (button1.isButtonPressedAndReleased()) {
           usePIRPullup = !usePIRPullup;
         }
+#else
+        // No PIR on this hardware, skip the pullup setting
+        setNewNextMode(MODE_TEMP);
+#endif
         loadNumberArrayConfBool(usePIRPullup, displayMode);
+#ifdef HAVE_PIR
         digitalWrite(pirPin, usePIRPullup);
+#endif
         displayConfig();
         break;
       }
@@ -2538,7 +2678,9 @@ void outputDisplay()
 
   for ( int i = 0 ; i < DIGIT_COUNT ; i ++ )
   {
+#ifdef HAVE_DP
     digitalWrite(DP, dpArray[i]);
+#endif
 
     if (blankTubes) {
       tmpDispType = BLANKED;
@@ -2673,16 +2815,19 @@ void outputDisplay()
 // ************************************************************
 void digitOn(int digit, int value) {
   switch (digit) {
-#ifdef REV3
-    case 0: PORTC = PORTC | B00001000; break; // PC3 - equivalent to digitalWrite(ledPin_a_1,HIGH);
+#ifdef FWV1
+    case 0: PORTD = PORTD | B00010000; break; // PD4 - equivalent to digitalWrite(ledPin_a_1,HIGH);
+    case 1: PORTD = PORTD | B00000100; break; // PD2 - equivalent to digitalWrite(ledPin_a_2,HIGH);
+    case 2: PORTD = PORTD | B00000010; break; // PD1 - equivalent to digitalWrite(ledPin_a_3,HIGH);
+    case 3: PORTD = PORTD | B00000001; break; // PD0 - equivalent to digitalWrite(ledPin_a_4,HIGH);
 #else
     case 0: PORTD = PORTD | B10000000; break; // PD7 - equivalent to digitalWrite(ledPin_a_1,HIGH);
-#endif
     case 1: PORTD = PORTD | B00010000; break; // PD4 - equivalent to digitalWrite(ledPin_a_2,HIGH);
     case 2: PORTD = PORTD | B00001000; break; // PD3 - equivalent to digitalWrite(ledPin_a_3,HIGH);
     case 3: PORTD = PORTD | B00000100; break; // PD2 - equivalent to digitalWrite(ledPin_a_4,HIGH);
     case 4: PORTD = PORTD | B00000010; break; // PD1 - equivalent to digitalWrite(ledPin_a_5,HIGH);
     case 5: PORTD = PORTD | B00000001; break; // PD0 - equivalent to digitalWrite(ledPin_a_6,HIGH);
+#endif
   }
   SetSN74141Chip(value);
   TCNT1 = 0; // Thanks Phil!
@@ -2696,9 +2841,12 @@ void digitOff() {
   TCCR1A = tccrOff;
 
   // turn all digits off - equivalent to digitalWrite(ledPin_a_n,LOW); (n=1,2,3,4) but much faster
-#ifdef REV3
-  PORTC = PORTC & B11110111;
-  PORTD = PORTD & B11100000;
+#ifdef FWV1
+  // The PORTC write is vestigial - the V1 4 digit board has no anodes on port
+  // C - but the original V1 firmware did it, so it is kept for exactness.
+  // PD3, PD5, PD6 are the backlight and PD7 is the button, so they are spared.
+  PORTC = PORTC & B11110011;
+  PORTD = PORTD & B11101000;
 #else
   PORTD = PORTD & B01100000;
 #endif
