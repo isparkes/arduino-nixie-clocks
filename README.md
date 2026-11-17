@@ -17,8 +17,10 @@ Version 356 converges the code bases for Classic Rev6 and Modular Rev 3.01. If y
 This repository now holds both the firmware and the KiCad hardware designs.
 Firmware lives under `Software/` and is built with PlatformIO rather than the
 Arduino IDE; the board designs live under `Hardware/`. The ESP8266 time
-provider and the two hardware repositories were each developed separately for
-a while and have been merged back in with their histories intact.
+provider and the four hardware repositories were each developed separately
+for a while and have been merged back in with their histories intact. Both
+clock generations are covered: the V1 Classic Rev4 and Rev5 designs sit here
+alongside the V2 Classic Rev6 and Modular Rev 3.
 
 #### Features:
 - Open source (CC BY-NC 4.0, see [LICENSE](LICENSE))
@@ -116,6 +118,11 @@ flash, 1M flash with 64k SPIFFS, lwIP v2 low memory.
   alone there so that the V2 build stayed unchanged; it still wants fixing.
 
 #### Layout:
+- `Hardware/classic-rev-4/`: KiCad design for the V1 Classic Rev4 clock, as
+  the `ClassicRev4` module. Built by the `nixie6digitV1` and `nixie4digitV1`
+  firmware environments
+- `Hardware/classic-rev-5/`: KiCad design for the V1 Classic Rev5 clock, as
+  the `ClassicRev5` module. Built by the same two V1 environments
 - `Hardware/classic-rev-6/`: KiCad design for the Classic Rev6 clock, as the
   `ClassicRev6` main board and the `ClassicRev6External` connector board
 - `Hardware/modular-rev-3/`: KiCad design for the Modular Rev 3 clock, as the
@@ -134,11 +141,23 @@ flash, 1M flash with 64k SPIFFS, lwIP v2 low memory.
 
 #### Imported history
 
-The firmware, the ESP8266 time provider and the two hardware designs were
+The firmware, the ESP8266 time provider and the four hardware designs were
 separate repositories, and each was merged in whole rather than copied, so
-`git log --follow` reaches back through every file's original history. The
-fab tags that came with the Modular Rev 3 design keep their `Y*` names
-alongside the firmware's own `v*` tags.
+every commit that ever touched a file is still here. The fab tags came across
+with their designs and do not collide: `Y*` from the Modular Rev 3, `Rev4b`
+and `Rev4c` from the Classic Rev4, alongside the firmware's own `v*` tags.
+
+Each merge relocated the files into their directory under `Hardware/` in the
+merge commit itself, leaving the imported commits at the paths they always
+had. That keeps provenance exact, but it does mean `git log --follow` stops
+at the merge, because history simplification follows the branch the file came
+from, where the new path does not exist. To read a design's history before it
+was merged, start from the merge's second parent and use the original path:
+
+```
+git log --oneline <merge>^2 -- ClassicRev4.kicad_sch
+git log --oneline <merge>^2 -- ClassicRev5/ClassicRev5.kicad_sch
+```
 
 One branch had no counterpart to merge into and is kept as-is:
 `imported/wifi-time-provider/feature/web_interface`. It predates the merge,
