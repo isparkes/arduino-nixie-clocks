@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name ModularRev3External-rescue)(type Legacy)(uri ${KIPRJMOD}/ModularRev3External-rescue.lib)(options "")(descr ""))
+  (lib (name AllInOneExternal-rescue)(type Legacy)(uri ${KIPRJMOD}/AllInOneExternal-rescue.lib)(options "")(descr ""))
+)

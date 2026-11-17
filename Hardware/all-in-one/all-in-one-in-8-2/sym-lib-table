@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name AllInOneIN142-rescue)(type Legacy)(uri ${KIPRJMOD}/AllInOneIN142-rescue.lib)(options "")(descr ""))
+)

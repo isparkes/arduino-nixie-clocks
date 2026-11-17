@@ -1,0 +1,747 @@
+Cmp-Mod V01 Created by PcbNew   date = Die 02 Aug 2016 15:54:28 CEST
+
+BeginCmp
+TimeStamp = 569E1A7C
+Path = /5696B810
+Reference = C1;
+ValeurCmp = 2.2uF;
+IdModule  = Capacitors_ThroughHole:C_Radial_D8_L11.5_P3.5;
+EndCmp
+
+BeginCmp
+TimeStamp = 56AE4132
+Path = /5696BD88
+Reference = C4;
+ValeurCmp = 220uF;
+IdModule  = Capacitors_ThroughHole:C_Radial_D8_L11.5_P3.5;
+EndCmp
+
+BeginCmp
+TimeStamp = 5789F091
+Path = /5776667B
+Reference = W2;
+ValeurCmp = GND;
+IdModule  = Measurement_Points:Measurement_Point_Round-TH_Big;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F71C
+Path = /5696BA68
+Reference = C5;
+ValeurCmp = 22pF;
+IdModule  = NixieClockModule:rcl-C050-024X044;
+EndCmp
+
+BeginCmp
+TimeStamp = 56AE422C
+Path = /56AE91D4
+Reference = LED9/NEON2;
+ValeurCmp = LED;
+IdModule  = NixieClockModule:LED-5MM-Centred;
+EndCmp
+
+BeginCmp
+TimeStamp = 56AE4029
+Path = /5696B9A0
+Reference = C3;
+ValeurCmp = 220uF;
+IdModule  = Capacitors_ThroughHole:C_Radial_D8_L11.5_P3.5;
+EndCmp
+
+BeginCmp
+TimeStamp = 57755142
+Path = /577661AC
+Reference = W1;
+ValeurCmp = VCC;
+IdModule  = Measurement_Points:Measurement_Point_Round-TH_Big;
+EndCmp
+
+BeginCmp
+TimeStamp = 57755147
+Path = /5776667B
+Reference = W4;
+ValeurCmp = GND;
+IdModule  = Measurement_Points:Measurement_Point_Round-TH_Big;
+EndCmp
+
+BeginCmp
+TimeStamp = 5775514C
+Path = /577685B8
+Reference = W3;
+ValeurCmp = 170V;
+IdModule  = Measurement_Points:Measurement_Point_Round-TH_Big;
+EndCmp
+
+BeginCmp
+TimeStamp = 56AE4226
+Path = /56AE9098
+Reference = LED8/NEON1;
+ValeurCmp = LED;
+IdModule  = NixieClockModule:LED-5MM-Centred;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F903
+Path = /5696CD28
+Reference = Q2;
+ValeurCmp = 16MHz;
+IdModule  = NixieClockModule:Crystal_HC49-U_Vertical;
+EndCmp
+
+BeginCmp
+TimeStamp = 57767856
+Path = /5775D290
+Reference = D2;
+ValeurCmp = UF4004/7;
+IdModule  = NixieClockModule:Diode_DO-41_1N4001;
+EndCmp
+
+BeginCmp
+TimeStamp = 57767850
+Path = /57761D7A
+Reference = D1;
+ValeurCmp = 1N4001;
+IdModule  = NixieClockModule:Diode_DO-41_1N4001;
+EndCmp
+
+BeginCmp
+TimeStamp = 57768B9C
+Path = 
+Reference = REF**;
+ValeurCmp = MountingHole_3mm;
+IdModule  = NixieClockModule:MountingHole_3mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 57768B9D
+Path = 
+Reference = REF**;
+ValeurCmp = MountingHole_3mm;
+IdModule  = NixieClockModule:MountingHole_3mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 57768B9F
+Path = 
+Reference = REF**;
+ValeurCmp = MountingHole_3mm;
+IdModule  = NixieClockModule:MountingHole_3mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 57768BA1
+Path = 
+Reference = REF**;
+ValeurCmp = MountingHole_3mm;
+IdModule  = NixieClockModule:MountingHole_3mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDDCF
+Path = /5696C4F4
+Reference = IC2;
+ValeurCmp = 74141N;
+IdModule  = NixieClockModule:74141_DIL16;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F963
+Path = /5696D818
+Reference = R2;
+ValeurCmp = 4.7k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F95B
+Path = /5696D750
+Reference = R1;
+ValeurCmp = 390k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F9C3
+Path = /5696D688
+Reference = R14;
+ValeurCmp = 3k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F9BB
+Path = /56A86277
+Reference = R13;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F9B3
+Path = /56A862A4
+Reference = R12;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F99B
+Path = /56A86298
+Reference = R9;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F9AB
+Path = /56A8629E
+Reference = R11;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F96B
+Path = /5696D110
+Reference = R3;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F9EB
+Path = /5696DA70
+Reference = R19;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A71A78
+Path = /5696D9A8
+Reference = R18;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56ABD257
+Path = /56A862C5
+Reference = R23;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56AE405D
+Path = /56AE8D18
+Reference = R39;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDDF5
+Path = /5696DB38
+Reference = R20;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDDFB
+Path = /56A862B9
+Reference = R21;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDE01
+Path = /56A862BF
+Reference = R22;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDE07
+Path = /56A85A7B
+Reference = R24;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDE0D
+Path = /56A85A81
+Reference = R25;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDE25
+Path = /56A85A87
+Reference = R29;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDE2B
+Path = /5696DE58
+Reference = R30;
+ValeurCmp = 10k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDE31
+Path = /5696DFE8
+Reference = R31;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDE37
+Path = /5696E0B0
+Reference = R32;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDE3D
+Path = /5696E178
+Reference = R33;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDE43
+Path = /56A85CE9
+Reference = R34;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDE49
+Path = /56A85CEF
+Reference = R35;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDE4F
+Path = /56A85CF5
+Reference = R36;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDE55
+Path = /5696E240
+Reference = R37;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDE5B
+Path = /5696DF20
+Reference = R38;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A78DD0
+Path = /5696D1D8
+Reference = R4;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A78DD6
+Path = /5696D2A0
+Reference = R5;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A78DE2
+Path = /56A8627D
+Reference = R15;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A78DE8
+Path = /56A86283
+Reference = R16;
+ValeurCmp = 1k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F98B
+Path = /5696D430
+Reference = R7;
+ValeurCmp = 3k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A71D41
+Path = /5696D4F8
+Reference = R8;
+ValeurCmp = 3k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDE1F
+Path = /5696DD90
+Reference = R28;
+ValeurCmp = 3k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDE19
+Path = /5696DCC8
+Reference = R27;
+ValeurCmp = 3k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDE13
+Path = /5696DC00
+Reference = R26;
+ValeurCmp = 3k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A78DDC
+Path = /5696D368
+Reference = R6;
+ValeurCmp = 3k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A78DEE
+Path = /5696D8E0
+Reference = R17;
+ValeurCmp = 10k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 576FDDEF
+Path = /5696C42C
+Reference = IC3;
+ValeurCmp = MEGA8-P;
+IdModule  = NixieClockModule:328P_DIL28;
+EndCmp
+
+BeginCmp
+TimeStamp = 56ABA0C1
+Path = /5696C940
+Reference = OK1;
+ValeurCmp = EL817C;
+IdModule  = NixieClockModule:optocoupler-DIL04;
+EndCmp
+
+BeginCmp
+TimeStamp = 56ABA0C9
+Path = /5696C878
+Reference = OK2;
+ValeurCmp = EL817C;
+IdModule  = NixieClockModule:optocoupler-DIL04;
+EndCmp
+
+BeginCmp
+TimeStamp = 56ABA0D1
+Path = /5696C7B0
+Reference = OK3;
+ValeurCmp = EL817C;
+IdModule  = NixieClockModule:optocoupler-DIL04;
+EndCmp
+
+BeginCmp
+TimeStamp = 56ABA0D9
+Path = /5696CB98
+Reference = OK4;
+ValeurCmp = EL817C;
+IdModule  = NixieClockModule:optocoupler-DIL04;
+EndCmp
+
+BeginCmp
+TimeStamp = 56ABA0E1
+Path = /5696CAD0
+Reference = OK5;
+ValeurCmp = EL817C;
+IdModule  = NixieClockModule:optocoupler-DIL04;
+EndCmp
+
+BeginCmp
+TimeStamp = 56ABA0E9
+Path = /5696CA08
+Reference = OK6;
+ValeurCmp = EL817C;
+IdModule  = NixieClockModule:optocoupler-DIL04;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F9A3
+Path = /5696D5C0
+Reference = R10;
+ValeurCmp = 3k;
+IdModule  = NixieClockModule:R-0207_2V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2FA3D
+Path = /5696E3D0
+Reference = SV2;
+ValeurCmp = CONN_FRONT;
+IdModule  = NixieClockModule:Header_MA04-1;
+EndCmp
+
+BeginCmp
+TimeStamp = 56AE4065
+Path = /5696E560
+Reference = SV3;
+ValeurCmp = CONN_RTC;
+IdModule  = NixieClockModule:Header_MA04-1;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2FA24
+Path = /5696E308
+Reference = SV1;
+ValeurCmp = PWR;
+IdModule  = NixieClockModule:Header_MA04-1;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F917
+Path = /5696CDF0
+Reference = Q3;
+ValeurCmp = 2N7000;
+IdModule  = NixieClockModule:2N7000_TO92;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F92B
+Path = /5696CEB8
+Reference = Q4;
+ValeurCmp = 2N7000;
+IdModule  = NixieClockModule:2N7000_TO92;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F93F
+Path = /5696CF80
+Reference = Q5;
+ValeurCmp = 2N7000;
+IdModule  = NixieClockModule:2N7000_TO92;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F953
+Path = /5696D048
+Reference = Q6;
+ValeurCmp = 2N7000;
+IdModule  = NixieClockModule:2N7000_TO92;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F734
+Path = /5696BBF8
+Reference = C7;
+ValeurCmp = 100nF;
+IdModule  = NixieClockModule:rcl-C050-024X044;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F6D5
+Path = /5696B8D8
+Reference = C2;
+ValeurCmp = 100nF;
+IdModule  = NixieClockModule:rcl-C050-024X044;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F740
+Path = /5696BCC0
+Reference = C8;
+ValeurCmp = 100nF;
+IdModule  = NixieClockModule:rcl-C050-024X044;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F728
+Path = /5696BB30
+Reference = C6;
+ValeurCmp = 22pF;
+IdModule  = NixieClockModule:rcl-C050-024X044;
+EndCmp
+
+BeginCmp
+TimeStamp = 5777FC57
+Path = /5777FB44
+Reference = P1;
+ValeurCmp = CONN_01X03;
+IdModule  = NixieClockModule:Header_MA03-1;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F849
+Path = /5696C6E8
+Reference = LED1;
+ValeurCmp = Power;
+IdModule  = NixieClockModule:LED_3MM;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F830
+Path = /5696C620
+Reference = L1;
+ValeurCmp = 100uH;
+IdModule  = NixieClockModule:Inductor-100mH;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F7E9
+Path = /5696C364
+Reference = IC1;
+ValeurCmp = 7805;
+IdModule  = NixieClockModule:7805_TO220V;
+EndCmp
+
+BeginCmp
+TimeStamp = 56A2F8CA
+Path = /5696CC60
+Reference = Q1;
+ValeurCmp = IRF740;
+IdModule  = NixieClockModule:TRANSISTOR-POWER_TO220BV;
+EndCmp
+
+BeginCmp
+TimeStamp = 569E1B95
+Path = /569E1E43
+Reference = N2;
+ValeurCmp = IN-14;
+IdModule  = NixieClockModule:IN-14;
+EndCmp
+
+BeginCmp
+TimeStamp = 569E1BCE
+Path = /569F6870
+Reference = N5;
+ValeurCmp = IN-14;
+IdModule  = NixieClockModule:IN-14;
+EndCmp
+
+BeginCmp
+TimeStamp = 569E1BBB
+Path = /569FE77E
+Reference = N4;
+ValeurCmp = IN-14;
+IdModule  = NixieClockModule:IN-14;
+EndCmp
+
+BeginCmp
+TimeStamp = 569E1BA8
+Path = /569E03D5
+Reference = N3;
+ValeurCmp = IN-14;
+IdModule  = NixieClockModule:IN-14;
+EndCmp
+
+BeginCmp
+TimeStamp = 569E1BE1
+Path = /569E37B1
+Reference = N6;
+ValeurCmp = IN-14;
+IdModule  = NixieClockModule:IN-14;
+EndCmp
+
+BeginCmp
+TimeStamp = 569E1B82
+Path = /569E3B17
+Reference = N1;
+ValeurCmp = IN-14;
+IdModule  = NixieClockModule:IN-14;
+EndCmp
+
+BeginCmp
+TimeStamp = 578C8C46
+Path = /578C8834
+Reference = CON1;
+ValeurCmp = BARREL_JACK;
+IdModule  = Connect:BARREL_JACK;
+EndCmp
+
+BeginCmp
+TimeStamp = 56AE4304
+Path = /56ACCD86
+Reference = LED2;
+ValeurCmp = LED_RAGB;
+IdModule  = NixieClockModule:LED5_RGB_CA_Offset;
+EndCmp
+
+BeginCmp
+TimeStamp = 56AE4037
+Path = /56ACD8D7
+Reference = LED3;
+ValeurCmp = LED_RAGB;
+IdModule  = NixieClockModule:LED5_RGB_CA_Offset;
+EndCmp
+
+BeginCmp
+TimeStamp = 56AE403F
+Path = /56ACD9FC
+Reference = LED4;
+ValeurCmp = LED_RAGB;
+IdModule  = NixieClockModule:LED5_RGB_CA_Offset;
+EndCmp
+
+BeginCmp
+TimeStamp = 56AE4047
+Path = /56ACDB38
+Reference = LED5;
+ValeurCmp = LED_RAGB;
+IdModule  = NixieClockModule:LED5_RGB_CA_Offset;
+EndCmp
+
+BeginCmp
+TimeStamp = 56AE404F
+Path = /56ACDC6F
+Reference = LED6;
+ValeurCmp = LED_RAGB;
+IdModule  = NixieClockModule:LED5_RGB_CA_Offset;
+EndCmp
+
+BeginCmp
+TimeStamp = 56AE4057
+Path = /56ACDD9B
+Reference = LED7;
+ValeurCmp = LED_RAGB;
+IdModule  = NixieClockModule:LED5_RGB_CA_Offset;
+EndCmp
+
+EndListe
