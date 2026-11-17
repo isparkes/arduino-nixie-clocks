@@ -1,3 +1,5 @@
 (sym_lib_table
-  (lib (name AllInOneIN142-rescue)(type Legacy)(uri ${KIPRJMOD}/AllInOneIN142-rescue.lib)(options "")(descr ""))
+	(version 7)
+	(lib (name "AllInOneIN142-rescue") (type "Legacy") (uri "${KIPRJMOD}/AllInOneIN142-rescue.lib") (options "") (descr ""))
+	(lib (name "NixieClockMaster") (type "KiCad") (uri "${KI_GLOW_CUSTOM}/libraries/NixieClockMaster.kicad_sym") (options "") (descr ""))
 )

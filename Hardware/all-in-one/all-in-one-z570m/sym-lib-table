@@ -1,5 +1,7 @@
 (sym_lib_table
-  (lib (name AllInOneIN142-rescue)(type Legacy)(uri ${KIPRJMOD}/AllInOneIN142-rescue.lib)(options "")(descr ""))
-  (lib (name AllInOneZ570M-rescue)(type Legacy)(uri ${KIPRJMOD}/AllInOneZ570M-rescue.lib)(options "")(descr ""))
-  (lib (name Z570M)(type Legacy)(uri ${KIPRJMOD}/Z570M.lib)(options "")(descr ""))
+	(version 7)
+	(lib (name "AllInOneZ570M-rescue") (type "Legacy") (uri "${KIPRJMOD}/AllInOneZ570M-rescue.lib") (options "") (descr ""))
+	(lib (name "Z570M") (type "Legacy") (uri "${KIPRJMOD}/Z570M.lib") (options "") (descr ""))
+	(lib (name "AllInOneZ570M-cache") (type "Legacy") (uri "/Users/iansparkes/Data/Projects/Clocks/Software/nixiefirmwarev2/Hardware/all-in-one/all-in-one-z570m/AllInOneZ570M-cache.lib") (options "") (descr "Legacy project cache library"))
+	(lib (name "NixieClockMaster") (type "KiCad") (uri "${KI_GLOW_CUSTOM}/libraries/NixieClockMaster.kicad_sym") (options "") (descr ""))
 )

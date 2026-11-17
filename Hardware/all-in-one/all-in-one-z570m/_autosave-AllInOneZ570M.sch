@@ -1,0 +1,24666 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "7058a6b4-d35c-4b98-a651-418ba6f7f863")
+	(paper "A2")
+	(title_block
+		(title "All-In-One Nixie Clock")
+		(date "2019-04-23")
+		(rev "Rev 004")
+		(company "Ian Sparkes Nixie Clocks")
+		(comment 1 "Copyright 2016-2019")
+		(comment 2 "Ian Sparkes")
+		(comment 3 "Subject to license")
+		(comment 4 "NOT public domain")
+	)
+	(lib_symbols
+		(symbol "AllInOneZ570M-rescue:74XX-US_74141N-AllInOneIN142-rescue"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "IC"
+				(at -7.62 13.335 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "74XX-US_74141N-AllInOneIN142-rescue"
+				(at -7.62 -17.78 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Footprint" "74XX-US_DIL16"
+				(at 0.762 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 0.508 0.508)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*74XX-US_DIL16*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "74XX-US_74141N-AllInOneIN142-rescue_1_0"
+				(polyline
+					(pts
+						(xy -7.62 12.7) (xy -7.62 -15.24)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -7.62 -15.24) (xy 7.62 -15.24)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.62 12.7) (xy -7.62 12.7)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.62 -15.24) (xy 7.62 12.7)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "74XX-US_74141N-AllInOneIN142-rescue_1_1"
+				(pin open_collector inverted
+					(at 12.7 -10.16 180)
+					(length 5.08)
+					(name "8"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin open_collector inverted
+					(at 12.7 -12.7 180)
+					(length 5.08)
+					(name "9"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 2.54 0)
+					(length 5.08)
+					(name "A"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 -5.08 0)
+					(length 5.08)
+					(name "D"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 0 0)
+					(length 5.08)
+					(name "B"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 -2.54 0)
+					(length 5.08)
+					(name "C"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin open_collector inverted
+					(at 12.7 5.08 180)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin open_collector inverted
+					(at 12.7 2.54 180)
+					(length 5.08)
+					(name "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin open_collector inverted
+					(at 12.7 -7.62 180)
+					(length 5.08)
+					(name "7"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin open_collector inverted
+					(at 12.7 -5.08 180)
+					(length 5.08)
+					(name "6"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin open_collector inverted
+					(at 12.7 0 180)
+					(length 5.08)
+					(name "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin open_collector inverted
+					(at 12.7 -2.54 180)
+					(length 5.08)
+					(name "5"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin open_collector inverted
+					(at 12.7 7.62 180)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "15"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin open_collector inverted
+					(at 12.7 10.16 180)
+					(length 5.08)
+					(name "0"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "16"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(symbol "74XX-US_74141N-AllInOneIN142-rescue_2_0"
+				(text "VCC"
+					(at 1.27 6.985 900)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(text "GND"
+					(at 1.27 -5.715 900)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(symbol "74XX-US_74141N-AllInOneIN142-rescue_2_1"
+				(pin power_in line
+					(at 0 10.16 270)
+					(length 7.62)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -10.16 90)
+					(length 7.62)
+					(name "GND"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "AllInOneZ570M-rescue:ARDUNIX6_MA04-1-AllInOneIN142-rescue"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "SV"
+				(at -1.27 5.842 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "ARDUNIX6_MA04-1-AllInOneIN142-rescue"
+				(at -1.27 -10.16 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Footprint" "ARDUNIX6_MA04-1"
+				(at 0.762 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 0.508 0.508)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*ARDUNIX6_MA04-1*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "ARDUNIX6_MA04-1-AllInOneIN142-rescue_1_0"
+				(polyline
+					(pts
+						(xy -1.27 5.08) (xy -1.27 -7.62)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 5.08) (xy 3.81 5.08)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 2.54) (xy 2.54 2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy 2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -2.54) (xy 2.54 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -5.08) (xy 2.54 -5.08)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 -7.62) (xy -1.27 -7.62)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 -7.62) (xy 3.81 5.08)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "ARDUNIX6_MA04-1-AllInOneIN142-rescue_1_1"
+				(pin passive line
+					(at 7.62 -5.08 180)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 -2.54 180)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 0 180)
+					(length 5.08)
+					(name "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 2.54 180)
+					(length 5.08)
+					(name "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "AllInOneZ570M-rescue:ATMEL_MEGA8-P-AllInOneIN142-rescue"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "IC"
+				(at -17.78 -35.56 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "ATMEL_MEGA8-P-AllInOneIN142-rescue"
+				(at -17.78 31.75 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Footprint" "ATMEL_DIL28-3"
+				(at 0.762 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 0.508 0.508)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*ATMEL_DIL28-3*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "ATMEL_MEGA8-P-AllInOneIN142-rescue_1_0"
+				(polyline
+					(pts
+						(xy -17.78 30.48) (xy 20.32 30.48)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -17.78 -33.02) (xy -17.78 30.48)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 20.32 30.48) (xy 20.32 -33.02)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 20.32 -33.02) (xy -17.78 -33.02)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "ATMEL_MEGA8-P-AllInOneIN142-rescue_1_1"
+				(pin bidirectional inverted
+					(at -22.86 27.94 0)
+					(length 5.08)
+					(name "PC6(/RESET)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 5.08 180)
+					(length 5.08)
+					(name "PD0(RXD)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 2.54 180)
+					(length 5.08)
+					(name "PD1(TXD)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 0 180)
+					(length 5.08)
+					(name "PD2(INT0)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 -2.54 180)
+					(length 5.08)
+					(name "PD3(INT1)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 -5.08 180)
+					(length 5.08)
+					(name "PD4(XCK/T0)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -22.86 -7.62 0)
+					(length 5.08)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -22.86 -2.54 0)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -22.86 10.16 0)
+					(length 5.08)
+					(name "PB6(XTAL1/TOSC1)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -22.86 5.08 0)
+					(length 5.08)
+					(name "PB7(XTAL2/TOSC2)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 -7.62 180)
+					(length 5.08)
+					(name "PD5(T1)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 -10.16 180)
+					(length 5.08)
+					(name "PD6(AIN0)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 -12.7 180)
+					(length 5.08)
+					(name "PD7(AIN1)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 -17.78 180)
+					(length 5.08)
+					(name "PB0(ICP)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 -20.32 180)
+					(length 5.08)
+					(name "PB1(OC1A)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "15"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 -22.86 180)
+					(length 5.08)
+					(name "PB2(SS/OC1B)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "16"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 -25.4 180)
+					(length 5.08)
+					(name "PB3(MOSI/OC2)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "17"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 -27.94 180)
+					(length 5.08)
+					(name "PB4(MISO)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "18"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 -30.48 180)
+					(length 5.08)
+					(name "PB5(SCK)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "19"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -22.86 17.78 0)
+					(length 5.08)
+					(name "AVCC"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "20"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -22.86 20.32 0)
+					(length 5.08)
+					(name "AREF"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "21"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -22.86 22.86 0)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "22"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 27.94 180)
+					(length 5.08)
+					(name "PC0(ADC0)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "23"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 25.4 180)
+					(length 5.08)
+					(name "PC1(ADC1)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "24"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 22.86 180)
+					(length 5.08)
+					(name "PC2(ADC2)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "25"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 20.32 180)
+					(length 5.08)
+					(name "PC3(ADC3)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "26"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 17.78 180)
+					(length 5.08)
+					(name "PC4(ADC4/SDA)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "27"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 25.4 15.24 180)
+					(length 5.08)
+					(name "PC5(ADC5/SCL)"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "28"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "AllInOneZ570M-rescue:BARREL_JACK-AllInOneIN142-rescue"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "CON"
+				(at 0 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "BARREL_JACK-AllInOneIN142-rescue"
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "BARREL_JACK-AllInOneIN142-rescue_0_1"
+				(arc
+					(start -8.89 2.54)
+					(mid -8.5271 3.4546)
+					(end -7.62 3.81)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -7.62 1.27)
+					(mid -8.5088 1.6434)
+					(end -8.89 2.54)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -7.62 1.27) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 3.81) (xy -7.62 3.81)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 2.54 3.81)
+					(end 0 1.27)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 0) (xy -1.27 0) (xy -1.27 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy -3.81 -2.54) (xy -5.08 -1.27) (xy -6.35 -2.54) (xy -8.89 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "BARREL_JACK-AllInOneIN142-rescue_1_1"
+				(pin passive line
+					(at 7.62 2.54 180)
+					(length 5.08)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 -2.54 180)
+					(length 5.08)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 0 180)
+					(length 5.08)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "AllInOneZ570M-rescue:CP-AllInOneIN142-rescue"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "CP-AllInOneIN142-rescue"
+				(at 0.635 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0.9652 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CP_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "CP-AllInOneIN142-rescue_0_1"
+				(rectangle
+					(start -2.286 0.508)
+					(end -2.286 1.016)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -2.286 0.508)
+					(end 2.286 0.508)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 2.286) (xy -0.762 2.286)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 2.794) (xy -1.27 1.778)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 2.286 1.016)
+					(end -2.286 1.016)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 2.286 1.016)
+					(end 2.286 0.508)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 2.286 -0.508)
+					(end -2.286 -1.016)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "CP-AllInOneIN142-rescue_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "AllInOneZ570M-rescue:CRYSTAL_CRYSTALHC49S-AllInOneIN142-rescue"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "Q"
+				(at 2.54 1.016 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "CRYSTAL_CRYSTALHC49S-AllInOneIN142-rescue"
+				(at 2.54 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Footprint" "CRYSTAL_HC49/S"
+				(at 0.762 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 0.508 0.508)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*CRYSTAL_HC49/S*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "CRYSTAL_CRYSTALHC49S-AllInOneIN142-rescue_1_0"
+				(polyline
+					(pts
+						(xy -2.54 0) (xy -1.016 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 1.778) (xy -1.016 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.381 1.524) (xy -0.381 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.381 -1.524) (xy 0.381 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.381 1.524) (xy -0.381 1.524)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.381 -1.524) (xy 0.381 1.524)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 1.778) (xy 1.016 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 0) (xy 2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "1"
+					(at -1.7272 -0.7112 0)
+					(effects
+						(font
+							(size 0.8636 0.8636)
+						)
+					)
+				)
+				(text "2"
+					(at 1.9558 -0.7112 0)
+					(effects
+						(font
+							(size 0.8636 0.8636)
+						)
+					)
+				)
+			)
+			(symbol "CRYSTAL_CRYSTALHC49S-AllInOneIN142-rescue_1_1"
+				(pin passive line
+					(at -2.54 0 0)
+					(length 0)
+					(name "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 0 180)
+					(length 0)
+					(name "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "AllInOneZ570M-rescue:C_Small-AllInOneIN142-rescue"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 0.254 1.778 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C_Small-AllInOneIN142-rescue"
+				(at 0.254 -2.032 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "C_Small-AllInOneIN142-rescue_0_1"
+				(polyline
+					(pts
+						(xy -1.524 0.508) (xy 1.524 0.508)
+					)
+					(stroke
+						(width 0.3048)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.524 -0.508) (xy 1.524 -0.508)
+					)
+					(stroke
+						(width 0.3302)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_Small-AllInOneIN142-rescue_1_1"
+				(pin passive line
+					(at 0 2.54 270)
+					(length 2.032)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 90)
+					(length 2.032)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "AllInOneZ570M-rescue:D-RESCUE-KickstarterNixie-AllInOneIN142-rescue"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "D-RESCUE-KickstarterNixie-AllInOneIN142-rescue"
+				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Diode_* D-Pak_TO252AA *SingleDiode *_Diode_* *SingleDiode*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "D-RESCUE-KickstarterNixie-AllInOneIN142-rescue_0_1"
+				(polyline
+					(pts
+						(xy -1.27 1.27) (xy -1.27 -1.27)
+					)
+					(stroke
+						(width 0.1524)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "D-RESCUE-KickstarterNixie-AllInOneIN142-rescue_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "AllInOneZ570M-rescue:ESP8266-01_02X04-AllInOneIN142-rescue"
+			(pin_names
+				(offset 0.0254)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "P"
+				(at 0 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "ESP8266-01_02X04-AllInOneIN142-rescue"
+				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 -30.48 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 -30.48 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Pin_Header_Straight_2X04 Pin_Header_Angled_2X04 Socket_Strip_Straight_2X04 Socket_Strip_Angled_2X04"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "ESP8266-01_02X04-AllInOneIN142-rescue_0_1"
+				(rectangle
+					(start -2.54 5.08)
+					(end 2.54 -5.08)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -2.54 3.937)
+					(end -1.27 3.683)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -2.54 1.397)
+					(end -1.27 1.143)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -2.54 -1.143)
+					(end -1.27 -1.397)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -2.54 -3.683)
+					(end -1.27 -3.937)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 1.27 3.937)
+					(end 2.54 3.683)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 1.27 1.397)
+					(end 2.54 1.143)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 1.27 -1.143)
+					(end 2.54 -1.397)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 1.27 -3.683)
+					(end 2.54 -3.937)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "ESP8266-01_02X04-AllInOneIN142-rescue_1_1"
+				(pin power_in line
+					(at -6.35 3.81 0)
+					(length 3.81)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 6.35 3.81 180)
+					(length 3.81)
+					(name "TXD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin tri_state line
+					(at -6.35 1.27 0)
+					(length 3.81)
+					(name "GPIO2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 6.35 1.27 180)
+					(length 3.81)
+					(name "CH_EN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin tri_state line
+					(at -6.35 -1.27 0)
+					(length 3.81)
+					(name "GPIO0"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 6.35 -1.27 180)
+					(length 3.81)
+					(name "RST"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -6.35 -3.81 0)
+					(length 3.81)
+					(name "RXD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 6.35 -3.81 180)
+					(length 3.81)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "AllInOneZ570M-rescue:FRAMES_FRAME_A_L-AllInOneIN142-rescue"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#FRAME"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "FRAMES_FRAME_A_L-AllInOneIN142-rescue"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "FRAMES_FRAME_A_L-AllInOneIN142-rescue_2_0"
+				(polyline
+					(pts
+						(xy 0 22.86) (xy 0 35.56)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 22.86) (xy 101.6 22.86)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 15.24) (xy 0 22.86)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 5.08) (xy 0 15.24)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 5.08) (xy 71.12 5.08)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 5.08)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 71.12 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 71.12 5.08) (xy 71.12 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 71.12 5.08) (xy 87.63 5.08)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 71.12 0) (xy 101.6 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 87.63 15.24) (xy 0 15.24)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 87.63 15.24) (xy 87.63 5.08)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 87.63 5.08) (xy 101.6 5.08)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 101.6 35.56) (xy 0 35.56)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 101.6 35.56) (xy 101.6 22.86)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 101.6 22.86) (xy 101.6 15.24)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 101.6 15.24) (xy 87.63 15.24)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 101.6 15.24) (xy 101.6 5.08)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 101.6 5.08) (xy 101.6 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "Date:"
+					(at 7.62 2.54 0)
+					(effects
+						(font
+							(size 2.54 2.54)
+						)
+					)
+				)
+				(text "TITLE:"
+					(at 8.89 20.32 0)
+					(effects
+						(font
+							(size 2.54 2.54)
+						)
+					)
+				)
+				(text "Document Number:"
+					(at 21.59 12.7 0)
+					(effects
+						(font
+							(size 2.54 2.54)
+						)
+					)
+				)
+				(text ">LAST_DATE_TIME"
+					(at 31.75 2.54 0)
+					(effects
+						(font
+							(size 2.54 2.54)
+						)
+					)
+				)
+				(text ">DRAWING_NAME"
+					(at 34.29 20.32 0)
+					(effects
+						(font
+							(size 2.54 2.54)
+						)
+					)
+				)
+				(text "Sheet:"
+					(at 80.01 2.54 0)
+					(effects
+						(font
+							(size 2.54 2.54)
+						)
+					)
+				)
+				(text "REV:"
+					(at 93.98 12.7 0)
+					(effects
+						(font
+							(size 2.54 2.54)
+						)
+					)
+				)
+				(text ">SHEET"
+					(at 93.98 2.54 0)
+					(effects
+						(font
+							(size 2.54 2.54)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "AllInOneZ570M-rescue:LED-AllInOneIN142-rescue"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LED-AllInOneIN142-rescue"
+				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "LED*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "LED-AllInOneIN142-rescue_0_1"
+				(polyline
+					(pts
+						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "LED-AllInOneIN142-rescue_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "AllInOneZ570M-rescue:LED_LED3MM-AllInOneIN142-rescue"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "LED"
+				(at 2.667 -4.572 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "LED_LED3MM-AllInOneIN142-rescue"
+				(at 4.826 -4.572 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Footprint" "LED_LED3MM"
+				(at 0.762 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 0.508 0.508)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*LED_LED3MM* *LED_LED5MM* *LED_LED10MM* *LED_Q62902-B152* *LED_Q62902-B153* *LED_Q62902-B155* *LED_Q62902-B156* *LED_IRL80A* *LED_LD260* *LED_LSU260* *LED_LZR181* *LED_SFH480* *LED_SFH482* *LED_LED2X5* *LED_U57X32*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "LED_LED3MM-AllInOneIN142-rescue_1_0"
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy -3.429 -2.159)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.905 -1.905) (xy -3.302 -3.302)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.54) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.54) (xy -1.27 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy 0 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -2.54) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "LED_LED3MM-AllInOneIN142-rescue_1_1"
+				(polyline
+					(pts
+						(xy -3.429 -2.159) (xy -3.048 -1.27) (xy -3.048 -1.27) (xy -2.54 -1.778) (xy -2.54 -1.778) (xy -3.429 -2.159)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.302 -3.302) (xy -2.921 -2.413) (xy -2.921 -2.413) (xy -2.413 -2.921) (xy -2.413 -2.921)
+						(xy -3.302 -3.302)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(pin passive line
+					(at 0 2.54 270)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "A"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "C"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "K"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "AllInOneZ570M-rescue:LEDs2_RAGB-AllInOneIN142-rescue"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "LED"
+				(at -3.302 6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Value" "LEDs2_RAGB-AllInOneIN142-rescue"
+				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "LEDs2_RAGB-AllInOneIN142-rescue_0_1"
+				(rectangle
+					(start -2.54 0.254)
+					(end -2.032 -0.254)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 5.08) (xy -1.27 2.54) (xy 1.27 3.81) (xy -1.27 5.08)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 3.81) (xy -2.286 3.81) (xy -2.286 -3.81) (xy -1.27 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 1.27) (xy -1.27 -1.27) (xy 1.27 0) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy -5.08 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -2.54) (xy -1.27 -5.08) (xy 1.27 -3.81) (xy -1.27 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 5.08) (xy 1.27 2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.27) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -2.54) (xy 1.27 -5.08)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 5.08) (xy 3.175 6.35) (xy 3.175 5.715)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 1.27) (xy 3.175 2.54) (xy 3.175 1.905) (xy 3.175 1.905)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 -2.54) (xy 3.175 -1.27) (xy 3.175 -1.905)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 6.35) (xy 3.175 6.35)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 3.175 2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -1.27) (xy 3.175 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.175 5.08) (xy 4.445 6.35) (xy 4.445 5.715)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.175 1.27) (xy 4.445 2.54) (xy 4.445 1.905)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.175 -2.54) (xy 4.445 -1.27) (xy 4.445 -1.905)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 6.35) (xy 4.445 6.35)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 2.54) (xy 4.445 2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 -1.27) (xy 4.445 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "LEDs2_RAGB-AllInOneIN142-rescue_1_1"
+				(pin passive line
+					(at 6.35 3.81 180)
+					(length 5.08)
+					(name "R"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -6.35 0 0)
+					(length 1.27)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 6.35 0 180)
+					(length 5.08)
+					(name "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 6.35 -3.81 180)
+					(length 5.08)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "AllInOneZ570M-rescue:LINEAR_7805TV-AllInOneIN142-rescue"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "IC"
+				(at -7.62 5.715 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "LINEAR_7805TV-AllInOneIN142-rescue"
+				(at -7.62 3.175 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Footprint" "LINEAR_TO220V"
+				(at 0.762 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 0.508 0.508)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*LINEAR_TO220V*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "LINEAR_7805TV-AllInOneIN142-rescue_1_0"
+				(polyline
+					(pts
+						(xy -7.62 2.54) (xy -7.62 -5.08)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -7.62 -5.08) (xy 7.62 -5.08)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.62 2.54) (xy -7.62 2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.62 -5.08) (xy 7.62 2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "GND"
+					(at 0.254 -3.556 0)
+					(effects
+						(font
+							(size 1.524 1.524)
+						)
+					)
+				)
+			)
+			(symbol "LINEAR_7805TV-AllInOneIN142-rescue_1_1"
+				(pin input line
+					(at -10.16 0 0)
+					(length 2.54)
+					(name "VI"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -7.62 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 0 180)
+					(length 2.54)
+					(name "VO"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "AllInOneZ570M-rescue:PC817-AllInOneIN142-rescue"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at -5.08 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "PC817-AllInOneIN142-rescue"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Housings_DIP:DIP-4_W7.62mm"
+				(at -5.08 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(justify left)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "DIP*W7.62mm*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "PC817-AllInOneIN142-rescue_0_1"
+				(rectangle
+					(start -5.08 3.81)
+					(end 5.08 -3.81)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.08 2.54) (xy -2.54 2.54) (xy -2.54 0.635)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.175 -0.635) (xy -1.905 -0.635)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 -0.635) (xy -2.54 -2.54) (xy -5.08 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 -0.635) (xy -3.175 0.635) (xy -1.905 0.635) (xy -2.54 -0.635)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.508 0.508) (xy 0.762 0.508) (xy 0.381 0.381) (xy 0.381 0.635) (xy 0.762 0.508)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.508 -0.508) (xy 0.762 -0.508) (xy 0.381 -0.635) (xy 0.381 -0.381) (xy 0.762 -0.508)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 1.905) (xy 2.54 -1.905) (xy 2.54 -1.905)
+					)
+					(stroke
+						(width 0.508)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 0.635) (xy 4.445 2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.048 -1.651) (xy 3.556 -1.143) (xy 4.064 -2.159) (xy 3.048 -1.651) (xy 3.048 -1.651)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.445 2.54) (xy 5.08 2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.445 -2.54) (xy 2.54 -0.635)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.445 -2.54) (xy 5.08 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "PC817-AllInOneIN142-rescue_1_1"
+				(pin passive line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 -2.54 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 2.54 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "AllInOneZ570M-rescue:R-AllInOneIN142-rescue"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R-AllInOneIN142-rescue"
+				(at 0 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.778 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R_* R_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "R-AllInOneIN142-rescue_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R-AllInOneIN142-rescue_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "AllInOneZ570M-rescue:RCL_C-EU050-024X044-AllInOneIN142-rescue"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 1.524 0.381 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "RCL_C-EU050-024X044-AllInOneIN142-rescue"
+				(at 1.524 -4.699 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Footprint" "RCL_C050-024X044"
+				(at 0.762 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 0.508 0.508)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*RCL_C050-024X044*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "RCL_C-EU050-024X044-AllInOneIN142-rescue_1_0"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -0.508)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.54) (xy 0 -2.032)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "RCL_C-EU050-024X044-AllInOneIN142-rescue_1_1"
+				(rectangle
+					(start -2.032 -1.016)
+					(end 2.032 -0.508)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start -2.032 -2.032)
+					(end 2.032 -1.524)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(pin passive line
+					(at 0 2.54 270)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "AllInOneZ570M-rescue:RCL_L-US6000-XXX-RC-AllInOneIN142-rescue"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "L"
+				(at -2.159 -5.08 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "RCL_L-US6000-XXX-RC-AllInOneIN142-rescue"
+				(at 2.921 -5.08 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Footprint" "RCL_6000-XXXX-RC"
+				(at 0.762 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 0.508 0.508)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*RCL_6000-XXXX-RC*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "RCL_L-US6000-XXX-RC-AllInOneIN142-rescue_1_1"
+				(arc
+					(start 0 5.08)
+					(mid 0.898 4.708)
+					(end 1.27 3.81)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 1.27 3.81)
+					(mid 0.898 2.912)
+					(end 0 2.54)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 2.54)
+					(mid 0.898 2.168)
+					(end 1.27 1.27)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 1.27 1.27)
+					(mid 0.898 0.372)
+					(end 0 0)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 0)
+					(mid 0.898 -0.372)
+					(end 1.27 -1.27)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 1.27 -1.27)
+					(mid 0.898 -2.168)
+					(end 0 -2.54)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -2.54)
+					(mid 0.898 -2.912)
+					(end 1.27 -3.81)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 1.27 -3.81)
+					(mid 0.898 -4.708)
+					(end 0 -5.08)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 7.62 270)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -7.62 90)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at -3.81 1.4986 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "RCL_R-EU_0207_2V-AllInOneIN142-rescue"
+				(at -3.81 -3.302 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Footprint" "RCL_0207/2V"
+				(at 0.762 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 0.508 0.508)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*RCL_0207/2V*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "RCL_R-EU_0207_2V-AllInOneIN142-rescue_1_0"
+				(polyline
+					(pts
+						(xy -2.54 -0.889) (xy -2.54 0.889)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 -0.889) (xy 2.54 -0.889)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 0.889) (xy -2.54 0.889)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -0.889) (xy 2.54 0.889)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "RCL_R-EU_0207_2V-AllInOneIN142-rescue_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "AllInOneZ570M-rescue:TEST_1P-AllInOneIN142-rescue"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.762)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 6.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TEST_1P-AllInOneIN142-rescue"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 5.08 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 5.08 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "TEST_1P-AllInOneIN142-rescue_0_1"
+				(circle
+					(center 0 3.302)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "TEST_1P-AllInOneIN142-rescue_1_1"
+				(pin passive line
+					(at 0 0 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Device:Q_NJFET_SGD"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "Q"
+				(at 5.08 1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "Q_NJFET_SGD"
+				(at 5.08 -1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 5.08 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "N-JFET transistor, source/gate/drain"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "transistor NJFET N-JFET"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Q_NJFET_SGD_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy -1.016 0.381) (xy -1.016 -0.381) (xy 0 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 1.905) (xy 0.254 -1.905) (xy 0.254 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.27 0)
+					(radius 2.8194)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 1.397) (xy 0.254 1.397)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 -1.27) (xy 0.254 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Q_NJFET_SGD_1_1"
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -5.08 0 0)
+					(length 5.334)
+					(name "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Device:Q_NPN_EBC"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "Q"
+				(at 5.08 1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "Device_Q_NPN_EBC"
+				(at 5.08 -1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 5.08 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Q_NPN_EBC_0_1"
+				(polyline
+					(pts
+						(xy 0.635 1.905) (xy 0.635 -1.905) (xy 0.635 -1.905)
+					)
+					(stroke
+						(width 0.508)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 0.635) (xy 2.54 2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 -0.635) (xy 2.54 -2.54) (xy 2.54 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.27 0)
+					(radius 2.8194)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.778) (xy 1.778 -1.27) (xy 2.286 -2.286) (xy 1.27 -1.778) (xy 1.27 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "Q_NPN_EBC_1_1"
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "E"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 5.715)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "C"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Jumper:SolderJumper_3_Open"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "JP"
+				(at -2.54 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SolderJumper_3_Open"
+				(at 0 2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 -15.24 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Solder Jumper, 3-pole, open"
+				(at 0 -12.7 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property private "KLC_S5.1" "This is a generic symbol, it has fp-filter, but no default footprint"
+				(at 0 -17.78 0)
+				(show_name yes)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property private "KLC_S3.3" "Graphical-Symbol: thickness is 6mm, fill is background"
+				(at 0 -20.32 0)
+				(show_name yes)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "Solder Jumper SPDT"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "SolderJumper*Open*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "SolderJumper_3_Open_0_1"
+				(polyline
+					(pts
+						(xy -2.54 0) (xy -2.032 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 1.016) (xy -1.016 -1.016)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -1.016 -1.016)
+					(mid -2.0276 0)
+					(end -1.016 1.016)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start -0.508 1.016)
+					(end 0.508 -1.016)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 0 -1.016)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 1.016 1.016)
+					(mid 2.0276 0)
+					(end 1.016 -1.016)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 1.016) (xy 1.016 -1.016)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 0) (xy 2.032 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SolderJumper_3_Open_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.54)
+					(name "C"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Regulator_Linear:L78L05_TO92"
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at -3.81 3.175 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "L78L05_TO92"
+				(at 0 3.175 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+				(at 0 5.715 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+				)
+			)
+			(property "Datasheet" "http://www.st.com/content/ccc/resource/technical/document/datasheet/15/55/e5/aa/23/5b/43/fd/CD00000446.pdf/files/CD00000446.pdf/jcr:content/translations/en.CD00000446.pdf"
+				(at 0 -1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Positive 100mA 30V Linear Regulator, Fixed Output 5V, TO-92"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "Voltage Regulator 100mA Positive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "TO?92*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "L78L05_TO92_0_1"
+				(rectangle
+					(start -5.08 -5.08)
+					(end 5.08 1.905)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "L78L05_TO92_1_1"
+				(pin power_out line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "VO"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -7.62 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "VI"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Transistor_FET:2N7000"
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "Q"
+				(at 5.08 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "2N7000"
+				(at 5.08 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+				(at 5.08 -1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(justify left)
+				)
+			)
+			(property "Datasheet" "https://www.vishay.com/docs/70226/70226.pdf"
+				(at 5.08 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Description" "0.2A Id, 200V Vds, N-Channel MOSFET, 2.6V Logic Level, TO-92"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "N-Channel MOSFET Logic-Level"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "TO?92*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "2N7000_0_1"
+				(polyline
+					(pts
+						(xy 0.254 1.905) (xy 0.254 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.286) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 0.508) (xy 0.762 -0.508)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.27) (xy 0.762 -2.286)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.778) (xy 3.302 -1.778) (xy 3.302 1.778) (xy 0.762 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 1.651 0)
+					(radius 2.794)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.54 1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 2.54 -1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.794 0.508) (xy 2.921 0.381) (xy 3.683 0.381) (xy 3.81 0.254)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.302 0.381) (xy 2.921 -0.254) (xy 3.683 -0.254) (xy 3.302 0.381)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "2N7000_1_1"
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Transistor_FET:IRF740"
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "Q"
+				(at 5.08 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "IRF740"
+				(at 5.08 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
+				(at 5.08 -1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(justify left)
+				)
+			)
+			(property "Datasheet" "http://www.vishay.com/docs/91054/91054.pdf"
+				(at 5.08 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Description" "10A Id, 400V Vds, N-Channel Power MOSFET, 500mOhm Rds, TO-220AB"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "N Channel"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "TO?220*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "IRF740_0_1"
+				(polyline
+					(pts
+						(xy 0.254 1.905) (xy 0.254 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.286) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 0.508) (xy 0.762 -0.508)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.27) (xy 0.762 -2.286)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.778) (xy 3.302 -1.778) (xy 3.302 1.778) (xy 0.762 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 1.651 0)
+					(radius 2.794)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.54 1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 2.54 -1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.794 0.508) (xy 2.921 0.381) (xy 3.683 0.381) (xy 3.81 0.254)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.302 0.381) (xy 2.921 -0.254) (xy 3.683 -0.254) (xy 3.302 0.381)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "IRF740_1_1"
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Z570M:Z57xM"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "N"
+				(at -3.175 20.955 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "Z57xM"
+				(at -1.27 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Footprint" "Z57xM"
+				(at 1.27 15.24 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Z57xM_1_0"
+				(polyline
+					(pts
+						(xy -5.08 -10.795) (xy -5.08 13.335)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.62 -10.795) (xy 7.62 13.335)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Z57xM_1_1"
+				(arc
+					(start -5.08 13.335)
+					(mid 1.27 19.685)
+					(end 7.62 13.335)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 7.62 -10.795)
+					(mid 1.27 -17.145)
+					(end -5.08 -10.795)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin input line
+					(at -7.62 -10.16 0)
+					(length 2.54)
+					(name "0"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "0"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 12.7 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 10.16 0)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 7.62 0)
+					(length 2.54)
+					(name "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 5.08 0)
+					(length 2.54)
+					(name "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "5"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "6"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "7"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -5.08 0)
+					(length 2.54)
+					(name "8"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -7.62 0)
+					(length 2.54)
+					(name "9"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 10.16 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "A"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 10.16 10.16 180)
+					(length 2.54)
+					(name "N/C"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "N/C"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 10.16 -10.16 180)
+					(length 2.54)
+					(name "RHDP"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "RHDP"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "power:GND"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "GND_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "power:PWR_FLAG"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#FLG"
+				(at 0 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "PWR_FLAG"
+				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Special symbol for telling ERC where power comes from"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "flag power"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_0"
+				(pin power_out line
+					(at 0 0 90)
+					(length 0)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "Seconds"
+		(exclude_from_sim no)
+		(at 530.86 260.35 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "110a747c-0c9d-4967-85bb-20d03d2c48fa")
+	)
+	(text "RGB back lights"
+		(exclude_from_sim no)
+		(at 321.31 27.94 0)
+		(effects
+			(font
+				(size 2.4892 2.4892)
+			)
+			(justify left bottom)
+		)
+		(uuid "1ce5fad4-5422-4cc3-a067-31ec933837c4")
+	)
+	(text "Colons Source\n(For LED or neons)"
+		(exclude_from_sim no)
+		(at 165.1 34.29 0)
+		(effects
+			(font
+				(size 1.778 1.778)
+			)
+			(justify left bottom)
+		)
+		(uuid "2a69fc0b-0f7b-4656-96a4-f8c96001c51e")
+	)
+	(text "Anode Control"
+		(exclude_from_sim no)
+		(at 146.05 195.58 0)
+		(effects
+			(font
+				(size 2.4892 2.4892)
+			)
+			(justify left bottom)
+		)
+		(uuid "3594b0ad-d7b3-4a8f-988c-cbcc12305eac")
+	)
+	(text "Power regulator"
+		(exclude_from_sim no)
+		(at 80.01 316.23 0)
+		(effects
+			(font
+				(size 2.4892 2.4892)
+			)
+			(justify left bottom)
+		)
+		(uuid "4bd20120-8c61-478e-a218-bdf8aa8f2807")
+	)
+	(text "Minutes X 10"
+		(exclude_from_sim no)
+		(at 528.32 135.89 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "5c6590e4-b523-4112-8a8f-ca86c3996b9c")
+	)
+	(text "Connectors"
+		(exclude_from_sim no)
+		(at 521.97 314.96 0)
+		(effects
+			(font
+				(size 2.4892 2.4892)
+			)
+			(justify left bottom)
+		)
+		(uuid "611eec8b-7436-48bb-a1ce-49ac20f84f09")
+	)
+	(text "Seconds x 10"
+		(exclude_from_sim no)
+		(at 530.86 219.71 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "73de4b3b-1f73-458b-b377-a771bf49eac3")
+	)
+	(text "Digit control"
+		(exclude_from_sim no)
+		(at 350.52 243.84 0)
+		(effects
+			(font
+				(size 1.778 1.778)
+			)
+			(justify left bottom)
+		)
+		(uuid "755214d6-448f-4a0c-b3b5-1d9e5cfd4623")
+	)
+	(text "Hours x 10"
+		(exclude_from_sim no)
+		(at 528.32 52.07 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "7718b977-767d-40e8-b875-3c5fcaf5849d")
+	)
+	(text "Hours"
+		(exclude_from_sim no)
+		(at 528.32 93.98 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "8b0bde1d-612b-4519-b78c-f61ac9a6233e")
+	)
+	(text "ESP8266 Regulator and I2C level shifter"
+		(exclude_from_sim no)
+		(at 351.79 313.69 0)
+		(effects
+			(font
+				(size 2.4892 2.4892)
+			)
+			(justify left bottom)
+		)
+		(uuid "a166fd12-f238-40d1-b9d3-8c5763dab2e0")
+	)
+	(text "Controller and LEDs"
+		(exclude_from_sim no)
+		(at 93.98 26.67 0)
+		(effects
+			(font
+				(size 2.4892 2.4892)
+			)
+			(justify left bottom)
+		)
+		(uuid "a54afe7d-02c0-4e42-ae38-842f1e66341e")
+	)
+	(text "Copyright 2016-2020\nIan Sparkes\nThis is NOT public domain"
+		(exclude_from_sim no)
+		(at 327.66 217.17 0)
+		(effects
+			(font
+				(size 5.9944 5.9944)
+				(thickness 1.1989)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "ccd326a3-3e94-4279-a832-146650e5fc18")
+	)
+	(text "Boost Circuit"
+		(exclude_from_sim no)
+		(at 228.6 314.96 0)
+		(effects
+			(font
+				(size 2.4892 2.4892)
+			)
+			(justify left bottom)
+		)
+		(uuid "e5ab2596-ab31-42db-9f4f-8431d5641c60")
+	)
+	(text "Minutes"
+		(exclude_from_sim no)
+		(at 529.59 177.8 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "f81e1d69-5ab1-4509-9fa7-ca0a7049b064")
+	)
+	(text "Cathode Control and Tubes"
+		(exclude_from_sim no)
+		(at 444.5 290.83 0)
+		(effects
+			(font
+				(size 2.4892 2.4892)
+			)
+			(justify left bottom)
+		)
+		(uuid "fbbc439a-dcaa-4f42-941c-32684a883fee")
+	)
+	(junction
+		(at 469.9 214.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "009a965a-09d0-4462-9be0-292b3f526b97")
+	)
+	(junction
+		(at 133.35 372.11)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "010564f3-4130-4f38-b451-3811ded10f57")
+	)
+	(junction
+		(at 492.76 346.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "01ec3b9e-31bf-4b37-b8ee-b9a4aa94f1c6")
+	)
+	(junction
+		(at 474.98 219.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "028a6e57-b0a5-46ce-b719-5bd2ea49493d")
+	)
+	(junction
+		(at 477.52 180.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "039bb576-1e4a-47e3-82e6-8361eb9015d7")
+	)
+	(junction
+		(at 105.41 346.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "064ed98e-f567-47b7-82d7-e2d967c3d73c")
+	)
+	(junction
+		(at 480.06 140.97)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0666a178-fbb2-4fa7-a8c2-6e3d7b6dd262")
+	)
+	(junction
+		(at 242.57 339.09)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0883dfb3-be84-4d1c-91ba-55d253d23cce")
+	)
+	(junction
+		(at 379.73 341.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "08f39c67-1563-40d8-b745-68ccd79d437e")
+	)
+	(junction
+		(at 472.44 257.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "092ea6be-0ab0-4270-aab3-dfc102cf97d3")
+	)
+	(junction
+		(at 426.72 383.54)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0a6fb44c-cc25-4490-92c8-0a1ebad3320c")
+	)
+	(junction
+		(at 464.82 83.82)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0bff4e4f-8e95-467f-9d46-1e0530df7287")
+	)
+	(junction
+		(at 477.52 222.25)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "11f972ee-4ff0-4208-a10a-60d629e84c7b")
+	)
+	(junction
+		(at 80.01 372.11)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "13b1632c-54a6-4edf-bc00-f52ac0d395c6")
+	)
+	(junction
+		(at 133.35 346.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "149172d2-82b7-4156-804c-f78260784675")
+	)
+	(junction
+		(at 331.47 73.66)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "170c4298-27e1-40d4-b8de-969ef423391e")
+	)
+	(junction
+		(at 467.36 252.73)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "188abd5f-4b02-4f93-8a67-52c36e1e1f17")
+	)
+	(junction
+		(at 262.89 339.09)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "18ce4552-0cf5-46a3-bcbd-3a9580e3f862")
+	)
+	(junction
+		(at 123.19 346.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "190ee208-a366-4a9f-8a6d-7732f35c8441")
+	)
+	(junction
+		(at 198.12 104.14)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1c1c5000-6e8f-4876-976d-56565ac1ce00")
+	)
+	(junction
+		(at 469.9 255.27)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1d9da4e4-701f-4b1b-a8d6-cf18bdf87205")
+	)
+	(junction
+		(at 167.64 127)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1e678492-875d-4be6-9ad0-edf7690936b7")
+	)
+	(junction
+		(at 275.59 374.65)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1ebffa58-3b47-4ec3-8ec0-28c3fdb5e4a0")
+	)
+	(junction
+		(at 62.23 93.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "20120616-04dc-4e06-a546-753044a8778a")
+	)
+	(junction
+		(at 477.52 262.89)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2076ba2d-ad2e-4ad0-964d-c6d80eea492f")
+	)
+	(junction
+		(at 199.39 356.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "208e6abf-e191-47da-b92e-1b474c0ee70a")
+	)
+	(junction
+		(at 485.14 187.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2508a59b-7479-4c60-bbef-bd9e4d91a48b")
+	)
+	(junction
+		(at 482.6 227.33)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "254fa0a0-a0d4-4194-b035-781ba585adc8")
+	)
+	(junction
+		(at 474.98 177.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "27b5835f-24a9-4265-9e57-e6fa8f3ff531")
+	)
+	(junction
+		(at 232.41 356.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "27ebd938-0d9e-4290-bb9c-2d6b1a1f6f7d")
+	)
+	(junction
+		(at 464.82 125.73)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "290568e0-6d4f-4a74-a02e-c4b636f6693e")
+	)
+	(junction
+		(at 214.63 339.09)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2b7918c9-ff45-4a71-bc8f-d0f3a298e388")
+	)
+	(junction
+		(at 472.44 175.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2d32fea7-efac-4d08-a4a8-13a1b6682983")
+	)
+	(junction
+		(at 462.28 207.01)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "322ed157-9e9d-4c9d-97bb-f3bcda4820f1")
+	)
+	(junction
+		(at 482.6 101.6)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "33f51d83-b34a-4676-9cd6-47e7bce72edd")
+	)
+	(junction
+		(at 469.9 88.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3576618b-f556-464b-bf31-542a429a8857")
+	)
+	(junction
+		(at 345.44 393.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "36240b05-b4bc-49f4-a76e-c2bfcdcbe3a6")
+	)
+	(junction
+		(at 62.23 73.66)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "36ff909f-0be2-4f58-9fb9-a0df1fb82b2b")
+	)
+	(junction
+		(at 373.38 341.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "37962c8a-af33-4428-991e-dae089d292a4")
+	)
+	(junction
+		(at 214.63 374.65)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3a23bef3-a5d1-4398-a04e-7f02c1a4dfc0")
+	)
+	(junction
+		(at 232.41 374.65)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3d85c0cb-273c-4953-bbf6-ebb8390bd55f")
+	)
+	(junction
+		(at 462.28 123.19)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3e9f59b1-70c0-40cf-822f-8bbd082a54c2")
+	)
+	(junction
+		(at 62.23 91.44)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "45df66dd-a2d7-49f6-b2cd-7dacecef4dcb")
+	)
+	(junction
+		(at 340.36 341.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4a7025e4-63c6-4af0-a005-abb70bc645d9")
+	)
+	(junction
+		(at 482.6 267.97)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4d012197-570e-40b7-a61d-e3399ceab319")
+	)
+	(junction
+		(at 57.15 73.66)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4dcb829e-0a28-4318-9c01-300410bf7685")
+	)
+	(junction
+		(at 480.06 99.06)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "56ac7dc9-cb08-405d-a3a7-df9cdcb7f2db")
+	)
+	(junction
+		(at 397.51 381)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "58994117-0974-425c-8c78-37a16d4b18ed")
+	)
+	(junction
+		(at 80.01 359.41)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5b1fb047-d882-4da3-8f21-f363774ed182")
+	)
+	(junction
+		(at 166.37 101.6)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5b668bcf-2131-4823-a75e-e0a6ba4811ce")
+	)
+	(junction
+		(at 485.14 270.51)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5dcb8e1d-b271-4fec-93ae-c8a484143b55")
+	)
+	(junction
+		(at 467.36 128.27)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "62193ed8-dd95-4b61-8ffd-403d450690a4")
+	)
+	(junction
+		(at 469.9 172.72)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "665adc25-ab10-408d-b945-9acb15015a5e")
+	)
+	(junction
+		(at 474.98 260.35)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "68f2d047-c696-46c5-ba86-c60ff464d94b")
+	)
+	(junction
+		(at 403.86 341.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6d448521-0a92-454d-a291-6681a69f60cb")
+	)
+	(junction
+		(at 355.6 73.66)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6dde0165-6cd1-46c8-8c2e-21d95302d334")
+	)
+	(junction
+		(at 368.3 386.08)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6e584724-f2cf-442b-abf3-5445b54eb5c5")
+	)
+	(junction
+		(at 113.03 346.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7075f5d2-5500-49b8-944b-99df31804dc6")
+	)
+	(junction
+		(at 485.14 104.14)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "759b86a6-bf22-4b56-bdd0-9d8507b3a1f6")
+	)
+	(junction
+		(at 397.51 341.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "76a8b268-fbd6-4247-8750-f578d414b781")
+	)
+	(junction
+		(at 306.07 73.66)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7f33179b-5d22-4dab-af5a-4e042dbb6ab4")
+	)
+	(junction
+		(at 480.06 224.79)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "82e86c7c-69c6-4272-838a-b0c2b8d30608")
+	)
+	(junction
+		(at 74.93 116.84)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8535ff81-bf97-4698-864e-a945c5cb4e1f")
+	)
+	(junction
+		(at 480.06 265.43)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "888733b9-bb69-4c63-b9e5-05d0e0d8e01f")
+	)
+	(junction
+		(at 477.52 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8df84d2a-b738-4390-ac38-e718d931062d")
+	)
+	(junction
+		(at 113.03 372.11)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9113c3c0-d088-426f-8548-2097eb753fbd")
+	)
+	(junction
+		(at 105.41 236.22)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "92187524-9077-4bf7-a1cc-351769fe654e")
+	)
+	(junction
+		(at 462.28 81.28)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "92f17130-b385-4091-805e-81847ae53d1e")
+	)
+	(junction
+		(at 77.47 109.22)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "96a4705a-00eb-4e61-be8a-07e34ddf1cff")
+	)
+	(junction
+		(at 54.61 88.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "96f37e77-2926-46f6-8ccc-0aa13a07e1ec")
+	)
+	(junction
+		(at 426.72 341.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "97b22eb6-8fb6-43a6-bfeb-b8ae60933113")
+	)
+	(junction
+		(at 327.66 334.01)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "98522e87-64fd-44cf-9797-30b6c3e65ff8")
+	)
+	(junction
+		(at 485.14 146.05)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9911c5ca-4e6e-48f9-945e-7da9fb2ab898")
+	)
+	(junction
+		(at 381 73.66)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a4433877-b840-4c54-af5f-3e0fb271d5f0")
+	)
+	(junction
+		(at 92.71 372.11)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a9593e30-3355-4809-b975-bf5a9d4e6fd1")
+	)
+	(junction
+		(at 335.28 341.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "af803faf-21b4-4ba8-96dc-240b17f8c11a")
+	)
+	(junction
+		(at 464.82 209.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b03f4527-4dd2-4162-acae-1465a12339c4")
+	)
+	(junction
+		(at 191.77 224.79)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b0eff0c8-c24d-4746-bc5f-269eb1b11b8b")
+	)
+	(junction
+		(at 553.72 346.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b3e0df57-f170-4269-8a6e-6071bfc452f3")
+	)
+	(junction
+		(at 485.14 229.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b56cd576-800b-47ad-8653-aa99922e4ba2")
+	)
+	(junction
+		(at 467.36 212.09)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b62b1680-a003-47b0-bdb7-732daabc5518")
+	)
+	(junction
+		(at 472.44 91.44)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b82f271a-190b-49c3-87ee-bef03ed7b723")
+	)
+	(junction
+		(at 69.85 359.41)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ba0ba9d7-8e61-465b-b813-ab885fc6694f")
+	)
+	(junction
+		(at 77.47 83.82)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bca5ec9b-8484-46ec-86c6-d939eabf0c25")
+	)
+	(junction
+		(at 469.9 130.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bcaa8677-244c-46dd-9cfc-0254430a7d7a")
+	)
+	(junction
+		(at 474.98 93.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bfed1cdb-aadc-4978-89e0-5e64aed057aa")
+	)
+	(junction
+		(at 472.44 217.17)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c3d4aa75-6ea4-4d5b-8822-cf22a2eaa15c")
+	)
+	(junction
+		(at 46.99 99.06)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ca7fbd99-ef86-4b7c-ad79-58dabfa99b1e")
+	)
+	(junction
+		(at 472.44 133.35)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cee90cb5-319c-4e28-ae2f-20cbd5d38d45")
+	)
+	(junction
+		(at 464.82 167.64)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d028c04d-60b3-4f33-8fb3-228f5ced1d87")
+	)
+	(junction
+		(at 262.89 374.65)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d53e3169-ba92-4292-939f-958d6774ade2")
+	)
+	(junction
+		(at 467.36 170.18)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d6c030c4-7150-4316-bfe5-a279981efeda")
+	)
+	(junction
+		(at 335.28 327.66)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d99bcd0d-dae8-4b22-bc56-8137fa43858a")
+	)
+	(junction
+		(at 368.3 383.54)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "da834ca9-7632-440f-b8e0-e4c7e5135342")
+	)
+	(junction
+		(at 388.62 341.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "db3f899f-fbfd-4570-90e0-565c1b086184")
+	)
+	(junction
+		(at 270.51 374.65)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "dc71519d-b786-42a5-8952-0a1b9c9b7149")
+	)
+	(junction
+		(at 242.57 374.65)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "de314332-f694-4266-8bc8-1433b6c3daea")
+	)
+	(junction
+		(at 342.9 73.66)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "df1770b2-ed2c-485f-bf74-4459d9d1d858")
+	)
+	(junction
+		(at 462.28 247.65)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e2dbad5e-c948-41fa-80b5-d61315c8bd35")
+	)
+	(junction
+		(at 462.28 165.1)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e2ec0f8e-3947-49b5-8adf-c91a1711c23a")
+	)
+	(junction
+		(at 474.98 135.89)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e5470e13-fa8b-4243-9aee-ad54496c3720")
+	)
+	(junction
+		(at 388.62 373.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e5f61604-128f-483e-888a-f0fba752aa73")
+	)
+	(junction
+		(at 340.36 326.39)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e60eed63-b963-46bc-9de8-5b28ac377c5d")
+	)
+	(junction
+		(at 482.6 185.42)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e7299bec-a80a-45c9-b462-5b6d7c02678d")
+	)
+	(junction
+		(at 54.61 109.22)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ea577279-20b5-473b-9693-e5877878006e")
+	)
+	(junction
+		(at 339.09 349.25)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "eb5a76a2-1cb9-4ec5-827e-4f7984849803")
+	)
+	(junction
+		(at 477.52 138.43)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f065be13-6fff-4b56-964a-3f6ae6ff1b24")
+	)
+	(junction
+		(at 166.37 121.92)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f0692467-793d-46be-a823-ece7699d8c6c")
+	)
+	(junction
+		(at 105.41 218.44)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f26c495a-2c4e-4705-80c4-64fc395de263")
+	)
+	(junction
+		(at 480.06 182.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f47df7e7-9dbb-423a-9072-249e8bbb2769")
+	)
+	(junction
+		(at 464.82 250.19)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f5bc57af-62d2-441b-956c-fe9555d339a7")
+	)
+	(junction
+		(at 191.77 242.57)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f69f60c2-d0d4-4384-be6c-4854aeeb8280")
+	)
+	(junction
+		(at 123.19 372.11)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f6b88014-69c1-4cc9-9371-14b00e6e675e")
+	)
+	(junction
+		(at 467.36 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f6e16943-be97-4edc-8c37-d35ff2cdac88")
+	)
+	(junction
+		(at 482.6 143.51)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f7d01576-45b1-4e82-a3b6-ff99001657ac")
+	)
+	(junction
+		(at 166.37 137.16)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f9c9d225-d071-4d3c-9410-85c293f0d8ae")
+	)
+	(junction
+		(at 327.66 349.25)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ffae9eb2-95ef-4aff-a6b3-13dadfdc0e33")
+	)
+	(no_connect
+		(at 506.73 250.19)
+		(uuid "005df9dc-a7a0-42ee-b56b-33ae9f0736c8")
+	)
+	(no_connect
+		(at 365.76 378.46)
+		(uuid "0b50601b-d7a1-49a2-b338-81934b768893")
+	)
+	(no_connect
+		(at 505.46 167.64)
+		(uuid "0c90fd09-7b7f-4f92-b503-ca7d294cc6a3")
+	)
+	(no_connect
+		(at 505.46 146.05)
+		(uuid "4560bbcd-7ba7-4e86-a83e-4c73fc7e3b34")
+	)
+	(no_connect
+		(at 505.46 125.73)
+		(uuid "476a11bc-dd18-4759-a1df-2e667d3cbffa")
+	)
+	(no_connect
+		(at 505.46 41.91)
+		(uuid "90ed7c3c-c3af-4f07-9040-98ef3c1fae98")
+	)
+	(no_connect
+		(at 505.46 62.23)
+		(uuid "9ffb8843-adf1-4ab6-b303-530519f4ff35")
+	)
+	(no_connect
+		(at 505.46 229.87)
+		(uuid "b517e613-5033-42f4-8838-673f7dda0403")
+	)
+	(no_connect
+		(at 505.46 104.14)
+		(uuid "b5b9df88-3446-429f-a9f0-47c99b94f157")
+	)
+	(no_connect
+		(at 505.46 83.82)
+		(uuid "b9de56d1-c5fd-4a79-9577-6f9502296c44")
+	)
+	(no_connect
+		(at 505.46 209.55)
+		(uuid "be6597d9-d129-4e73-afdd-4e1014920750")
+	)
+	(no_connect
+		(at 506.73 270.51)
+		(uuid "c8617542-579e-40b4-bbf9-2fc967caf38a")
+	)
+	(no_connect
+		(at 505.46 187.96)
+		(uuid "e2904688-1ad5-4f48-9b67-01082118fd1e")
+	)
+	(no_connect
+		(at 353.06 386.08)
+		(uuid "f99bf402-eec0-495b-a1cf-aa0b24ac7ff1")
+	)
+	(wire
+		(pts
+			(xy 359.41 92.71) (xy 360.68 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "007ab1be-d8a4-45a0-89db-cc13549e218a")
+	)
+	(wire
+		(pts
+			(xy 280.67 92.71) (xy 280.67 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "007f45fa-28cf-4566-a250-a6444103e187")
+	)
+	(wire
+		(pts
+			(xy 71.12 218.44) (xy 68.58 218.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "009c772f-9050-40ed-b650-6c6c2d6b68bd")
+	)
+	(wire
+		(pts
+			(xy 388.62 274.32) (xy 454.66 274.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0253155e-4f09-47fc-b31d-3684364a8888")
+	)
+	(wire
+		(pts
+			(xy 426.72 337.82) (xy 426.72 341.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "02eefe19-391a-4600-bad7-7dd287239694")
+	)
+	(wire
+		(pts
+			(xy 151.13 132.08) (xy 148.59 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "03683eec-72b9-4fb5-9abc-a5ed881364bf")
+	)
+	(wire
+		(pts
+			(xy 133.35 372.11) (xy 133.35 369.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "042e40df-dcbc-4bb6-9fb6-6c957e13d56d")
+	)
+	(wire
+		(pts
+			(xy 215.9 232.41) (xy 203.2 232.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "054e30e8-8642-4004-b837-08a8fa82ac01")
+	)
+	(wire
+		(pts
+			(xy 388.62 341.63) (xy 388.62 355.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "05a7f46f-e9df-437f-aedf-2a3c66bf6690")
+	)
+	(wire
+		(pts
+			(xy 480.06 182.88) (xy 480.06 224.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "05b2e501-a108-45db-ae31-89a04d0a689e")
+	)
+	(wire
+		(pts
+			(xy 464.82 83.82) (xy 464.82 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "05fd19b9-3974-4d3a-9786-1eae684aba6d")
+	)
+	(wire
+		(pts
+			(xy 167.64 224.79) (xy 171.45 224.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0637170f-aa52-4e9f-8882-0e7f0acbbe5b")
+	)
+	(wire
+		(pts
+			(xy 81.28 218.44) (xy 85.09 218.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0682ef4b-617b-4d05-9929-aff9752bdf58")
+	)
+	(wire
+		(pts
+			(xy 487.68 57.15) (xy 480.06 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06b31324-916a-46fd-acd5-d4591ace34d1")
+	)
+	(wire
+		(pts
+			(xy 72.39 111.76) (xy 69.85 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06c81d6f-35e8-4bc1-b53d-06e97a196124")
+	)
+	(wire
+		(pts
+			(xy 393.7 259.08) (xy 436.88 259.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "07088773-70d2-4c90-b587-3f8ab0d83dc5")
+	)
+	(wire
+		(pts
+			(xy 327.66 92.71) (xy 326.39 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "080a06ad-8d12-4923-99b6-5b9e87d4862f")
+	)
+	(polyline
+		(pts
+			(xy 580.39 306.07) (xy 15.24 306.07)
+		)
+		(stroke
+			(width 0)
+			(type dash)
+		)
+		(uuid "084115f7-f12e-469c-932e-99e0b9d6bf27")
+	)
+	(wire
+		(pts
+			(xy 505.46 219.71) (xy 514.35 219.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "087cfb32-2cfe-42bd-80ba-7c1a6f44c171")
+	)
+	(wire
+		(pts
+			(xy 166.37 121.92) (xy 166.37 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "08e79f1d-1dba-49ad-b97c-16a33e281ef6")
+	)
+	(wire
+		(pts
+			(xy 46.99 379.73) (xy 49.53 379.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0949863a-fe13-4559-8c7c-c84491576d8a")
+	)
+	(wire
+		(pts
+			(xy 105.41 213.36) (xy 105.41 218.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "09968d8a-bc7f-496c-b7e9-e59ce9dc49cb")
+	)
+	(wire
+		(pts
+			(xy 80.01 359.41) (xy 82.55 359.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0a6171e0-3f7c-42af-a090-7a1c1d580900")
+	)
+	(wire
+		(pts
+			(xy 482.6 59.69) (xy 487.68 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0bb3255b-7217-4f11-9efb-65cf6e293f8d")
+	)
+	(wire
+		(pts
+			(xy 62.23 93.98) (xy 62.23 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0bc6a15c-361e-4451-b7db-564c2b60fd03")
+	)
+	(wire
+		(pts
+			(xy 411.48 248.92) (xy 411.48 266.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0bd4bc99-f94e-4194-a392-c45278d9cf7c")
+	)
+	(wire
+		(pts
+			(xy 171.45 265.43) (xy 167.64 265.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0be56c95-284f-4031-87f6-a201c7b3f5ac")
+	)
+	(wire
+		(pts
+			(xy 368.3 386.08) (xy 373.38 386.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0c696bfc-4003-487d-b1f5-6b033ea35df3")
+	)
+	(wire
+		(pts
+			(xy 62.23 114.3) (xy 80.01 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0d3db811-b5c0-4118-9182-fc61ec5af6b3")
+	)
+	(wire
+		(pts
+			(xy 474.98 93.98) (xy 474.98 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0dc7cca9-37a5-4444-b64e-174b6e641d8f")
+	)
+	(wire
+		(pts
+			(xy 350.52 261.62) (xy 342.9 261.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0e067f33-fd4b-4d45-9838-1922744c9f61")
+	)
+	(wire
+		(pts
+			(xy 426.72 341.63) (xy 426.72 358.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0e64c744-ed5b-44fa-a8b7-3b98e75f50f7")
+	)
+	(wire
+		(pts
+			(xy 350.52 259.08) (xy 342.9 259.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0ea94ed7-3de0-4c29-8d58-c3ce7d8b4464")
+	)
+	(wire
+		(pts
+			(xy 381 73.66) (xy 406.4 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0ebce135-3502-4c7d-b35e-28702fffac21")
+	)
+	(wire
+		(pts
+			(xy 113.03 372.11) (xy 123.19 372.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0ee0d3c4-8864-4adb-bd00-dd0eb68d75cb")
+	)
+	(wire
+		(pts
+			(xy 59.69 96.52) (xy 59.69 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0feafbe5-4ba3-4db8-9a38-3fb26f6c5ab6")
+	)
+	(wire
+		(pts
+			(xy 519.43 344.17) (xy 514.35 344.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "107a596b-2953-4aac-b4e8-710f373fb5fa")
+	)
+	(wire
+		(pts
+			(xy 137.16 274.32) (xy 210.82 274.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1099c867-1ad0-41d9-a5bd-904e14e7f614")
+	)
+	(wire
+		(pts
+			(xy 375.92 106.68) (xy 375.92 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1131c438-8b6d-4096-b4dd-35f4f798b657")
+	)
+	(wire
+		(pts
+			(xy 469.9 172.72) (xy 487.68 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "114c4462-1730-42b1-8556-4bc0ee3eb7d0")
+	)
+	(wire
+		(pts
+			(xy 143.51 96.52) (xy 151.13 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "11f3727e-26fc-46ad-a1d9-dd13e5db544a")
+	)
+	(wire
+		(pts
+			(xy 351.79 92.71) (xy 350.52 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "12cb2933-1ebf-4a89-8581-b07a4a36a28c")
+	)
+	(wire
+		(pts
+			(xy 381 251.46) (xy 375.92 251.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "12f81480-eca7-4a7e-a7dc-75b514cbe591")
+	)
+	(wire
+		(pts
+			(xy 464.82 167.64) (xy 464.82 209.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "132784a9-2266-4fd0-8408-08cd26ce1482")
+	)
+	(wire
+		(pts
+			(xy 280.67 73.66) (xy 306.07 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1392ae6a-d39e-4d06-b8c0-3df0b5aa6f0e")
+	)
+	(wire
+		(pts
+			(xy 342.9 73.66) (xy 355.6 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "13fa1573-c085-422f-a4b1-0e6d7eb964ad")
+	)
+	(wire
+		(pts
+			(xy 327.66 350.52) (xy 316.23 350.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "14d15b77-ee87-4170-81cb-f2987831d2b0")
+	)
+	(wire
+		(pts
+			(xy 63.5 359.41) (xy 69.85 359.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "15859fa2-def6-45fa-bb37-bcb1fb820d57")
+	)
+	(wire
+		(pts
+			(xy 355.6 73.66) (xy 355.6 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "15e1f9cc-a892-42a3-b76d-9d378fa75f58")
+	)
+	(wire
+		(pts
+			(xy 416.56 327.66) (xy 416.56 363.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "167630ab-3c29-4bef-a2b9-a7620e8eee12")
+	)
+	(wire
+		(pts
+			(xy 284.48 92.71) (xy 285.75 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "16cdb721-0740-4aef-87c6-c1d7c1d2a2b7")
+	)
+	(wire
+		(pts
+			(xy 375.92 269.24) (xy 391.16 269.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "17d7837d-c7c7-4d27-91b7-bdd2170ab199")
+	)
+	(wire
+		(pts
+			(xy 146.05 109.22) (xy 128.27 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "17f56abb-42d0-4c07-ae27-cd2bb59110fa")
+	)
+	(wire
+		(pts
+			(xy 200.66 265.43) (xy 205.74 265.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "180e207a-5689-4b72-bf2a-946f8bf60895")
+	)
+	(wire
+		(pts
+			(xy 128.27 132.08) (xy 138.43 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "184cf7ae-2e49-4b3d-a767-a9e49e1ca38b")
+	)
+	(wire
+		(pts
+			(xy 444.5 326.39) (xy 444.5 363.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "191bba44-1865-407c-aa6d-6581c2dd46b4")
+	)
+	(wire
+		(pts
+			(xy 262.89 331.47) (xy 262.89 339.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "19271c22-92c0-47d0-99dc-daace97aae31")
+	)
+	(wire
+		(pts
+			(xy 191.77 260.35) (xy 186.69 260.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1a0b18fc-4314-4c5f-b8d2-fc6b92ca01c7")
+	)
+	(wire
+		(pts
+			(xy 487.68 130.81) (xy 469.9 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1ac8052e-0f60-4a93-8bf7-4f5b8afe56da")
+	)
+	(wire
+		(pts
+			(xy 386.08 276.86) (xy 386.08 274.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1b0f2e7a-e5a8-4f6b-8124-e3ac35c52be5")
+	)
+	(wire
+		(pts
+			(xy 80.01 86.36) (xy 72.39 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1b72b63a-3895-4339-8bde-45a2dad71aa4")
+	)
+	(wire
+		(pts
+			(xy 381 92.71) (xy 381 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1b99fab3-0f75-4ac2-969b-011a4b19218c")
+	)
+	(wire
+		(pts
+			(xy 480.06 57.15) (xy 480.06 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1ba966bd-31b0-4cbf-9926-03b3bc6279f5")
+	)
+	(wire
+		(pts
+			(xy 69.85 359.41) (xy 80.01 359.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1bc821dd-158f-402e-9d7b-0482bcc605c9")
+	)
+	(wire
+		(pts
+			(xy 375.92 274.32) (xy 386.08 274.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1c2cc44b-3b32-421c-ab65-2fd3be2d45a5")
+	)
+	(wire
+		(pts
+			(xy 270.51 374.65) (xy 275.59 374.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1d1d6462-f139-40d1-9727-399a464dc3bc")
+	)
+	(wire
+		(pts
+			(xy 406.4 92.71) (xy 406.4 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1e22e36f-5347-4138-b20c-485ecde47762")
+	)
+	(wire
+		(pts
+			(xy 355.6 106.68) (xy 355.6 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1e561dbc-42bf-41ed-bc38-5f2a64aed279")
+	)
+	(wire
+		(pts
+			(xy 62.23 91.44) (xy 62.23 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1ee6741b-98c4-4831-a54c-c531a1019c4e")
+	)
+	(wire
+		(pts
+			(xy 487.68 88.9) (xy 469.9 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f2879f3-2b31-4365-833b-db3cd285e4fe")
+	)
+	(wire
+		(pts
+			(xy 331.47 92.71) (xy 331.47 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1fcedd8c-a8ba-402e-bcd7-8caaaa8b7aea")
+	)
+	(wire
+		(pts
+			(xy 403.86 341.63) (xy 403.86 368.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "206b1dab-4e7f-4744-aaa1-994478d10278")
+	)
+	(wire
+		(pts
+			(xy 72.39 116.84) (xy 72.39 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2074020b-a0bd-41af-b784-9d13a574bf10")
+	)
+	(wire
+		(pts
+			(xy 134.62 259.08) (xy 134.62 276.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "21f335a0-e053-44d0-932c-6cf94b21777b")
+	)
+	(wire
+		(pts
+			(xy 447.04 269.24) (xy 447.04 262.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2216a85c-5c0a-4680-9f60-cc7e9db07a6b")
+	)
+	(wire
+		(pts
+			(xy 340.36 341.63) (xy 346.71 341.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "22372b23-3a4a-46e6-91fd-248df10d1b7d")
+	)
+	(wire
+		(pts
+			(xy 335.28 341.63) (xy 340.36 341.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "245f6653-9a99-431e-867c-fe0d691faf7a")
+	)
+	(wire
+		(pts
+			(xy 100.33 218.44) (xy 105.41 218.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "251a4012-6593-4c69-9c22-a8570ea808f3")
+	)
+	(wire
+		(pts
+			(xy 191.77 215.9) (xy 191.77 224.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "25867502-3ba3-4823-bfca-d9eaf39ecaee")
+	)
+	(wire
+		(pts
+			(xy 167.64 260.35) (xy 171.45 260.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "26260bd9-9720-4782-ada4-408b8ae6d2af")
+	)
+	(wire
+		(pts
+			(xy 480.06 140.97) (xy 480.06 182.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "264413ae-8035-4a26-b128-f829c123753b")
+	)
+	(wire
+		(pts
+			(xy 105.41 236.22) (xy 105.41 254)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "267e8d11-65ad-496b-88a7-233b9ec5402e")
+	)
+	(wire
+		(pts
+			(xy 386.08 106.68) (xy 386.08 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "282b9ca3-52a6-4e31-9ff1-0e26722ef595")
+	)
+	(wire
+		(pts
+			(xy 46.99 88.9) (xy 54.61 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "288648e0-cd36-476d-9512-2907773e9a7b")
+	)
+	(wire
+		(pts
+			(xy 123.19 346.71) (xy 123.19 349.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2911f436-ecb1-41d9-8eb9-6401ed1e4686")
+	)
+	(wire
+		(pts
+			(xy 472.44 133.35) (xy 487.68 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "296e0690-f0cc-41a7-abdb-4f403b28c810")
+	)
+	(wire
+		(pts
+			(xy 128.27 134.62) (xy 133.35 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29c3cbbe-9584-4e8a-badc-f4e914be0f78")
+	)
+	(wire
+		(pts
+			(xy 379.73 373.38) (xy 379.73 361.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29ef0e37-752d-4c9d-8410-5f9893d2be05")
+	)
+	(wire
+		(pts
+			(xy 505.46 52.07) (xy 511.81 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29f695a1-4cfc-4fce-93e1-e3ed77f478c1")
+	)
+	(wire
+		(pts
+			(xy 492.76 346.71) (xy 495.3 346.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2a26c0b2-1d18-4250-9602-6d0eb24f9610")
+	)
+	(wire
+		(pts
+			(xy 113.03 355.6) (xy 113.03 346.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2a361d0e-9bcf-4c2e-8bf1-3e4b2de55e3b")
+	)
+	(wire
+		(pts
+			(xy 128.27 91.44) (xy 133.35 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2a36325a-a957-4673-9c09-b1e96881dd72")
+	)
+	(wire
+		(pts
+			(xy 158.75 101.6) (xy 166.37 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2a899bba-d6fc-46c6-bf17-dd5183784210")
+	)
+	(wire
+		(pts
+			(xy 472.44 175.26) (xy 472.44 217.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2abbad55-ecd5-4dc2-9f60-b2bf8d3d4604")
+	)
+	(wire
+		(pts
+			(xy 167.64 242.57) (xy 171.45 242.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2afd8f94-a497-46b4-bab1-22b42570ea2f")
+	)
+	(wire
+		(pts
+			(xy 477.52 222.25) (xy 487.68 222.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2b0bcfe6-13ce-4417-be7c-80046135c1e5")
+	)
+	(wire
+		(pts
+			(xy 492.76 327.66) (xy 492.76 322.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2b175098-63f7-45c1-870a-35e4f5b8e4fe")
+	)
+	(polyline
+		(pts
+			(xy 298.45 303.53) (xy 298.45 177.8)
+		)
+		(stroke
+			(width 0)
+			(type dash)
+		)
+		(uuid "2b23696e-9610-4f10-bee2-b9c3541c86ca")
+	)
+	(wire
+		(pts
+			(xy 402.59 92.71) (xy 401.32 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2b24ab27-9c16-40f6-98d1-f07701c65c1d")
+	)
+	(wire
+		(pts
+			(xy 77.47 73.66) (xy 77.47 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2b321ca3-394c-489b-aac3-f1ad609f48e4")
+	)
+	(wire
+		(pts
+			(xy 439.42 261.62) (xy 439.42 255.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2c12ce0d-360a-42f8-b6d4-b4c3e028b6a5")
+	)
+	(wire
+		(pts
+			(xy 477.52 138.43) (xy 477.52 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2c192baf-3afb-4af5-90b9-4bb7cf01425f")
+	)
+	(wire
+		(pts
+			(xy 100.33 223.52) (xy 104.14 223.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2c86f98b-27d0-4109-ad76-aa11fbe6ffe9")
+	)
+	(wire
+		(pts
+			(xy 77.47 116.84) (xy 77.47 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2c9969d1-c5c4-470b-84d1-dfe3d4fa37ee")
+	)
+	(wire
+		(pts
+			(xy 431.8 368.3) (xy 431.8 341.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2cbd4e70-92e6-4bd0-9167-c24de62cac7d")
+	)
+	(wire
+		(pts
+			(xy 377.19 92.71) (xy 375.92 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2cc2a811-0daf-4147-b066-3fe1ede51751")
+	)
+	(wire
+		(pts
+			(xy 370.84 373.38) (xy 349.25 373.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2d4e3e80-b5ec-4634-9109-b436710f1225")
+	)
+	(wire
+		(pts
+			(xy 275.59 374.65) (xy 275.59 370.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e26eb66-3a54-414c-9f4b-2189ec9b1feb")
+	)
+	(wire
+		(pts
+			(xy 485.14 104.14) (xy 485.14 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e47feaf-96aa-4593-95d3-608673a3d8b5")
+	)
+	(polyline
+		(pts
+			(xy 473.71 373.38) (xy 473.71 307.34)
+		)
+		(stroke
+			(width 0)
+			(type dash)
+		)
+		(uuid "2e8bfa85-3e75-4946-bcd3-c8b75017c0f3")
+	)
+	(wire
+		(pts
+			(xy 128.27 101.6) (xy 133.35 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2f6877a5-5339-4b0b-8970-af6d6cf7911a")
+	)
+	(wire
+		(pts
+			(xy 467.36 128.27) (xy 467.36 170.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2f97a200-de2d-4208-b221-405f0c580578")
+	)
+	(wire
+		(pts
+			(xy 128.27 86.36) (xy 133.35 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2fe64f4b-0778-43f4-bca2-245636694fba")
+	)
+	(wire
+		(pts
+			(xy 373.38 341.63) (xy 361.95 341.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2ff671ab-8b8c-4245-bf4d-5fe8669f5753")
+	)
+	(wire
+		(pts
+			(xy 128.27 81.28) (xy 133.35 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "31e8c82a-61c9-4f7d-9a07-554498c3070d")
+	)
+	(wire
+		(pts
+			(xy 74.93 124.46) (xy 74.93 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "31ec9f56-e8fb-408f-8824-f6e8521055ff")
+	)
+	(wire
+		(pts
+			(xy 306.07 73.66) (xy 306.07 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "32971130-31e4-4e84-a166-2b7f9530b8eb")
+	)
+	(wire
+		(pts
+			(xy 62.23 73.66) (xy 62.23 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "32faa811-a9b9-43eb-b343-324cb591d6b8")
+	)
+	(wire
+		(pts
+			(xy 469.9 46.99) (xy 469.9 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "330554a0-d2ec-48a6-8dcd-13ed5a959dc0")
+	)
+	(wire
+		(pts
+			(xy 472.44 175.26) (xy 487.68 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3365a49f-110f-4002-a929-ea7e6370eeb4")
+	)
+	(wire
+		(pts
+			(xy 215.9 242.57) (xy 213.36 242.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "33b5e2b6-d111-49df-8701-009f0aed52ae")
+	)
+	(wire
+		(pts
+			(xy 199.39 351.79) (xy 199.39 356.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "34fd5944-ae25-40ff-aee6-2da280a78921")
+	)
+	(wire
+		(pts
+			(xy 214.63 339.09) (xy 222.25 339.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "35d45297-7c0b-4d31-9b6c-5cd958d975fc")
+	)
+	(wire
+		(pts
+			(xy 331.47 73.66) (xy 342.9 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3624faee-9104-4245-a105-bb4f471e1554")
+	)
+	(wire
+		(pts
+			(xy 485.14 229.87) (xy 487.68 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "366fff03-b87f-4324-a0ef-512548dfdc29")
+	)
+	(wire
+		(pts
+			(xy 401.32 106.68) (xy 401.32 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "368f9aa0-e1b0-499e-98ca-2654031c525c")
+	)
+	(wire
+		(pts
+			(xy 416.56 373.38) (xy 416.56 381)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36ce603a-3550-4403-b839-fe3bd09b7144")
+	)
+	(wire
+		(pts
+			(xy 80.01 88.9) (xy 74.93 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "371f117c-a265-4369-b58a-7b7de0637f33")
+	)
+	(wire
+		(pts
+			(xy 519.43 341.63) (xy 514.35 341.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "372ad9b4-87da-485a-b5c2-bc08dd2cfbf1")
+	)
+	(wire
+		(pts
+			(xy 168.91 73.66) (xy 158.75 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3732d745-c7a9-4347-af92-bb16194a2139")
+	)
+	(wire
+		(pts
+			(xy 72.39 86.36) (xy 72.39 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "379b2ba2-de2d-4817-80c5-6411656c7d30")
+	)
+	(wire
+		(pts
+			(xy 462.28 207.01) (xy 462.28 247.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "37c13d3c-176a-44b7-8a6d-fe4b2e524077")
+	)
+	(wire
+		(pts
+			(xy 242.57 361.95) (xy 242.57 374.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3844188a-dc53-4f49-8012-2696558ac64a")
+	)
+	(wire
+		(pts
+			(xy 487.68 170.18) (xy 467.36 170.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3980cf9a-95ad-48ca-814b-e8da8642d708")
+	)
+	(wire
+		(pts
+			(xy 414.02 269.24) (xy 414.02 246.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3a4d688a-85af-4e36-a428-31079c53dce7")
+	)
+	(wire
+		(pts
+			(xy 128.27 104.14) (xy 133.35 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3a7d6cfd-40f3-44b4-92c8-cbed51754bd4")
+	)
+	(wire
+		(pts
+			(xy 441.96 264.16) (xy 441.96 257.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3ab9ff68-8e6d-44b3-99f9-9dc5f53ba778")
+	)
+	(wire
+		(pts
+			(xy 482.6 143.51) (xy 482.6 185.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3ad71886-4833-4cc2-b600-6bfd19949363")
+	)
+	(wire
+		(pts
+			(xy 477.52 96.52) (xy 487.68 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3b227651-5d8e-4c0b-b469-8d0325883d2f")
+	)
+	(polyline
+		(pts
+			(xy 172.72 308.61) (xy 172.72 405.13)
+		)
+		(stroke
+			(width 0)
+			(type dash)
+		)
+		(uuid "3b4eb2f6-253c-4ea3-9563-4226a15bfe86")
+	)
+	(wire
+		(pts
+			(xy 393.7 266.7) (xy 393.7 259.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3bdfded3-a26d-4ed0-8ad6-73da5b01d3e0")
+	)
+	(wire
+		(pts
+			(xy 199.39 356.87) (xy 199.39 359.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3bfc80a9-ba11-48fb-a991-59028d8534f5")
+	)
+	(wire
+		(pts
+			(xy 469.9 88.9) (xy 469.9 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c088582-18d3-46db-b965-e24ef567abad")
+	)
+	(wire
+		(pts
+			(xy 480.06 265.43) (xy 488.95 265.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c75dade-b110-4eae-a593-6496633899b5")
+	)
+	(wire
+		(pts
+			(xy 158.75 91.44) (xy 168.91 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3cf25a91-8c4f-4e65-8b3d-0d80a5878532")
+	)
+	(wire
+		(pts
+			(xy 426.72 341.63) (xy 403.86 341.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3daed31b-8f17-496a-be74-20dca94772d1")
+	)
+	(wire
+		(pts
+			(xy 396.24 271.78) (xy 396.24 276.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3e243b8b-098a-4a2d-8c33-8a409870fb51")
+	)
+	(wire
+		(pts
+			(xy 100.33 241.3) (xy 104.14 241.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3e5746c0-6676-4dbd-ae6b-26bc1322c82c")
+	)
+	(wire
+		(pts
+			(xy 157.48 242.57) (xy 154.94 242.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3ef22086-37b5-44bd-a0c8-c989bf7a3134")
+	)
+	(wire
+		(pts
+			(xy 327.66 334.01) (xy 327.66 337.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3f8f7b6c-3ec1-4f55-9bc0-d015a644a027")
+	)
+	(wire
+		(pts
+			(xy 355.6 92.71) (xy 355.6 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3fc16e3a-d420-431a-a040-77dd5dffdf18")
+	)
+	(wire
+		(pts
+			(xy 158.75 111.76) (xy 168.91 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3fe43122-7066-43ad-8bf9-b82cdcd3baf7")
+	)
+	(polyline
+		(pts
+			(xy 454.66 184.15) (xy 454.66 223.52)
+		)
+		(stroke
+			(width 0.9906)
+			(type solid)
+		)
+		(uuid "40175f69-517a-4232-bd73-126e932b30b0")
+	)
+	(wire
+		(pts
+			(xy 200.66 229.87) (xy 215.9 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "40e736c1-5019-4f1f-8629-850488ce4cfe")
+	)
+	(wire
+		(pts
+			(xy 232.41 374.65) (xy 242.57 374.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "40fecf11-2f8c-4c55-b227-ab064c1dfde4")
+	)
+	(wire
+		(pts
+			(xy 485.14 62.23) (xy 485.14 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4172b289-4654-4416-842b-793219171b25")
+	)
+	(wire
+		(pts
+			(xy 128.27 119.38) (xy 133.35 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "41ec8b10-cff4-4870-9969-1a9d9d4f49b6")
+	)
+	(wire
+		(pts
+			(xy 462.28 39.37) (xy 487.68 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "42bf49a9-30b7-4b74-8071-255a5515efa7")
+	)
+	(wire
+		(pts
+			(xy 406.4 106.68) (xy 406.4 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "42d6f939-c384-4318-af09-f97f56bae0b1")
+	)
+	(wire
+		(pts
+			(xy 477.52 180.34) (xy 487.68 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "44d3c2ea-493d-40bd-a637-bea7d471830e")
+	)
+	(wire
+		(pts
+			(xy 365.76 386.08) (xy 368.3 386.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "44ea645c-fa4c-46b6-a60a-7252c62dfe36")
+	)
+	(wire
+		(pts
+			(xy 168.91 135.89) (xy 167.64 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4503ab6d-331f-4fb5-af52-df5e633c5541")
+	)
+	(wire
+		(pts
+			(xy 342.9 73.66) (xy 342.9 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4519a554-73d7-4450-8c28-f86ee5746584")
+	)
+	(wire
+		(pts
+			(xy 335.28 341.63) (xy 335.28 337.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "457359fb-7d25-45cf-a3a7-661d3e5a7f0f")
+	)
+	(wire
+		(pts
+			(xy 158.75 127) (xy 167.64 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "45ecd52d-65b8-4bda-b644-dc75f0104e8d")
+	)
+	(wire
+		(pts
+			(xy 474.98 52.07) (xy 474.98 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "45f59db5-48b2-4288-a283-60a2ad9a04cb")
+	)
+	(wire
+		(pts
+			(xy 375.92 261.62) (xy 439.42 261.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "46020f96-0aee-4744-a5a4-588c09fb3997")
+	)
+	(wire
+		(pts
+			(xy 199.39 356.87) (xy 204.47 356.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "466047c3-61bd-4d40-b922-7db19d1c902d")
+	)
+	(polyline
+		(pts
+			(xy 13.97 177.8) (xy 433.07 177.8)
+		)
+		(stroke
+			(width 0)
+			(type dash)
+		)
+		(uuid "46c08f18-7d5c-4fee-bcf4-e721301232b3")
+	)
+	(wire
+		(pts
+			(xy 469.9 214.63) (xy 469.9 255.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "48984e6f-aee4-4404-b49e-9d1fa3620eb3")
+	)
+	(wire
+		(pts
+			(xy 49.53 73.66) (xy 49.53 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4910da1c-bd87-4aef-8645-6061ff8b8934")
+	)
+	(wire
+		(pts
+			(xy 480.06 99.06) (xy 480.06 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "493e726d-dfc2-4f37-a68f-a984a3f5026e")
+	)
+	(wire
+		(pts
+			(xy 54.61 109.22) (xy 54.61 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "495fa2e6-2149-443c-85bf-455e17a8b8aa")
+	)
+	(wire
+		(pts
+			(xy 436.88 259.08) (xy 436.88 252.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "496f2ccc-5224-435e-bcd5-22cee33c4320")
+	)
+	(wire
+		(pts
+			(xy 340.36 326.39) (xy 444.5 326.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "49f05a8e-98f3-4913-ba6d-015a23a926bb")
+	)
+	(wire
+		(pts
+			(xy 474.98 135.89) (xy 474.98 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4a5f6580-ad39-471d-a80d-effe23d30ea4")
+	)
+	(wire
+		(pts
+			(xy 214.63 374.65) (xy 232.41 374.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4a815de1-f877-4059-b57e-3afde1c1d8f5")
+	)
+	(wire
+		(pts
+			(xy 452.12 265.43) (xy 452.12 271.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4ab10c2b-7c62-438c-bab9-11f15ad8edd6")
+	)
+	(wire
+		(pts
+			(xy 482.6 185.42) (xy 482.6 227.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4af44753-16c5-4721-af15-b245d2860131")
+	)
+	(wire
+		(pts
+			(xy 327.66 349.25) (xy 327.66 350.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4b500ad8-c971-42bb-b765-a4d1ee39978c")
+	)
+	(wire
+		(pts
+			(xy 444.5 260.35) (xy 474.98 260.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4bb0f37c-12d3-4f96-b102-65b7d6ce1b62")
+	)
+	(wire
+		(pts
+			(xy 214.63 334.01) (xy 214.63 339.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4bea48aa-40c4-41e1-91f6-40113c39f009")
+	)
+	(wire
+		(pts
+			(xy 331.47 73.66) (xy 331.47 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4c04e816-c984-49cd-a1df-6c4c0aa5abd3")
+	)
+	(wire
+		(pts
+			(xy 411.48 266.7) (xy 444.5 266.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4c8b304e-0469-4ef1-a691-e9fcb68b853c")
+	)
+	(wire
+		(pts
+			(xy 215.9 240.03) (xy 210.82 240.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4cc75c94-b41a-451e-8f06-1996fc3d3e41")
+	)
+	(wire
+		(pts
+			(xy 198.12 135.89) (xy 179.07 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4ccc3993-e576-44b1-85b9-c5597a0d9a94")
+	)
+	(wire
+		(pts
+			(xy 411.48 106.68) (xy 411.48 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4cd63415-b29d-41aa-8531-2e6d194ac792")
+	)
+	(wire
+		(pts
+			(xy 176.53 41.91) (xy 176.53 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4d4fb78b-dd41-470d-bc17-775881ff497f")
+	)
+	(wire
+		(pts
+			(xy 137.16 241.3) (xy 137.16 274.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4e21c8b2-dd81-4d3f-bbbc-6f468d0d62fb")
+	)
+	(wire
+		(pts
+			(xy 128.27 78.74) (xy 133.35 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4ea82de6-1562-479b-a2d8-f281abbbf876")
+	)
+	(wire
+		(pts
+			(xy 327.66 349.25) (xy 339.09 349.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4f4951b0-6d6c-4ab6-b910-8b1e0e19260e")
+	)
+	(wire
+		(pts
+			(xy 72.39 104.14) (xy 69.85 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4f650efd-fee8-457b-9bd6-b060b2f0b265")
+	)
+	(wire
+		(pts
+			(xy 467.36 44.45) (xy 467.36 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4f71e147-37e6-4dbd-98d8-f8e71242dcf3")
+	)
+	(wire
+		(pts
+			(xy 462.28 123.19) (xy 487.68 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4fa1c370-ea81-4a42-b47a-6dd1a2a6995b")
+	)
+	(wire
+		(pts
+			(xy 85.09 223.52) (xy 81.28 223.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "51b6de2f-5ff7-4ee7-b2e9-e7c415ff8f67")
+	)
+	(wire
+		(pts
+			(xy 381 73.66) (xy 381 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "52917e2e-c133-49a2-8ca7-a48dd3d88983")
+	)
+	(wire
+		(pts
+			(xy 485.14 270.51) (xy 488.95 270.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "52c1408f-a82c-4129-8760-707280077976")
+	)
+	(wire
+		(pts
+			(xy 280.67 106.68) (xy 280.67 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "53117800-1285-40e9-b4fc-be56cdb29bc4")
+	)
+	(wire
+		(pts
+			(xy 100.33 259.08) (xy 104.14 259.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "53e94591-abdf-48fd-8ff3-0844c0c7d33e")
+	)
+	(wire
+		(pts
+			(xy 375.92 271.78) (xy 388.62 271.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "548b7b64-d9c8-4400-92a6-495ac44b4699")
+	)
+	(wire
+		(pts
+			(xy 447.04 262.89) (xy 477.52 262.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "54965521-622d-456f-9a49-36a3b572d514")
+	)
+	(wire
+		(pts
+			(xy 485.14 229.87) (xy 485.14 270.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "54b639a4-4f17-4adb-aab9-c2bc49605549")
+	)
+	(wire
+		(pts
+			(xy 41.91 356.87) (xy 41.91 346.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "55ea590b-809e-4f84-b7a1-566cc0146730")
+	)
+	(wire
+		(pts
+			(xy 485.14 146.05) (xy 485.14 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5661235d-2ee7-4c09-98a1-6300fc0e2529")
+	)
+	(wire
+		(pts
+			(xy 467.36 212.09) (xy 467.36 252.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "569e1efb-a60a-44e6-895f-e240872a96e0")
+	)
+	(wire
+		(pts
+			(xy 505.46 135.89) (xy 513.08 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "56c570ec-cabd-4f27-a68b-4c949809b208")
+	)
+	(wire
+		(pts
+			(xy 171.45 229.87) (xy 167.64 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "57886a71-b23c-4538-a549-c58edaad07f6")
+	)
+	(wire
+		(pts
+			(xy 477.52 222.25) (xy 477.52 262.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5788d7fc-fe08-4a87-a5f2-e566bedb6b22")
+	)
+	(polyline
+		(pts
+			(xy 433.07 177.8) (xy 433.07 15.24)
+		)
+		(stroke
+			(width 0)
+			(type dash)
+		)
+		(uuid "579a1193-a485-43dd-942d-92800fcf457a")
+	)
+	(wire
+		(pts
+			(xy 123.19 369.57) (xy 123.19 372.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "57a809b9-e798-4cfa-86cd-f32df8225305")
+	)
+	(wire
+		(pts
+			(xy 262.89 339.09) (xy 262.89 353.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "584e8e90-e6fb-4ae3-8462-637691fd7a4d")
+	)
+	(wire
+		(pts
+			(xy 454.66 274.32) (xy 454.66 267.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5854647c-fb0e-4c26-aea6-3b70820cb7ca")
+	)
+	(wire
+		(pts
+			(xy 375.92 264.16) (xy 441.96 264.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "58c44604-749f-482d-b864-1f336d353fac")
+	)
+	(wire
+		(pts
+			(xy 452.12 265.43) (xy 480.06 265.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "58e038c8-0815-44c1-aea5-61a14bf3a3b3")
+	)
+	(wire
+		(pts
+			(xy 414.02 246.38) (xy 381 246.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "58e319ea-1f18-4df9-8d78-69b917650430")
+	)
+	(wire
+		(pts
+			(xy 133.35 349.25) (xy 133.35 346.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "58f505de-2cb1-4842-ace5-316418d274f8")
+	)
+	(wire
+		(pts
+			(xy 74.93 88.9) (xy 74.93 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "59f4611f-0e84-4a1b-9ed0-2a0133f2740a")
+	)
+	(wire
+		(pts
+			(xy 242.57 351.79) (xy 242.57 339.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5adef2cd-45c5-4377-afa3-17a7457ea9fa")
+	)
+	(wire
+		(pts
+			(xy 381 246.38) (xy 381 251.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5b23e68f-12e9-4ad8-9f65-231ac380615c")
+	)
+	(wire
+		(pts
+			(xy 397.51 341.63) (xy 397.51 358.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5b7257c6-72af-4e6c-b6ef-d8b532b575e6")
+	)
+	(wire
+		(pts
+			(xy 80.01 359.41) (xy 80.01 361.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5be97b6f-f40b-463b-9a26-5283a7a8a436")
+	)
+	(wire
+		(pts
+			(xy 46.99 99.06) (xy 36.83 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5bfc6140-c479-4151-832c-88f518e39f1e")
+	)
+	(wire
+		(pts
+			(xy 328.93 326.39) (xy 340.36 326.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5c05c03e-962c-4c4b-8400-0ff113d204dc")
+	)
+	(wire
+		(pts
+			(xy 214.63 358.14) (xy 214.63 374.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5c7ef062-41c4-4864-8ddc-e79520190575")
+	)
+	(wire
+		(pts
+			(xy 328.93 323.85) (xy 328.93 326.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5ca5fb1f-8631-46ca-8fc7-bd7ef810c503")
+	)
+	(wire
+		(pts
+			(xy 403.86 341.63) (xy 397.51 341.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5cba12f8-9b9d-423f-9af5-d311e623d226")
+	)
+	(wire
+		(pts
+			(xy 345.44 378.46) (xy 353.06 378.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5ed1f745-c487-4495-ba4f-e8c8e30d7f88")
+	)
+	(wire
+		(pts
+			(xy 370.84 381) (xy 397.51 381)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5efea753-9788-45f8-ab40-958225c60d1e")
+	)
+	(wire
+		(pts
+			(xy 462.28 207.01) (xy 487.68 207.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "611670f2-4749-40c5-a674-11eda1c44855")
+	)
+	(wire
+		(pts
+			(xy 331.47 341.63) (xy 335.28 341.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "61286445-16c5-4718-b2bc-70de892aff8d")
+	)
+	(wire
+		(pts
+			(xy 52.07 359.41) (xy 52.07 367.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "613f1388-716d-4a43-b5e1-95667fcc8985")
+	)
+	(wire
+		(pts
+			(xy 306.07 73.66) (xy 331.47 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6168c68b-a004-4ac5-bad7-64765b28a803")
+	)
+	(wire
+		(pts
+			(xy 77.47 109.22) (xy 77.47 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6311ed73-e2bc-4e9f-99bb-3ab5957d9992")
+	)
+	(wire
+		(pts
+			(xy 275.59 106.68) (xy 275.59 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6368cf25-958f-4955-afa4-3747d3351987")
+	)
+	(wire
+		(pts
+			(xy 232.41 356.87) (xy 234.95 356.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "64c9720f-eb64-4b25-b74a-7dcfd0eebe32")
+	)
+	(wire
+		(pts
+			(xy 210.82 240.03) (xy 210.82 274.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "653aea61-c0ce-465f-a699-8c769760897c")
+	)
+	(wire
+		(pts
+			(xy 49.53 364.49) (xy 49.53 372.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "65546cb7-ab3e-4ee5-a577-16b931e7e59a")
+	)
+	(wire
+		(pts
+			(xy 199.39 339.09) (xy 214.63 339.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "65a0a763-ef84-4b7e-b44d-21d79cf62b70")
+	)
+	(wire
+		(pts
+			(xy 166.37 137.16) (xy 158.75 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "65e09210-af31-49d9-b090-1a451ccc2dbe")
+	)
+	(wire
+		(pts
+			(xy 467.36 86.36) (xy 467.36 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "67572d39-ac5c-4033-afe5-5d735e56da24")
+	)
+	(wire
+		(pts
+			(xy 186.69 229.87) (xy 190.5 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "67b58ba2-b74d-4de4-af5b-e24bb1af21ae")
+	)
+	(wire
+		(pts
+			(xy 454.66 267.97) (xy 482.6 267.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "69efc811-9f59-4850-bab4-1cb491a9aaca")
+	)
+	(wire
+		(pts
+			(xy 199.39 374.65) (xy 214.63 374.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6a18093b-db6a-48e2-80de-e5e88a05f551")
+	)
+	(wire
+		(pts
+			(xy 128.27 114.3) (xy 143.51 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6a1ccfad-4406-4efa-8057-45451ec4eb8b")
+	)
+	(wire
+		(pts
+			(xy 464.82 41.91) (xy 464.82 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6a5314ae-e9f9-4cd3-b9ac-556535ae7177")
+	)
+	(wire
+		(pts
+			(xy 379.73 341.63) (xy 379.73 356.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6aadbc1f-7731-48bd-a092-7f19de721f86")
+	)
+	(wire
+		(pts
+			(xy 85.09 259.08) (xy 81.28 259.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6b7a8165-3f4e-4bfc-a6f3-119df4b8f715")
+	)
+	(wire
+		(pts
+			(xy 260.35 339.09) (xy 262.89 339.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6c55f0aa-6ac8-49fa-9281-669467326fe0")
+	)
+	(wire
+		(pts
+			(xy 198.12 54.61) (xy 198.12 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6c80c884-b468-432f-9572-56b6863af8b8")
+	)
+	(wire
+		(pts
+			(xy 327.66 334.01) (xy 331.47 334.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6ca08d19-9acf-4020-8a59-a0b99390f1e6")
+	)
+	(wire
+		(pts
+			(xy 464.82 209.55) (xy 464.82 250.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6d0bf36e-7b4c-4771-b725-34ebc1ef7527")
+	)
+	(wire
+		(pts
+			(xy 464.82 125.73) (xy 464.82 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6da2404c-7950-447c-a68c-74c31c72ff6b")
+	)
+	(wire
+		(pts
+			(xy 370.84 381) (xy 370.84 373.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6e02bc8e-cfff-4d66-b480-b433048266c1")
+	)
+	(wire
+		(pts
+			(xy 302.26 92.71) (xy 300.99 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6e0cb056-e925-4df8-b5f4-6ce47c647313")
+	)
+	(wire
+		(pts
+			(xy 44.45 361.95) (xy 46.99 361.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6e4ea9d7-474d-4e1f-9dab-557f8420c911")
+	)
+	(wire
+		(pts
+			(xy 191.77 118.11) (xy 191.77 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6e6111c0-5080-43c7-84d5-33a85e4df3bc")
+	)
+	(wire
+		(pts
+			(xy 157.48 224.79) (xy 154.94 224.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6ea995c6-ee0e-4229-8c71-a6b0c04e57fa")
+	)
+	(wire
+		(pts
+			(xy 62.23 73.66) (xy 67.31 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6ed9f037-1738-4e4e-a1d3-12ace9d8f398")
+	)
+	(wire
+		(pts
+			(xy 143.51 114.3) (xy 143.51 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f349c9a-d741-4ae1-9b57-2d63457d3bec")
+	)
+	(wire
+		(pts
+			(xy 123.19 346.71) (xy 133.35 346.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7055339d-f00e-4b00-9f7c-46f3e08b4c13")
+	)
+	(wire
+		(pts
+			(xy 52.07 367.03) (xy 44.45 367.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "70ed8295-a959-42ef-8d3a-a2a31f6bb30d")
+	)
+	(wire
+		(pts
+			(xy 441.96 257.81) (xy 472.44 257.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "72a5f3f9-9da9-41f9-8d83-15514de0e388")
+	)
+	(wire
+		(pts
+			(xy 339.09 393.7) (xy 339.09 349.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74c32519-1092-425b-a498-e218384bead8")
+	)
+	(wire
+		(pts
+			(xy 77.47 81.28) (xy 69.85 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74f4b828-483f-41a5-8390-7ebc48d3d06d")
+	)
+	(wire
+		(pts
+			(xy 505.46 177.8) (xy 514.35 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "760167ea-0a89-4233-804d-028b9c23a704")
+	)
+	(wire
+		(pts
+			(xy 467.36 128.27) (xy 487.68 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "76465f99-790b-4eff-b747-06b0f83905c0")
+	)
+	(wire
+		(pts
+			(xy 69.85 359.41) (xy 69.85 346.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "76eec1bc-1b25-4613-b2d1-99a41d4351b1")
+	)
+	(wire
+		(pts
+			(xy 339.09 349.25) (xy 354.33 349.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7724a939-8d54-4216-9840-6e37593b73ad")
+	)
+	(wire
+		(pts
+			(xy 80.01 83.82) (xy 77.47 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "778b5be6-3007-428b-8824-cb751ec74a1e")
+	)
+	(wire
+		(pts
+			(xy 176.53 46.99) (xy 179.07 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "78c6653a-8840-4186-bed6-411fef911729")
+	)
+	(wire
+		(pts
+			(xy 54.61 88.9) (xy 54.61 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "78ee0e4b-b9f5-4172-bf61-1a24c3c94116")
+	)
+	(wire
+		(pts
+			(xy 128.27 111.76) (xy 133.35 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "78f96304-9f45-41ac-93be-78f8c2adc8ad")
+	)
+	(wire
+		(pts
+			(xy 444.5 266.7) (xy 444.5 260.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7971b934-3fc9-462d-8f10-d22159a17563")
+	)
+	(wire
+		(pts
+			(xy 133.35 372.11) (xy 142.24 372.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "79d9ed43-d896-42d7-a65c-d5f90b2aa248")
+	)
+	(wire
+		(pts
+			(xy 388.62 341.63) (xy 379.73 341.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7a10f469-b11d-4976-97e8-c08db56ee40b")
+	)
+	(wire
+		(pts
+			(xy 490.22 349.25) (xy 495.3 349.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7a9d884d-338e-498e-9632-e3f5a07a607e")
+	)
+	(wire
+		(pts
+			(xy 383.54 254) (xy 383.54 248.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7ad299c0-0258-4f6f-aba3-5f55e0cf1a33")
+	)
+	(wire
+		(pts
+			(xy 229.87 339.09) (xy 242.57 339.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7b3d3b9d-9212-4fff-bf19-2b0e28b9229b")
+	)
+	(wire
+		(pts
+			(xy 355.6 73.66) (xy 381 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7bbb48e7-a019-445a-971c-9036fbe4877e")
+	)
+	(wire
+		(pts
+			(xy 191.77 242.57) (xy 191.77 260.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7be18f9e-532e-4db6-b59e-5af6e6a29764")
+	)
+	(polyline
+		(pts
+			(xy 321.31 223.52) (xy 321.31 184.15)
+		)
+		(stroke
+			(width 0.9906)
+			(type solid)
+		)
+		(uuid "7bec9599-5b54-445a-bde2-8fc4f13774c9")
+	)
+	(wire
+		(pts
+			(xy 561.34 346.71) (xy 561.34 349.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7c7a5e00-ce3c-475c-bfe7-0754f2c201db")
+	)
+	(wire
+		(pts
+			(xy 280.67 80.01) (xy 280.67 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7e77f5fa-3434-4cdd-a6ac-fe4946c9e71c")
+	)
+	(wire
+		(pts
+			(xy 270.51 374.65) (xy 270.51 379.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7f661613-f2e6-4caa-9f75-d5dddf8bca5c")
+	)
+	(wire
+		(pts
+			(xy 436.88 252.73) (xy 467.36 252.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7ff74cb0-fcec-4e07-bd29-28d1acfe0c91")
+	)
+	(wire
+		(pts
+			(xy 340.36 337.82) (xy 340.36 341.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "80040814-d180-439b-8357-e19c263baa2d")
+	)
+	(wire
+		(pts
+			(xy 487.68 182.88) (xy 480.06 182.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "81093f8f-c058-4f50-a632-b398a2db2b56")
+	)
+	(wire
+		(pts
+			(xy 449.58 251.46) (xy 449.58 270.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8179878a-3c8f-45fd-b522-45a614fc85eb")
+	)
+	(wire
+		(pts
+			(xy 487.68 99.06) (xy 480.06 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "817bbf1d-82a4-4db3-8768-1499d5a4963e")
+	)
+	(wire
+		(pts
+			(xy 487.68 62.23) (xy 485.14 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "81f02875-95e7-4fd7-846c-e22b764bbcb8")
+	)
+	(wire
+		(pts
+			(xy 336.55 106.68) (xy 336.55 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "81fd671e-4cb5-40c9-952c-509a8bd52709")
+	)
+	(wire
+		(pts
+			(xy 397.51 381) (xy 416.56 381)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "82589311-26fc-4579-b736-05a096b15da2")
+	)
+	(wire
+		(pts
+			(xy 388.62 254) (xy 430.53 254)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "82c63731-e7e8-463e-ba05-19f853190ca2")
+	)
+	(wire
+		(pts
+			(xy 74.93 116.84) (xy 77.47 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "82c64ceb-4197-4448-8b1d-8b20260fb6ab")
+	)
+	(wire
+		(pts
+			(xy 449.58 270.51) (xy 485.14 270.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "83473968-3ace-41ae-8c7f-4cfdf417f291")
+	)
+	(wire
+		(pts
+			(xy 472.44 217.17) (xy 487.68 217.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "83852cb1-c87d-4669-96f4-230aaf248911")
+	)
+	(wire
+		(pts
+			(xy 199.39 339.09) (xy 199.39 341.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "839bedca-5994-4bb0-be47-310c9b8e4059")
+	)
+	(wire
+		(pts
+			(xy 71.12 254) (xy 68.58 254)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "83e76d6e-8df8-42a3-a650-36f14045935f")
+	)
+	(wire
+		(pts
+			(xy 166.37 41.91) (xy 166.37 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "83f107e9-021b-477d-8c37-29ec6cb164c1")
+	)
+	(wire
+		(pts
+			(xy 462.28 247.65) (xy 488.95 247.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "843c7e4d-f42e-4e70-ac8e-6b6264cdb26f")
+	)
+	(wire
+		(pts
+			(xy 490.22 346.71) (xy 492.76 346.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "84854bd8-e69e-45ba-aa33-459fee3bb647")
+	)
+	(wire
+		(pts
+			(xy 320.04 327.66) (xy 335.28 327.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "84c710bf-a760-4e09-b36d-73f74fe06ea7")
+	)
+	(wire
+		(pts
+			(xy 128.27 106.68) (xy 133.35 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "851de25b-c004-4422-a04a-09958b99882c")
+	)
+	(wire
+		(pts
+			(xy 331.47 106.68) (xy 331.47 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8526950c-ebfe-4dd3-9400-78c24afc40c0")
+	)
+	(wire
+		(pts
+			(xy 80.01 372.11) (xy 92.71 372.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "856c75fb-7f34-4743-b1bd-59edb723019b")
+	)
+	(wire
+		(pts
+			(xy 472.44 133.35) (xy 472.44 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "858b4e70-82f8-475c-a273-f026de17ede4")
+	)
+	(wire
+		(pts
+			(xy 444.5 383.54) (xy 444.5 373.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "85f73531-5f1e-4d3c-be88-f499c444ed58")
+	)
+	(wire
+		(pts
+			(xy 198.12 104.14) (xy 198.12 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8604aaa5-d6bb-45e3-9c46-a0a11655c476")
+	)
+	(wire
+		(pts
+			(xy 365.76 381) (xy 368.3 381)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8634fe31-d717-41b7-b1ff-c10521b3443e")
+	)
+	(wire
+		(pts
+			(xy 397.51 341.63) (xy 388.62 341.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8664887e-5e77-498a-8107-a3916a5ccb8b")
+	)
+	(wire
+		(pts
+			(xy 128.27 137.16) (xy 133.35 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8875faa7-661a-47a1-b97e-09fc54d9b5f7")
+	)
+	(wire
+		(pts
+			(xy 487.68 165.1) (xy 462.28 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8878c9c1-929b-4948-a66b-63e70a13450f")
+	)
+	(wire
+		(pts
+			(xy 462.28 123.19) (xy 462.28 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8959cc60-1731-43f0-94a1-8112be852396")
+	)
+	(wire
+		(pts
+			(xy 320.04 323.85) (xy 320.04 327.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8aed1203-2b1d-49c6-93b1-b94455a332d0")
+	)
+	(wire
+		(pts
+			(xy 186.69 247.65) (xy 190.5 247.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8b432822-c757-4874-8842-d158d615350e")
+	)
+	(wire
+		(pts
+			(xy 316.23 334.01) (xy 327.66 334.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8bab70ce-5539-47cc-858a-eb8493cf4814")
+	)
+	(wire
+		(pts
+			(xy 464.82 167.64) (xy 487.68 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8bb9d9ac-1a64-48c9-8276-6edeb082bb4f")
+	)
+	(wire
+		(pts
+			(xy 388.62 271.78) (xy 388.62 274.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8d689afb-dc90-4fa5-8b25-42263e52d4f2")
+	)
+	(wire
+		(pts
+			(xy 54.61 109.22) (xy 59.69 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8dad1adb-46a0-4f21-ba12-68a6a723d2c4")
+	)
+	(wire
+		(pts
+			(xy 80.01 369.57) (xy 80.01 372.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8db0fd95-1fb6-4793-9f35-1fd1ff0b7bfe")
+	)
+	(wire
+		(pts
+			(xy 410.21 92.71) (xy 411.48 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8e57eccb-1bec-4553-b7a0-b0161920c282")
+	)
+	(wire
+		(pts
+			(xy 477.52 54.61) (xy 487.68 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8ed74539-e5fa-407a-9bda-142cc8491684")
+	)
+	(wire
+		(pts
+			(xy 157.48 260.35) (xy 154.94 260.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "90af9b42-304f-4409-b70b-89bd0349d3bb")
+	)
+	(wire
+		(pts
+			(xy 186.69 224.79) (xy 191.77 224.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "91b474b2-feef-43b6-8493-5e171b430efe")
+	)
+	(wire
+		(pts
+			(xy 92.71 372.11) (xy 113.03 372.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "91ec0f9e-a2e2-42e1-b1b6-60dc0903d633")
+	)
+	(wire
+		(pts
+			(xy 191.77 127) (xy 179.07 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9266964f-aa75-43a4-9b4c-5725402368c4")
+	)
+	(wire
+		(pts
+			(xy 46.99 99.06) (xy 46.99 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9271e3ed-1d36-4eb3-ac58-c1d547e4c0c4")
+	)
+	(wire
+		(pts
+			(xy 349.25 373.38) (xy 349.25 383.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "92ce4720-a43a-4fb6-bf26-ecbc31228179")
+	)
+	(wire
+		(pts
+			(xy 391.16 256.54) (xy 434.34 256.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9454d040-f8a6-4eda-b734-b09d325b612c")
+	)
+	(wire
+		(pts
+			(xy 191.77 242.57) (xy 186.69 242.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "95971b15-60f0-4d0d-86f0-68d562a7e837")
+	)
+	(wire
+		(pts
+			(xy 232.41 351.79) (xy 232.41 356.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9625c56e-07b5-4b87-987d-d68a4af0af60")
+	)
+	(wire
+		(pts
+			(xy 388.62 363.22) (xy 388.62 373.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "966888cf-4528-4d02-bf60-2f7b5fcf24f3")
+	)
+	(wire
+		(pts
+			(xy 487.68 187.96) (xy 485.14 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "966f045a-c552-418b-8501-c1b066772d71")
+	)
+	(wire
+		(pts
+			(xy 166.37 101.6) (xy 166.37 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "96c41ae0-81c6-43f7-8197-09c85ebd9cfd")
+	)
+	(wire
+		(pts
+			(xy 492.76 337.82) (xy 492.76 346.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "96fe47d3-04a3-43af-9051-1b5cf7e42cae")
+	)
+	(wire
+		(pts
+			(xy 477.52 138.43) (xy 487.68 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "97891b0c-b221-4325-ae37-53310dde8bbb")
+	)
+	(wire
+		(pts
+			(xy 105.41 339.09) (xy 105.41 346.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "978a0d6a-3602-46c3-a5b9-5927006720dd")
+	)
+	(wire
+		(pts
+			(xy 467.36 252.73) (xy 488.95 252.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9830d543-5cc7-4da9-9c69-ef1a4c5cfd3f")
+	)
+	(wire
+		(pts
+			(xy 490.22 344.17) (xy 495.3 344.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "98522fd0-ea41-40d2-aaa0-712528d12ef3")
+	)
+	(wire
+		(pts
+			(xy 485.14 187.96) (xy 485.14 229.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "986e4bce-eccd-4c8b-8197-c22480fa3564")
+	)
+	(wire
+		(pts
+			(xy 113.03 346.71) (xy 123.19 346.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "99058413-95db-46a1-ae20-bb0761e0aa72")
+	)
+	(wire
+		(pts
+			(xy 69.85 88.9) (xy 69.85 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "99572da8-d95e-4a39-987d-d7d3d88c0f7e")
+	)
+	(wire
+		(pts
+			(xy 375.92 266.7) (xy 393.7 266.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "99b827cc-8ea9-48d4-ba9c-736b7642b790")
+	)
+	(wire
+		(pts
+			(xy 386.08 256.54) (xy 386.08 251.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "99f20597-9c02-4043-9528-90c6f1401efc")
+	)
+	(wire
+		(pts
+			(xy 368.3 381) (xy 368.3 383.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9a958137-132e-4c7c-ae35-099f6430a428")
+	)
+	(wire
+		(pts
+			(xy 331.47 334.01) (xy 331.47 341.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9ad0b5fd-05f5-46f5-8aab-feb2e71046da")
+	)
+	(wire
+		(pts
+			(xy 139.7 271.78) (xy 208.28 271.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9b66d4b5-14d3-4089-869f-33cc1e2602f6")
+	)
+	(wire
+		(pts
+			(xy 191.77 104.14) (xy 191.77 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9cb68b7b-f73f-41d0-bc78-9c7c527bc639")
+	)
+	(wire
+		(pts
+			(xy 276.86 92.71) (xy 275.59 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9dd28bad-da4d-47f0-932a-4717709aa965")
+	)
+	(wire
+		(pts
+			(xy 113.03 363.22) (xy 113.03 372.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9eb080b7-a56d-4de1-8bed-cea01f84b537")
+	)
+	(wire
+		(pts
+			(xy 403.86 368.3) (xy 408.94 368.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9f3190b4-6851-49e9-9d15-fbe400ee16c7")
+	)
+	(wire
+		(pts
+			(xy 482.6 185.42) (xy 487.68 185.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9f35d596-d8d3-487c-b389-e52e458dd6a6")
+	)
+	(wire
+		(pts
+			(xy 80.01 96.52) (xy 59.69 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9f604b1b-4041-4180-9d15-0448e157ffe1")
+	)
+	(wire
+		(pts
+			(xy 472.44 49.53) (xy 487.68 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a0562deb-fc04-47bf-9f41-80be3f70cc24")
+	)
+	(wire
+		(pts
+			(xy 215.9 234.95) (xy 205.74 234.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a1fcd2af-e8e8-4f8e-982d-7b214b6ecc04")
+	)
+	(wire
+		(pts
+			(xy 139.7 223.52) (xy 139.7 271.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a20cf96e-5a85-44ec-8c2b-2d3e49418dfe")
+	)
+	(wire
+		(pts
+			(xy 487.68 46.99) (xy 469.9 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a2863e37-45a8-4409-91ab-063dbb55f251")
+	)
+	(wire
+		(pts
+			(xy 472.44 217.17) (xy 472.44 257.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a2c6b80e-5f3f-4787-90f8-3785a316d364")
+	)
+	(wire
+		(pts
+			(xy 375.92 259.08) (xy 388.62 259.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a38766b5-d6e8-40b7-93d8-00b2c9020eba")
+	)
+	(wire
+		(pts
+			(xy 490.22 341.63) (xy 495.3 341.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a3d233b6-383c-4e96-916b-200d20be09ce")
+	)
+	(wire
+		(pts
+			(xy 57.15 73.66) (xy 62.23 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a41214e2-07e7-4325-92c1-35f9d758089c")
+	)
+	(wire
+		(pts
+			(xy 80.01 101.6) (xy 59.69 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a44bde8f-4f65-4055-8619-495f22072c2e")
+	)
+	(wire
+		(pts
+			(xy 379.73 341.63) (xy 373.38 341.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a4a57c71-68aa-471e-b970-c5221cc8ad7a")
+	)
+	(wire
+		(pts
+			(xy 388.62 259.08) (xy 388.62 254)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a4b3ab07-9551-4511-a2b1-c8298547aa6f")
+	)
+	(wire
+		(pts
+			(xy 472.44 257.81) (xy 488.95 257.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a5dc63d1-550e-4922-8d23-abf2c4b828f1")
+	)
+	(wire
+		(pts
+			(xy 71.12 236.22) (xy 68.58 236.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a6effbbe-fa43-4549-a88a-6a30a43a51fa")
+	)
+	(wire
+		(pts
+			(xy 46.99 96.52) (xy 46.99 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a7307334-7a2e-4599-bca0-ddb5b8b40593")
+	)
+	(wire
+		(pts
+			(xy 133.35 372.11) (xy 133.35 374.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a85a3a95-fc75-4016-a9ae-dc19f1213460")
+	)
+	(wire
+		(pts
+			(xy 340.36 330.2) (xy 340.36 326.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a86e8a5f-2dc2-465a-9421-c5b1508092eb")
+	)
+	(wire
+		(pts
+			(xy 198.12 118.11) (xy 198.12 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a8876fd3-46fd-4592-8c75-8ef8d84de028")
+	)
+	(wire
+		(pts
+			(xy 105.41 254) (xy 100.33 254)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a8f43c28-7b53-46a3-a916-3ce7d1b8998a")
+	)
+	(wire
+		(pts
+			(xy 430.53 247.65) (xy 462.28 247.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a99c8f68-8dc8-457f-90e4-f70c5b761503")
+	)
+	(wire
+		(pts
+			(xy 375.92 256.54) (xy 386.08 256.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aa0c68a5-17da-4413-a001-52cb9b36f4e1")
+	)
+	(wire
+		(pts
+			(xy 128.27 127) (xy 133.35 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aa896158-b452-4da0-aeb8-abf11155dd4b")
+	)
+	(wire
+		(pts
+			(xy 114.3 259.08) (xy 134.62 259.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aa931caa-2ede-4389-9f22-5a5c0baf2a6b")
+	)
+	(wire
+		(pts
+			(xy 472.44 91.44) (xy 487.68 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ac4646bf-9c72-4307-b049-36457f4b86e1")
+	)
+	(wire
+		(pts
+			(xy 134.62 276.86) (xy 213.36 276.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ace45b80-9870-41e7-8052-4a0f48d1c494")
+	)
+	(wire
+		(pts
+			(xy 105.41 236.22) (xy 100.33 236.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ad31caea-47bf-468b-a675-198bc28d2dad")
+	)
+	(wire
+		(pts
+			(xy 434.34 256.54) (xy 434.34 250.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ae41ca57-1017-4c4d-9cb6-58808342a0d8")
+	)
+	(wire
+		(pts
+			(xy 327.66 342.9) (xy 327.66 349.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ae6a0ec5-0257-44b7-ab89-6f3544247b67")
+	)
+	(wire
+		(pts
+			(xy 469.9 214.63) (xy 487.68 214.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af03eb5a-7fe1-4db6-bf51-a4683a1b00f1")
+	)
+	(wire
+		(pts
+			(xy 85.09 241.3) (xy 81.28 241.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af24752f-2962-4bc6-8821-b69274628c1b")
+	)
+	(wire
+		(pts
+			(xy 215.9 237.49) (xy 208.28 237.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b048a611-dd4e-4f00-91e7-97e6f26c9ba2")
+	)
+	(wire
+		(pts
+			(xy 205.74 234.95) (xy 205.74 265.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b08f3d8d-2611-40b2-b7c2-171540aef325")
+	)
+	(wire
+		(pts
+			(xy 375.92 254) (xy 383.54 254)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b225f47c-5233-489b-beff-28d45d661e86")
+	)
+	(wire
+		(pts
+			(xy 467.36 86.36) (xy 487.68 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b24623bf-da99-4865-8d46-fc339bad231f")
+	)
+	(wire
+		(pts
+			(xy 171.45 54.61) (xy 198.12 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b28c859d-da5b-4085-826d-b83391027266")
+	)
+	(wire
+		(pts
+			(xy 285.75 106.68) (xy 285.75 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b2b24496-83e5-45b2-83e4-593d30b6e417")
+	)
+	(wire
+		(pts
+			(xy 46.99 361.95) (xy 46.99 356.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b2e03ff5-c487-4fa0-84fa-614df88132dd")
+	)
+	(polyline
+		(pts
+			(xy 322.58 184.15) (xy 454.66 184.15)
+		)
+		(stroke
+			(width 0.9906)
+			(type solid)
+		)
+		(uuid "b2e60f3c-ac89-43cb-a74d-5f4b9d0d349b")
+	)
+	(wire
+		(pts
+			(xy 439.42 255.27) (xy 469.9 255.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b483f16b-9ad4-46d0-b38d-04bba32efde1")
+	)
+	(wire
+		(pts
+			(xy 224.79 356.87) (xy 232.41 356.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b4ac8be6-4c0b-4161-a607-88f2d7d5b769")
+	)
+	(wire
+		(pts
+			(xy 213.36 242.57) (xy 213.36 276.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b50eee85-998c-47dd-bb84-0cab7552cafa")
+	)
+	(wire
+		(pts
+			(xy 480.06 224.79) (xy 480.06 265.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b58dcedc-a169-41c9-a0d3-c86fed821225")
+	)
+	(wire
+		(pts
+			(xy 59.69 101.6) (xy 59.69 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b5c4de1f-81c6-4045-85b5-03edb7c5589f")
+	)
+	(wire
+		(pts
+			(xy 474.98 260.35) (xy 488.95 260.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b5ed7430-08a7-4de5-9520-ac70150e6a43")
+	)
+	(wire
+		(pts
+			(xy 467.36 212.09) (xy 487.68 212.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b6189e38-ac65-45f9-a85e-ede0a9d200ed")
+	)
+	(wire
+		(pts
+			(xy 487.68 83.82) (xy 464.82 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b6664824-89b6-433f-954a-79cb47e8fd9e")
+	)
+	(wire
+		(pts
+			(xy 379.73 373.38) (xy 388.62 373.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7249b37-00bf-4be1-a460-4cd204d1eb44")
+	)
+	(wire
+		(pts
+			(xy 171.45 247.65) (xy 167.64 247.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7bfa0b9-0f75-47d6-be0a-1b8bb3285743")
+	)
+	(wire
+		(pts
+			(xy 262.89 360.68) (xy 262.89 374.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b81aba24-5887-4d53-81c9-2a9747fd4e10")
+	)
+	(wire
+		(pts
+			(xy 477.52 54.61) (xy 477.52 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b88e31a7-ff8b-42de-b594-c237124ac548")
+	)
+	(wire
+		(pts
+			(xy 77.47 78.74) (xy 80.01 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b8b7c44c-f3ae-48bb-ab9c-307c76a2c251")
+	)
+	(wire
+		(pts
+			(xy 386.08 251.46) (xy 449.58 251.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ba5b3aaa-fef1-470e-990c-3863712a9003")
+	)
+	(wire
+		(pts
+			(xy 105.41 218.44) (xy 105.41 236.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "baaf411a-7446-468c-97d2-44d2404849a2")
+	)
+	(wire
+		(pts
+			(xy 199.39 374.65) (xy 199.39 369.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bb055310-b600-4f36-8c15-2a1cd8061abb")
+	)
+	(wire
+		(pts
+			(xy 487.68 146.05) (xy 485.14 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bbc2bb29-64ed-4d1c-8da8-873072190c0e")
+	)
+	(wire
+		(pts
+			(xy 469.9 172.72) (xy 469.9 214.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bc63a58f-67dd-4081-b52c-53ed6ebf0b37")
+	)
+	(wire
+		(pts
+			(xy 482.6 101.6) (xy 487.68 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bc836cb6-3a1f-4d6f-95b7-ada5998bf81a")
+	)
+	(wire
+		(pts
+			(xy 350.52 266.7) (xy 342.9 266.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bcbca437-5984-49cb-b0f9-0ab8e77cd71b")
+	)
+	(wire
+		(pts
+			(xy 370.84 383.54) (xy 426.72 383.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bcbe1713-1698-4089-bf74-88dabc9fe0d8")
+	)
+	(wire
+		(pts
+			(xy 167.64 127) (xy 168.91 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bcf81961-9f5f-4745-88b8-1a75b1994fce")
+	)
+	(wire
+		(pts
+			(xy 347.98 381) (xy 347.98 391.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bd6ab137-94c1-4cd0-8e53-06a33f1f3e4b")
+	)
+	(wire
+		(pts
+			(xy 49.53 372.11) (xy 80.01 372.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bdc45672-6d4a-4c3a-93f8-537480343a18")
+	)
+	(wire
+		(pts
+			(xy 54.61 88.9) (xy 59.69 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "be90d8ab-4458-4e9d-a7fe-84de04b4c2b0")
+	)
+	(wire
+		(pts
+			(xy 519.43 349.25) (xy 514.35 349.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf3c2b58-eb38-40ac-ba09-944d2b6f29a7")
+	)
+	(wire
+		(pts
+			(xy 464.82 209.55) (xy 487.68 209.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bfc4f2a4-07d2-4003-a0f4-c5641e35d11c")
+	)
+	(wire
+		(pts
+			(xy 462.28 39.37) (xy 462.28 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c1517185-9dbf-4868-a37e-cbde75e8516d")
+	)
+	(wire
+		(pts
+			(xy 300.99 106.68) (xy 300.99 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c15c7627-e68a-413b-91df-b021799bab36")
+	)
+	(wire
+		(pts
+			(xy 452.12 271.78) (xy 396.24 271.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c1703594-e743-4eb2-ace0-bd8e6fc390e0")
+	)
+	(wire
+		(pts
+			(xy 262.89 339.09) (xy 273.05 339.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c18eecba-9eb5-4395-a3e7-2b9324ad57e1")
+	)
+	(wire
+		(pts
+			(xy 474.98 219.71) (xy 487.68 219.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c1efd94d-3e54-468e-971c-21ab513ebe77")
+	)
+	(wire
+		(pts
+			(xy 133.35 346.71) (xy 140.97 346.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c24eeca8-53d6-4bc5-b763-d83b89d131df")
+	)
+	(wire
+		(pts
+			(xy 381 106.68) (xy 381 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c25c83b0-c12a-41fe-97b1-e024da09a081")
+	)
+	(wire
+		(pts
+			(xy 186.69 265.43) (xy 190.5 265.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c3a2d131-7985-4afa-acef-73d2a477e297")
+	)
+	(wire
+		(pts
+			(xy 477.52 180.34) (xy 477.52 222.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c4161771-855d-4f30-b1cb-a1d8c14add82")
+	)
+	(wire
+		(pts
+			(xy 482.6 227.33) (xy 487.68 227.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c4fbd4d3-6da2-4022-885b-bb5fa66bd017")
+	)
+	(wire
+		(pts
+			(xy 114.3 223.52) (xy 139.7 223.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c5fada82-3e3c-42cf-8fe2-201a88d64729")
+	)
+	(wire
+		(pts
+			(xy 200.66 247.65) (xy 203.2 247.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c697e7a6-5538-43d1-9711-e4591f48a3a2")
+	)
+	(wire
+		(pts
+			(xy 166.37 46.99) (xy 163.83 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c75a556e-2154-4fe9-9575-00b6ff2c6741")
+	)
+	(wire
+		(pts
+			(xy 477.52 262.89) (xy 488.95 262.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c7763552-60a2-4a70-bd07-becc9fd71f5c")
+	)
+	(wire
+		(pts
+			(xy 487.68 135.89) (xy 474.98 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c873688d-1d7f-4786-9272-72cea2aaba8b")
+	)
+	(wire
+		(pts
+			(xy 553.72 344.17) (xy 553.72 346.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c8a00a85-50c7-44f2-90cc-832311025ef1")
+	)
+	(wire
+		(pts
+			(xy 480.06 224.79) (xy 487.68 224.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c8d92eb2-bd3e-4867-9c69-0ca70d128cb0")
+	)
+	(wire
+		(pts
+			(xy 146.05 78.74) (xy 146.05 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c9139427-185d-40c5-8fff-22ffee842cb5")
+	)
+	(wire
+		(pts
+			(xy 487.68 41.91) (xy 464.82 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c9b63cde-b614-4a81-a1fd-8277f9f5f587")
+	)
+	(wire
+		(pts
+			(xy 151.13 78.74) (xy 146.05 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ca38e663-7855-44df-8d69-49da24dfc3f3")
+	)
+	(wire
+		(pts
+			(xy 123.19 372.11) (xy 133.35 372.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "caa7d9eb-e933-4d0d-97ff-08c36166a4b1")
+	)
+	(wire
+		(pts
+			(xy 46.99 369.57) (xy 46.99 379.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "caf8b7e0-95b8-4154-9cf0-4fc1472ff56d")
+	)
+	(wire
+		(pts
+			(xy 347.98 391.16) (xy 370.84 391.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb784626-20ce-48ab-93f2-868769e1d94e")
+	)
+	(wire
+		(pts
+			(xy 44.45 369.57) (xy 46.99 369.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cbdcfc0d-3150-4869-a1be-20fdb0de068e")
+	)
+	(wire
+		(pts
+			(xy 431.8 341.63) (xy 426.72 341.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cd13ff55-536c-4f30-b338-182b595ad86e")
+	)
+	(wire
+		(pts
+			(xy 69.85 91.44) (xy 62.23 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cd4dafbc-28d2-4134-95e9-9e631a0f4c65")
+	)
+	(wire
+		(pts
+			(xy 477.52 96.52) (xy 477.52 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cd7465fc-db2f-49f2-bf8f-5ac92312a85e")
+	)
+	(wire
+		(pts
+			(xy 306.07 106.68) (xy 306.07 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cf753664-ec71-43c4-a849-e2d37187ab89")
+	)
+	(wire
+		(pts
+			(xy 383.54 248.92) (xy 411.48 248.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cf96da76-b60f-42f6-89b8-bfdfa429a81e")
+	)
+	(wire
+		(pts
+			(xy 373.38 386.08) (xy 373.38 341.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d02295ed-88ba-424d-82b6-e33a124bb3e8")
+	)
+	(wire
+		(pts
+			(xy 105.41 346.71) (xy 113.03 346.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d06e945c-ebe7-427f-b93c-f809c76307df")
+	)
+	(wire
+		(pts
+			(xy 242.57 339.09) (xy 245.11 339.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d0d51071-dabe-4c2e-a3ec-bf8a02dccaae")
+	)
+	(wire
+		(pts
+			(xy 519.43 346.71) (xy 514.35 346.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d1c9ffff-5081-41aa-9625-ea0f0877e777")
+	)
+	(wire
+		(pts
+			(xy 128.27 129.54) (xy 133.35 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d271fd08-bc78-44e9-8873-b5d32e47cf8f")
+	)
+	(wire
+		(pts
+			(xy 487.68 93.98) (xy 474.98 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d3917156-13cd-46b3-94e9-82e53cfdf8f0")
+	)
+	(wire
+		(pts
+			(xy 467.36 44.45) (xy 487.68 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d3e73553-6300-421d-b1d1-7f8a2493f8f1")
+	)
+	(wire
+		(pts
+			(xy 158.75 121.92) (xy 166.37 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d4001159-a48e-4884-995c-f211e37107d4")
+	)
+	(wire
+		(pts
+			(xy 397.51 381) (xy 397.51 365.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d43d3eff-2b9a-47da-ba63-ec3ba9a443e1")
+	)
+	(wire
+		(pts
+			(xy 482.6 227.33) (xy 482.6 267.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d47e7eb5-f978-4d0d-94fc-d9afe5e1651b")
+	)
+	(wire
+		(pts
+			(xy 469.9 255.27) (xy 488.95 255.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d6246e27-ca58-48e0-8cf6-1e6fcf836591")
+	)
+	(wire
+		(pts
+			(xy 462.28 81.28) (xy 487.68 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d628507c-6751-4301-b507-15a3d0404663")
+	)
+	(wire
+		(pts
+			(xy 41.91 346.71) (xy 44.45 346.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d6330528-99a1-4502-9e18-b329d660936a")
+	)
+	(wire
+		(pts
+			(xy 232.41 356.87) (xy 232.41 359.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d675b799-7a93-4599-b274-e1868aceaba6")
+	)
+	(wire
+		(pts
+			(xy 482.6 101.6) (xy 482.6 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d6b1b5c1-9a72-4396-81b6-54d9f52350b5")
+	)
+	(wire
+		(pts
+			(xy 482.6 267.97) (xy 488.95 267.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d7c042e8-1dc1-4117-b632-40e28f8847fa")
+	)
+	(wire
+		(pts
+			(xy 81.28 254) (xy 85.09 254)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d83b4b5a-8ce4-4c90-95b2-a8d9d4c42de4")
+	)
+	(wire
+		(pts
+			(xy 335.28 327.66) (xy 416.56 327.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d92c9905-7b6f-48e8-92bb-56246f15e442")
+	)
+	(wire
+		(pts
+			(xy 191.77 104.14) (xy 198.12 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d9c7ae48-0d66-4c22-8a38-77d17cde8ba7")
+	)
+	(wire
+		(pts
+			(xy 426.72 365.76) (xy 426.72 383.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "db82ac00-786b-44bc-a4de-e0a69a3eb0b2")
+	)
+	(wire
+		(pts
+			(xy 36.83 99.06) (xy 36.83 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "db8abb1b-2317-42a8-a032-7bfdd7989ae2")
+	)
+	(wire
+		(pts
+			(xy 46.99 356.87) (xy 41.91 356.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dc9b44c4-c52d-480d-9f96-02d2e026d2a1")
+	)
+	(wire
+		(pts
+			(xy 388.62 373.38) (xy 388.62 393.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dca1f972-7f24-449c-a13d-3c78e001ce77")
+	)
+	(wire
+		(pts
+			(xy 472.44 49.53) (xy 472.44 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dd15655a-8dd2-4e03-8825-50b6594138b5")
+	)
+	(wire
+		(pts
+			(xy 414.02 269.24) (xy 447.04 269.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dd7c1266-c3a9-44da-9af4-ff4cb0c2b041")
+	)
+	(wire
+		(pts
+			(xy 487.68 140.97) (xy 480.06 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ddaa4359-f4d3-46d4-98d5-4f35b3215fde")
+	)
+	(wire
+		(pts
+			(xy 391.16 269.24) (xy 391.16 256.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dde7ed34-9a57-4949-87dd-8dc8b9f28164")
+	)
+	(wire
+		(pts
+			(xy 384.81 92.71) (xy 386.08 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dea4d5a3-85c2-496a-8e2a-6a98442e230e")
+	)
+	(wire
+		(pts
+			(xy 158.75 83.82) (xy 166.37 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dece2c3a-fcf1-4c13-a74c-1591fb0ccc7d")
+	)
+	(wire
+		(pts
+			(xy 464.82 250.19) (xy 488.95 250.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dedb202c-4455-4408-8d68-8fecbb099686")
+	)
+	(wire
+		(pts
+			(xy 214.63 339.09) (xy 214.63 350.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "deea5e4e-ba08-43be-ae02-8c6592ec55e4")
+	)
+	(wire
+		(pts
+			(xy 345.44 393.7) (xy 339.09 393.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "def63dd1-ace0-4620-9437-ad84493e6642")
+	)
+	(wire
+		(pts
+			(xy 114.3 241.3) (xy 137.16 241.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "df3f4e01-91f3-48c1-bab8-0bf03b2c3b81")
+	)
+	(wire
+		(pts
+			(xy 487.68 125.73) (xy 464.82 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "df479ba9-efad-48d3-88f4-516a2c26a84d")
+	)
+	(wire
+		(pts
+			(xy 474.98 219.71) (xy 474.98 260.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dfa2d419-54e2-4afb-85f8-6ed915544862")
+	)
+	(wire
+		(pts
+			(xy 151.13 116.84) (xy 128.27 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dff5470c-4311-47f3-89e5-ea1eae677e73")
+	)
+	(wire
+		(pts
+			(xy 469.9 130.81) (xy 469.9 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e05b77c5-f605-47f9-9f2d-93eed4585098")
+	)
+	(wire
+		(pts
+			(xy 462.28 165.1) (xy 462.28 207.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e0a559cc-f51b-4225-bcb9-2aff0c3cb20c")
+	)
+	(wire
+		(pts
+			(xy 74.93 93.98) (xy 62.23 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e1edacb6-04d8-41d8-936d-f2c45a9ab46c")
+	)
+	(wire
+		(pts
+			(xy 482.6 59.69) (xy 482.6 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e21f751e-6f11-49b8-85b6-ad332324ccfb")
+	)
+	(wire
+		(pts
+			(xy 242.57 374.65) (xy 262.89 374.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e24cfd96-149b-4d68-b29b-f2a03ff43e07")
+	)
+	(wire
+		(pts
+			(xy 208.28 237.49) (xy 208.28 271.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e2bcfec7-b567-42c8-9898-1abd66185773")
+	)
+	(wire
+		(pts
+			(xy 81.28 236.22) (xy 85.09 236.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e2d7586e-6a3d-4862-960f-ffe0238ef456")
+	)
+	(wire
+		(pts
+			(xy 335.28 92.71) (xy 336.55 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e2e166b0-4c4a-419e-b928-bd367ba04b71")
+	)
+	(wire
+		(pts
+			(xy 232.41 374.65) (xy 232.41 369.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e322629a-5171-4827-8534-6d16abd11c78")
+	)
+	(wire
+		(pts
+			(xy 55.88 359.41) (xy 52.07 359.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e352c0ce-528c-4f06-8a2d-a73ce2a64f5a")
+	)
+	(polyline
+		(pts
+			(xy 298.45 308.61) (xy 298.45 405.13)
+		)
+		(stroke
+			(width 0)
+			(type dash)
+		)
+		(uuid "e3713a0b-7f41-4bf6-a842-247134b80a06")
+	)
+	(wire
+		(pts
+			(xy 105.41 359.41) (xy 102.87 359.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e4cf1765-7453-4d45-95f3-08dc379ac8a2")
+	)
+	(wire
+		(pts
+			(xy 505.46 93.98) (xy 513.08 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e53d0433-08dd-4b1d-a5f5-0d51cbab8846")
+	)
+	(wire
+		(pts
+			(xy 487.68 104.14) (xy 485.14 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e53f4363-a994-463c-a672-fa1b2c22a4ea")
+	)
+	(wire
+		(pts
+			(xy 69.85 346.71) (xy 72.39 346.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e58af83d-8ee3-4a34-8263-508ae9237e02")
+	)
+	(wire
+		(pts
+			(xy 462.28 81.28) (xy 462.28 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5b253bf-72c3-4659-96fa-b1ef04d9e4fd")
+	)
+	(wire
+		(pts
+			(xy 487.68 52.07) (xy 474.98 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e603cc71-74bc-43c5-9dd1-6c24b125aae9")
+	)
+	(wire
+		(pts
+			(xy 474.98 177.8) (xy 474.98 219.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e66a53cb-3745-43aa-8800-1fe8ff99fb40")
+	)
+	(wire
+		(pts
+			(xy 467.36 170.18) (xy 467.36 212.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e66b8ed2-02cf-4563-b795-2792f1d92b9a")
+	)
+	(wire
+		(pts
+			(xy 353.06 381) (xy 347.98 381)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e78d810e-ee47-40ad-8a04-e7e9f7daed4b")
+	)
+	(wire
+		(pts
+			(xy 72.39 116.84) (xy 74.93 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e84f328d-1a28-4ae9-a6a6-0aa78b25148e")
+	)
+	(wire
+		(pts
+			(xy 166.37 83.82) (xy 166.37 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e86fca60-495b-4abf-9032-baecd74b2aaf")
+	)
+	(wire
+		(pts
+			(xy 434.34 250.19) (xy 464.82 250.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e8ad48c8-be6d-42e9-81b5-75e3b6079f1a")
+	)
+	(wire
+		(pts
+			(xy 370.84 383.54) (xy 370.84 391.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ea0969cf-ca0f-4a49-a227-6b98b27cce8b")
+	)
+	(wire
+		(pts
+			(xy 487.68 177.8) (xy 474.98 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ea328df8-82b4-4682-bd50-e81779f1e2f8")
+	)
+	(polyline
+		(pts
+			(xy 454.66 223.52) (xy 321.31 223.52)
+		)
+		(stroke
+			(width 0.9906)
+			(type solid)
+		)
+		(uuid "ea3c04fb-8856-499c-bc86-9fbd3b888556")
+	)
+	(wire
+		(pts
+			(xy 388.62 393.7) (xy 345.44 393.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ea4296a5-68fe-424a-b0d4-50493cbec284")
+	)
+	(wire
+		(pts
+			(xy 506.73 260.35) (xy 514.35 260.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eadef520-5bfb-4cc7-af34-aa2b2e49ac0b")
+	)
+	(wire
+		(pts
+			(xy 167.64 135.89) (xy 167.64 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eb6a261a-603f-4373-9c7a-62586d48a5fe")
+	)
+	(wire
+		(pts
+			(xy 553.72 346.71) (xy 561.34 346.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eba07202-cfb8-4e1d-8c62-c923efa8bc9e")
+	)
+	(wire
+		(pts
+			(xy 350.52 106.68) (xy 350.52 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ebc00957-2a39-47d7-b488-dd6464c82ca5")
+	)
+	(wire
+		(pts
+			(xy 105.41 346.71) (xy 105.41 359.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ed244b72-b8d3-4649-943a-10ed01b81ec4")
+	)
+	(wire
+		(pts
+			(xy 345.44 393.7) (xy 345.44 378.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ef225ec4-f22b-40de-aca3-877ba8d81884")
+	)
+	(wire
+		(pts
+			(xy 426.72 383.54) (xy 444.5 383.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f0ade0f4-1139-426b-b191-0f7a0081c686")
+	)
+	(wire
+		(pts
+			(xy 77.47 83.82) (xy 77.47 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f12ae228-d066-4231-9079-2b7f60eb2c06")
+	)
+	(wire
+		(pts
+			(xy 326.39 106.68) (xy 326.39 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1cce960-7af8-4b9d-8cee-e52d366f587a")
+	)
+	(wire
+		(pts
+			(xy 123.19 359.41) (xy 123.19 361.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f26fc1f8-8ed5-4f8c-a9f9-9a7cc527d2c2")
+	)
+	(wire
+		(pts
+			(xy 360.68 106.68) (xy 360.68 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f333ef4e-1284-4e56-9798-fad401b3c245")
+	)
+	(wire
+		(pts
+			(xy 436.88 368.3) (xy 431.8 368.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f3e51a87-165e-44a2-9ed9-f3859fd87428")
+	)
+	(wire
+		(pts
+			(xy 128.27 88.9) (xy 133.35 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f4130ddc-e9b0-4bfe-9799-b87c7eef5358")
+	)
+	(wire
+		(pts
+			(xy 92.71 372.11) (xy 92.71 367.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f4716d8b-c1e0-4b22-900a-c572174abe9a")
+	)
+	(wire
+		(pts
+			(xy 171.45 45.72) (xy 171.45 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f4ac149a-d454-42a7-93be-42243df9ba6d")
+	)
+	(wire
+		(pts
+			(xy 309.88 92.71) (xy 311.15 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f612964a-dff8-4dc3-ad2d-9b85333130de")
+	)
+	(wire
+		(pts
+			(xy 335.28 327.66) (xy 335.28 330.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f631e6d3-3a8b-49cf-a793-9ebcc25bc0a0")
+	)
+	(wire
+		(pts
+			(xy 191.77 224.79) (xy 191.77 242.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f690ad23-7b82-4028-826c-013fc9122456")
+	)
+	(wire
+		(pts
+			(xy 553.72 341.63) (xy 561.34 341.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6a37b14-5cb6-4da2-8ec7-d0d88d88fc70")
+	)
+	(wire
+		(pts
+			(xy 77.47 109.22) (xy 80.01 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6baaf8e-daa1-40d9-b633-12ff8a45900c")
+	)
+	(wire
+		(pts
+			(xy 166.37 137.16) (xy 166.37 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6d408af-0795-405d-9b5f-8fff2297eb6f")
+	)
+	(wire
+		(pts
+			(xy 365.76 383.54) (xy 368.3 383.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f76d3375-eae5-4dbf-9f4e-5f487ca58ab4")
+	)
+	(wire
+		(pts
+			(xy 349.25 383.54) (xy 353.06 383.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f7706cd5-acad-4a26-b56a-6e1af9e8f65d")
+	)
+	(wire
+		(pts
+			(xy 203.2 232.41) (xy 203.2 247.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f7989f4e-6400-4a6a-8ce1-d19a5d10aecc")
+	)
+	(wire
+		(pts
+			(xy 128.27 83.82) (xy 133.35 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f823816f-043b-4b3d-8966-1eb040326e2c")
+	)
+	(wire
+		(pts
+			(xy 44.45 364.49) (xy 49.53 364.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f84de1c0-4543-4c2c-8ff5-6d1f535dd965")
+	)
+	(wire
+		(pts
+			(xy 46.99 109.22) (xy 54.61 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f8901234-7bcb-48ea-b563-1deb623631d3")
+	)
+	(wire
+		(pts
+			(xy 430.53 254) (xy 430.53 247.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f8d04f3b-e0cd-48db-b279-7a6561140b2e")
+	)
+	(wire
+		(pts
+			(xy 472.44 91.44) (xy 472.44 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f90de9d0-a5d6-4823-bd95-a29db27727d3")
+	)
+	(wire
+		(pts
+			(xy 128.27 124.46) (xy 133.35 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f92eee2c-88ea-4a7b-9950-36ea6b33006c")
+	)
+	(wire
+		(pts
+			(xy 406.4 73.66) (xy 406.4 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fa46c1b0-f608-4658-955d-05769fe18acc")
+	)
+	(wire
+		(pts
+			(xy 57.15 69.85) (xy 57.15 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "faab1324-47b8-4ee5-8472-4674f8801941")
+	)
+	(wire
+		(pts
+			(xy 350.52 264.16) (xy 342.9 264.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "faf31cd8-4d0b-47f0-adb0-9d8db83f642f")
+	)
+	(wire
+		(pts
+			(xy 396.24 276.86) (xy 386.08 276.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fb0c4ddb-fc90-4364-a0d5-e47cc48574e3")
+	)
+	(wire
+		(pts
+			(xy 487.68 143.51) (xy 482.6 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fb328c01-c0ba-4d7c-8ce4-e3c1f95bd6e6")
+	)
+	(polyline
+		(pts
+			(xy 234.95 175.26) (xy 234.95 15.24)
+		)
+		(stroke
+			(width 0)
+			(type dash)
+		)
+		(uuid "fb415cb8-01d6-404a-bacd-918477e5e3dc")
+	)
+	(wire
+		(pts
+			(xy 49.53 73.66) (xy 57.15 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fb6646ba-d760-4b07-bcce-5f0a5cf3146e")
+	)
+	(wire
+		(pts
+			(xy 368.3 383.54) (xy 368.3 386.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fba02b52-87ec-4f8d-be6c-78f7961929cf")
+	)
+	(wire
+		(pts
+			(xy 275.59 374.65) (xy 284.48 374.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fbad0383-9aa2-48dd-a120-57067ce01f95")
+	)
+	(wire
+		(pts
+			(xy 142.24 372.11) (xy 142.24 369.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fc15da0e-ed71-43fd-a5f6-fcaf9633a33b")
+	)
+	(wire
+		(pts
+			(xy 306.07 92.71) (xy 306.07 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fe25a344-15ed-45f9-8ec0-3dd365671196")
+	)
+	(wire
+		(pts
+			(xy 311.15 106.68) (xy 311.15 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fed4e430-e725-4164-98ea-88a669470ecb")
+	)
+	(wire
+		(pts
+			(xy 262.89 374.65) (xy 270.51 374.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fefeadd6-6c9e-4f79-8e45-cfee78998066")
+	)
+	(label "VCC"
+		(at 57.15 69.85 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "0527bfe5-df9b-4b83-94d5-073de67a63e0")
+	)
+	(label "XTAL2"
+		(at 54.61 101.6 270)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify right bottom)
+		)
+		(uuid "05e939eb-93a9-4853-a7e3-cb547c3c8574")
+	)
+	(label "DIGIT_A"
+		(at 133.35 137.16 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "0c062db3-e2bb-46a1-bfc8-272263f78600")
+	)
+	(label "O_A1"
+		(at 102.87 259.08 180)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify right bottom)
+		)
+		(uuid "0e0066d7-1d64-4868-b40f-47a5f96cf667")
+	)
+	(label "R_LED_DRIVE"
+		(at 360.68 121.92 90)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "0f81ef71-17a1-41ce-ace7-b57038df6352")
+	)
+	(label "CATHODE_5"
+		(at 375.92 264.16 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "106ccdeb-bde8-4b0c-84f3-329f3d861024")
+	)
+	(label "SDA"
+		(at 133.35 88.9 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "1086023e-789f-4ab9-9a0f-4f7adc87ddc0")
+	)
+	(label "170V"
+		(at 191.77 215.9 0)
+		(effects
+			(font
+				(size 1.4986 1.4986)
+			)
+			(justify left bottom)
+		)
+		(uuid "124b6be5-1f54-4ec6-a6fa-057d1175c4d4")
+	)
+	(label "CON_AN_2"
+		(at 513.08 93.98 0)
+		(effects
+			(font
+				(size 1.4986 1.4986)
+			)
+			(justify left bottom)
+		)
+		(uuid "1353ae13-7d1c-4ff2-9997-1834a983b50e")
+	)
+	(label "R_LED_DRIVE"
+		(at 311.15 121.92 90)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "14938498-c8f8-464a-a85f-383682ec188e")
+	)
+	(label "VIN"
+		(at 273.05 339.09 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "15175fff-55e5-45e0-82e5-d88d9b8d9b28")
+	)
+	(label "CON_AN_6"
+		(at 215.9 229.87 0)
+		(effects
+			(font
+				(size 1.4986 1.4986)
+			)
+			(justify left bottom)
+		)
+		(uuid "1a0955e2-7931-408e-96f2-7445ea13ae51")
+	)
+	(label "ANODE4"
+		(at 154.94 260.35 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "1d0cf4ee-a3c3-4d13-9d76-4425b9b16f72")
+	)
+	(label "ANODE1"
+		(at 133.35 86.36 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "1d28ab4b-4a3f-446b-9624-4e393f523443")
+	)
+	(label "ANODE3"
+		(at 133.35 111.76 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "1da67c02-544e-46ed-8df7-ea4953bbf996")
+	)
+	(label "CATHODE_4"
+		(at 375.92 261.62 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "1f24041f-70ee-411e-88f1-117dec5768f8")
+	)
+	(label "DIGIT_D"
+		(at 342.9 266.7 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "20877e73-42ba-4c2d-8251-2f39e62a1412")
+	)
+	(label "O_A2"
+		(at 102.87 241.3 180)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify right bottom)
+		)
+		(uuid "23793493-97d1-49a8-b72e-0e79fafc71d4")
+	)
+	(label "GND"
+		(at 167.64 247.65 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "25ca5f97-394a-4b20-a87a-af19c0085ab9")
+	)
+	(label "ANODE5"
+		(at 133.35 104.14 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "26d7afb6-424b-489e-9d9a-47cd2035c5f4")
+	)
+	(label "SDA"
+		(at 320.04 323.85 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "27ef4199-0719-482c-a6ba-eb5aab3a6673")
+	)
+	(label "VCC"
+		(at 514.35 346.71 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "2910d9cb-09b2-4bfb-b27e-abb99783fc09")
+	)
+	(label "G_LED_DRIVE"
+		(at 280.67 121.92 90)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "293f3617-c609-4f5d-9eba-70883364b515")
+	)
+	(label "I_A5"
+		(at 170.18 242.57 180)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify right bottom)
+		)
+		(uuid "29a7bccd-4f08-4417-9816-66fe86517466")
+	)
+	(label "ANODE2"
+		(at 133.35 83.82 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "29fdd905-7a2e-480d-9266-fddf162c2b1c")
+	)
+	(label "HVD"
+		(at 224.79 356.87 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "2c010257-7aa6-4cc6-9e5b-d1a2fa9042a4")
+	)
+	(label "B_LED_DRIVE"
+		(at 300.99 121.92 90)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "2ce91559-b658-49e4-a615-90acf63aeeb9")
+	)
+	(label "VIN"
+		(at 72.39 346.71 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "2ced7a3d-9bab-443d-8d11-d221930e4fef")
+	)
+	(label "R_LED_DRIVE"
+		(at 336.55 121.92 90)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "2e99a6f0-e3fc-4d14-a790-22b088926139")
+	)
+	(label "VCC"
+		(at 495.3 341.63 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "36f451a2-fb88-4947-9b75-67fe00639354")
+	)
+	(label "G_LED_DRIVE"
+		(at 331.47 121.92 90)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "370ec183-8c8f-42a6-90d6-be30b0b4630c")
+	)
+	(label "DIGIT_C"
+		(at 342.9 264.16 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "3770deae-c974-4689-ad9d-9c6758588c5b")
+	)
+	(label "B_LED_DRIVE"
+		(at 350.52 121.92 90)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "3bb53c9e-775e-4208-8956-d56063664bca")
+	)
+	(label "GND"
+		(at 495.3 349.25 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "3e65e9e3-b355-45c0-bf3a-a335cc82a504")
+	)
+	(label "I_A6"
+		(at 170.18 224.79 180)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify right bottom)
+		)
+		(uuid "3f49642f-9c04-4c50-bdf3-0dfc807efd00")
+	)
+	(label "170V"
+		(at 214.63 334.01 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "47fbd180-1ab1-4e34-9004-c92fccdc80d2")
+	)
+	(label "SCL"
+		(at 133.35 91.44 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "4badc2db-7a1c-4128-b7e7-8e835f2cf37e")
+	)
+	(label "DIGIT_B"
+		(at 342.9 261.62 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "4e0bffd1-85c5-439c-8f6c-eccbdaa7f0f0")
+	)
+	(label "CON_AN_2"
+		(at 215.9 240.03 0)
+		(effects
+			(font
+				(size 1.4986 1.4986)
+			)
+			(justify left bottom)
+		)
+		(uuid "4fc31a4d-b458-46e3-96ed-e5da93c5f036")
+	)
+	(label "CON_AN_1"
+		(at 215.9 242.57 0)
+		(effects
+			(font
+				(size 1.4986 1.4986)
+			)
+			(justify left bottom)
+		)
+		(uuid "54086a7e-97f7-4762-a310-a16fadc139a7")
+	)
+	(label "ANODE6"
+		(at 133.35 101.6 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "55762043-1a63-4dd2-b1a7-ada59323a986")
+	)
+	(label "GND"
+		(at 46.99 96.52 270)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify right bottom)
+		)
+		(uuid "5bede575-1ac2-4393-8ece-a0e75df38573")
+	)
+	(label "B_LED_DRIVE"
+		(at 168.91 73.66 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "5c4beda8-1ca3-4cf0-b569-8aa285da3b0c")
+	)
+	(label "CON_AN_6"
+		(at 514.35 260.35 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "5e6f6482-32ae-4243-8bf2-d01410c16eda")
+	)
+	(label "HVS"
+		(at 204.47 356.87 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "6202232b-5a27-447b-a748-a5c73def2308")
+	)
+	(label "CATHODE_7"
+		(at 375.92 251.46 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "62b4dfd4-490d-44de-b6cf-6f0beeffed8d")
+	)
+	(label "VCC"
+		(at 140.97 346.71 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "62fcd393-ca03-4e59-b2be-a836de44aac7")
+	)
+	(label "GND"
+		(at 167.64 229.87 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "648a563c-1da1-4327-8e8e-59ae84530174")
+	)
+	(label "O_A6"
+		(at 189.23 229.87 180)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify right bottom)
+		)
+		(uuid "65a04b4f-c7ac-47f9-9e75-f9327c75a4bc")
+	)
+	(label "CON_AN_3"
+		(at 215.9 237.49 0)
+		(effects
+			(font
+				(size 1.4986 1.4986)
+			)
+			(justify left bottom)
+		)
+		(uuid "65b6bdc8-b5a6-4ab3-9c6d-bfeb4e96d19a")
+	)
+	(label "G_LED_DRIVE"
+		(at 406.4 121.92 90)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "6785ca19-e2e6-4e39-9eb6-624188368053")
+	)
+	(label "R_LED_GATE"
+		(at 147.32 116.84 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "68f77718-1181-49a4-9cef-9acc18970e2c")
+	)
+	(label "VCC"
+		(at 316.23 334.01 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "6b976fb6-126d-4185-a779-e51816911cf8")
+	)
+	(label "ANODE1"
+		(at 68.58 254 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "6d58d9ff-6c05-4bba-8d56-48c95d810c62")
+	)
+	(label "R_LED_DRIVE"
+		(at 411.48 121.92 90)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "6dc20319-0286-4633-99c0-b44167420386")
+	)
+	(label "GND"
+		(at 81.28 259.08 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "70dbc4b5-238f-4758-a96b-7be70264fbc9")
+	)
+	(label "HVS"
+		(at 133.35 78.74 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "799a1fac-49a1-4805-97fd-04459bfb54fa")
+	)
+	(label "CATHODE_9"
+		(at 375.92 271.78 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "7a18fc8e-8136-449a-8de4-baa5da79f89a")
+	)
+	(label "CON_AN_3"
+		(at 513.08 135.89 0)
+		(effects
+			(font
+				(size 1.4986 1.4986)
+			)
+			(justify left bottom)
+		)
+		(uuid "7aee9a9a-bc8f-44f4-a62d-3c6a6da521bf")
+	)
+	(label "B_LED_DRIVE"
+		(at 275.59 121.92 90)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "7f2e4c5b-e2f4-47d1-aa2d-2dc832472022")
+	)
+	(label "ANODE6"
+		(at 154.94 224.79 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "80219e52-8c01-4481-b066-6d6c07241d9c")
+	)
+	(label "RESET"
+		(at 78.74 78.74 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "805e5f45-69a8-47ba-a59f-988038db6402")
+	)
+	(label "PWR_INPUT"
+		(at 561.34 341.63 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "81615f55-befb-4eda-86f5-2dc02bbae27d")
+	)
+	(label "ANODE4"
+		(at 133.35 106.68 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "8199252c-741a-41f4-ac00-99f66a708fb1")
+	)
+	(label "G_LED_DRIVE"
+		(at 306.07 121.92 90)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "8710af2b-73cb-484c-8f69-4439febc2628")
+	)
+	(label "I_A1"
+		(at 83.82 254 180)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify right bottom)
+		)
+		(uuid "87827e6d-3870-46d9-9daa-65d6bbdbd76b")
+	)
+	(label "R_LED_DRIVE"
+		(at 168.91 111.76 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "87b5ced9-aafe-4a55-a4c1-5409f0bede77")
+	)
+	(label "170V"
+		(at 44.45 346.71 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "88c7b637-e60c-4b7b-a27d-0b343b5b4db0")
+	)
+	(label "ANODE3"
+		(at 68.58 218.44 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "89e00290-86f1-4a16-9259-90611b7f7f5e")
+	)
+	(label "DIGIT_D"
+		(at 133.35 134.62 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "8a9f026f-6d6a-410f-8054-83fcd3aea0cc")
+	)
+	(label "GND"
+		(at 81.28 241.3 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "8afa96c2-6814-4ead-b3c2-19ced4730dcb")
+	)
+	(label "CON_AN_5"
+		(at 514.35 219.71 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "8afaf2c8-7aad-4e23-9f71-d8b3e0ec6fa7")
+	)
+	(label "I_A4"
+		(at 170.18 260.35 180)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify right bottom)
+		)
+		(uuid "8b32bea9-f2c7-45c4-af14-dd2c9ced66a3")
+	)
+	(label "B_LED_DRIVE"
+		(at 375.92 121.92 90)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "8e275216-c3d4-428c-a051-26fff50623b9")
+	)
+	(label "DIGIT_C"
+		(at 133.35 124.46 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "8f12797f-d177-4514-93ba-2a4944281e59")
+	)
+	(label "O_A4"
+		(at 189.23 265.43 180)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify right bottom)
+		)
+		(uuid "9098ebbf-44ce-414a-bb98-9fd9430e491f")
+	)
+	(label "DLS"
+		(at 495.3 346.71 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "9247a4cb-9edc-4f02-93bf-fd5401ae644f")
+	)
+	(label "O_A5"
+		(at 189.23 247.65 180)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify right bottom)
+		)
+		(uuid "96b496cd-3322-4325-8676-95e63eda4621")
+	)
+	(label "G_LED_DRIVE"
+		(at 355.6 121.92 90)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "978684a3-0e89-4de5-a134-f5a18e25d78d")
+	)
+	(label "DIGIT_A"
+		(at 342.9 259.08 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "989a2343-e5d5-4672-bf55-41b60d03248b")
+	)
+	(label "GND"
+		(at 316.23 350.52 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "9e1ae8cc-ece2-408b-8197-efc83b23ff75")
+	)
+	(label "CATHODE_0"
+		(at 375.92 256.54 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "9f378d36-a751-41ce-83ea-3e19de73fe31")
+	)
+	(label "HVD"
+		(at 232.41 359.41 90)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "a25b6e80-2c7e-4965-b239-f776bae5c6a3")
+	)
+	(label "SCL"
+		(at 328.93 323.85 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "a4b4ecae-166c-419c-b5d4-0a4fafd67a16")
+	)
+	(label "XTAL1"
+		(at 54.61 96.52 90)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "a6aa6759-4fdc-411e-be12-844bce314988")
+	)
+	(label "GND"
+		(at 81.28 223.52 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "a6b4f648-ec47-4f31-b79b-d14ea1a0633f")
+	)
+	(label "PWR_HV_PULSE"
+		(at 232.41 339.09 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "a7b75822-c4fc-47ff-9803-fb45e8b3eac9")
+	)
+	(label "MOSI"
+		(at 133.35 132.08 180)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify right bottom)
+		)
+		(uuid "ad3582e4-1cdd-4620-9efd-9bd2827c2f2e")
+	)
+	(label "PWR_INPUT"
+		(at 52.07 364.49 90)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "b0a47612-ad49-4767-ba7a-fa387b7f6d44")
+	)
+	(label "I_A3"
+		(at 83.82 218.44 180)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify right bottom)
+		)
+		(uuid "b43df2b2-68c5-4381-838f-0505870626c4")
+	)
+	(label "3V3"
+		(at 364.49 341.63 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "b4c9dbae-a706-4d2c-980c-0b726459ecce")
+	)
+	(label "CATHODE_2"
+		(at 375.92 269.24 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "b5930bbe-42e2-42e0-8bf7-341aef8fcf8a")
+	)
+	(label "170V"
+		(at 105.41 213.36 0)
+		(effects
+			(font
+				(size 1.4986 1.4986)
+			)
+			(justify left bottom)
+		)
+		(uuid "b758667f-3e6d-4db6-9998-6db92ac2c025")
+	)
+	(label "ANODE5"
+		(at 154.94 242.57 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "b7b6ee67-2ed6-42ba-8c84-154ca6f1682c")
+	)
+	(label "B_LED_DRIVE"
+		(at 401.32 121.92 90)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "b7d8fc64-7cd9-4b98-a34e-a6497275391f")
+	)
+	(label "SCL"
+		(at 514.35 341.63 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "b8959df0-45e3-45bd-b4f3-96ad13f52e9e")
+	)
+	(label "GND"
+		(at 514.35 349.25 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "b9a4ce55-6524-4c8e-b386-d27b75ee3708")
+	)
+	(label "HVD"
+		(at 133.35 127 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "bc95d9fd-17ad-4333-86b5-5a5dc222420e")
+	)
+	(label "G_LED_GATE"
+		(at 147.32 96.52 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "bcdc7cad-cf43-4406-b4db-8e7801b8ee9c")
+	)
+	(label "VCC"
+		(at 49.53 379.73 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "c1808e88-b25b-46e8-b570-8f8c68ce39ab")
+	)
+	(label "R_LED_DRIVE"
+		(at 285.75 121.92 90)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "c1e6390a-e90f-47a4-a352-08fbff4493b9")
+	)
+	(label "VIN"
+		(at 179.07 46.99 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "c28d3d05-cffc-452f-869b-03d5ba45066b")
+	)
+	(label "TICK_LED_GATE"
+		(at 148.59 132.08 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "c2d3de5e-75ea-49d9-b521-7ebae55c7f87")
+	)
+	(label "TICK_LED_2"
+		(at 181.61 135.89 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "c32d9875-81b1-4fce-a3f0-f77c89b6bc4d")
+	)
+	(label "PWR_GND_IN"
+		(at 62.23 372.11 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "c3a06d68-2acc-4a39-a76d-49c06afb9aaa")
+	)
+	(label "PWR_VIN"
+		(at 72.39 359.41 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "c3b4c54f-7940-4455-9222-455190c721f6")
+	)
+	(label "CATHODE_6"
+		(at 375.92 254 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "c768d372-6cd4-4694-b135-9fcbb73d8bbc")
+	)
+	(label "CON_AN_5"
+		(at 215.9 232.41 0)
+		(effects
+			(font
+				(size 1.4986 1.4986)
+			)
+			(justify left bottom)
+		)
+		(uuid "c930b62a-f109-4613-b11d-14b30223e166")
+	)
+	(label "170V"
+		(at 163.83 46.99 180)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify right bottom)
+		)
+		(uuid "cd234880-1619-4dc4-badf-c644c9f50bfc")
+	)
+	(label "CATHODE_3"
+		(at 375.92 266.7 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "cd457911-33c9-405f-a63b-e8b1ab127970")
+	)
+	(label "HV_SMOOTHED"
+		(at 205.74 339.09 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "cdcad72b-de2c-4620-b46d-165d48804f6b")
+	)
+	(label "DIGIT_B"
+		(at 133.35 129.54 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "d18fba7e-e6cd-4e4a-b043-6dad2ac36bad")
+	)
+	(label "GND"
+		(at 167.64 265.43 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "d288da52-8412-4397-8d50-38e522d38297")
+	)
+	(label "G_LED_DRIVE"
+		(at 168.91 91.44 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "d42c196f-4e26-4ac4-8a3c-ca80888895d6")
+	)
+	(label "CON_AN_4"
+		(at 215.9 234.95 0)
+		(effects
+			(font
+				(size 1.4986 1.4986)
+			)
+			(justify left bottom)
+		)
+		(uuid "d6daf739-f7e3-4f8c-b83a-40afde89150b")
+	)
+	(label "DLS"
+		(at 133.35 81.28 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "d739c2ba-0de2-4053-a8c5-cd3fe5829a10")
+	)
+	(label "VCC"
+		(at 492.76 322.58 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "db064124-dacb-490c-9d84-e5b6acd88d5f")
+	)
+	(label "O_A3"
+		(at 102.87 223.52 180)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify right bottom)
+		)
+		(uuid "dba4553b-d151-4f50-9e93-93fee2403117")
+	)
+	(label "ANODE2"
+		(at 68.58 236.22 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "dbd0cd20-c017-4415-9f11-0a1d51afbf7f")
+	)
+	(label "CATHODE_1"
+		(at 375.92 259.08 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "e0d979c1-444f-486d-9f54-cb8f590360e8")
+	)
+	(label "B_LED_DRIVE"
+		(at 326.39 121.92 90)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "e4943491-e23b-410e-970c-cd0db0d896dd")
+	)
+	(label "G_LED_DRIVE"
+		(at 381 121.92 90)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "e85bffd7-2454-465d-9780-eb870621e47e")
+	)
+	(label "R_LED_DRIVE"
+		(at 386.08 121.92 90)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "e8dc435f-5751-4428-acb4-65865e1d13b4")
+	)
+	(label "B_LED_GATE"
+		(at 147.32 78.74 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "e99ca10d-26bf-4e15-8927-dbabe008cc12")
+	)
+	(label "CON_AN_4"
+		(at 514.35 177.8 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "ed0c2237-9cf3-42eb-9e32-73816af608e0")
+	)
+	(label "VIN"
+		(at 342.9 68.58 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "ed9b72b3-151d-4b4b-a5fe-1efd912c8842")
+	)
+	(label "SDA"
+		(at 514.35 344.17 180)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify right bottom)
+		)
+		(uuid "edc35edf-5367-4945-8339-7e4d0d1aa82b")
+	)
+	(label "CON_AN_1"
+		(at 511.81 52.07 0)
+		(effects
+			(font
+				(size 1.4986 1.4986)
+			)
+			(justify left bottom)
+		)
+		(uuid "f27c5757-6063-45bd-b1e6-6ab019f6c43e")
+	)
+	(label "CATHODE_8"
+		(at 375.92 274.32 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "f4772e64-6624-43d5-8876-d26423871eab")
+	)
+	(label "TICK_LED_1"
+		(at 179.07 127 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left bottom)
+		)
+		(uuid "f5a96a9f-ba43-4a3a-a28d-3e4d22b4e72e")
+	)
+	(label "BTN1"
+		(at 133.35 119.38 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "f6b73cac-c883-4b06-846c-fef8969756ce")
+	)
+	(label "I_A2"
+		(at 83.82 236.22 180)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify right bottom)
+		)
+		(uuid "fa8c8a1f-742e-4933-a123-44416e94e4b8")
+	)
+	(label "BTN1"
+		(at 495.3 344.17 0)
+		(effects
+			(font
+				(size 1.651 1.651)
+			)
+			(justify left bottom)
+		)
+		(uuid "ff91d40d-4279-49fd-aff1-dfb876ca6153")
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:CP-AllInOneIN142-rescue")
+		(at 214.63 354.33 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696b810")
+		(property "Reference" "C1"
+			(at 215.9 351.79 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "2.2uF"
+			(at 215.7476 358.9274 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:C_Radial_D10_L11.2_P2.5_3.5"
+			(at 214.376 359.664 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 214.63 354.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 214.63 354.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Fieldname" "Value"
+			(at 214.63 354.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Field4" "+"
+			(at 210.82 349.25 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "2"
+			(uuid "f41a897d-7742-47fc-982b-ffa173fc52a3")
+		)
+		(pin "1"
+			(uuid "a5ed60b0-fdf9-4eb5-b0ae-6daa63526757")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "C1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_C-EU050-024X044-AllInOneIN142-rescue")
+		(at 80.01 367.03 0)
+		(mirror x)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696b8d8")
+		(property "Reference" "C2"
+			(at 81.534 367.411 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "100nF"
+			(at 71.12 367.03 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:C025-024X044"
+			(at 79.756 361.696 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 80.01 367.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 80.01 367.03 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "51056424-b422-4279-9337-1a30f4fd9751")
+		)
+		(pin "1"
+			(uuid "4b2521bd-7e89-40da-af5d-3e67340566e0")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:CP-AllInOneIN142-rescue")
+		(at 262.89 356.87 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696b9a0")
+		(property "Reference" "C3"
+			(at 264.16 355.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "220uF"
+			(at 264.0076 361.4674 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:C_Radial_D6.3_L11.2_P2.5"
+			(at 262.636 362.204 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 262.89 356.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 262.89 356.87 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Fieldname" "Value"
+			(at 262.89 356.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Field4" "+"
+			(at 262.3058 356.4636 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "2"
+			(uuid "09bffcf3-ee3e-46d3-ae24-f6bc3382db5b")
+		)
+		(pin "1"
+			(uuid "c77a9386-1b39-4f98-a8bd-75d1d112aec6")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "C3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_C-EU050-024X044-AllInOneIN142-rescue")
+		(at 46.99 93.98 0)
+		(mirror x)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696ba68")
+		(property "Reference" "C5"
+			(at 41.91 93.98 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "22pF"
+			(at 39.37 88.9 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:C025-024X044"
+			(at 46.736 88.646 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 46.99 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 46.99 93.98 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "d3d30210-065d-4132-a4ba-1f2cc18e2270")
+		)
+		(pin "1"
+			(uuid "e6a5b551-aaad-4142-9461-877a52e95c2a")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "C5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_C-EU050-024X044-AllInOneIN142-rescue")
+		(at 46.99 106.68 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696bb30")
+		(property "Reference" "C6"
+			(at 45.466 107.061 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "22pF"
+			(at 45.466 101.981 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:C025-024X044"
+			(at 47.244 101.346 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 46.99 106.68 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 46.99 106.68 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "1a2d95e8-121f-4ee8-9fbf-eadbe086bf92")
+		)
+		(pin "2"
+			(uuid "dd104db1-6953-4d0e-8c1a-dea95db7dd24")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "C6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_C-EU050-024X044-AllInOneIN142-rescue")
+		(at 69.85 86.36 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696bbf8")
+		(property "Reference" "C7"
+			(at 68.326 86.741 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "100nF"
+			(at 68.326 81.661 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:C025-024X044"
+			(at 70.104 81.026 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 69.85 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 69.85 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "36e5176c-3bff-4169-b0be-8a9b3f54de47")
+		)
+		(pin "2"
+			(uuid "872568e8-1ddd-452e-9183-109d1acc9616")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "C7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_C-EU050-024X044-AllInOneIN142-rescue")
+		(at 69.85 109.22 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696bcc0")
+		(property "Reference" "C8"
+			(at 68.326 109.601 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "100nF"
+			(at 68.326 104.521 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:C025-024X044"
+			(at 70.104 103.886 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 69.85 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 69.85 109.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "69db7d44-0deb-4c72-89a8-ba9fb3eaab76")
+		)
+		(pin "2"
+			(uuid "8c155279-d46a-43a5-9b3e-5ef8abe1dd26")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "C8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:CP-AllInOneIN142-rescue")
+		(at 113.03 359.41 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696bd88")
+		(property "Reference" "C4"
+			(at 114.3 363.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "220uF"
+			(at 109.22 363.22 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:C_Radial_D6.3_L11.2_P2.5"
+			(at 112.776 364.744 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 113.03 359.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 113.03 359.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Fieldname" "Value"
+			(at 109.22 367.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Field5" "+"
+			(at 112.4458 359.0036 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "2"
+			(uuid "336a6a36-6910-4ccd-9696-b894119861af")
+		)
+		(pin "1"
+			(uuid "323f071c-0767-4114-9cf7-3ae10acb2894")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "C4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:FRAMES_FRAME_A_L-AllInOneIN142-rescue")
+		(at 447.04 355.6 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696bf7c")
+		(property "Reference" "#FRAME1"
+			(at 448.31 354.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Value" "~"
+			(at 447.04 1412.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 447.04 1412.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 447.04 1412.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 447.04 355.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "#FRAME1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 270.51 379.73 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696c10c")
+		(property "Reference" "#GND01"
+			(at 267.97 382.27 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "GND"
+			(at 267.97 384.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" ""
+			(at 270.51 379.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 270.51 379.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 270.51 379.73 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "9e66be9f-9699-4630-b8b7-51011b1bde9c")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "#GND01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 36.83 109.22 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696c170")
+		(property "Reference" "#GND02"
+			(at 34.29 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "GND"
+			(at 34.29 114.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" ""
+			(at 36.83 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 36.83 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 36.83 109.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "072821b8-0a16-4fc3-9bf1-4334b02366b5")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "#GND02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 133.35 374.65 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696c1d4")
+		(property "Reference" "#GND03"
+			(at 130.81 377.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "GND"
+			(at 130.81 377.19 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" ""
+			(at 133.35 374.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 133.35 374.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 133.35 374.65 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8e2875d5-380d-43f4-816a-64adb765b5ac")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "#GND03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 74.93 124.46 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696c238")
+		(property "Reference" "#GND04"
+			(at 72.39 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "GND"
+			(at 72.39 129.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" ""
+			(at 74.93 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 74.93 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 74.93 124.46 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a2021a32-7e5b-4f01-8ed8-7eb2ef99604f")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "#GND04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 166.37 144.78 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696c29c")
+		(property "Reference" "#GND05"
+			(at 163.83 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "GND"
+			(at 163.83 149.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" ""
+			(at 166.37 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 166.37 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 166.37 144.78 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c5f46079-4ed0-40b2-8501-264496980770")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "#GND05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:LINEAR_7805TV-AllInOneIN142-rescue")
+		(at 92.71 359.41 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696c364")
+		(property "Reference" "IC1"
+			(at 90.17 351.79 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "7805"
+			(at 88.9 355.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:TRANSISTOR-POWER_TO220BV"
+			(at 92.456 364.744 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 92.71 359.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 92.71 359.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b573a833-b47d-4040-9f4b-6ff4408343aa")
+		)
+		(pin "3"
+			(uuid "cef1dc5b-849b-435c-aa96-0b214163f7b1")
+		)
+		(pin "2"
+			(uuid "78ac8a76-74dc-4852-96a7-eb56a81ea88f")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "IC1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:ATMEL_MEGA8-P-AllInOneIN142-rescue")
+		(at 102.87 106.68 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696c42c")
+		(property "Reference" "IC3"
+			(at 85.09 142.24 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "MEGA8-P"
+			(at 97.79 74.93 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:328P_DIL28"
+			(at 102.616 112.014 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 102.87 106.68 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 102.87 106.68 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "7"
+			(uuid "b89af376-dcef-4cb0-a30b-11ffb3a18087")
+		)
+		(pin "9"
+			(uuid "8484fdf6-5c61-43d4-aeea-f6af757bdb28")
+		)
+		(pin "8"
+			(uuid "572f9869-d90a-420a-83fe-ab32c8ec3a3a")
+		)
+		(pin "11"
+			(uuid "f3d9df47-e2fa-406f-b442-7b2cc8486ca7")
+		)
+		(pin "10"
+			(uuid "c2b24541-cc64-4d15-8481-103c59bce94d")
+		)
+		(pin "6"
+			(uuid "51f4ea41-1c26-42cf-8035-f7ec2d4f16cf")
+		)
+		(pin "5"
+			(uuid "1a0e1bc6-904b-4dbc-9ed5-6df9e43f10ac")
+		)
+		(pin "1"
+			(uuid "29c32d18-0991-48cf-b79f-9bab65a738de")
+		)
+		(pin "2"
+			(uuid "65b9de1b-feaa-4699-b04b-34eac26026aa")
+		)
+		(pin "3"
+			(uuid "537fc673-a62e-492f-8069-42cff5b71743")
+		)
+		(pin "4"
+			(uuid "bf82b910-dd4f-42da-a027-c64423a7be57")
+		)
+		(pin "12"
+			(uuid "44703b16-3b7d-4d2a-91b6-0f54647ff393")
+		)
+		(pin "13"
+			(uuid "c2a46eb9-f009-42df-bd2c-7bfbfa281448")
+		)
+		(pin "17"
+			(uuid "6ab0f966-da6d-4d2f-9f97-1c38ae8cf85e")
+		)
+		(pin "18"
+			(uuid "367f1035-54e7-4713-9fd0-f08751f4496e")
+		)
+		(pin "28"
+			(uuid "7d0fa730-ffa2-46a5-a8ba-d3cdd0646bfa")
+		)
+		(pin "27"
+			(uuid "bc8cf004-94b9-4643-bbb8-925befc7729f")
+		)
+		(pin "26"
+			(uuid "e54c8392-7d62-4248-8037-fef3a41cbefb")
+		)
+		(pin "25"
+			(uuid "d763b638-29ed-477a-86e8-1d51e2a2b7f9")
+		)
+		(pin "24"
+			(uuid "7fc03c24-9e2d-4dd0-b8d1-278cdb8889bc")
+		)
+		(pin "23"
+			(uuid "ba7c762b-70ac-401b-a638-f3b4eafeb555")
+		)
+		(pin "22"
+			(uuid "8d1c0d36-6f7a-4dcc-9e6c-b8a68d3d9bb5")
+		)
+		(pin "21"
+			(uuid "547572e1-1048-4c7a-9826-3c068618d6cf")
+		)
+		(pin "16"
+			(uuid "f9ea99be-5ee9-4f58-8cd0-c580be91bb8a")
+		)
+		(pin "14"
+			(uuid "8a4d10b9-ff07-4a92-afd4-902e053d1303")
+		)
+		(pin "19"
+			(uuid "ff8b9cd8-51b2-4660-97cd-7fd65ceeccb8")
+		)
+		(pin "20"
+			(uuid "79e5cac0-2b6a-4a2e-991b-10fd7d5ae98e")
+		)
+		(pin "15"
+			(uuid "74429878-9925-456b-8db9-1ee3526568e5")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "IC3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:74XX-US_74141N-AllInOneIN142-rescue")
+		(at 363.22 261.62 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696c4f4")
+		(property "Reference" "IC2"
+			(at 355.6254 248.285 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "74141N"
+			(at 355.6 279.4 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "74XX-US_DIL16"
+			(at 362.966 266.954 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 363.22 261.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 363.22 261.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ae2251f2-19aa-477a-a8f2-c56413606db6")
+		)
+		(pin "2"
+			(uuid "6a003f76-23b6-4184-8052-362c70f4b294")
+		)
+		(pin "3"
+			(uuid "00546b48-bbee-4ae9-a7bb-0eb699d51df7")
+		)
+		(pin "8"
+			(uuid "f9294006-eb79-46f8-afea-ed9a12a95139")
+		)
+		(pin "6"
+			(uuid "c3162f93-3918-4243-9c2c-c3508c4b8ba3")
+		)
+		(pin "7"
+			(uuid "393efa18-2d9f-429d-a73b-5189df936ac3")
+		)
+		(pin "9"
+			(uuid "abb95a14-b991-4d42-80f0-134781230d73")
+		)
+		(pin "4"
+			(uuid "2283fa5b-ca5f-4485-a338-04ac6ade4f0b")
+		)
+		(pin "16"
+			(uuid "b538dfd2-27dd-4fb3-966b-5a646b97e027")
+		)
+		(pin "5"
+			(uuid "6c5c2ff3-3dda-4afa-8673-3ddebe9d3636")
+		)
+		(pin "12"
+			(uuid "2ea23f33-3fcd-418a-857f-d00f00b08ad4")
+		)
+		(pin "15"
+			(uuid "537d9be9-ea63-450d-8e52-7b640e86e183")
+		)
+		(pin "10"
+			(uuid "e805f6a0-90a2-4fe2-9c57-314a190fc30a")
+		)
+		(pin "13"
+			(uuid "6a7550b8-d8ca-4067-a395-b0c7becb8d99")
+		)
+		(pin "11"
+			(uuid "81565ee9-e581-44c5-ba7a-059018521148")
+		)
+		(pin "14"
+			(uuid "ced31358-fa48-46e9-95b5-dada599e7aa0")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "IC2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:74XX-US_74141N-AllInOneIN142-rescue")
+		(at 133.35 359.41 0)
+		(unit 2)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696c558")
+		(property "Reference" "IC2"
+			(at 137.16 361.95 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "74141N"
+			(at 133.096 362.204 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:74141_DIL16"
+			(at 133.096 364.744 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 133.35 359.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 133.35 359.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "7"
+			(uuid "bb08eb60-b17b-4361-a591-e88d5a718521")
+		)
+		(pin "13"
+			(uuid "1ac25133-626e-459f-bd73-0a19a443b993")
+		)
+		(pin "8"
+			(uuid "4af42264-90ad-4861-8b99-1ef7d1093dfb")
+		)
+		(pin "11"
+			(uuid "b101c703-bf37-4bbf-b22d-6f5a18081dc6")
+		)
+		(pin "10"
+			(uuid "29847843-16e3-4782-92dd-de1c7a0905f0")
+		)
+		(pin "9"
+			(uuid "224d574a-dd32-4757-997d-c00aecd89e1c")
+		)
+		(pin "6"
+			(uuid "fdc4a7c8-17d6-4fe0-a9d5-9dac841f9a31")
+		)
+		(pin "3"
+			(uuid "6bfed369-38f4-4e5b-9946-654c7d34b50e")
+		)
+		(pin "4"
+			(uuid "2f5c592f-6e48-42b5-bfcf-7ccf49a69362")
+		)
+		(pin "1"
+			(uuid "8238b7fd-3029-49d9-bb0d-395ca0c228a5")
+		)
+		(pin "2"
+			(uuid "35f8f6f9-dc93-45cd-aba2-1a774cd5e25d")
+		)
+		(pin "12"
+			(uuid "6259a7b6-68aa-4cb7-b266-214aef310f25")
+		)
+		(pin "5"
+			(uuid "2d7e3b3e-f9d9-4c01-bd2a-993e65f9a815")
+		)
+		(pin "16"
+			(uuid "ae374610-f613-4ceb-944c-137dda15a8ab")
+		)
+		(pin "15"
+			(uuid "707fe7b5-0313-4d23-811b-8cfeea719c0d")
+		)
+		(pin "14"
+			(uuid "d1235b48-4b6c-4040-a20b-ca116adf08e9")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "IC2")
+					(unit 2)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_L-US6000-XXX-RC-AllInOneIN142-rescue")
+		(at 252.73 339.09 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696c620")
+		(property "Reference" "L1"
+			(at 257.81 340.36 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "100uH"
+			(at 257.81 335.28 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:Inductor-100mH"
+			(at 258.064 339.344 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 252.73 339.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 252.73 339.09 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "17b64fba-b926-4dc8-a726-50edbbe3ceec")
+		)
+		(pin "2"
+			(uuid "4ccb6ae9-4f38-4bf4-bc33-6a8fac2b2e53")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "L1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:LED_LED3MM-AllInOneIN142-rescue")
+		(at 123.19 364.49 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696c6e8")
+		(property "Reference" "LED1"
+			(at 126.746 369.062 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "Power"
+			(at 128.905 369.062 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:LED_3MM"
+			(at 122.936 369.824 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 123.19 364.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 123.19 364.49 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "K"
+			(uuid "04c76f44-4e87-4562-9273-d5ba4a007268")
+		)
+		(pin "A"
+			(uuid "67cbd990-a998-4de7-ac1f-e733fcdfc204")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "LED1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:PC817-AllInOneIN142-rescue")
+		(at 92.71 256.54 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696c7b0")
+		(property "Reference" "OK3"
+			(at 85.725 250.825 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "EL817C"
+			(at 85.725 264.16 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:optocoupler-DIL04"
+			(at 92.456 261.874 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 92.71 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 92.71 256.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ebdf9dd0-03eb-4ca6-ac05-38e258baf9e7")
+		)
+		(pin "3"
+			(uuid "09657c88-2fa3-4717-995a-e0e349cd7d9f")
+		)
+		(pin "4"
+			(uuid "40555fac-fd06-450d-9fd0-c48dac555d25")
+		)
+		(pin "2"
+			(uuid "e0854847-1c2f-4c2c-9d0d-13f24f0c1e5d")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "OK3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:PC817-AllInOneIN142-rescue")
+		(at 92.71 238.76 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696c878")
+		(property "Reference" "OK2"
+			(at 85.725 233.045 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "EL817C"
+			(at 85.725 246.38 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:optocoupler-DIL04"
+			(at 92.456 244.094 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 92.71 238.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 92.71 238.76 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "4"
+			(uuid "23d15d92-2daa-4154-87a6-68dd785cb1b0")
+		)
+		(pin "2"
+			(uuid "6afb6799-0332-426b-bdac-6db04df96da8")
+		)
+		(pin "3"
+			(uuid "acf4eef2-bbb5-411d-979a-c128ed4cec92")
+		)
+		(pin "1"
+			(uuid "fabc7601-6e8d-4597-a842-09fa744fe56d")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "OK2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:PC817-AllInOneIN142-rescue")
+		(at 92.71 220.98 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696c940")
+		(property "Reference" "OK1"
+			(at 85.725 215.265 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "EL817C"
+			(at 85.725 228.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:optocoupler-DIL04"
+			(at 92.456 226.314 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 92.71 220.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 92.71 220.98 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "e9e8b761-2de0-4517-aed6-9898cb80622b")
+		)
+		(pin "3"
+			(uuid "7d890690-da4f-422a-8a8e-8318b14259eb")
+		)
+		(pin "4"
+			(uuid "6f63a00c-105b-4f40-bccd-9183bd4c438a")
+		)
+		(pin "1"
+			(uuid "f0e94cd3-2531-4bdd-ab2c-7105836cdf30")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "OK1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:PC817-AllInOneIN142-rescue")
+		(at 179.07 262.89 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696ca08")
+		(property "Reference" "OK6"
+			(at 172.085 257.175 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "EL817C"
+			(at 172.085 270.51 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:optocoupler-DIL04"
+			(at 178.816 268.224 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 179.07 262.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 179.07 262.89 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Fieldname" "Value"
+			(at 179.07 262.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "4c7740e6-b90d-4eb4-9f3e-6198832bbd97")
+		)
+		(pin "3"
+			(uuid "be9a0b8f-c4c5-4409-8b83-8d57ba144378")
+		)
+		(pin "1"
+			(uuid "085c9c09-5432-497d-9056-72201ed477f4")
+		)
+		(pin "4"
+			(uuid "7e0ace45-7fb3-41e6-bc8f-ad229325538e")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "OK6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:PC817-AllInOneIN142-rescue")
+		(at 179.07 245.11 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696cad0")
+		(property "Reference" "OK5"
+			(at 172.085 239.395 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "EL817C"
+			(at 172.085 252.73 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:optocoupler-DIL04"
+			(at 178.816 250.444 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 179.07 245.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 179.07 245.11 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "9a9e110e-057b-4b86-b533-4029adfcfea4")
+		)
+		(pin "3"
+			(uuid "0b44dbf2-38fe-4520-a3f4-967a2879ab83")
+		)
+		(pin "2"
+			(uuid "6c839abe-30c4-4312-862e-a1298bb3f52e")
+		)
+		(pin "4"
+			(uuid "d17d31c5-a7fd-44e7-9a42-d49b10d0dd80")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "OK5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:PC817-AllInOneIN142-rescue")
+		(at 179.07 227.33 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696cb98")
+		(property "Reference" "OK4"
+			(at 172.085 221.615 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "EL817C"
+			(at 172.085 234.95 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:optocoupler-DIL04"
+			(at 178.816 232.664 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 179.07 227.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 179.07 227.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "4"
+			(uuid "ffab33d2-12ef-4111-b98a-8eb127a4422d")
+		)
+		(pin "3"
+			(uuid "9142c7c3-3259-4280-a26d-f44a77a1c2d3")
+		)
+		(pin "1"
+			(uuid "329a9dfa-8e2c-4659-ad06-cfa5c8d6179c")
+		)
+		(pin "2"
+			(uuid "d2885a24-aa28-46a1-8e38-b4395478b73e")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "OK4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:CRYSTAL_CRYSTALHC49S-AllInOneIN142-rescue")
+		(at 54.61 99.06 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696cd28")
+		(property "Reference" "Q2"
+			(at 53.594 96.52 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "16MHz"
+			(at 57.15 96.52 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:Crystal_HC49-U_Vertical"
+			(at 59.944 99.314 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 54.61 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 54.61 99.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Field5" "1"
+			(at 55.753 101.219 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8636 0.8636)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Field6" "2"
+			(at 55.753 97.536 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8636 0.8636)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "2"
+			(uuid "156c9d08-bab7-4481-96d3-bbd2765e0933")
+		)
+		(pin "1"
+			(uuid "511a8012-8079-4a4f-aa1c-7dd50a2c98c7")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "Q2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Q_NJFET_SGD")
+		(at 156.21 78.74 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696cdf0")
+		(property "Reference" "Q3"
+			(at 153.67 85.09 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "2N7000"
+			(at 152.4 72.39 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:TO-92_inline_2N7000"
+			(at 155.956 84.074 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 156.21 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 156.21 78.74 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "de0f9f5d-1917-49bd-8ac3-c51bd793b81b")
+		)
+		(pin "1"
+			(uuid "745bdbd3-506d-41c3-bf88-24a5412fc869")
+		)
+		(pin "3"
+			(uuid "24b9616a-b08d-442f-8fed-8f88270f8fc7")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "Q3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Q_NJFET_SGD")
+		(at 156.21 96.52 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696ceb8")
+		(property "Reference" "Q4"
+			(at 153.67 102.87 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "2N7000"
+			(at 152.4 90.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:TO-92_inline_2N7000"
+			(at 155.956 101.854 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 156.21 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 156.21 96.52 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "feed0252-1861-426a-b3eb-468915bfb2e7")
+		)
+		(pin "3"
+			(uuid "d57b7919-722d-428d-b822-795485df6ded")
+		)
+		(pin "2"
+			(uuid "9e9deb38-228c-4640-9191-53ae1a546aab")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "Q4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Q_NJFET_SGD")
+		(at 156.21 116.84 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696cf80")
+		(property "Reference" "Q5"
+			(at 153.67 123.19 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "2N7000"
+			(at 153.67 110.49 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:TO-92_inline_2N7000"
+			(at 155.956 122.174 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 156.21 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 156.21 116.84 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "19b16673-0234-4e58-8a07-91a0bf064b88")
+		)
+		(pin "2"
+			(uuid "50cc12fd-14ac-4620-a874-bba6021011aa")
+		)
+		(pin "1"
+			(uuid "4d2733ab-7126-48a2-9628-dd3958f944e3")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "Q5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Q_NPN_EBC")
+		(at 156.21 132.08 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696d048")
+		(property "Reference" "Q6"
+			(at 153.67 138.43 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "MPSA42"
+			(at 152.4 127 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:TO-92_inline_MPSA42"
+			(at 155.956 137.414 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 156.21 132.08 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 156.21 132.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "09d96708-dea6-40a2-8545-580f2a847883")
+		)
+		(pin "3"
+			(uuid "154929ac-810e-4e19-8eb0-82c39af5e04a")
+		)
+		(pin "2"
+			(uuid "930b45a5-36ba-4bc0-a9b8-2890ff61fed8")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "Q6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 76.2 218.44 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696d110")
+		(property "Reference" "R3"
+			(at 74.93 219.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 80.01 215.138 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 76.454 213.106 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 76.2 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 76.2 218.44 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "bf433efe-8a8e-4d10-8f7b-1a4052d7f22d")
+		)
+		(pin "1"
+			(uuid "243484f0-bf77-4b8d-baed-df88c71e036b")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 76.2 236.22 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696d1d8")
+		(property "Reference" "R4"
+			(at 74.93 237.49 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 80.01 232.918 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 76.454 230.886 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 76.2 236.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 76.2 236.22 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "19465420-896d-4ad3-892c-424503728e8f")
+		)
+		(pin "2"
+			(uuid "8c22c62a-f1f2-4b17-aa30-30829cea79b4")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 76.2 254 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696d2a0")
+		(property "Reference" "R5"
+			(at 74.93 255.27 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 80.01 250.698 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 76.454 248.666 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 76.2 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 76.2 254 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "5955e027-2f49-4c3b-ba8f-79b2d28a336a")
+		)
+		(pin "1"
+			(uuid "20759723-0c35-4e1a-978c-9bd0d7967e5f")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 109.22 223.52 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696d368")
+		(property "Reference" "R6"
+			(at 110.49 226.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "3k"
+			(at 110.49 219.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 109.474 218.186 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 109.22 223.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 109.22 223.52 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "4ed9106f-32b7-48e8-b126-a10cc7bb73d0")
+		)
+		(pin "1"
+			(uuid "5734e68f-253a-49f5-b717-06238ab2cb4e")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 109.22 241.3 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696d430")
+		(property "Reference" "R7"
+			(at 110.49 243.84 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "3k"
+			(at 110.49 237.49 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 109.474 235.966 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 109.22 241.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 109.22 241.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "4286dc43-c0dc-4043-b76f-9294244a315d")
+		)
+		(pin "1"
+			(uuid "8f41f436-3fef-420e-8fc7-89ba0d74e1a9")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 109.22 259.08 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696d4f8")
+		(property "Reference" "R8"
+			(at 110.49 261.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "3k"
+			(at 110.49 255.27 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 109.474 253.746 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 109.22 259.08 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 109.22 259.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "702ed830-aeba-4663-8fd4-d54a6f8814e5")
+		)
+		(pin "1"
+			(uuid "8284b598-0d5e-415b-a4c6-f252d80bad15")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 232.41 364.49 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696d5c0")
+		(property "Reference" "R10"
+			(at 229.87 367.03 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "3k"
+			(at 236.22 365.76 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 237.744 364.744 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 232.41 364.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 232.41 364.49 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "7ce0976c-c4d1-4684-9167-e3423dfbaf6b")
+		)
+		(pin "2"
+			(uuid "4edbdcd8-55aa-4663-9282-2418e8133581")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 123.19 354.33 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696d688")
+		(property "Reference" "R14"
+			(at 124.46 351.79 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "3k"
+			(at 119.38 353.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 117.856 354.076 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 123.19 354.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 123.19 354.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "9343563c-a5cc-4b46-b64b-0501684ea8ea")
+		)
+		(pin "2"
+			(uuid "77db2b0c-cab3-4d7c-afed-9c0e2343d65e")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 199.39 346.71 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696d750")
+		(property "Reference" "R1"
+			(at 196.85 347.98 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "390k"
+			(at 203.2 349.25 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 204.724 346.964 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 199.39 346.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 199.39 346.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "b0d8ddb9-6b9d-443e-9b9d-3e2ee4b96ae0")
+		)
+		(pin "1"
+			(uuid "03121a68-d2c2-4634-b8a5-498b82831802")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 199.39 364.49 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696d818")
+		(property "Reference" "R2"
+			(at 196.85 365.76 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "4.7k"
+			(at 203.2 367.03 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 204.724 364.744 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 199.39 364.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 199.39 364.49 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2787acdf-629f-4b36-bf62-378ea0603ec2")
+		)
+		(pin "2"
+			(uuid "712f2f9e-ae9f-4342-9a57-459bb8e9547a")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 492.76 332.74 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696d8e0")
+		(property "Reference" "R17"
+			(at 491.49 335.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "10k"
+			(at 496.57 335.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 498.094 332.994 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 492.76 332.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 492.76 332.74 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "6691c694-d8eb-4248-b183-c16411a485a1")
+		)
+		(pin "1"
+			(uuid "5ce14d74-1426-425c-8209-ee16960d8e18")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 162.56 224.79 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696d9a8")
+		(property "Reference" "R18"
+			(at 161.29 226.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 166.37 221.488 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 162.814 219.456 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 162.56 224.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 162.56 224.79 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "f2f7bb61-1ca9-43e4-b583-db1089857c25")
+		)
+		(pin "1"
+			(uuid "2d05f389-6167-4d48-abb3-a12b546c2f25")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 162.56 242.57 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696da70")
+		(property "Reference" "R19"
+			(at 166.37 244.0432 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 166.37 239.268 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 162.814 237.236 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 162.56 242.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 162.56 242.57 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "68b0a73c-c0b6-4298-a139-079ab41f4223")
+		)
+		(pin "1"
+			(uuid "c9621951-0fd3-43bd-80ea-ea5403bda7c8")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 162.56 260.35 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696db38")
+		(property "Reference" "R20"
+			(at 161.29 261.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 166.37 257.048 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 162.814 255.016 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 162.56 260.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 162.56 260.35 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6d194aa8-b106-4d38-a26d-774112da4a67")
+		)
+		(pin "2"
+			(uuid "5b40d1fa-a1c8-4ca6-ab5e-8443ce27200e")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 195.58 229.87 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696dc00")
+		(property "Reference" "R26"
+			(at 198.12 232.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "3k"
+			(at 196.85 226.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 195.834 224.536 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 195.58 229.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 195.58 229.87 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "becbe91e-61be-4c60-9f6c-821a7798bce9")
+		)
+		(pin "1"
+			(uuid "7b901eec-0831-43f8-a5c8-79745bd694d2")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R26")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 195.58 247.65 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696dcc8")
+		(property "Reference" "R27"
+			(at 198.12 250.19 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "3k"
+			(at 196.85 243.84 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 195.834 242.316 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 195.58 247.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 195.58 247.65 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "e41209c7-50e3-4b18-a428-1a48a6ebad54")
+		)
+		(pin "1"
+			(uuid "29827cd8-6fcb-48da-b13b-3698ca2dfddd")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R27")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 195.58 265.43 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696dd90")
+		(property "Reference" "R28"
+			(at 198.12 267.97 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "3k"
+			(at 196.85 261.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 195.834 260.096 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 195.58 265.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 195.58 265.43 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "143f6374-3f32-474d-b359-5fefefce5d2e")
+		)
+		(pin "2"
+			(uuid "0dbbea23-e799-406e-acab-dd19f7f1f952")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R28")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 72.39 73.66 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696de58")
+		(property "Reference" "R30"
+			(at 76.2 75.1332 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "10k"
+			(at 76.2 70.358 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 72.644 68.326 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 72.39 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 72.39 73.66 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "44d70749-ab99-4cc6-bdde-fa3f43f3f77f")
+		)
+		(pin "2"
+			(uuid "331764b8-b9b5-474e-b654-011eec0c542d")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R30")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 173.99 127 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696df20")
+		(property "Reference" "R38"
+			(at 177.8 128.4732 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 177.8 123.698 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 174.244 121.666 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 173.99 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 173.99 127 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "de439889-c805-49f3-a794-fb29b66e0a27")
+		)
+		(pin "1"
+			(uuid "23e21784-fc37-436d-9d36-a717df84ba83")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R38")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 375.92 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696dfe8")
+		(property "Reference" "R31"
+			(at 374.65 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 374.65 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 381.254 101.854 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 375.92 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 375.92 101.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "215e903f-962e-4af8-8494-b6637a7bf52f")
+		)
+		(pin "2"
+			(uuid "7117da6a-735e-4637-b14a-a2290c291b75")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R31")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 381 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696e0b0")
+		(property "Reference" "R32"
+			(at 379.73 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 379.73 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 386.334 101.854 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 381 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 381 101.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "deb250d5-3a8c-452d-96b9-e95844884e75")
+		)
+		(pin "1"
+			(uuid "0c200b6c-2547-429d-81f9-73d4acf637be")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R32")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 386.08 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696e178")
+		(property "Reference" "R33"
+			(at 384.81 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 384.81 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 391.414 101.854 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 386.08 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 386.08 101.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2ea73d33-be34-4e80-ad11-1ab1f2bf6198")
+		)
+		(pin "2"
+			(uuid "c4c9f636-de00-46e8-9c3a-f8bfa118bf43")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R33")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 143.51 132.08 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696e240")
+		(property "Reference" "R37"
+			(at 146.05 129.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 146.05 135.89 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 143.256 137.414 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 143.51 132.08 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 143.51 132.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "ad92faff-75fb-4b40-8a82-9829a4f50f18")
+		)
+		(pin "1"
+			(uuid "a4867948-0690-4fac-babb-7a69a2124cd3")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R37")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:ARDUNIX6_MA04-1-AllInOneIN142-rescue")
+		(at 36.83 364.49 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696e308")
+		(property "Reference" "SV1"
+			(at 35.5854 358.648 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "PWR"
+			(at 35.56 374.65 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:Header_MA04-1"
+			(at 36.576 369.824 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 36.83 364.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 36.83 364.49 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "6daa8add-b4d9-4c9e-96a7-5cd49edcab5e")
+		)
+		(pin "1"
+			(uuid "89bd444a-266c-414d-b524-00ed9e6d3707")
+		)
+		(pin "4"
+			(uuid "8d31a59e-03b8-4f41-ad08-2280db49a7ff")
+		)
+		(pin "2"
+			(uuid "7deffed9-6f7d-4cdd-9210-a74aa08d63b4")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "SV1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:ARDUNIX6_MA04-1-AllInOneIN142-rescue")
+		(at 482.6 344.17 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696e3d0")
+		(property "Reference" "SV2"
+			(at 481.3554 338.328 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "CONN_FRONT"
+			(at 481.33 354.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:Header_MA04-1"
+			(at 482.346 349.504 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 482.6 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 482.6 344.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "4"
+			(uuid "1aee6a28-d24f-436e-be56-769f5d662696")
+		)
+		(pin "1"
+			(uuid "40a58ba6-629c-4ec8-b06a-693311c9c64f")
+		)
+		(pin "3"
+			(uuid "67f394cd-36d1-4d41-b7a3-c39239ce4a40")
+		)
+		(pin "2"
+			(uuid "b603c4f6-3fcf-4897-87c8-f7c7e63cb570")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "SV2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:ARDUNIX6_MA04-1-AllInOneIN142-rescue")
+		(at 527.05 346.71 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005696e560")
+		(property "Reference" "SV3"
+			(at 528.32 352.552 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "CONN_RTC"
+			(at 528.2946 336.55 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:Header_MA04-1"
+			(at 527.304 341.376 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 527.05 346.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 527.05 346.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f676485f-2f09-4403-99e0-22c1711bd62e")
+		)
+		(pin "2"
+			(uuid "7ed684ec-6eca-465c-b821-ab9f0b60ee8c")
+		)
+		(pin "4"
+			(uuid "0da97410-4f6a-4382-8a45-5d82d46363a9")
+		)
+		(pin "3"
+			(uuid "c1baf561-c62e-4fb7-9d1c-99dd17817223")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "SV3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 350.52 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056a85a7b")
+		(property "Reference" "R24"
+			(at 349.25 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 349.25 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 355.854 101.854 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 350.52 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 350.52 101.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "afb65673-9bd3-4ec8-96e5-3bb34700cac4")
+		)
+		(pin "2"
+			(uuid "d50438b2-e0af-473c-9a63-40b7657b179d")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R24")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 355.6 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056a85a81")
+		(property "Reference" "R25"
+			(at 354.33 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 354.33 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 360.934 101.854 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 355.6 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 355.6 101.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b25806d0-95bc-49e9-91f5-6c4d2d2f46b1")
+		)
+		(pin "2"
+			(uuid "e111b8ab-2b66-4693-b017-ed0bf737013b")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R25")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 360.68 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056a85a87")
+		(property "Reference" "R29"
+			(at 359.41 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 359.41 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 366.014 101.854 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 360.68 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 360.68 101.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "cf2a51e4-bbe2-48ed-9cbb-3263fd90d42a")
+		)
+		(pin "2"
+			(uuid "16cfe839-2948-45d8-9ec5-39d0a1492d69")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R29")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 401.32 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056a85ce9")
+		(property "Reference" "R34"
+			(at 400.05 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 400.05 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 406.654 101.854 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 401.32 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 401.32 101.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "a8bd648d-4651-4209-9ed9-c544f68a7721")
+		)
+		(pin "1"
+			(uuid "a5129634-418d-4df2-98c7-c321679fbbca")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R34")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 406.4 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056a85cef")
+		(property "Reference" "R35"
+			(at 405.13 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 405.13 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 411.734 101.854 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 406.4 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 406.4 101.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "98314c47-6718-43d5-9a39-c7f9acb0f6e9")
+		)
+		(pin "2"
+			(uuid "a6ce5339-1b00-4058-b8a7-dcf1b072b382")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R35")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 411.48 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056a85cf5")
+		(property "Reference" "R36"
+			(at 410.21 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 410.21 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 416.814 101.854 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 411.48 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 411.48 101.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2e509eb8-6965-4a07-a234-dc3487b1ae0f")
+		)
+		(pin "2"
+			(uuid "97401bef-5a07-4735-9471-2b0592d781a1")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R36")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 300.99 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056a86277")
+		(property "Reference" "R13"
+			(at 299.72 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 299.72 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 306.324 101.854 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 300.99 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 300.99 101.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "3ca5e8bf-bf3f-4a3f-afe0-7dee786da675")
+		)
+		(pin "1"
+			(uuid "c48d3ca2-2fe0-4e5b-ba7e-32e82fd894f8")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 306.07 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056a8627d")
+		(property "Reference" "R15"
+			(at 304.8 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 304.8 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 311.404 101.854 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 306.07 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 306.07 101.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "32954eac-8702-4006-ba48-fd2ec8e6e0cf")
+		)
+		(pin "1"
+			(uuid "2f49c7c7-6bb9-4383-ada6-9b161217d859")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 311.15 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056a86283")
+		(property "Reference" "R16"
+			(at 309.88 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 309.88 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 316.484 101.854 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 311.15 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 311.15 101.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d725d9f7-1543-4c4a-9fc4-b0c262b30405")
+		)
+		(pin "2"
+			(uuid "0b4366d5-9134-4962-bd56-acb4910cd5ac")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 275.59 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056a86298")
+		(property "Reference" "R9"
+			(at 274.32 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 274.32 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 280.924 101.854 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 275.59 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 275.59 101.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "814ca020-9e7b-44b5-a79a-5d7f547373a0")
+		)
+		(pin "1"
+			(uuid "97e1f90d-9fb7-42f9-9364-ea55ee0acca6")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 280.67 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056a8629e")
+		(property "Reference" "R11"
+			(at 279.4 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 279.4 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 286.004 101.854 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 280.67 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 280.67 101.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b6db2257-b661-40b2-9c2a-3ecdc0c8fc19")
+		)
+		(pin "2"
+			(uuid "f3813c33-ebb1-4623-ab62-f81181f7309e")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 285.75 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056a862a4")
+		(property "Reference" "R12"
+			(at 284.48 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 284.48 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 291.084 101.854 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 285.75 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 285.75 101.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f78a6418-bede-4a40-a654-6e2a478860e3")
+		)
+		(pin "2"
+			(uuid "cb252f15-1737-4014-9760-591d4ac4c6f1")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 326.39 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056a862b9")
+		(property "Reference" "R21"
+			(at 325.12 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 325.12 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 331.724 101.854 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 326.39 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 326.39 101.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "460fa263-018e-4b68-b062-1b9457107a6a")
+		)
+		(pin "1"
+			(uuid "085a13e2-69b0-4ce3-9ee0-fbc3559952aa")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R21")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 331.47 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056a862bf")
+		(property "Reference" "R22"
+			(at 330.2 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 330.2 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 336.804 101.854 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 331.47 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 331.47 101.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "1c9355cb-4cb1-4ff1-8a4e-1413b9811e4a")
+		)
+		(pin "1"
+			(uuid "315d34ec-9a4f-4546-a4a2-9ecc2ebc2b10")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R22")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 336.55 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056a862c5")
+		(property "Reference" "R23"
+			(at 335.28 100.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 335.28 105.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 341.884 101.854 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 336.55 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 336.55 101.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "de478f7a-7a47-492c-bc19-e00a255cc19f")
+		)
+		(pin "1"
+			(uuid "7cf3f450-a6c3-4147-a4ae-2b1a767a8f14")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R23")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:LEDs2_RAGB-AllInOneIN142-rescue")
+		(at 280.67 86.36 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056accd86")
+		(property "Reference" "LED2"
+			(at 287.02 83.058 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Value" "LED_RAGB"
+			(at 274.32 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:LED5_RGB_CA_Offset"
+			(at 280.67 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 280.67 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 280.67 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Fieldname" "Value"
+			(at 280.67 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "a1c5e32c-9ad2-4a59-a8d5-5914879ca412")
+		)
+		(pin "2"
+			(uuid "8feebdc2-216f-4a15-84f8-b1646dc43308")
+		)
+		(pin "1"
+			(uuid "0f80d4dc-a4a2-4c68-86ee-88f05ac6fe2f")
+		)
+		(pin "4"
+			(uuid "cd488ad5-dcc5-47d9-8f06-a409d9c75c5a")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "LED2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:LEDs2_RAGB-AllInOneIN142-rescue")
+		(at 306.07 86.36 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056acd8d7")
+		(property "Reference" "LED3"
+			(at 312.42 83.058 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Value" "LED_RAGB"
+			(at 299.72 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:LED5_RGB_CA_Offset"
+			(at 306.07 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 306.07 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 306.07 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "5b0f0398-d29f-4fce-9a16-8c8d101cacb7")
+		)
+		(pin "1"
+			(uuid "60d72db7-6a9f-4acd-a064-eabd4f1388ca")
+		)
+		(pin "3"
+			(uuid "fd0b9b61-9ab4-405e-b844-695dd580a31d")
+		)
+		(pin "4"
+			(uuid "9a3c0635-8763-49ae-8937-21b574a07e83")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "LED3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:LEDs2_RAGB-AllInOneIN142-rescue")
+		(at 331.47 86.36 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056acd9fc")
+		(property "Reference" "LED4"
+			(at 337.82 83.058 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Value" "LED_RAGB"
+			(at 325.12 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:LED5_RGB_CA_Offset"
+			(at 331.47 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 331.47 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 331.47 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "542e4bce-cf3d-4bc0-a197-e14b4b6b0dda")
+		)
+		(pin "3"
+			(uuid "5444acbd-9c3b-41cf-8ae1-0b75ad222e1d")
+		)
+		(pin "2"
+			(uuid "83193637-2f76-4e2d-a0c1-874b74b3929e")
+		)
+		(pin "4"
+			(uuid "4f433ba9-92c6-46aa-a012-14816c7d2f1f")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "LED4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:LEDs2_RAGB-AllInOneIN142-rescue")
+		(at 355.6 86.36 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056acdb38")
+		(property "Reference" "LED5"
+			(at 361.95 83.058 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Value" "LED_RAGB"
+			(at 349.25 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:LED5_RGB_CA_Offset"
+			(at 355.6 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 355.6 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 355.6 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "d454cb61-595d-4749-89fc-dbfe12d76d30")
+		)
+		(pin "1"
+			(uuid "3dd5b30b-99d9-4cbd-81a9-225f986ac5d1")
+		)
+		(pin "4"
+			(uuid "16bc3e14-1304-42c0-8e3b-48735db289f3")
+		)
+		(pin "3"
+			(uuid "fc9cccfe-57a2-46b0-a233-b6ba65fad276")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "LED5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:LEDs2_RAGB-AllInOneIN142-rescue")
+		(at 381 86.36 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056acdc6f")
+		(property "Reference" "LED6"
+			(at 387.35 83.058 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Value" "LED_RAGB"
+			(at 374.65 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:LED5_RGB_CA_Offset"
+			(at 381 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 381 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 381 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "2599bfb7-b29f-4c54-91a4-d6adaa551e32")
+		)
+		(pin "2"
+			(uuid "cb63e9d0-affe-48a4-b7d7-b48602e4e25a")
+		)
+		(pin "4"
+			(uuid "6e3ea181-db3e-4423-9896-e18127629566")
+		)
+		(pin "1"
+			(uuid "deaa30f2-f85f-4410-8673-34bab41f5947")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "LED6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:RCL_R-EU_0207_2V-AllInOneIN142-rescue")
+		(at 173.99 135.89 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056ae8d18")
+		(property "Reference" "R39"
+			(at 177.8 137.3632 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "1k"
+			(at 177.8 132.588 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 174.244 130.556 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" ""
+			(at 173.99 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 173.99 135.89 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "a423ebee-510d-4240-a12d-414690f2fcf3")
+		)
+		(pin "1"
+			(uuid "467940df-61f6-4080-9bc4-4005a699a6ef")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R39")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:LED-AllInOneIN142-rescue")
+		(at 191.77 114.3 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056ae9098")
+		(property "Reference" "LED8"
+			(at 189.23 114.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 194.31 114.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:LED-5MM-Centred"
+			(at 191.77 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 191.77 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 191.77 114.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "13995dd6-88b3-441a-8773-bf3cb0f33856")
+		)
+		(pin "1"
+			(uuid "2574cb01-6b84-4829-81f9-ea79e7d58ba4")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "LED8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:LED-AllInOneIN142-rescue")
+		(at 198.12 114.3 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000056ae91d4")
+		(property "Reference" "LED9"
+			(at 195.58 114.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 200.66 114.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:LED-5MM-Centred"
+			(at 198.12 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 198.12 114.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 198.12 114.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "81d236da-977c-4581-829d-bdc8b9003187")
+		)
+		(pin "2"
+			(uuid "5789530e-a7a1-4b9c-8d7f-86aaceb62df6")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "LED9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 262.89 331.47 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-0000576fed99")
+		(property "Reference" "#FLG06"
+			(at 262.89 329.057 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 262.89 326.898 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 262.89 331.47 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 262.89 331.47 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 262.89 331.47 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "fc04a347-23ea-4695-b85f-467c2e0b6e1c")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "#FLG06")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 275.59 370.84 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005770430d")
+		(property "Reference" "#FLG07"
+			(at 275.59 368.427 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 275.59 366.268 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 275.59 370.84 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 275.59 370.84 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 275.59 370.84 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e56b420f-ddfe-4d59-bce1-aee1ef92b31a")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "#FLG07")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:D-RESCUE-KickstarterNixie-AllInOneIN142-rescue")
+		(at 226.06 339.09 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005775d290")
+		(property "Reference" "D2"
+			(at 226.06 336.55 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Value" "UF4004/7"
+			(at 229.87 332.74 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:Diode_DO-41_1N4001"
+			(at 226.06 339.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 226.06 339.09 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 226.06 339.09 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "84c2b933-fa77-4973-a336-9c60827ae743")
+		)
+		(pin "2"
+			(uuid "d0b8fa89-4d6c-4699-a83c-0e98e1377138")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "D2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:D-RESCUE-KickstarterNixie-AllInOneIN142-rescue")
+		(at 59.69 359.41 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000057761d7a")
+		(property "Reference" "D1"
+			(at 59.69 361.95 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Value" "1N4001"
+			(at 59.69 355.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:Diode_DO-41_1N4001"
+			(at 59.69 359.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 59.69 359.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 59.69 359.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "b37b7325-978c-4730-b587-f563190e66ad")
+		)
+		(pin "1"
+			(uuid "ee2ab196-2711-4650-8d90-fa419a5c0369")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 49.53 69.85 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000057765523")
+		(property "Reference" "#FLG08"
+			(at 49.53 67.437 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 49.53 65.278 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 49.53 69.85 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 49.53 69.85 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 49.53 69.85 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "aa4c6478-24d1-4577-9414-6685a1410950")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "#FLG08")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:TEST_1P-AllInOneIN142-rescue")
+		(at 105.41 339.09 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-0000577661ac")
+		(property "Reference" "W1"
+			(at 105.41 332.232 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5V"
+			(at 105.41 334.01 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:TESTPAD_P1-13"
+			(at 110.49 339.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 110.49 339.09 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 105.41 339.09 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "4298ba0c-8341-47cd-b7d1-220bfd098ca3")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "W1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:TEST_1P-AllInOneIN142-rescue")
+		(at 142.24 369.57 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005776667b")
+		(property "Reference" "W2"
+			(at 142.24 362.712 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 142.24 364.49 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:TESTPAD_P1-13"
+			(at 147.32 369.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 147.32 369.57 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 142.24 369.57 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8d9156db-65dc-4af5-a0a3-e13bf8817869")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "W2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:TEST_1P-AllInOneIN142-rescue")
+		(at 214.63 334.01 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-0000577685b8")
+		(property "Reference" "W3"
+			(at 214.63 327.152 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "170V"
+			(at 214.63 328.93 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:TESTPAD_P1-13"
+			(at 219.71 334.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 219.71 334.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 214.63 334.01 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "506a5a7d-06a3-4d35-acaa-404541870ab3")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "W3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:BARREL_JACK-AllInOneIN142-rescue")
+		(at 546.1 344.17 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-0000578c8834")
+		(property "Reference" "CON1"
+			(at 546.1 337.82 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "BARREL_JACK"
+			(at 546.1 349.25 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:BARREL_JACK"
+			(at 546.1 344.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 546.1 344.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 546.1 344.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e3787182-d661-412a-b15b-4132e0693684")
+		)
+		(pin "3"
+			(uuid "a4e1b0ba-f64e-4320-9e7b-5d6529ef4cc2")
+		)
+		(pin "2"
+			(uuid "e0d0f8c2-c5b7-4bb7-ac56-b10aa5af56b9")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "CON1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 561.34 349.25 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-0000578caf4a")
+		(property "Reference" "#GND09"
+			(at 558.8 351.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "GND"
+			(at 558.8 351.79 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.778 1.778)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" ""
+			(at 561.34 349.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 561.34 349.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 561.34 349.25 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "9ddd759a-3fda-44b9-9461-f98d30cd9f05")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "#GND09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:LEDs2_RAGB-AllInOneIN142-rescue")
+		(at 406.4 86.36 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005999c504")
+		(property "Reference" "LED7"
+			(at 412.75 83.058 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Value" "LEDs2_RAGB"
+			(at 400.05 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:LED5_RGB_CA_Offset"
+			(at 406.4 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 406.4 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 406.4 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "4"
+			(uuid "1cdcecae-a5c1-48e9-a860-54ff234d6516")
+		)
+		(pin "2"
+			(uuid "2e57e28a-9161-4b16-bb6a-540364e13bdf")
+		)
+		(pin "1"
+			(uuid "e7218209-3789-4430-b924-cb6d321baf74")
+		)
+		(pin "3"
+			(uuid "b763f7ee-931a-4dfb-973a-29979676a2a6")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "LED7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:FRAMES_FRAME_A_L-AllInOneIN142-rescue")
+		(at 91.44 372.11 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a18b231")
+		(property "Reference" "#FRAME2"
+			(at 92.71 370.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Value" "~"
+			(at 91.44 1428.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 91.44 1428.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 91.44 1428.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 91.44 372.11 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "#FRAME2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:CP-AllInOneIN142-rescue")
+		(at 388.62 359.41 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a18b270")
+		(property "Reference" "C11"
+			(at 389.255 356.87 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10uF"
+			(at 389.89 367.03 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:C_Radial_D6.3_L11.2_P2.5"
+			(at 389.5852 363.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 388.62 359.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 388.62 359.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Fieldname" "Value"
+			(at 388.62 359.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "ff15b4c9-e96d-4f4b-8ad5-f31e0ef7b927")
+		)
+		(pin "1"
+			(uuid "88486b8b-595b-49dc-9fe4-dff5af5a84a6")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "C11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:R-AllInOneIN142-rescue")
+		(at 335.28 334.01 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a18b272")
+		(property "Reference" "R40"
+			(at 336.55 330.2 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 335.28 334.01 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.9906 0.9906)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 333.502 334.01 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 335.28 334.01 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 335.28 334.01 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "38a8fd26-4b9c-4fe5-8e1f-c52d61506449")
+		)
+		(pin "2"
+			(uuid "7fcf2135-e5c4-462e-bd7b-de2421ac444e")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R40")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:R-AllInOneIN142-rescue")
+		(at 397.51 361.95 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a18b273")
+		(property "Reference" "R42"
+			(at 398.78 356.87 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 397.51 361.95 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.9906 0.9906)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 395.732 361.95 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 397.51 361.95 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 397.51 361.95 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "907bb0a2-797c-4f49-815d-e5f761220595")
+		)
+		(pin "2"
+			(uuid "2f77c591-9f1b-43e5-b47e-0da426c77e06")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R42")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:R-AllInOneIN142-rescue")
+		(at 340.36 334.01 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a18b275")
+		(property "Reference" "R41"
+			(at 341.63 330.2 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 340.36 334.01 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.9906 0.9906)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 338.582 334.01 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 340.36 334.01 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 340.36 334.01 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "edddd021-d34e-459d-8f34-6d7353e20e9e")
+		)
+		(pin "1"
+			(uuid "50686099-9e5b-42ce-9d05-e7d1111082ae")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R41")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:R-AllInOneIN142-rescue")
+		(at 426.72 361.95 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a18b276")
+		(property "Reference" "R43"
+			(at 427.99 356.87 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 426.72 361.95 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.9906 0.9906)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:R-0207_2V"
+			(at 424.942 361.95 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 426.72 361.95 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 426.72 361.95 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "cfec5cb8-0527-47c6-afc5-310ed620ab7c")
+		)
+		(pin "1"
+			(uuid "95b40999-7c9a-4c1e-835d-e83778026bc0")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "R43")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:C_Small-AllInOneIN142-rescue")
+		(at 379.73 359.41 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a18b277")
+		(property "Reference" "C10"
+			(at 379.984 357.632 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 381 367.03 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:C025-024X044"
+			(at 379.73 359.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 379.73 359.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 379.73 359.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Fieldname" "Value"
+			(at 379.73 349.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "96bcd2d5-96a1-4cf0-aea0-2c135efca497")
+		)
+		(pin "2"
+			(uuid "0653a135-1ef6-47ee-816e-3fb523755672")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "C10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:ESP8266-01_02X04-AllInOneIN142-rescue")
+		(at 359.41 382.27 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a18b278")
+		(property "Reference" "P2"
+			(at 359.41 375.92 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ESP8266-01_02X04"
+			(at 359.41 388.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:ESP8266_2x04"
+			(at 359.41 412.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 359.41 412.75 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 359.41 382.27 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "54c53074-3992-421b-8459-0be221279dfb")
+		)
+		(pin "3"
+			(uuid "edd87f53-78bc-4995-8f2e-2adbb7ee5364")
+		)
+		(pin "2"
+			(uuid "2f576902-074e-4649-b9bd-90d24459b1c8")
+		)
+		(pin "5"
+			(uuid "a9973a25-9c99-476b-87a1-9bc420b3d50d")
+		)
+		(pin "4"
+			(uuid "33bcb937-209e-4369-beda-e260574231c8")
+		)
+		(pin "6"
+			(uuid "d95d7f4e-08d3-48c0-9cb7-2584ccd38fd1")
+		)
+		(pin "7"
+			(uuid "5f87b801-a301-4b88-9c51-d5eb23a9798e")
+		)
+		(pin "8"
+			(uuid "a47b1c1f-ac2d-44e0-9427-38c5d9a819c5")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "P2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:C_Small-AllInOneIN142-rescue")
+		(at 327.66 340.36 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a18b279")
+		(property "Reference" "C9"
+			(at 327.914 338.582 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 328.93 347.98 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:C025-024X044"
+			(at 327.66 340.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 327.66 340.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 327.66 340.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Fieldname" "Value"
+			(at 327.66 340.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f6ba5d77-efd6-42b0-bab3-c6b9d74ed6d8")
+		)
+		(pin "2"
+			(uuid "7b0cd7c3-ca2a-4a5b-8178-118aef6a6623")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "C9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:TEST_1P-AllInOneIN142-rescue")
+		(at 232.41 351.79 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a1bdc4d")
+		(property "Reference" "W5"
+			(at 232.41 344.932 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "HVD"
+			(at 232.41 346.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:TESTPAD_P1-13"
+			(at 237.49 351.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 237.49 351.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 232.41 351.79 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "75d0ee64-2f19-4eef-a189-29c6f34ef8cc")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "W5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:TEST_1P-AllInOneIN142-rescue")
+		(at 284.48 374.65 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005a1beec7")
+		(property "Reference" "W4"
+			(at 284.48 367.792 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 284.48 369.57 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:TESTPAD_P1-13"
+			(at 289.56 374.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 289.56 374.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 284.48 374.65 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "05398d71-0154-40c8-a23f-03061f1aaa5e")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "W4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "AllInOneZ570M-rescue:TEST_1P-AllInOneIN142-rescue")
+		(at 426.72 337.82 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005cbc032e")
+		(property "Reference" "W6"
+			(at 426.72 330.962 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "3V3"
+			(at 426.72 332.74 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:TESTPAD_P1-13"
+			(at 431.8 337.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 431.8 337.82 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 426.72 337.82 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f4296fff-c903-45bd-a2c8-570c2ccc2a6d")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "W6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Regulator_Linear:L78L05_TO92")
+		(at 354.33 341.63 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005cc052d7")
+		(property "Reference" "U1"
+			(at 354.33 335.4832 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "78L33"
+			(at 354.33 337.7946 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:TO-92_2N7000_inline"
+			(at 354.33 335.915 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.st.com/content/ccc/resource/technical/document/datasheet/15/55/e5/aa/23/5b/43/fd/CD00000446.pdf/files/CD00000446.pdf/jcr:content/translations/en.CD00000446.pdf"
+			(at 354.33 342.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 354.33 341.63 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2e63a904-774b-47fb-969d-cd4c488f7162")
+		)
+		(pin "2"
+			(uuid "0e1235fb-0bc0-44d5-992a-b93b66e4f127")
+		)
+		(pin "3"
+			(uuid "c2d82ece-c325-49d6-a5bd-97b23f7744a6")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_FET:2N7000")
+		(at 414.02 368.3 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005cc069db")
+		(property "Reference" "Q7"
+			(at 419.227 367.1316 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2N7000"
+			(at 419.227 369.443 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:TO-92_2N7000_inline"
+			(at 419.1 370.205 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" "https://www.fairchildsemi.com/datasheets/2N/2N7000.pdf"
+			(at 414.02 368.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Description" ""
+			(at 414.02 368.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d669cb75-6296-401c-b9df-c77638ff892d")
+		)
+		(pin "3"
+			(uuid "9a24770e-09b3-40b5-9608-1aa3f2436a7c")
+		)
+		(pin "2"
+			(uuid "215527c1-90f6-498e-bc30-a123a14f94d1")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "Q7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_FET:2N7000")
+		(at 441.96 368.3 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005cc07334")
+		(property "Reference" "Q8"
+			(at 447.167 367.1316 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2N7000"
+			(at 447.167 369.443 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:TO-92_2N7000_inline"
+			(at 447.04 370.205 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" "https://www.fairchildsemi.com/datasheets/2N/2N7000.pdf"
+			(at 441.96 368.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Description" ""
+			(at 441.96 368.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "ef7ca0b1-e433-4940-85bf-d43926e19cd6")
+		)
+		(pin "2"
+			(uuid "7cb68015-ec1e-4475-a654-235e7dd5d9d1")
+		)
+		(pin "1"
+			(uuid "6bac0be0-8f6c-43c1-bdb4-ee2bbd4721e3")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "Q8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_3_Open")
+		(at 171.45 41.91 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005ec24d8a")
+		(property "Reference" "JP1"
+			(at 171.45 36.703 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_3_Open"
+			(at 171.45 39.0144 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:SOLDER-JUMPER_2-WAY"
+			(at 171.45 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 171.45 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 171.45 41.91 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "dfa6e34d-85dc-4605-97e5-c3f607dfd8d7")
+		)
+		(pin "3"
+			(uuid "4c5a6364-053e-4f05-a27d-393cfb587f81")
+		)
+		(pin "1"
+			(uuid "06a7da42-bc19-4b9f-9bac-373b89713ecf")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "JP1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_FET:IRF740")
+		(at 240.03 356.87 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005ed51da3")
+		(property "Reference" "Q1"
+			(at 245.2116 355.7016 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "IRF640"
+			(at 245.2116 358.013 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:TO-220-3_H"
+			(at 246.38 358.775 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" "http://www.vishay.com/docs/91054/91054.pdf"
+			(at 240.03 356.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Description" ""
+			(at 240.03 356.87 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "a9f9f0f0-857d-4da5-a058-ad207b729e02")
+		)
+		(pin "2"
+			(uuid "c56206be-ee54-4fa2-b27a-2a148f5ba0b6")
+		)
+		(pin "1"
+			(uuid "24286807-1e77-46b3-b8ea-84b30096ab5d")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "Q1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Z570M:Z57xM")
+		(at 495.3 52.07 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005fa76668")
+		(property "Reference" "N1"
+			(at 496.57 28.194 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Z57xM"
+			(at 496.57 30.5054 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:Z570M"
+			(at 496.57 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 495.3 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 495.3 52.07 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "198240cc-9a6a-4e50-adde-9a7d2128e685")
+		)
+		(pin "2"
+			(uuid "715ee092-5bc2-43e3-b069-b8f84b56e350")
+		)
+		(pin "5"
+			(uuid "51391482-0f0d-4174-81b0-31cee3ade8b6")
+		)
+		(pin "4"
+			(uuid "3cae9e10-a514-4b47-8186-21dd97357bfd")
+		)
+		(pin "3"
+			(uuid "49ae878a-a987-42cd-8ec4-67b2ca3f85b0")
+		)
+		(pin "0"
+			(uuid "180d8c18-d213-40de-b38d-8905e7613e14")
+		)
+		(pin "9"
+			(uuid "48e09e3b-efdb-4c2f-be51-7c57c2304396")
+		)
+		(pin "8"
+			(uuid "6c01b1ba-cb06-4bfa-88e7-a39035363a12")
+		)
+		(pin "A"
+			(uuid "871d0830-77f4-469f-8968-c5bcbfeed7e8")
+		)
+		(pin "7"
+			(uuid "0496f436-a375-47dc-80d0-c847c1b0fcec")
+		)
+		(pin "N/C"
+			(uuid "9b2baef5-ac68-4938-8097-ff4b00f8be7a")
+		)
+		(pin "6"
+			(uuid "2ae3d075-62c0-40f2-a11f-dac816f51800")
+		)
+		(pin "RHDP"
+			(uuid "1722f9bc-f2c1-4ab6-9e33-24ec0a52ec3b")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "N1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Z570M:Z57xM")
+		(at 495.3 93.98 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005fa775e1")
+		(property "Reference" "N2"
+			(at 496.57 70.104 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Z57xM"
+			(at 496.57 72.4154 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:Z570M"
+			(at 496.57 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 495.3 93.98 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 495.3 93.98 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "8"
+			(uuid "6324a127-b866-4400-918e-65a573f3f568")
+		)
+		(pin "3"
+			(uuid "95b95071-95cc-4055-b47d-32340732e9dc")
+		)
+		(pin "6"
+			(uuid "807be969-a126-442b-9c97-edda0833eb69")
+		)
+		(pin "9"
+			(uuid "9942cebe-cd87-4220-b728-69a571635e6b")
+		)
+		(pin "N/C"
+			(uuid "f2b7aa71-c21a-4d28-b3f0-9849ddb4969f")
+		)
+		(pin "5"
+			(uuid "d4433cfb-648c-4aeb-a6d4-dce5fb2c85ec")
+		)
+		(pin "RHDP"
+			(uuid "aa402efc-4886-4505-aadb-fe9a05b5c73d")
+		)
+		(pin "4"
+			(uuid "01b2a713-4d75-44c3-8f9f-24bd3a867327")
+		)
+		(pin "A"
+			(uuid "8ed9587d-4454-4539-aad1-2c75c5925e92")
+		)
+		(pin "7"
+			(uuid "8a572173-f65b-40c5-9d5d-96afa83d9049")
+		)
+		(pin "0"
+			(uuid "47cf408c-22a9-4e2c-8f20-ef81e31b0691")
+		)
+		(pin "2"
+			(uuid "752b78e8-b192-40b4-a14a-b483445c1a9c")
+		)
+		(pin "1"
+			(uuid "97f94217-a052-40da-a12a-72be88de4bf4")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "N2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Z570M:Z57xM")
+		(at 495.3 135.89 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005fa77834")
+		(property "Reference" "N3"
+			(at 496.57 112.014 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Z57xM"
+			(at 496.57 114.3254 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:Z570M"
+			(at 496.57 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 495.3 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 495.3 135.89 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "9"
+			(uuid "0367b566-942a-4711-a1e5-038ab953ca3d")
+		)
+		(pin "RHDP"
+			(uuid "82cf5314-b959-4fe8-b0c0-c555ef0b1455")
+		)
+		(pin "6"
+			(uuid "f77dce24-bcef-4e2b-b432-32f4a598fa2d")
+		)
+		(pin "4"
+			(uuid "63e7c1c5-c611-4325-830d-2877956327a9")
+		)
+		(pin "5"
+			(uuid "5cc7cf06-b88f-4e3b-a698-fe8f880e9b21")
+		)
+		(pin "8"
+			(uuid "ed779cb6-7dc5-40f8-acd0-2139db8ab126")
+		)
+		(pin "3"
+			(uuid "07fad9f3-14ae-445f-b01a-00567cf43c01")
+		)
+		(pin "7"
+			(uuid "ba57ed3a-8ad2-46b4-bfb9-b796ba00926a")
+		)
+		(pin "2"
+			(uuid "496f9fea-bbf2-4117-bd7f-997bbe108bd1")
+		)
+		(pin "0"
+			(uuid "4b149a0c-4983-48c3-bb8f-8fed35bca9f6")
+		)
+		(pin "1"
+			(uuid "0db5d422-dd2a-416d-803d-2e9566235b8a")
+		)
+		(pin "N/C"
+			(uuid "e8418273-7779-44fc-92c2-352cad21502f")
+		)
+		(pin "A"
+			(uuid "3e9fddcc-0b95-4842-b20f-664b7bf56fcb")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "N3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Z570M:Z57xM")
+		(at 495.3 177.8 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005fa77ad2")
+		(property "Reference" "N4"
+			(at 496.57 153.924 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Z57xM"
+			(at 496.57 156.2354 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:Z570M"
+			(at 496.57 162.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 495.3 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 495.3 177.8 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "80e52e47-df87-492c-82d6-63680bd0b5eb")
+		)
+		(pin "2"
+			(uuid "69d9ac03-f0b0-4317-8ebc-e08d41a0eaea")
+		)
+		(pin "0"
+			(uuid "07bf3243-f0a6-42db-9aae-0a9a9fc8214e")
+		)
+		(pin "8"
+			(uuid "f0ed994c-71b8-4f7b-8221-dc992c24b379")
+		)
+		(pin "3"
+			(uuid "4d660573-c2e5-4704-9d91-ad27f77ea616")
+		)
+		(pin "7"
+			(uuid "f0de42fa-95ac-4e22-ae60-5b91e4a8a22f")
+		)
+		(pin "9"
+			(uuid "b20affac-2a86-44c3-bbe5-cf14072262b5")
+		)
+		(pin "N/C"
+			(uuid "85f9c2b2-d119-4076-a4fe-bb428556cb17")
+		)
+		(pin "4"
+			(uuid "8eddb22f-ca62-4181-89b4-02136e8305fe")
+		)
+		(pin "5"
+			(uuid "4487e3d9-9d61-4f36-b46a-830e999ded8d")
+		)
+		(pin "6"
+			(uuid "ce6f978a-8ae7-45d4-883e-75fe6921223d")
+		)
+		(pin "A"
+			(uuid "b714ae75-bdb0-401e-8cca-8b2aee662fd7")
+		)
+		(pin "RHDP"
+			(uuid "402118d3-ffa1-4f0b-93bb-7a9a169a527e")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "N4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Z570M:Z57xM")
+		(at 495.3 219.71 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005fa77dc6")
+		(property "Reference" "N5"
+			(at 496.57 195.834 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Z57xM"
+			(at 496.57 198.1454 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:Z570M"
+			(at 496.57 204.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 495.3 219.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 495.3 219.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "4"
+			(uuid "d0368c85-d44d-4d6b-bcc3-f9a80a1349fa")
+		)
+		(pin "6"
+			(uuid "6290efd8-ddec-4023-90b9-c294f347f7a4")
+		)
+		(pin "5"
+			(uuid "8caff4e0-8971-4c2f-bc6f-de100ded42b2")
+		)
+		(pin "3"
+			(uuid "a769b8c3-f118-4608-ab0f-aa212679130a")
+		)
+		(pin "0"
+			(uuid "e9616336-fa25-43f0-8dec-11e01ac542e3")
+		)
+		(pin "7"
+			(uuid "d52c600c-ffb4-4df3-96e7-7aa947ded7cc")
+		)
+		(pin "8"
+			(uuid "f6ccf71f-2b5b-48d6-bc4b-d3e09d831fe1")
+		)
+		(pin "1"
+			(uuid "7a7aebcb-12e9-439e-8a79-f0bf078270bf")
+		)
+		(pin "2"
+			(uuid "0f086058-65de-44b2-b127-f7944e24ddf8")
+		)
+		(pin "9"
+			(uuid "b9650c19-cb17-4baf-b111-402e66348c89")
+		)
+		(pin "N/C"
+			(uuid "d931fe44-8ed9-4ebc-9394-3ea7aa49e499")
+		)
+		(pin "A"
+			(uuid "2b3868a4-3aaf-4e5d-8601-010a48c34d2c")
+		)
+		(pin "RHDP"
+			(uuid "2624e3fb-3396-41cf-9f79-9472230c801e")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "N5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Z570M:Z57xM")
+		(at 496.57 260.35 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00005fa78006")
+		(property "Reference" "N6"
+			(at 497.84 236.474 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Z57xM"
+			(at 497.84 238.7854 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NixieClockMaster:Z570M"
+			(at 497.84 245.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 496.57 260.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 496.57 260.35 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "8"
+			(uuid "fc559348-6d87-4413-9daf-6cb3c11e78c6")
+		)
+		(pin "4"
+			(uuid "3a5d1e92-3c92-478b-8478-8869bd73ffd5")
+		)
+		(pin "5"
+			(uuid "3416bd68-3d70-4185-93a7-381cb9603306")
+		)
+		(pin "3"
+			(uuid "b1adbfa2-4f90-480b-920d-f734e6cfea03")
+		)
+		(pin "6"
+			(uuid "ebf3569a-6c54-4e2c-a3ff-aa2caf0667ab")
+		)
+		(pin "7"
+			(uuid "6534a52a-4307-4696-8038-b75835ca8f3d")
+		)
+		(pin "2"
+			(uuid "02c97dec-c3fe-4b7d-a0a5-7c45b83f33b9")
+		)
+		(pin "1"
+			(uuid "8dec8b8c-1b32-40ee-94b9-be3c6118d3db")
+		)
+		(pin "0"
+			(uuid "3598e848-14a6-41c3-b9ed-3e4eeab3837e")
+		)
+		(pin "A"
+			(uuid "d888aa9d-b203-4e37-8883-537fb97bafab")
+		)
+		(pin "RHDP"
+			(uuid "993929f6-e59b-4a8e-a5c1-94626c20d3a1")
+		)
+		(pin "9"
+			(uuid "ae244add-5915-46b5-9e61-2cccdfd08d3e")
+		)
+		(pin "N/C"
+			(uuid "cddab552-f0e8-4c6f-b9eb-5a359703bb84")
+		)
+		(instances
+			(project "AllInOneZ570M"
+				(path "/7058a6b4-d35c-4b98-a651-418ba6f7f863"
+					(reference "N6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

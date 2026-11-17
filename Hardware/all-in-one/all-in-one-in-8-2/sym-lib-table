@@ -1,3 +1,5 @@
 (sym_lib_table
-  (lib (name AllInOneIN142-rescue)(type Legacy)(uri ${KIPRJMOD}/AllInOneIN142-rescue.lib)(options "")(descr ""))
+	(version 7)
+	(lib (name "AllInOneIN142-rescue") (type "Legacy") (uri "${KIPRJMOD}/AllInOneIN142-rescue.lib") (options "") (descr ""))
+	(lib (name "AllInOneIN142-cache") (type "Legacy") (uri "/Users/iansparkes/Data/Projects/Clocks/Software/nixiefirmwarev2/Hardware/all-in-one/all-in-one-in-8-2/AllInOneIN142-cache.lib") (options "") (descr "Legacy project cache library"))
 )
