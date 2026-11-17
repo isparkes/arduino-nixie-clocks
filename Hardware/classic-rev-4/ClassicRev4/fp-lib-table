@@ -1,0 +1,10 @@
+(fp_lib_table
+  (lib (name transistor-power)(type Legacy)(uri /data/Copy/Nixie/KiCAD/lbr/transistor-power.mod)(options "")(descr ""))
+  (lib (name optocoupler-2)(type Legacy)(uri /data/Copy/Nixie/KiCAD/lbr/optocoupler-2.mod)(options "")(descr ""))
+  (lib (name optocoupler)(type Legacy)(uri /data/Copy/Nixie/KiCAD/lbr/optocoupler.mod)(options "")(descr ""))
+  (lib (name russian-nixies)(type Legacy)(uri /data/Copy/Nixie/KiCAD/lbr/russian-nixies.mod)(options "")(descr ""))
+  (lib (name rcl)(type Legacy)(uri /data/Copy/Nixie/KiCAD/lbr/rcl.mod)(options "")(descr ""))
+  (lib (name KickstarterNixie)(type Legacy)(uri /data/Copy/Nixie/KicadProjects/KickstarterDisplayBoardIN-14/KickstarterNixie.mod)(options "")(descr ""))
+  (lib (name Recovered)(type KiCad)(uri "$(KIPRJMOD)/Recovered.pretty")(options "")(descr ""))
+  (lib (name NixieClockModule)(type KiCad)(uri "$(KIPRJMOD)/NixieClockModule.pretty")(options "")(descr ""))
+)
