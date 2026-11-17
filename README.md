@@ -17,10 +17,12 @@ Version 356 converges the code bases for Classic Rev6 and Modular Rev 3.01. If y
 This repository now holds both the firmware and the KiCad hardware designs.
 Firmware lives under `Software/` and is built with PlatformIO rather than the
 Arduino IDE; the board designs live under `Hardware/`. The ESP8266 time
-provider and the four hardware repositories were each developed separately
+provider and the five hardware repositories were each developed separately
 for a while and have been merged back in with their histories intact. Both
-clock generations are covered: the V1 Classic Rev4 and Rev5 designs sit here
-alongside the V2 Classic Rev6 and Modular Rev 3.
+clock generations are covered, and which firmware a board takes follows
+directly from its generation: **the Classic Rev6 and the Modular Rev 3 run
+the V2 firmware; every other design here runs the V1 firmware.** See
+[Which firmware runs on which board](#which-firmware-runs-on-which-board).
 
 #### Features:
 - Open source (CC BY-NC 4.0, see [LICENSE](LICENSE))
@@ -109,6 +111,33 @@ to compile cleanly. Its board settings reproduce the Arduino IDE board menu
 recorded in that same header: Generic ESP8266 Module, 160 MHz CPU, 40 MHz QIO
 flash, 1M flash with 64k SPIFFS, lwIP v2 low memory.
 
+#### Which firmware runs on which board
+
+The Classic Rev6 and the Modular Rev 3 are the V2 clocks: NeoPixel backlight,
+PIR input and decimal points. Everything else in `Hardware/` is a V1 clock
+with a single RAGB backlight on three PWM pins, no PIR and no decimal points.
+Both generations are built from the same source, so the only thing that
+changes is the environment you build:
+
+| Design | Firmware | 6 digit environment | 4 digit environment |
+| --- | --- | --- | --- |
+| `Hardware/classic-rev-6/` | **V2** | `nixie6digit` | `nixie4digit` |
+| `Hardware/modular-rev-3/` | **V2** | `nixie6digit` | `nixie4digit` |
+| `Hardware/classic-rev-4/` | **V1** | `nixie6digitV1` | `nixie4digitV1` |
+| `Hardware/classic-rev-5/` | **V1** | `nixie6digitV1` | `nixie4digitV1` |
+| `Hardware/all-in-one/` | **V1** | `nixie6digitV1` | - |
+
+Every design here drives six anodes. The Classic and Modular boards are
+controller modules with the tubes on a connector, so the same board serves a
+4 digit clock with four of them wired, which is what the 4 digit firmware
+drives. The All-In-One carries its tubes on the board, so it is a 6 digit
+clock only and has no 4 digit build.
+
+The All-In-One boards here are Rev 004 and take the plain `FWV1` build. The
+third V1 variant, `nixie6digitV1aio`, is for the earlier All-In-One Rev1,
+whose tube wiring was mixed up and which needs its own digit mapping; that
+board's design is not in this repository.
+
 #### Known issues:
 - `checkPIR()` in `Software/src/Firmware4Digit/main.cpp` writes `dpArray[4]`
   and `dpArray[5]`, but on the 4 digit clock that array only has four entries.
@@ -118,11 +147,14 @@ flash, 1M flash with 64k SPIFFS, lwIP v2 low memory.
   alone there so that the V2 build stayed unchanged; it still wants fixing.
 
 #### Layout:
+- `Hardware/all-in-one/`: KiCad designs for the V1 All-In-One clock, as the
+  `all-in-one-in-14`, `all-in-one-in-8-2` and `all-in-one-z570m` boards, the
+  flipped tube variants of the first two, and the `all-in-one-external`
+  connector board
 - `Hardware/classic-rev-4/`: KiCad design for the V1 Classic Rev4 clock, as
-  the `ClassicRev4` module. Built by the `nixie6digitV1` and `nixie4digitV1`
-  firmware environments
+  the `ClassicRev4` module
 - `Hardware/classic-rev-5/`: KiCad design for the V1 Classic Rev5 clock, as
-  the `ClassicRev5` module. Built by the same two V1 environments
+  the `ClassicRev5` module
 - `Hardware/classic-rev-6/`: KiCad design for the Classic Rev6 clock, as the
   `ClassicRev6` main board and the `ClassicRev6External` connector board
 - `Hardware/modular-rev-3/`: KiCad design for the Modular Rev 3 clock, as the
@@ -141,11 +173,13 @@ flash, 1M flash with 64k SPIFFS, lwIP v2 low memory.
 
 #### Imported history
 
-The firmware, the ESP8266 time provider and the four hardware designs were
+The firmware, the ESP8266 time provider and the five hardware designs were
 separate repositories, and each was merged in whole rather than copied, so
 every commit that ever touched a file is still here. The fab tags came across
-with their designs and do not collide: `Y*` from the Modular Rev 3, `Rev4b`
-and `Rev4c` from the Classic Rev4, alongside the firmware's own `v*` tags.
+with their designs and do not collide: `Y48`, `Y49`, `Y53`, `Y100` and `Y103`
+from the Modular Rev 3, `Y25` through `Y205` plus the `P*` and
+`PCB_prototype_*` names from the All-In-One, `Rev4b` and `Rev4c` from the
+Classic Rev4, alongside the firmware's own `v*` tags.
 
 Each merge relocated the files into their directory under `Hardware/` in the
 merge commit itself, leaving the imported commits at the paths they always
@@ -159,9 +193,19 @@ git log --oneline <merge>^2 -- ClassicRev4.kicad_sch
 git log --oneline <merge>^2 -- ClassicRev5/ClassicRev5.kicad_sch
 ```
 
-One branch had no counterpart to merge into and is kept as-is:
-`imported/wifi-time-provider/feature/web_interface`. It predates the merge,
-so its files sit at the repository root rather than under `Software/`.
+Three branches had no counterpart to merge into and are kept as-is under an
+`imported/` prefix:
+
+```
+imported/wifi-time-provider/feature/web_interface
+imported/all-in-one/AiO-ott-R4
+imported/all-in-one/feature/drive-conditioning
+```
+
+Each predates its merge, so their files sit at the repository root rather
+than under `Software/` or `Hardware/`. The `Y106-2132480A` tag is on the tip
+of `AiO-ott-R4` rather than on master, so that branch is what keeps it
+reachable.
 
 #### Licence
 
